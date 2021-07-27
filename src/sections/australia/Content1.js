@@ -23,7 +23,7 @@ const Content = () => {
               <div className="position-relative pr-xl-20 pr-md-15 pr-15">
                 {/* <!-- content img start --> */}
                 <img
-                  src={imgC}
+                    src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624473942/pexels-jean-cont-8204883_wbjotx.jpg"
                   alt=""
                   className="w-100 rounded overflow-hidden"
                 />

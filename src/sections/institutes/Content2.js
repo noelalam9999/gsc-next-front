@@ -32,7 +32,7 @@ const Content = () => {
     <>
       {/* <!-- Content Area -->  */}
       <section className="bg-green position-relative">
-        <div className="w-lg-50 ml-lg-auto">
+      <div className="w-lg-50 ml-lg-auto">
           {/* <!-- gallery start --> */}
           <div
             className="gallery"
@@ -42,79 +42,79 @@ const Content = () => {
           >
             {/* <!-- this content will absolute from right and top --> */}
             <div className="single-item">
-              <img src={imgG1} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616453995/kpu_ywfyqn.webp" alt="" />
             </div>
             <div className="single-item">
-              <img src={imgG2} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/uni_profile_16011_d1e3l0.webp" alt="" />
             </div>
             <div className="single-item">
-              <img src={imgG3} alt="" />
+              <img style={{background:"white"}}  src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/winchester_akdxjt.webp" alt="" />
             </div>
             <div className="single-item">
-              <img src={imgG4} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/resolution-logo_ljk140.webp" alt="" />
             </div>
             <div className="single-item">
-              <img src={imgG5} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/ur_logo_w65icb.webp" alt="regina" />
             </div>
             <div className="single-item">
-              <img src={imgG6} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/sKJDXt-F_400x400_mwqjkp.webp" alt="cothm" />
             </div>
             <div className="single-item">
-              <img src={imgG7} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/NXWWxgvH_400x400_myxepr.webp" alt="trent" />
             </div>
             <div className="single-item">
-              <img src={imgG8} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/logo-mobile_kgjbpe.webp" alt="victoria" />
             </div>
             <div className="single-item">
-              <img src={imgG9} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/logo-long-full-keyline_ud6waf.webp" alt="swinburn" />
             </div>
             <div className="single-item">
-              <img src={imgG10} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/nicosia_tahmpp.webp" alt="nicosia" />
             </div>
             <div className="single-item">
-              <img src={imgG11} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/logo-dark_pojfry.webp" alt="cranbury_christ" />
             </div>
             <div className="single-item">
-              <img src={imgG12} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/logo_1_wtab5p.webp" alt="york_uni" />
             </div>
             <div className="single-item">
-              <img src={imgG13} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/Logo-Brand_whlewa.webp" alt="lambton_college" />
             </div>
             <div className="single-item">
-              <img src={imgG14} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/logo_color_z7p69g.webp" alt="aihe" />
             </div>
             <div className="single-item">
-              <img src={imgG15} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/LC-Logo-200_itzoiy.webp" alt="larcana_college" />
             </div>
             <div className="single-item">
-              <img src={imgG16} alt="" />
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/logo_dnwazs.webp" alt="newcastle_college" />
             </div>
             <div className="single-item">
-              <img src={imgG17} alt="" />
+              <img style={{background:"white"}} src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/global_college_n95vit.webp" alt="global_college" />
             </div>
-            <div className="single-item">
-              <img src={imgG18} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img  src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/lakeheadLogo_rsobiy.webp" alt="lakehead_university" />
             </div>
-            <div className="single-item">
-              <img src={imgG19} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/images_kd2aw5.webp" alt="" />
             </div>
-            <div className="single-item">
-              <img src={imgG20} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/download_t2atcq.webp" alt="" />
             </div>
-            <div className="single-item">
-              <img src={imgG21} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452957/ezgif.com-gif-maker_dzyroi.webp" alt="collarts" />
             </div>
-            <div className="single-item">
-              <img src={imgG22} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452957/canada_west_fuijda.webp" alt="university_of_canada_west" />
             </div>
-            <div className="single-item">
-              <img src={imgG23} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452957/download_1_kbj2rr.webp" alt="ulster" />
             </div>
-            <div className="single-item">
-              <img src={imgG24} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452957/coventry_uni_pc3iea.webp" alt="coventry" />
             </div>
-            <div className="single-item">
-              <img src={imgG25} alt="" />
+            <div style={{background:"white"}}  className="single-item">
+              <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452957/chester-uni-web_zhper7.webp" alt="uni_of_chester" />
             </div>
           </div>
           {/* <!-- gallery end --> */}

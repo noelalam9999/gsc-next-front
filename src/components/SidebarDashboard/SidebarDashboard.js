@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { Collapse } from "react-bootstrap";
 import GlobalContext from "../../context/GlobalContext";
-import imgL from "../../assets/image/logo-main-black.png";
-
+//import imgL from "../../assets/image/logo-main-black.png";
+import imgL from "../../assets/favicon2.png";
 const Sidebar = () => {
   const gContext = useContext(GlobalContext);
 
@@ -14,14 +14,14 @@ const Sidebar = () => {
           <div className="brand-logo px-11">
             <Link href="/">
               <a>
-                <img src={imgL} alt="" />
+               
               </a>
             </Link>
           </div>
           <div className="my-15 px-11">
-            <Link href="/#">
+            <Link href="/dashboard-uni-registration">
               <a className="btn btn-primary btn-xl w-100 text-uppercase">
-                <span className="mr-5 d-inline-block">+</span>Post a new job
+                <span className="mr-5 d-inline-block">+</span>Add a Uni
               </a>
             </Link>
           </div>

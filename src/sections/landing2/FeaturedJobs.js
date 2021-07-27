@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, memo } from "react";
 import Link from "next/link";
 import imgF1 from "../../assets/image/l2/png/featured-job-logo-1.png";
 import imgF2 from "../../assets/image/l2/png/featured-job-logo-2.png";
@@ -10,8 +10,14 @@ import iconFR from "../../assets/image/svg/icon-fire-rounded.svg";
 import iconLPB from "../../assets/image/svg/icon-loaction-pin-black.svg";
 import iconS from "../../assets/image/svg/icon-suitecase.svg";
 import iconC from "../../assets/image/svg/icon-clock.svg";
-
+import {getStory} from "../../../api"
 const FeaturedJobs = () => {
+
+  const [story, setStory] = useState({});
+
+  useEffect(() => {
+    getStory(storyId).then(data => data && data.name && setStory(data));
+  }, []);
   return (
     <>
       {/* <!-- FeaturedJobs Area -->  */}
@@ -21,7 +27,7 @@ const FeaturedJobs = () => {
           <div className="row justify-content-center mb-lg-16 mb-11">
             <div className="col-xxl-5 col-xl-6 col-lg-7 col-md-10 text-center">
               <h2 className="mb-6 mb-lg-7 text-black-2 font-size-10">
-                Featured Jobs
+                Featured Jobs{story.name}
               </h2>
               <p className="px-xs-3 px-md-12 px-lg-8 px-xl-8 px-xxl-6 font-size-5 mb-0">
                 Leverage agile frameworks to provide a robust synopsis for high

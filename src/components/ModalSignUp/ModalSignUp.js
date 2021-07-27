@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Modal } from "react-bootstrap";
 import GlobalContext from "../../context/GlobalContext";
 
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useAuth } from '../../../AuthUserContext';
 const ModalStyled = styled(Modal)`
   /* &.modal {
     z-index: 10050;
@@ -10,9 +13,14 @@ const ModalStyled = styled(Modal)`
 `;
 
 const ModalSignUp = (props) => {
+
+  const { createUserWithEmailAndPassword } = useAuth();
+  
   const [showPassFirst, setShowPassFirst] = useState(true);
   const [showPassSecond, setShowPassSecond] = useState(true);
-
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [error, setError] = useState(null);
   const gContext = useContext(GlobalContext);
   const handleClose = () => {
     gContext.toggleSignUpModal();
@@ -25,8 +33,30 @@ const ModalSignUp = (props) => {
   const togglePasswordSecond = () => {
     setShowPassSecond(!showPassSecond);
   };
+console.log(email)
+console.log(pass)
 
-  return (
+const onSubmit = event => {
+  setError(null)
+  //check if passwords match. If they do, create user in Firebase
+  // and redirect to your logged in page.
+ 
+    createUserWithEmailAndPassword(email, pass)
+    .then(authUser => {
+      console.log("Success. The user is created in Firebase")
+      router.push("/");
+    })
+    .catch(error => {
+      // An error occurred. Set error message to be displayed to user
+      setError(error.message)
+    });
+  
+  event.preventDefault();
+};
+
+
+
+return (
     <ModalStyled
       {...props}
       size="lg"
@@ -121,6 +151,8 @@ const ModalSignUp = (props) => {
                       E-mail
                     </label>
                     <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                       type="email"
                       className="form-control"
                       placeholder="example@gmail.com"
@@ -136,6 +168,8 @@ const ModalSignUp = (props) => {
                     </label>
                     <div className="position-relative">
                       <input
+                      value={pass}
+                      onChange={(e) => setPass(e.target.value)}
                         type={showPassFirst ? "password" : "text"}
                         className="form-control"
                         id="password"
@@ -147,6 +181,7 @@ const ModalSignUp = (props) => {
                         onClick={(e) => {
                           e.preventDefault();
                           togglePasswordFirst();
+                        
                         }}
                       >
                         <span className="d-none">none</span>
@@ -205,7 +240,9 @@ const ModalSignUp = (props) => {
                     </a>
                   </div>
                   <div className="form-group mb-8">
-                    <button className="btn btn-primary btn-medium w-100 rounded-5 text-uppercase">
+                    <button 
+                   
+                    className="btn btn-primary btn-medium w-100 rounded-5 text-uppercase">
                       Sign Up{" "}
                     </button>
                   </div>

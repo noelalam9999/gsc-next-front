@@ -57,6 +57,11 @@ export const menuItems = [
         label: "Australia",
     
       },
+      {
+        name: "europe",
+        label: "Europe",
+    
+      },
     ],
   },
   {

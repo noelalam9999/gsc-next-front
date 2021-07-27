@@ -8,6 +8,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 
 import SidebarDashboard from "../SidebarDashboard";
+import SidebarDashboardStudent from "../SidebarDashboard/SidebarDashboardStudent";
 import ModalVideo from "../ModalVideo";
 import ModalApplication from "../ModalApplication";
 import ModalSignIn from "../ModalSignIn";
@@ -23,6 +24,10 @@ import { get, merge } from "lodash";
 
 // the full theme object
 import { theme as baseTheme } from "../../utils";
+import { useAuth } from '../../../AuthUserContext';
+import "firebase/auth";
+
+import firebase from "firebase/app";
 
 const Loader = styled.div`
   position: fixed;
@@ -53,7 +58,7 @@ const getTheme = (mode) =>
 
 const Layout = ({ children, pageContext }) => {
   const gContext = useContext(GlobalContext);
-
+  const { authUser, loading, signOut } = useAuth();
   const [visibleLoader, setVisibleLoader] = useState(true);
 
   useEffect(() => {
@@ -93,7 +98,7 @@ const Layout = ({ children, pageContext }) => {
         <div data-theme-mode-panel-active data-theme="light">
           <GlobalStyle />
           <Helmet>
-            <title>JustCamp</title>
+            <title>Global Study Contacts</title>
             <link rel="icon" type="image/png" href={imgFavicon} />
           </Helmet>
           <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
@@ -107,6 +112,7 @@ const Layout = ({ children, pageContext }) => {
 
           <ModalVideo />
           <ModalApplication />
+     
           <ModalSignIn />
           <ModalSignUp />
         </div>
@@ -114,7 +120,7 @@ const Layout = ({ children, pageContext }) => {
     );
   }
 
-  if (pageContext.layout === "dashboard") {
+  if (pageContext.layout == "dashboard-admin") {
     return (
       <ThemeProvider
         theme={
@@ -124,7 +130,7 @@ const Layout = ({ children, pageContext }) => {
         <div data-theme-mode-panel-active data-theme="light">
           <GlobalStyle />
           <Helmet>
-            <title>JustCamp</title>
+            <title>Global Study Contacts</title>
             <link rel="icon" type="image/png" href={imgFavicon} />
           </Helmet>
           <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
@@ -149,7 +155,42 @@ const Layout = ({ children, pageContext }) => {
       </ThemeProvider>
     );
   }
+else
+  if (pageContext.layout === "student") {
+    return (
+      <ThemeProvider
+        theme={
+          gContext.themeDark ? getTheme(modes.dark) : getTheme(modes.light)
+        }
+      >
+        <div data-theme-mode-panel-active data-theme="light">
+          <GlobalStyle />
+          <Helmet>
+            <title>Global Study Contacts</title>
+            <link rel="icon" type="image/png" href={imgFavicon} />
+          </Helmet>
+          <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
+            <div className="load-circle">
+              <span className="one"></span>
+            </div>
+          </Loader>
+          <div
+            className="site-wrapper overflow-hidden bg-default-2"
+            ref={eleRef}
+          >
+            <Header isDark={gContext.headerDark} />
+            <SidebarDashboardStudent />
+            {children}
+          </div>
 
+          <ModalVideo />
+          <ModalApplication />
+          <ModalSignIn />
+          <ModalSignUp />
+        </div>
+      </ThemeProvider>
+    );
+  }
   return (
     <>
       <ThemeProvider

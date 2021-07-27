@@ -17,9 +17,9 @@ const FeaturedJobs = () => {
           <div className="row justify-content-center">
             <div className="col-12 col-md-8 col-lg-6 col-xxl-5">
               <div className="text-center mb-8 mb-lg-18 px-xl-9 px-xxl-7">
-                <h2 className="font-size-9 mb-6">Most Popular Programs</h2>
+                <h2 className="font-size-9 mb-6">Most Popular Institutes</h2>
                 <p className="font-size-4 text-default-color px-xs-9 px-md-0">
-                  Our Students are interested to apply to a diverse range of Subjects
+                  Choose from the widest Variety of Universities and Programs for your Students
                 </p>
               </div>
             </div>
@@ -37,7 +37,7 @@ const FeaturedJobs = () => {
                   <div className="square-52 bg-pink mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF1} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616453995/kpu_ywfyqn.webp" alt="" />
                       </a>
                     </Link>
                   </div>
@@ -89,7 +89,7 @@ const FeaturedJobs = () => {
                   <div className="square-52 bg-indigo mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF2} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/uni_profile_16011_d1e3l0.webp" alt="" />
                       </a>
                     </Link>
                   </div>
@@ -138,10 +138,10 @@ const FeaturedJobs = () => {
               {/* <!-- Single Featured Job --> */}
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
                 <div className="media align-items-center">
-                  <div className="square-52 bg-regent mr-8 rounded">
+                  <div className="square-52 mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF3} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/winchester_akdxjt.webp" alt="" />
                       </a>
                     </Link>
                   </div>
@@ -190,10 +190,10 @@ const FeaturedJobs = () => {
               {/* <!-- Single Featured Job --> */}
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
                 <div className="media align-items-center">
-                  <div className="square-52 bg-yellow-2 mr-8 rounded">
+                  <div className="square-52 mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF4} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/resolution-logo_ljk140.webp" alt="" />
                       </a>
                     </Link>
                   </div>
@@ -245,7 +245,7 @@ const FeaturedJobs = () => {
                   <div className="square-52 bg-orange-2 mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF5} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/ur_logo_w65icb.webp" alt="" />
                       </a>
                     </Link>
                   </div>
@@ -297,7 +297,7 @@ const FeaturedJobs = () => {
                   <div className="square-52 bg-helio mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF6} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/sKJDXt-F_400x400_mwqjkp.webp" alt="" />
                       </a>
                     </Link>
                   </div>

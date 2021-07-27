@@ -86,7 +86,7 @@ const Hero = () => {
               data-aos-delay="500"
             >
               <div className=" ml-xxl-23 ml-xl-12 ml-md-7">
-                <img src={imgH} alt="" className="w-100" />
+                <img height="700px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624570577/liberty_circcp.svg" alt="" className="w-100" />
               </div>
             </div>
             {/* <!-- ./Hero Right Image --> */}

@@ -29,7 +29,7 @@ const Hero = () => {
               <div className="row">
                 <div className="col-md-8 col-sm-10">
                   <h1 className="font-size-10 mb-12">
-                   Affilition with 200+ Universities
+                   Get Access to 200+ Universities
                   </h1>
                   <p className="font-size-6">
                   Global Study Contacts provides a platform for agents/agencies to work in 
@@ -90,7 +90,7 @@ const Hero = () => {
                     data-aos-duration="1000"
                     data-aos-dealy="750"
                   >
-                    <img src={imgC1} alt="hero 1" />
+                    <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624499668/pexels-marina-zasorina-7635239_pizirk.jpg" alt="hero 1" />
                   </div>
                 </div>
                 <div className="col-sm-6 col-10 mt-10 mt-lg-0">
@@ -100,7 +100,7 @@ const Hero = () => {
                     data-aos-duration="1000"
                     data-aos-dealy="1200"
                   >
-                    <img src={imgC2} alt="hero 2" />
+                   
                   </div>
                 </div>
               </div>

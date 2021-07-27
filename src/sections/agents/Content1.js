@@ -18,7 +18,7 @@ const Content = () => {
             >
               <div className="position-relative px-xl-20 pr-md-15 pr-9">
                 {/* <!-- content img start --> */}
-                <img src={imgC1} alt="" className="w-100 rounded-4" />
+                <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624501440/pexels-monstera-6281893_zgizjm.jpg" alt="" className="w-100 rounded-4" />
                 {/* <!-- content img end --> */}
                 {/* <!-- abs-content start --> */}
                 <div className="abs-content pos-abs-br mb-30 mr-8 rounded-4 rotate-n10 border-10 border-white shadow-2">
@@ -43,14 +43,17 @@ const Content = () => {
                   We provide agents the best <div className="text-green">Commision Rates</div>
                 </h2>
                 <p className="text-default-color font-size-5 mb-7 mb-lg-12 pr-xxl-13 pr-lg-0 pr-md-10">
-                GSC boasts its lucrative commission rates in this highly competitive consultancy market. On peak seasons rates go as high as <strong>10%</strong>
+                GSC boasts its lucrative commission rates in this highly competitive consultancy market. On peak seasons rates go as high as <strong>15%</strong>
+                </p>
+                <p className="text-default-color font-size-5 mb-7 mb-lg-12 pr-xxl-13 pr-lg-0 pr-md-10">
+                More than 5 recruitments =  <strong>0</strong> administration cost 
                 </p>
                 {/* <!-- content section title end --> */}
                 {/* <!-- content-2 btn start --> */}
                 <Link href="/#">
                   <a className="text-green font-weight-bold text-uppercase font-size-3">
                     Learn More <i className="fas fa-arrow-right ml-3"></i>
-                  </a>
+                  </a>  
                 </Link>
                 {/* <!-- content-2 btn end --> */}
                 {/* <!-- media start --> */}

@@ -33,7 +33,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-blue square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
-                  <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617937619/student_mm2r0b.svg"/>
+                  <img height="100px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1627252639/icon_1_q6v9fb.svg"/>
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
@@ -53,7 +53,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-spray square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
-                  <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617937620/university_uanz3o.png"/>
+                  <img height="110px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1627252639/icon_2_x3hthy.svg"/>
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
@@ -73,7 +73,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-coral square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
-                  <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617937620/call_y22jrr.png"/>
+                  <img height="110px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1627252639/icon_3_boelcg.svg"/>
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
@@ -93,7 +93,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-red square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
-                  <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617937895/certificate_m0jyqf.png"/>
+                  <img height="110px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1627252639/iconv_5_kl6l6s.svg"/>
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">

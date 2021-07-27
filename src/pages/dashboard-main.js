@@ -5,7 +5,7 @@ import LazyLoad from "react-lazyload";
 import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
 import GlobalContext from "../context/GlobalContext";
-
+import { useAuth } from '../../AuthUserContext';
 import imgP1 from "../assets/image/table-one-profile-image-1.png";
 import imgP2 from "../assets/image/table-one-profile-image-2.png";
 import imgP3 from "../assets/image/table-one-profile-image-3.png";

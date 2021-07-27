@@ -41,7 +41,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-blue bg-blue-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-briefcase"></i>
+                  <img height="50px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617937620/university_uanz3o.png" alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
@@ -61,7 +61,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-spray bg-spray-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-headset"></i>
+                  <img height="40px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617395987/website_bobju6.png" alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
@@ -81,7 +81,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-coral bg-coral-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-layer-group"></i>
+                  <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1618301369/icons8-passport-50_olt35v.png" alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
@@ -101,7 +101,7 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-red bg-red-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-pen-nib"></i>
+                  <img height="40px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1619448312/network_cdu0gh.png" alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">

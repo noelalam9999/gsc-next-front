@@ -49,10 +49,10 @@ const Services = () => {
             <div className="col-12 col-lg-4 col-md-6 col-sm-8 col-xs-8">
               <div className="px-xl-7 px-xxl-12 pt-5 pb-3 pb-lg-9 text-center">
                 <div className="square-92 rounded-4 bg-casablanca text-white font-size-8 mx-auto shadow-green mb-11">
-                  <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1618381613/icons8-school-50_oa6fvx.png" alt="" />
+                  <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1618461211/icons8-school-50_ksgnbn.png" alt="" />
                 </div>
                 <div className="services-content">
-                  <h3 className="font-size-6 mb-7">Apply to Schools</h3>
+                  <h3 className="font-size-6 mb-7">Apply to Institutes</h3>
                   <p className="font-size-4 text-default-color">
                    Fill out a form with your academic details
                   </p>

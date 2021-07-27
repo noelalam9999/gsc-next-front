@@ -45,7 +45,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF1} alt="" />
+                      <img height="125px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452957/download_1_kbj2rr.webp" alt="" />
                     </a>
                   </Link>
                 </div>
@@ -117,7 +117,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF2} alt="" />
+                      <img height="125px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/logo_dnwazs.webp" alt="" />
                     </a>
                   </Link>
                 </div>
@@ -187,7 +187,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF3} alt="" />
+                      <img height="125px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452957/cats_uk_logo_white_gljfvx.webp" alt="" />
                     </a>
                   </Link>
                 </div>
@@ -257,7 +257,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF4} alt="" />
+                      <img height="125px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/resolution-logo_ljk140.webp" alt="" />
                     </a>
                   </Link>
                 </div>
@@ -327,7 +327,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF5} alt="" />
+                      <img height="125px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/images_kd2aw5.webp" alt="" />
                     </a>
                   </Link>
                 </div>
@@ -397,7 +397,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF6} alt="" />
+                      <img height="125px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452958/logo_1_wtab5p.webp" alt="" />
                     </a>
                   </Link>
                 </div>

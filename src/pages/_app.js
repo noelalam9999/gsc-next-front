@@ -18,33 +18,61 @@ import "../assets/fonts/fontawesome-5/css/all.css";
 
 import "../scss/bootstrap.scss";
 import "../scss/main.scss";
+import { AuthUserProvider } from '../../AuthUserContext';
 
 const MyApp = ({ Component, pageProps, router }) => {
   if (router.pathname.match(/404/)) {
     return (
       <GlobalProvider>
         <Layout pageContext={{ layout: "bare" }}>
+      
           <Component {...pageProps} />
+        
         </Layout>
       </GlobalProvider>
     );
   }
   if (router.pathname.match(/dashboard/)) {
     return (
+
       <GlobalProvider>
+           <AuthUserProvider>
         <Layout pageContext={{ layout: "dashboard" }}>
+     
           <Component {...pageProps} />
+        
         </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
+  if (router.pathname.match(/student-registration/)) {
+    return (
+
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "student" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
       </GlobalProvider>
     );
   }
 
   return (
+    
     <GlobalProvider>
+          <AuthUserProvider>
       <Layout pageContext={{}}>
+     
         <Component {...pageProps} />
+        
       </Layout>
+      </AuthUserProvider>
     </GlobalProvider>
+    
   );
 };
 

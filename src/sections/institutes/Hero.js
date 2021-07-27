@@ -37,47 +37,16 @@ const Hero = () => {
                 </div>
               </div>
               <div className="pt-12">
-                <form
-                  action="/"
-                  className="search-form"
-                  data-aos="fade-right"
-                  data-aos-duration="1000"
-                  data-aos-dealy="1200"
-                >
-                  <div className="filter-search-form-2 bg-white rounded-sm shadow-4 pr-8 py-8 pl-6">
-                    <div className="filter-inputs">
-                      <div className="form-group position-relative">
-                        <input
-                          className="form-control focus-reset pl-13"
-                          type="text"
-                          id="keyword"
-                          placeholder="Type Program"
-                        />
-                        <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
-                          <i className="icon icon-zoom-2 text-primary font-weight-bold"></i>
-                        </span>
-                      </div>
-                      {/* <!-- .select-city starts --> */}
-                      <div className="form-group position-relative">
-                        <Select
-                          options={defaultCountries}
-                          className="pl-8 h-100 arrow-3 font-size-4 d-flex align-items-center w-100"
-                          border={false}
-                        />
-
-                        <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
-                          <i className="icon icon-pin-3 text-primary font-weight-bold"></i>
-                        </span>
-                      </div>
-                      {/* <!-- ./select-city ends --> */}
-                    </div>
+          
+                  <div className="filter-search-form-2  rounded-sm pr-8 py-8 pl-6">
+                 
                     <div className="button-block">
                       <Button className="line-height-reset h-100 btn-submit w-100 text-uppercase">
-                        Search
+                        Partner With Us
                       </Button>
                     </div>
                   </div>
-                </form>
+               
               </div>
             </div>
             <div className="col-12 pos-abs-tr z-index-n1 position-static position-lg-absolute ml-auto hero-image-positioning-2">
@@ -89,7 +58,7 @@ const Hero = () => {
                     data-aos-duration="1000"
                     data-aos-dealy="750"
                   >
-                    <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624493515/pexels-marina-zasorina-7635239_kx45rv.jpg" alt="hero 1" />
+                    <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1625272130/pexels-charlotte-may-5965682_r1pag8.jpg" alt="hero 1" />
                   </div>
                 </div>
                 <div className="col-sm-6 col-10 mt-10 mt-lg-0">

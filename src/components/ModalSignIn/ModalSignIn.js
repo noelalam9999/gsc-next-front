@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Modal } from "react-bootstrap";
 import GlobalContext from "../../context/GlobalContext";
 
+
 const ModalStyled = styled(Modal)`
   /* &.modal {
     z-index: 10050;
@@ -142,6 +143,12 @@ const ModalSignIn = (props) => {
                         onClick={(e) => {   
                           e.preventDefault();
                           togglePassword();
+                          async () => {
+                            await firebaseClient
+                              .auth()
+                              .signInWithEmailAndPassword(email, pass);
+                            window.location.href = '/';
+                          }
                         }}
                       >
                         <span className="d-none">none</span>

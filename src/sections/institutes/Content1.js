@@ -18,16 +18,10 @@ const Content = () => {
             >
               <div className="position-relative px-xl-20 pr-md-15 pr-9">
                 {/* <!-- content img start --> */}
-                <img src={imgC1} alt="" className="w-100 rounded-4" />
+                <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1622069499/5c2bf693001d062db6106b8ae68dccdf_tsxbs4.jpg" alt="" className="w-100 rounded-4" />
                 {/* <!-- content img end --> */}
                 {/* <!-- abs-content start --> */}
-                <div className="abs-content pos-abs-br mb-30 mr-8 rounded-4 rotate-n10 border-10 border-white shadow-2">
-                  <img
-                    src={imgC2}
-                    alt=""
-                    className="rounded-4 border-white border-width-3"
-                  />
-                </div>
+               
                 {/* <!-- abs-content end --> */}
               </div>
             </div>

@@ -11,7 +11,7 @@ import NestedMenu from "../NestedMenu";
 import { device } from "../../utils";
 import Logo from "../Logo";
 import { menuItems } from "./menuItems";
-
+import { useAuth } from '../../../AuthUserContext';
 import imgP from "../../assets/image/header-profile.png";
 
 const SiteHeader = styled.header`
@@ -49,6 +49,7 @@ const ToggleButton = styled.button`
 `;
 
 const Header = () => {
+  const { authUser, loading,signOut } = useAuth();
   const gContext = useContext(GlobalContext);
   const [showScrolling, setShowScrolling] = useState(false);
   const [showReveal, setShowReveal] = useState(false);
@@ -67,7 +68,7 @@ const Header = () => {
       setShowReveal(false);
     }
   });
-
+console.log(authUser)
   return (
     <>
       <SiteHeader
@@ -233,15 +234,7 @@ const Header = () => {
               </div>
             </div>
 
-            {gContext.header.button === "cta" && (
-              <div className="header-btn ml-auto ml-lg-0 mr-6 mr-lg-0 d-none d-xs-block">
-                <Link href="/#">
-                  <a className={`btn btn-${gContext.header.variant}`}>
-                    {gContext.header.buttonText}
-                  </a>
-                </Link>
-              </div>
-            )}
+         
 
             {gContext.header.button === "profile" && (
               <div className="header-btn-devider ml-auto ml-lg-5 pl-2 d-none d-xs-flex align-items-center">
@@ -281,11 +274,16 @@ const Header = () => {
                             Edit Profile
                           </a>
                         </Link>
-                        <Link href="/#">
-                          <a className=" dropdown-item py-2 text-red font-size-3 font-weight-semibold line-height-1p2 text-uppercase">
-                            Log Out
-                          </a>
-                        </Link>
+                      
+                        <a className="dropdown-item font-size-3 font-weight-semibold line-height-1p2 text-uppercase dropdown-toggle gr-toggle-arrow"
+                                            role="button"
+                                            data-toggle="dropdown"
+                                            aria-expanded="false"
+                                            aria-haspopup="true"
+                                            href="/login"
+                                            onClick={()=>signOut}
+                                          >Logout</a>
+                      
                       </Dropdown.Menu>
                     ) : (
                       <div
@@ -302,11 +300,15 @@ const Header = () => {
                             Edit Profile
                           </a>
                         </Link>
-                        <Link href="/#">
-                          <a className=" dropdown-item py-2 text-red font-size-3 font-weight-semibold line-height-1p2 text-uppercase">
-                            Log Out
-                          </a>
-                        </Link>
+               
+                        <a className="dropdown-item font-size-3 font-weight-semibold line-height-1p2 text-uppercase dropdown-toggle gr-toggle-arrow"
+                                            role="button"
+                                            data-toggle="dropdown"
+                                            aria-expanded="false"
+                                            aria-haspopup="true"
+                                            href="/login"
+                                            onClick={()=>signOut}
+                                          >Logout</a>
                       </div>
                     )}
                   </Dropdown>
@@ -318,21 +320,18 @@ const Header = () => {
               <div className="header-btns header-btn-devider ml-auto pr-2 ml-lg-6 d-none d-xs-flex">
                 <a
                   className="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset"
-                  href="/#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    gContext.toggleSignInModal();
-                  }}
+                  href="/login"
+                 
                 >
                   Log In
                 </a>
                 <a
                   className={`btn btn-${gContext.header.variant} text-uppercase font-size-3`}
-                  href="/#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    gContext.toggleSignUpModal();
-                  }}
+                  href="/signup"
+                  // onClick={(e) => {
+                  //   e.preventDefault();
+                  //   gContext.toggleSignUpModal();
+                  // }}
                 >
                   Sign Up
                 </a>

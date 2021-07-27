@@ -7,6 +7,7 @@ import Content1 from "../sections/landing2/Content1";
 import FeaturedJobs from "../sections/landing1/FeaturedJobs";
 import Content2 from "../sections/landing2/Content2";
 
+import 'firebase/firestore';
 const IndexPage = () => {
   return (
     <>

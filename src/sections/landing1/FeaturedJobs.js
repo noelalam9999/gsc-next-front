@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState, useEffect, memo } from "react";
 import Link from "next/link";
-import imgF1 from "../../assets/image/l1/png/feature-brand-1.png";
-import imgF2 from "../../assets/image/l1/png/feature-brand-2.png";
-import imgF3 from "../../assets/image/l1/png/feature-brand-3.png";
-import imgF4 from "../../assets/image/l1/png/feature-brand-4.png";
-import imgF5 from "../../assets/image/l1/png/feature-brand-5.png";
-import imgF6 from "../../assets/image/l1/png/feature-brand-6.png";
+import imgF1 from "../../assets/image/l1/png/Ulster-Uni.jpg";
+import imgF2 from "../../assets/image/l1/png/Trent-University.jpg";
+import imgF3 from "../../assets/image/l1/png/namseoul.jpg";
+import imgF4 from "../../assets/image/l1/png/middle-tennesse.jpg";
+import imgF5 from "../../assets/image/l1/png/segi.jpg";
+import imgF6 from "../../assets/image/l1/png/east-china-uni.jpg";
+import renderItems from "../../../api";
+import Api from "../../../api";
+
 
 const FeaturedJobs = () => {
+  
   return (
     <>
       {/* <!-- FeaturedJobs Area -->  */}
@@ -19,6 +23,7 @@ const FeaturedJobs = () => {
             <div className="col-12 col-xl-6 col-lg-6">
               <div className="text-center text-lg-left mb-13 mb-lg-0">
                 <h2 className="font-size-9 font-weight-bold">Featured Programs</h2>
+     
               </div>
             </div>
             {/* <!-- Section Button --> */}
@@ -45,13 +50,13 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616453995/kpu_ywfyqn.webp" alt="" />
+                      <img height="80px" src={imgF1} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
                   <a className="font-size-3 d-block mb-0 text-gray">
-                    KPU
+                  Ulster University
                   </a>
                 </Link>
                 <h2 className="mt-n4">
@@ -66,7 +71,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        Canada
+                        UK
                       </a>
                     </Link>
                   </li>
@@ -117,12 +122,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                    <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/uni_profile_16011_d1e3l0.webp" alt="" />
+                    <img height="80px" src={imgF2} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">European University of Cyprus</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Trent University</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -136,7 +141,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        Cyprus
+                        Canada
                       </a>
                     </Link>
                   </li>
@@ -187,12 +192,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                    <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/winchester_akdxjt.webp" alt="" />
+                    <img height="80px" src={imgF3} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">University of Winchester</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Namseoul University</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -206,7 +211,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        UK
+                        Korea
                       </a>
                     </Link>
                   </li>
@@ -257,12 +262,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                    <img height="100px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/resolution-logo_ljk140.webp" alt="" />
+                    <img height="100px" src={imgF4} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">University of Greenwich</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Middle Tennessee State University</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -276,7 +281,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        UK
+                        USA
                       </a>
                     </Link>
                   </li>
@@ -327,12 +332,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                    <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/ur_logo_w65icb.webp" alt="" />
+                    <img height="80px" src={imgF5} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">University of Regina</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">SEGi University</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -346,7 +351,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        Canada
+                        Malaysia
                       </a>
                     </Link>
                   </li>
@@ -397,12 +402,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                    <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/sKJDXt-F_400x400_mwqjkp.webp" alt="" />
+                    <img height="80px" src={imgF6} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">COTHM</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">East China University of Science & Technology</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -416,7 +421,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                       Cyprus
+                       China
                       </a>
                     </Link>
                   </li>

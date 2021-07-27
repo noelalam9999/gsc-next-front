@@ -138,7 +138,7 @@ const FeaturedJobs = () => {
               {/* <!-- Single Featured Job --> */}
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
                 <div className="media align-items-center">
-                  <div className="square-52 bg-regent mr-8 rounded">
+                  <div className="square-52 mr-8 rounded">
                     <Link href="/#">
                       <a>
                       <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/winchester_akdxjt.webp" alt="" />
@@ -190,7 +190,7 @@ const FeaturedJobs = () => {
               {/* <!-- Single Featured Job --> */}
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
                 <div className="media align-items-center">
-                  <div className="square-52 bg-yellow-2 mr-8 rounded">
+                  <div className="square-52 mr-8 rounded">
                     <Link href="/#">
                       <a>
                       <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/resolution-logo_ljk140.webp" alt="" />
@@ -245,7 +245,7 @@ const FeaturedJobs = () => {
                   <div className="square-52 bg-orange-2 mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF5} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/ur_logo_w65icb.webp" alt="" />
                       </a>
                     </Link>
                   </div>
@@ -297,7 +297,7 @@ const FeaturedJobs = () => {
                   <div className="square-52 bg-helio mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF6} alt="" />
+                      <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1616452959/sKJDXt-F_400x400_mwqjkp.webp" alt="" />
                       </a>
                     </Link>
                   </div>

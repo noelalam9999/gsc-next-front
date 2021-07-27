@@ -29,7 +29,7 @@ const Hero = () => {
               <div className="row">
                 <div className="col-md-8 col-sm-10">
                   <h1 className="font-size-11 mb-12">
-                    Get a seamless resettling experience
+                    Resettle Onto Your Dream Study Destination
                   </h1>
                   <p className="font-size-6">
                   Global Study Contacts Specialize in Education Consultancy, Visa Processing, Job Scouting and Everything you need to start your new life
@@ -89,7 +89,7 @@ const Hero = () => {
                     data-aos-duration="1000"
                     data-aos-dealy="750"
                   >
-                    <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624404194/pexels-vlada-karpovich-4050343_zlwjyj.png" alt="hero 1" />
+                    <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1625271703/pexels-laura-stanley-2519217_aco5jt.jpg" alt="hero 1" />
                   </div>
                 </div>
                 <div className="col-sm-6 col-10 mt-10 mt-lg-0">

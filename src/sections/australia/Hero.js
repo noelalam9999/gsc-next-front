@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Select } from "../../components/Core";
-import imgH from "../../assets/image/l1/png/hero-image-man.png";
+import imgH from "../../assets/image/l1/png/opera.png";
 import imgP from "../../assets/image/patterns/hero-pattern.png";
 
 const desiredLevel = [

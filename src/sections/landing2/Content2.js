@@ -32,6 +32,17 @@ const Content = () => {
     <>
       {/* <!-- Content Area -->  */}
       <section className="bg-green position-relative">
+      <div className="mobile row align-items-center justify-content-center">
+            {/* <!-- Section Title --> */}
+            <div className="col-12 col-xl-6 col-lg-7 col-md-9">
+              <div className="text-center mb-12 mb-lg-17">
+                <h2 className="font-size-10 font-weight-bold mb-8">
+                  Our Institute Partners
+                </h2>
+               
+              </div>
+            </div>
+          </div>
         <div className="w-lg-50 ml-lg-auto">
           {/* <!-- gallery start --> */}
           <div
