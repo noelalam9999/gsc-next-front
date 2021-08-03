@@ -262,7 +262,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                    <img height="100px" src={imgF4} alt="" />
+                    <img height="80px" src={imgF4} alt="" />
                     </a>
                   </Link>
                 </div>

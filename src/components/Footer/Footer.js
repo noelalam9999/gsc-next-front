@@ -66,7 +66,9 @@ const Footer = () => {
           <div className="row">
             <div className="col-lg-4 col-sm-6 mb-lg-0 mb-9">
               {/* <!-- footer logo start --> */}
+              <div style={{backgroundColor:'white',paddingTop:'10px',width:'100px',borderRadius:'50px'}}>
               <Logo white className="footer-logo mb-14" />
+              </div>
               {/* <!-- footer logo End --> */}
               {/* <!-- media start --> */}
               <div className="media mb-11">
@@ -127,11 +129,19 @@ const Footer = () => {
                         <Link href="/#">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                        <strong >   Dhaka</strong>
+                       <div>
+                       1. House no. - 54/A, 
+                       Road - 132, 
+                       (3rd Floor), Gulshan -1, 
+                       Dhaka- 1212
+</div>
 <div>
-                          249,Moghbazar Chourasta,1st Floor,
+                         2. 249,Moghbazar Chourasta,1st Floor,
                           Dhaka-1217,Bangladesh. 
                           Mob:+880 1715-482363
 </div>
+
+
                           </a>
                         </Link>
                       </li>
