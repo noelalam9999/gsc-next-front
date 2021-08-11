@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import imgF1 from "../../assets/image/svg/icon-leaf.svg";
-import imgF2 from "../../assets/image/svg/text-Fimize.svg";
+
 import imgF3 from "../../assets/image/svg/icon-shark-2.svg";
 import imgF4 from "../../assets/image/svg/text-K.svg";
 import imgF5 from "../../assets/image/svg/icon-thunder.svg";
@@ -90,7 +90,7 @@ const FeaturedJobs = () => {
                   <div className="square-52 bg-indigo mr-8 rounded">
                     <Link href="/#">
                       <a>
-                        <img src={imgF2} alt="" />
+                        <img src={imgF1} alt="" />
                       </a>
                     </Link>
                   </div>
