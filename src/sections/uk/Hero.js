@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Select } from "../../components/Core";
-import imgH from "../../assets/image/l1/png/hero-image-man.png";
-import imgP from "../../assets/image/patterns/hero-pattern.png";
+import imgP from "../../assets/image/l1/png/hero-uk.png";
+import imgH from "../../assets/image/patterns/hero-pattern.png";
 
 const desiredLevel = [
   { value: "diploma", label: "Diploma" },
@@ -15,14 +15,15 @@ const Hero = () => {
   return (
     <>
       {/* <!-- Hero Area --> */}
-      <div className="bg-gradient-1 pt-26 pt-md-32 pt-lg-33 pt-xl-35 position-relative z-index-1 overflow-hidden">
+      <div className=" pt-26 pt-md-32 pt-lg-33 pt-xl-35 position-relative z-index-1 ">
         {/* <!-- .Hero pattern --> */}
-        <div className="pos-abs-tr w-50 z-index-n2">
-          <img src={imgP} alt="" className="gr-opacity-1" />
+        {/* <div className="pos-abs-tr w-50 z-index-n2"> */}
+        <div  className="pos-abs-tr  z-index-n2">
+          <img src={imgP} alt="" className="" />
         </div>
         {/* <!-- ./Hero pattern --> */}
         <div className="container">
-          <div className="row position-relative align-items-center">
+          <div  className="row position-relative align-items-center">
             <div
               className="col-xxl-6 col-xl-7 col-lg-8 col-md-12 pt-lg-13 pb-lg-33 pb-xl-34 pb-md-33 pb-10"
               data-aos="fade-right"
@@ -72,7 +73,7 @@ const Hero = () => {
                   </div>
                 </form>
                 {/* <!-- ./search-form --> */}
-                <p className="heading-default-color font-size-3 pt-7">
+                <p className="brands heading-default-color font-size-3 pt-7">
                   <span className="text-smoke">Search keywords e.g.</span>{" "}
                   Computer Science
                 </p>
@@ -80,13 +81,14 @@ const Hero = () => {
             </div>
             {/* <!-- Hero Right Image --> */}
             <div
+             // className="col-lg-6 col-md-4 col-sm-6 col-xs-6 col-8 pos-abs-br z-index-n1 position-static position-md-absolute mx-auto ml-md-auto"
               className="col-lg-6 col-md-4 col-sm-6 col-xs-6 col-8 pos-abs-br z-index-n1 position-static position-md-absolute mx-auto ml-md-auto"
               data-aos="fade-left"
               data-aos-duration="1000"
               data-aos-delay="500"
             >
               <div className=" ml-xxl-23 ml-xl-12 ml-md-7">
-                <img height="700px" width="100px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624569996/Untitled-2_dpj8n0.svg" alt="" className="w-100" />
+                {/* <img height="700px" src={imgH} alt="" className="w-100" /> */}
               </div>
             </div>
             {/* <!-- ./Hero Right Image --> */}

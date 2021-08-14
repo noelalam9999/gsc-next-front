@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import imgC from "../../assets/image/l1/jpg/content-1-img2.jpg";
+import imgC from "../../assets/image/l1/jpg/image-4.png";
 import imgM1 from "../../assets/image/l1/png/media-img-1.png";
 import imgM2 from "../../assets/image/l1/png/media-img-2.png";
 import imgM3 from "../../assets/image/l1/png/media-img-3.png";
@@ -101,13 +101,13 @@ const Content = () => {
               <div className="content-2 pl-lg-10 pl-0 d-flex flex-column justify-content-center h-100 pt-lg-0 pt-11 pr-md-13 pr-xl-15 pr-xxl-25 pr-0">
                 {/* <!-- content-2 section title start --> */}
                 <p className="text-dodger font-size-4 font-weight-semibold mb-8">
-                  Worried about job security in the UK post Brexit?
+                  Worried about job security in the Europe?
                 </p>
                 <h2 className="font-size-9 mb-8">
-                  UK has some of the best job opportunities for students
+                 Europe has some of the best job opportunities for students
                 </h2>
                 <p className="text-default-color font-size-5 mb-12">
-                Half the students who work during term time earn more than £100 a week - and some earn up to £6,000 a year
+                Half the students who work during term time earn more than 100 Euro a week - and some earn up to 6,000 Euro a year
                 </p>
                 {/* <!-- content-2 section title end --> */}
                 <Link href="/#">

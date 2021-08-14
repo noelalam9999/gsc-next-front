@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 import { Select } from "../../components/Core";
-import imgC1 from "../../assets/image/l3/png/hero-image-1.png";
+import imgC1 from "../../assets/image/l3/png/hero-image-3.jpg";
 import imgC2 from "../../assets/image/l3/png/hero-image-2.png";
 
 const defaultCountries = [
@@ -29,10 +29,10 @@ const Hero = () => {
               <div className="row">
                 <div className="col-md-8 col-sm-10">
                   <h1 className="font-size-11 mb-12">
-                   Operating in 50+ Countries
+                   Bring Diversity to your Campus
                   </h1>
                   <p className="font-size-6">
-                  Global Study Contacts help institutes diversify their campus with qualified students from all around the world
+                  Operating in 50+ Countries Global Study Contacts helps institutes diversify their campus with qualified students from all around the world
                   </p>
                 </div>
               </div>
@@ -58,7 +58,7 @@ const Hero = () => {
                     data-aos-duration="1000"
                     data-aos-dealy="750"
                   >
-                    <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1625272130/pexels-charlotte-may-5965682_r1pag8.jpg" alt="hero 1" />
+                    <img src={imgC1} alt="hero 1" />
                   </div>
                 </div>
                 <div className="col-sm-6 col-10 mt-10 mt-lg-0">

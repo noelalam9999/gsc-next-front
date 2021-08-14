@@ -1,5 +1,5 @@
 import React from "react";
-import imgC from "../../assets/image/l1/jpg/content-1-img1.jpg";
+import imgC from "../../assets/image/l1/jpg/canada-image-1.png";
 import imgL1 from "../../assets/image/l1/png/smal-logo1.png";
 import imgL2 from "../../assets/image/l1/png/smal-logo2.png";
 import imgL3 from "../../assets/image/l1/png/smal-logo3.png";
@@ -23,7 +23,7 @@ const Content = () => {
               <div className="position-relative pr-xl-20 pr-md-15 pr-15">
                 {/* <!-- content img start --> */}
                 <img
-                    src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624473942/pexels-jean-cont-8204883_wbjotx.jpg"
+                    src={imgC}
                   alt=""
                   className="w-100 rounded overflow-hidden"
                 />
@@ -84,7 +84,7 @@ const Content = () => {
               <div className="pl-lg-10 pl-0 d-flex flex-column justify-content-center h-100 pt-lg-0 pt-15 pr-md-13 pr-xl-15 pr-xxl-25 pr-0 ">
                 {/* <!-- content-1 section-title start --> */}
                 <h2 className="font-size-9 mb-8 pr-xxl-15">
-                  Student Visa Requirements for Canada
+                  How to Apply to Canada
                 </h2>
              
                 {/* <!-- content-1 section-title end --> */}
@@ -92,19 +92,23 @@ const Content = () => {
                 <ul className="list-unstyled pl-0">
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
-                    Passport Details
+                    Get an Acceptance Letter from a Canadian University
                   </li>
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
-                    Acceptance from a UK University
+                    Apply for Student Visa
                   </li>
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
                     Proof of Finance Support
                   </li>
+                  <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
+                    <i className="fas fa-check font-size-4 text-green mr-6"></i>
+                   Meet Language Requirements - IELTS, TOEFL, C1 Advanced
+                  </li>
                 </ul>
                 <p className="text-gray font-size-5 mb-10 mb-lg-16">
-                  And many more...
+                  to know more..
                 </p>
                 <Link href="/#">
                   <a className="btn btn-green btn-h-60 text-white w-180 rounded-5 text-uppercase">

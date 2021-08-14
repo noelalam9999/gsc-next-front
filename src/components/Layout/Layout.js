@@ -120,7 +120,7 @@ const Layout = ({ children, pageContext }) => {
     );
   }
 
-  if (pageContext.layout == "dashboard-admin") {
+  if (pageContext.layout == "dashboard") {
     return (
       <ThemeProvider
         theme={

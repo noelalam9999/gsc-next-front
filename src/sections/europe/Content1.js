@@ -1,5 +1,5 @@
 import React from "react";
-import imgC from "../../assets/image/l1/jpg/content-1-img1.jpg";
+import imgC from "../../assets/image/l1/jpg/image-3.png";
 import imgL1 from "../../assets/image/l1/png/smal-logo1.png";
 import imgL2 from "../../assets/image/l1/png/smal-logo2.png";
 import imgL3 from "../../assets/image/l1/png/smal-logo3.png";
@@ -14,7 +14,7 @@ const Content = () => {
       <section className="pt-7 pt-lg-16 pb-2 pb-lg-32">
         <div className="container">
           <div className="row pb-lg-6 justify-content-center">
-            <div
+            <div  
               className="col-xl-6 col-lg-5 col-md-10 col-sm-11"
               data-aos="fade-right"
               data-aos-duration="800"
@@ -84,7 +84,7 @@ const Content = () => {
               <div className="pl-lg-10 pl-0 d-flex flex-column justify-content-center h-100 pt-lg-0 pt-15 pr-md-13 pr-xl-15 pr-xxl-25 pr-0 ">
                 {/* <!-- content-1 section-title start --> */}
                 <h2 className="font-size-9 mb-8 pr-xxl-15">
-                  Student Visa Requirements for Europe
+                  How to Apply for Europe
                 </h2>
              
                 {/* <!-- content-1 section-title end --> */}
@@ -92,20 +92,38 @@ const Content = () => {
                 <ul className="list-unstyled pl-0">
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
-                    Passport Details
+                    TWo Visa Application Forms
                   </li>
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
-                    Acceptance from a UK University
+                    Valid Passport
                   </li>
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
-                    Proof of Finance Support
+                    Passport's biometric data
+                  </li>
+                  <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
+                    <i className="fas fa-check font-size-4 text-green mr-6"></i>
+                    Proof  of residency
+                  </li>
+                  <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
+                    <i className="fas fa-check font-size-4 text-green mr-6"></i>
+                    Travel medical Insurance
+                  </li>
+                  <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
+                    <i className="fas fa-check font-size-4 text-green mr-6"></i>
+                    Proof of accomodation
+                  </li>
+                  <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
+                    <i className="fas fa-check font-size-4 text-green mr-6"></i>
+                    Letter of acceptance at an EU University/College/School
+                  </li>
+                  <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
+                    <i className="fas fa-check font-size-4 text-green mr-6"></i>
+                    Proof of Financial Qualifications
                   </li>
                 </ul>
-                <p className="text-gray font-size-5 mb-10 mb-lg-16">
-                  And many more...
-                </p>
+               
                 <Link href="/#">
                   <a className="btn btn-green btn-h-60 text-white w-180 rounded-5 text-uppercase">
                     Contact Us

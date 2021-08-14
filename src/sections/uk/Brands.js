@@ -1,17 +1,17 @@
 import React from "react";
 
-import imgB1 from "../../assets/image/l1/png/brand-logo-1.png";
-import imgB2 from "../../assets/image/l1/png/brand-logo-2.png";
-import imgB3 from "../../assets/image/l1/png/brand-logo-3.png";
-import imgB4 from "../../assets/image/l1/png/brand-logo-4.png";
-import imgB5 from "../../assets/image/l1/png/brand-logo-5.png";
-import imgB6 from "../../assets/image/l1/png/brand-logo-6.png";
+import imgB1 from "../../assets/image/l1/png/uk-uni-1.jpg";
+import imgB2 from "../../assets/image/l1/png/uk-uni-2.jpg";
+import imgB3 from "../../assets/image/l1/png/uk-uni-3.jpg";
+import imgB4 from "../../assets/image/l1/png/uk-uni-4.jpg";
+import imgB5 from "../../assets/image/l1/png/uk-uni-5.jpg";
+import imgB6 from "../../assets/image/l1/png/uk-uni-6.jpg";
 
 const Brands = () => {
   return (
     <>
       {/* <!-- Brands Area --> */}
-      <div className="bg-black-2 dark-mode-texts pt-13 pt-lg-24 pb-12 pb-lg-23">
+      <div className="brands bg-black-2 dark-mode-texts pt-13 pt-lg-24 pb-12 pb-lg-23">
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -30,7 +30,7 @@ const Brands = () => {
               data-aos="fade-in"
               data-aos-duration="800"
             >
-              <img src={imgB1} alt="" />
+              <img style={{height:'130px',borderRadius:'10px'}} src={imgB1} alt="" />
             </div>
             {/* <!-- Single Brand --> */}
             <div
@@ -39,7 +39,7 @@ const Brands = () => {
               data-aos-duration="800"
               data-aos-delay="300"
             >
-              <img src={imgB2} alt="" />
+              <img style={{height:'130px',borderRadius:'10px'}} src={imgB2} alt="" />
             </div>
             {/* <!-- Single Brand --> */}
             <div
@@ -48,7 +48,7 @@ const Brands = () => {
               data-aos-duration="800"
               data-aos-delay="500"
             >
-              <img src={imgB3} alt="" />
+              <img style={{height:'130px',borderRadius:'10px'}} src={imgB3} alt="" />
             </div>
             {/* <!-- Single Brand --> */}
             <div
@@ -57,7 +57,7 @@ const Brands = () => {
               data-aos-duration="800"
               data-aos-delay="700"
             >
-              <img src={imgB4} alt="" />
+              <img style={{height:'130px',borderRadius:'10px'}} src={imgB4} alt="" />
             </div>
             {/* <!-- Single Brand --> */}
             <div
@@ -66,7 +66,7 @@ const Brands = () => {
               data-aos-duration="800"
               data-aos-delay="900"
             >
-              <img src={imgB5} alt="" />
+              <img style={{height:'130px',borderRadius:'10px'}} src={imgB5} alt="" />
             </div>
             {/* <!-- Single Brand --> */}
             <div
@@ -75,7 +75,7 @@ const Brands = () => {
               data-aos-duration="800"
               data-aos-delay="1200"
             >
-              <img src={imgB6} alt="" />
+              <img style={{height:'130px',borderRadius:'10px'}} src={imgB6} alt="" />
             </div>
           </div>
           {/* <!-- End Brand Logos --> */}

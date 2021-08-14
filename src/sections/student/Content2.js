@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-import imgC1 from "../../assets/image/l3/png/content-2-img1.png";
-import imgC2 from "../../assets/image/l3/png/content-2-img2.png";
-import imgC3 from "../../assets/image/l3/png/content-2-img3.png";
+import imgC1 from "../../assets/image/l3/png/student-services-content-1.jpg";
+import imgC2 from "../../assets/image/l3/png/student-services-content-2.png";
+import imgC3 from "../../assets/image/l3/png/student-services-content-3.png";
 
 const Content = () => {
   return (

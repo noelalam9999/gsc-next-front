@@ -36,6 +36,11 @@ const SignUp = () => {
   return (
       <div style={{paddingTop:"100px"}}>
     <Container className="text-center custom-container">
+    <Row>
+        <Col>
+          <h2 style={{marginTop:'100px',marginBottom:"100px"}}>Join Global Study Contacts to get Access to the <br/>Widest range of Universities All Around the World</h2>
+        </Col>
+      </Row>
       <Row>
         <Col>
           <Form 
@@ -80,7 +85,7 @@ const SignUp = () => {
             </FormGroup>
             <FormGroup row>
              <Col>
-               <Button>Sign Up</Button>
+               <Button>Continue</Button>
              </Col>
            </FormGroup>
            <FormGroup row>

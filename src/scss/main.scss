@@ -152,20 +152,40 @@
   display:none
 }
 @media only screen and (max-width: 600px) {
+  .mobile-text{
+    text-align: right!important;
+  }
   .mobile {
     padding-top:30px;
    display: block!important;
    color:white!important;
   }
-  #hero-image{
-    background-color: black;
-  }
+ .sticky-header{
+  background-color: rgb(0, 0, 0,0.5);
+ height:100px!important;
+ 
+ }
   #hero-image1{
     background-color: rgb(0, 0, 0,0.5);
-    
+    height:100%;
+    padding-top:30px
   }
   .hero-writing{
     color: antiquewhite!important;
   }
+  .brands{
+    visibility:hidden;
+  }
+  .flip{
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  background-image: url("https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1628856101/hero-mobile-aus_goffte.jpg");
+  }
+  .flip-europe{
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+ background-image: url("https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1628856443/hero-mobile-europe_sbuexc.jpg");
+  }
+
 }
 

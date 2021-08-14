@@ -20,17 +20,16 @@ const Hero = () => {
         <div  className="pos-abs-tr h-100">
           <img id="hero-image"  src={imgP} alt="" className="h-100" />
         </div>
-        <div  className="container position-static">
+        <div className="container position-static">
           <div id="hero-image1" className="row position-relative align-items-center position-static">
             <div
-            
               className="col-xxl-7 col-xl-8 col-lg-9 pt-lg-23 pb-lg-33 pb-md-28 pb-xs-26 pb-29 pt-md-20"
               data-aos="fade-right"
               data-aos-duration="800"
               data-aos-delay="500"
             >
               <div  className="row">
-                <div className="col-xxl-8 col-xl-7 col-md-8 col-sm-10">
+                <div className="mobile-text col-xxl-8 col-xl-7 col-md-8 col-sm-10">
                   <div className="text-primary font-size-5 font-weight-semibold mb-7">
                     150+ universities currently giving Scholarships
                   </div>

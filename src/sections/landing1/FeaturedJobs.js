@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react";
 import Link from "next/link";
-import imgF1 from "../../assets/image/l1/png/Ulster-Uni.jpg";
+import imgF1 from "../../assets/image/l1/png/uk-uni-2.jpg";
 import imgF2 from "../../assets/image/l1/png/Trent-University.jpg";
 import imgF3 from "../../assets/image/l1/png/namseoul.jpg";
 import imgF4 from "../../assets/image/l1/png/middle-tennesse.jpg";
@@ -93,8 +93,7 @@ const FeaturedJobs = () => {
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                For more than 30 years, Kwantlen Polytechnic University 
-                (KPU) has provided students with the skills they need for the careers they want.
+                We are a university with a national and international reputation for excellence, innovation and regional engagement, making a major contribution to the economic, social and cultural development of Northern Ireland.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -163,8 +162,7 @@ const FeaturedJobs = () => {
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                Emphasizing high-level, student-centered academics, a diverse and inclusive student body and powerful corporate, 
-                community and government links,  EUC is a trustworthy and reliable partner in your pursuit of higher education
+                Internationalization is an integral part of Trent's commitment to unite diversity through people and experience. It involves bringing the world to Trent and opening up amazing opportunities for international discovery.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -233,8 +231,7 @@ const FeaturedJobs = () => {
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                We are a thriving university with a deep commitment to teaching and research excellence. 
-                Established in 1840 by the Church of England, everything we do is underpinned by an unrelenting commitment to our values.
+                NamSeoul University is located in Cheonan City and was established in 1994 as a private university. In 2015, the NamSeoul University student body was approximately 12,000 students, including graduate students. The University offers thirty-four major courses from four different schools, a Korean graduate school, and the International Graduate School.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -303,8 +300,8 @@ const FeaturedJobs = () => {
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                We take our responsibilities seriously, applying sustainable development across our activities, working closely with students, 
-                staff and the wider community to help change the world for the better, aligning with the University's core values
+                Offering 300+ undergraduate and graduate degrees of study in diverse disciplines that prepare students for high-demand careers.
+                Many of our programs have earned national and, sometimes, international recognition for excellence.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -373,8 +370,8 @@ const FeaturedJobs = () => {
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                The University of Regina is a public research university located in Regina,
-                 Saskatchewan, Canada. Founded in 1911[5] as a private denominational high school of the Methodist Church of Canada,
+                SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district; offering globally recognised professional qualifications. 
+                Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -443,8 +440,8 @@ const FeaturedJobs = () => {
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                Established in 1987, College of Tourism and Hotel Management is a for-profit private 
-                higher-education institution located in the urban setting of the small city of Nicosia (population range of 50,000-249,999 inhabitants).
+                10/1952  East China Institute of Chemical Technology was founded with the approval of the central government. 
+                It was the first single-subject chemical institute in China and was formed through the consolidation of the chemical departments of Jiaotong University, Aurora University, Utopia University, Soochou University and Jiangnan University
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">

@@ -1,6 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
+import imgB1 from "../../assets/image/l1/png/europe-icon-1.png";
+import imgB2 from "../../assets/image/l1/png/europe-icon-2.png";
+import imgB3 from "../../assets/image/l1/png/europe-icon-3.png";
+import imgB4 from "../../assets/image/l1/png/europe-icon-4.png";
+
 const Categories = () => {
   return (
     <>
@@ -41,12 +46,12 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-blue bg-blue-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-briefcase"></i>
+                  <img height="50px" src={imgB1} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                    Oldest universities in the world
+                    Ease of Travelling 
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
                       <span>200+</span>Reputed Universities
@@ -61,15 +66,15 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-spray bg-spray-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-headset"></i>
+                  <img height="50px" src={imgB2} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                    50,000 courses to choose from
+                    Top Universities of the world
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
-                      <span>25+</span> Subject Areas
+                      <span>Highest number of</span> top QS ranked Universities
                     </p>
                   </div>
                 </a>
@@ -81,15 +86,15 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-coral bg-coral-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-layer-group"></i>
+                  <img height="50px" src={imgB3} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                    Two-year post-study work visa
+                    Religious Acceptance
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
-                      <span>500+</span>Industries
+                      <span>Most</span>accepting of people of different religious views and mindset
                     </p>
                   </div>
                 </a>
@@ -101,15 +106,15 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-red bg-red-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                    <i className="fa fa-pen-nib"></i>
+                  <img height="50px" src={imgB4} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                      Diverse Cultures
+                    Stable Economy
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
-                      <span>50+</span>Countries
+                      <span>Most stable Currency</span><br/>and Job Security
                     </p>
                   </div>
                 </a>

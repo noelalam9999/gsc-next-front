@@ -1,5 +1,5 @@
 import React from "react";
-import imgC from "../../assets/image/l1/jpg/content-1-img1.jpg";
+import imgC from "../../assets/image/l1/png/uni-img.png";
 import imgL1 from "../../assets/image/l1/png/smal-logo1.png";
 import imgL2 from "../../assets/image/l1/png/smal-logo2.png";
 import imgL3 from "../../assets/image/l1/png/smal-logo3.png";
@@ -23,7 +23,7 @@ const Content = () => {
               <div className="position-relative pr-xl-20 pr-md-15 pr-15">
                 {/* <!-- content img start --> */}
                 <img
-                  src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624473942/pexels-jean-cont-8204883_wbjotx.jpg"
+                  src={imgC}
                   alt=""
                   className="w-100 rounded overflow-hidden"
                 />
@@ -96,7 +96,11 @@ const Content = () => {
                   </li>
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
-                    Acceptance from a UK University
+                    Recent Photograph
+                  </li>
+                  <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
+                    <i className="fas fa-check font-size-4 text-green mr-6"></i>
+                    Proof of Adequate English Language Skill(SELT)
                   </li>
                   <li className="font-weight-semibold border-0 d-flex mb-7 heading-default-color">
                     <i className="fas fa-check font-size-4 text-green mr-6"></i>
@@ -104,7 +108,7 @@ const Content = () => {
                   </li>
                 </ul>
                 <p className="text-gray font-size-5 mb-10 mb-lg-16">
-                  And many more...
+                  To Learn more
                 </p>
                 <Link href="/#">
                   <a className="btn btn-green btn-h-60 text-white w-180 rounded-5 text-uppercase">

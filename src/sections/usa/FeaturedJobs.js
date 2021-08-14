@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import imgF1 from "../../assets/image/l1/png/feature-brand-1.png";
-import imgF2 from "../../assets/image/l1/png/feature-brand-2.png";
-import imgF3 from "../../assets/image/l1/png/feature-brand-3.png";
-import imgF4 from "../../assets/image/l1/png/feature-brand-4.png";
-import imgF5 from "../../assets/image/l1/png/feature-brand-5.png";
-import imgF6 from "../../assets/image/l1/png/feature-brand-6.png";
+import imgB1 from "../../assets/image/l1/png/usa-logo-1.jpg";
+import imgB2 from "../../assets/image/l1/png/usa-logo-2.jpg";
+import imgB3 from "../../assets/image/l1/png/usa-logo-3.jpg";
+import imgB4 from "../../assets/image/l1/png/usa-logo-4.jpg";
+import imgB5 from "../../assets/image/l1/png/usa-logo-5.jpg";
+import imgB6 from "../../assets/image/l1/png/usa-logo-6.jpg";
 
 const FeaturedJobs = () => {
   return (
@@ -45,13 +45,13 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF1} alt="" />
+                      <img height="125px" src={imgB1} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
                   <a className="font-size-3 d-block mb-0 text-gray">
-                    KPU
+                    Marist College
                   </a>
                 </Link>
                 <h2 className="mt-n4">
@@ -66,7 +66,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        Canada
+                        USA
                       </a>
                     </Link>
                   </li>
@@ -117,17 +117,17 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF2} alt="" />
+                      <img height="125px" src={imgB2} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">European University of Cyprus</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Portland State</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                     Aviation Management
+                     Computer Science
                     </a>
                   </Link>
                 </h2>
@@ -136,7 +136,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        Cyprus
+                        USA
                       </a>
                     </Link>
                   </li>
@@ -187,12 +187,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF3} alt="" />
+                      <img height="125px" src={imgB3} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">University of Winchester</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">St. George's University</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -206,7 +206,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        UK
+                        USA
                       </a>
                     </Link>
                   </li>
@@ -257,12 +257,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF4} alt="" />
+                      <img height="125px" src={imgB4} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">University of Greenwich</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Whittier College</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -276,7 +276,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        UK
+                        USA
                       </a>
                     </Link>
                   </li>
@@ -327,12 +327,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF5} alt="" />
+                      <img height="125px" src={imgB5} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">University of Regina</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Saint George's Univeristy</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -397,12 +397,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img src={imgF6} alt="" />
+                      <img height="125px" src={imgB6} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">COTHM</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Trine University</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -416,7 +416,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                       Cyprus
+                       USA
                       </a>
                     </Link>
                   </li>

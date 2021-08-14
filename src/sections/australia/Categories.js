@@ -1,6 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
+import imgB1 from "../../assets/image/l1/png/canada-icon-1.png";
+import imgB2 from "../../assets/image/l1/png/canada-icon-2.png";
+import imgB3 from "../../assets/image/l1/png/canada-icon-3.png";
+import imgB4 from "../../assets/image/l1/png/canada-icon-4.png";
+
 const Categories = () => {
   return (
     <>
@@ -18,7 +23,7 @@ const Categories = () => {
             <div className="col-12 col-lg-6">
               <div className="text-center text-lg-left mb-13 mb-lg-0">
                 <h2 className="font-size-9 font-weight-bold">
-                  Why Study In Australia
+                  Why Study In Canada
                 </h2>
               </div>
             </div>
@@ -41,12 +46,12 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-blue bg-blue-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                  <img height="50px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617937620/university_uanz3o.png" alt="" />
+                  <img height="50px" src={imgB1} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                    Oldest universities in the world
+                    Eight universities are listed in the global top 200
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
                       <span>200+</span>Reputed Universities
@@ -61,12 +66,12 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-spray bg-spray-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                  <img height="40px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617395987/website_bobju6.png" alt="" />
+                  <img height="40px" src={imgB4} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                    50,000 courses to choose from
+                    Non-discriminatory society and low crime rates
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
                       <span>25+</span> Subject Areas
@@ -81,15 +86,15 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-coral bg-coral-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                  <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1618301369/icons8-passport-50_olt35v.png" alt="" />
+                  <img src={imgB3} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                    Two-year post-study work visa
+                    Gain valuable international experience by joining different student clubs
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
-                      <span>500+</span>Industries
+                      <span>100+</span>Different Cultures
                     </p>
                   </div>
                 </a>
@@ -101,12 +106,12 @@ const Categories = () => {
               <Link href="/#">
                 <a className="bg-white border border-color-2 rounded-4 pl-9 pt-10 pb-3 pr-7 hover-shadow-1 mb-9 d-block w-100">
                   <div className="text-red bg-red-opacity-1 square-70 rounded-4 mb-7 font-size-7">
-                  <img height="40px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1619448312/network_cdu0gh.png" alt="" />
+                  <img height="40px" src={imgB2} alt="" />
                   </div>
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                      Diverse Cultures
+                    Productive and successful careers globally
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
                       <span>50+</span>Countries

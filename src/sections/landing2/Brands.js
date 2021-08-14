@@ -4,7 +4,7 @@ import imgB1 from "../../assets/image/l1/png/Lakehead-uni.jpg";
 import imgB2 from "../../assets/image/l1/png/fom.jpg";
 import imgB3 from "../../assets/image/l1/png/msu-texas.jpg";
 import imgB4 from "../../assets/image/l1/png/uni-of-debrecen.jpg";
-import imgB5 from "../../assets/image/l1/png/uni-of-winchester.jpg";
+import imgB5 from "../../assets/image/l1/png/uk-uni-4.jpg";
 import imgB6 from "../../assets/image/l1/png/victoria-uni.jpg";
 
 const Brands = () => {

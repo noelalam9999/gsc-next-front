@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps, router }) => {
       </GlobalProvider>
     );
   }
-  if (router.pathname.match(/dashboard/)) {
+  if (router.pathname.match(/dashboard-main/)) {
     return (
 
       <GlobalProvider>
