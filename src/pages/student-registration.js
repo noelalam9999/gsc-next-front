@@ -159,6 +159,10 @@ class StudentRegistration extends Component {
   }
   }
 
+  success = () => {
+    alert("We have received your registration information. You will get a confirmation email shortly");
+  
+  }
 
 refreshList = () => {
   axios
@@ -174,13 +178,13 @@ console.log(item)
   if (item.id) {
     axios
       .put(`https://ci-gsc.com/students/${item.id}/`, item)
-      .then((res) => this.refreshList())
+      .then((res) => this.success())
       .catch((err) => console.log(err));
     return;
   }
   axios
     .post("https://ci-gsc.com/students/", item)
-    .then((res) => this.refreshList())
+    .then((res) => this.success())
     ;
 };
 
@@ -265,8 +269,9 @@ render(){
                               <Select
                                 options={getCountries}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                name="country"  
+                                
                                 border={false}
+                                name="country"  
                                 onChange={this.handleChangeSelect}
                                 value={this.state.activeItem.country.value}
                                 

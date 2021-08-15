@@ -46,12 +46,41 @@ const MyApp = ({ Component, pageProps, router }) => {
       </GlobalProvider>
     );
   }
+  if (router.pathname.match(/institute-registration/)) {
+    return (
+
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "institute" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
   if (router.pathname.match(/student-registration/)) {
     return (
 
       <GlobalProvider>
            <AuthUserProvider>
         <Layout pageContext={{ layout: "student" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
+
+  if (router.pathname.match(/agent-registration/)) {
+    return (
+
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "agent" }}>
      
           <Component {...pageProps} />
         

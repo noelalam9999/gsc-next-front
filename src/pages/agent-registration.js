@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { useAlert } from "react-alert-template-mui";
+
 import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
 import 'firebase/firestore';
@@ -213,7 +213,7 @@ refreshList = () => {
 };
 
 success = () => {
-  alert("Oh look, an alert!");
+  alert("We have received your registration information. You will get a confirmation email shortly");
 
 }
 
@@ -229,7 +229,7 @@ console.log(item)
   }
   axios
     .post("https://ci-gsc.com/agents/", item)
-    .then((res) => this.refreshList())
+    .then((res) => this.success())
     ;
 };
 

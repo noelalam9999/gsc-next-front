@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 import { Select } from "../../components/Core";
-import imgC1 from "../../assets/image/l3/png/hero-image-1.png";
+import imgC1 from "../../assets/image/l3/png/agent-img-1.png";
 import imgC2 from "../../assets/image/l3/png/hero-image-2.png";
 
 const defaultCountries = [
@@ -90,7 +90,7 @@ const Hero = () => {
                     data-aos-duration="1000"
                     data-aos-dealy="750"
                   >
-                    <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624499668/pexels-marina-zasorina-7635239_pizirk.jpg" alt="hero 1" />
+                    <img src={imgC1} alt="hero 1" />
                   </div>
                 </div>
                 <div className="col-sm-6 col-10 mt-10 mt-lg-0">

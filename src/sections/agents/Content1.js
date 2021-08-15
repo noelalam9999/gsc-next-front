@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import imgC1 from "../../assets/image/l3/png/content-1-img1.png";
+import imgC1 from "../../assets/image/l3/png/agent-img-2.png";
 import imgC2 from "../../assets/image/l3/png/content-1-img2.png";
 import imgM from "../../assets/image/l3/png/media-img1.png";
 
@@ -18,16 +18,16 @@ const Content = () => {
             >
               <div className="position-relative px-xl-20 pr-md-15 pr-9">
                 {/* <!-- content img start --> */}
-                <img src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1624501440/pexels-monstera-6281893_zgizjm.jpg" alt="" className="w-100 rounded-4" />
+                <img src={imgC1} alt="" className="w-100 rounded-4" />
                 {/* <!-- content img end --> */}
                 {/* <!-- abs-content start --> */}
-                <div className="abs-content pos-abs-br mb-30 mr-8 rounded-4 rotate-n10 border-10 border-white shadow-2">
+                {/* <div className="abs-content pos-abs-br mb-30 mr-8 rounded-4 rotate-n10 border-10 border-white shadow-2">
                   <img
                     src={imgC2}
                     alt=""
                     className="rounded-4 border-white border-width-3"
                   />
-                </div>
+                </div> */}
                 {/* <!-- abs-content end --> */}
               </div>
             </div>
@@ -59,20 +59,20 @@ const Content = () => {
                 {/* <!-- media start --> */}
                 <div className="media mb-9 mt-9 mt-lg-15 pr-sm-10 pr-md-18 pr-xl-20">
                   {/* <!-- media img start --> */}
-                  <div className="media-img">
+                  {/* <div className="media-img">
                     <img src={imgM} alt="" className="circle-48" />
-                  </div>
+                  </div> */}
                   {/* <!-- media img start --> */}
                   {/* <!-- media body start --> */}
                   <div className="media-body pl-7">
-                    <p className="mb-0 font-size-4 heading-default-color mb-7">
+                    {/* <p className="mb-0 font-size-4 heading-default-color mb-7">
                       “One thing I learnt in my 10years of consultancy business - there is no lack of sharks. But in all this turmoil, 
                       specially the pandemic, Mr Mustafiz at GSC has been by our side through thick and thin. Opening new opportunities for us even when all doors seemed closed”
-                    </p>
-                    <h6 className="mb-0 font-size-4">Davis Jones</h6>
+                    </p> */}
+                    {/* <h6 className="mb-0 font-size-4">Davis Jones</h6>
                     <p className="font-size-3 text-default-color">
                       ABE Consulting
-                    </p>
+                    </p> */}
                   </div>
                   {/* <!-- media body start --> */}
                 </div>

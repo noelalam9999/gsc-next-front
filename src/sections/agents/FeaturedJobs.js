@@ -16,7 +16,7 @@ const FeaturedJobs = () => {
           <div className="row justify-content-center">
             <div className="col-12 col-md-8 col-lg-6 col-xxl-5">
               <div className="text-center mb-8 mb-lg-18 px-xl-9 px-xxl-7">
-                <h2 className="font-size-9 mb-6">Most Popular Institutes</h2>
+                <h2 className="font-size-9 mb-6">Most Profitable Partner Institutes</h2>
                 <p className="font-size-4 text-default-color px-xs-9 px-md-0">
                   Choose from the widest Variety of Universities and Programs for your Students
                 </p>
@@ -49,7 +49,7 @@ const FeaturedJobs = () => {
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Accounting
+                        Commission Rate : 13-15%
                         </a>
                       </Link>
                     </h3>
@@ -69,7 +69,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          80K-90K
+                          Approx Earning per Student : $2000
                         </a>
                       </Link>
                     </li>
@@ -99,9 +99,9 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
-                      <Link href="/#">
+                    <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Aviation Management
+                        Commission Rate : 13-15%
                         </a>
                       </Link>
                     </h3>
@@ -121,7 +121,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          80K-90K
+                          Approx Earning per Student : $2000
                         </a>
                       </Link>
                     </li>
@@ -151,9 +151,9 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
-                      <Link href="/#">
+                    <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Finance
+                        Commission Rate : 13-15%
                         </a>
                       </Link>
                     </h3>
@@ -173,7 +173,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          80K-90K
+                          Approx Earning per Student : $2000
                         </a>
                       </Link>
                     </li>
@@ -203,9 +203,9 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
-                      <Link href="/#">
+                    <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        International Business
+                        Commission Rate : 13-15%
                         </a>
                       </Link>
                     </h3>
@@ -225,7 +225,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          80K-90K
+                          Approx Earning per Student : $2000
                         </a>
                       </Link>
                     </li>
@@ -255,9 +255,9 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
-                      <Link href="/#">
+                    <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Computer Science
+                        Commission Rate : 13-15%
                         </a>
                       </Link>
                     </h3>
@@ -277,7 +277,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          80K-90K
+                          Approx Earning per Student : $2000
                         </a>
                       </Link>
                     </li>
@@ -307,9 +307,9 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
-                      <Link href="/#">
+                    <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Political Science
+                        Commission Rate : 13-15%
                         </a>
                       </Link>
                     </h3>
@@ -329,7 +329,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          80K-90K
+                          Approx Earning per Student : $2000
                         </a>
                       </Link>
                     </li>
@@ -346,7 +346,7 @@ const FeaturedJobs = () => {
             <div className="col-12 text-center pt-md-11 ">
               <Link href="/#">
                 <a className="text-green font-weight-bold text-uppercase font-size-3">
-                  See 545 more programs{" "}
+                  Join GSC to see more Institutes{" "}
                   <i className="fas fa-arrow-right ml-3"></i>
                 </a>
               </Link>

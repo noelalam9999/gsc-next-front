@@ -1,4 +1,4 @@
-import React from "react";
+import React , { Component } from "react";
 
 import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
@@ -37,9 +37,97 @@ const defaultLocations = [
   { value: "malay", label: "Malaysia" },
 ];
 
-const DashboardSettingsUni = () => {
+class StudentRegistration extends Component {
 
-  return (
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewCompleted: false,
+      activeItem: {
+        name:"John Doe",
+        mobile:"+0922222222",
+        country:"USA",
+        gender:"Female",
+        birth_month:"March",
+        birth_year:"1998",
+        address1:"23 Wellstreet",
+        address2:"London,UK",
+        prev_qualification:"Alevel",
+        IELTSBand:"3.2",
+        Desiredlevel:"Undergraduate",
+        StudyDestination:"UK",
+        IntendedSemester:"Fall",
+        DesiredSubject:"Engineering"
+      },
+      todoList: []
+      };
+  }
+
+
+  
+  async componentDidMount() {
+    try {
+      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
+      console.log(res)
+      const todoList = await res.json();
+      this.setState({
+        todoList
+      });
+    } catch (e) {
+      console.log(e);
+  }
+  }
+
+
+refreshList = () => {
+  axios
+    .get("https://ci-gsc.com/students")
+    .then((res) => this.setState({ todoList: res.data }))
+    .catch((err) => console.log(err));
+};
+
+
+handleSubmit = (item) => {
+  
+console.log(item)
+  if (item.id) {
+    axios
+      .put(`https://ci-gsc.com/students/${item.id}/`, item)
+      .then((res) => this.refreshList())
+      .catch((err) => console.log(err));
+    return;
+  }
+  axios
+    .post("https://ci-gsc.com/students/", item)
+    .then((res) => this.refreshList())
+    ;
+};
+
+
+handleChange = (e) => {
+  console.log(e)
+  let { name, value } = e.target;
+
+
+  const activeItem = { ...this.state.activeItem, [name]: value };
+
+  this.setState({ activeItem });
+};
+handleChangeSelect = (e) => {
+  console.log(e)
+
+  let { name,value } = e;
+
+
+  const activeItem = { ...this.state.activeItem, [name]: value };
+
+  this.setState({ activeItem });
+};
+
+render(){
+
+
+   return (
     <>
       <PageWrapper
         headerConfig={{
@@ -263,5 +351,6 @@ const DashboardSettingsUni = () => {
       </PageWrapper>
     </>
   );
+      }
 };
-export default DashboardSettingsUni;
+export default StudentRegistration;

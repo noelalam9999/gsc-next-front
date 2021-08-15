@@ -9,6 +9,8 @@ import Footer from "../Footer";
 
 import SidebarDashboard from "../SidebarDashboard";
 import SidebarDashboardStudent from "../SidebarDashboard/SidebarDashboardStudent";
+import SidebarDashboardAgent from "../SidebarDashboard/SidebarDashboardAgent";
+import SidebarDashboardInstitute from "../SidebarDashboard/SidebarDashboardInstitute";
 import ModalVideo from "../ModalVideo";
 import ModalApplication from "../ModalApplication";
 import ModalSignIn from "../ModalSignIn";
@@ -180,6 +182,78 @@ else
           >
             <Header isDark={gContext.headerDark} />
             <SidebarDashboardStudent />
+            {children}
+          </div>
+
+          <ModalVideo />
+          <ModalApplication />
+          <ModalSignIn />
+          <ModalSignUp />
+        </div>
+      </ThemeProvider>
+    );
+  }
+  else
+  if (pageContext.layout === "institute") {
+    return (
+      <ThemeProvider
+        theme={
+          gContext.themeDark ? getTheme(modes.dark) : getTheme(modes.light)
+        }
+      >
+        <div data-theme-mode-panel-active data-theme="light">
+          <GlobalStyle />
+          <Helmet>
+            <title>Global Study Contacts</title>
+            <link rel="icon" type="image/png" href={imgFavicon} />
+          </Helmet>
+          <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
+            <div className="load-circle">
+              <span className="one"></span>
+            </div>
+          </Loader>
+          <div
+            className="site-wrapper overflow-hidden bg-default-2"
+            ref={eleRef}
+          >
+            <Header isDark={gContext.headerDark} />
+            <SidebarDashboardInstitute />
+            {children}
+          </div>
+
+          <ModalVideo />
+          <ModalApplication />
+          <ModalSignIn />
+          <ModalSignUp />
+        </div>
+      </ThemeProvider>
+    );
+  }
+  else
+  if (pageContext.layout === "agent") {
+    return (
+      <ThemeProvider
+        theme={
+          gContext.themeDark ? getTheme(modes.dark) : getTheme(modes.light)
+        }
+      >
+        <div data-theme-mode-panel-active data-theme="light">
+          <GlobalStyle />
+          <Helmet>
+            <title>Global Study Contacts</title>
+            <link rel="icon" type="image/png" href={imgFavicon} />
+          </Helmet>
+          <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
+            <div className="load-circle">
+              <span className="one"></span>
+            </div>
+          </Loader>
+          <div
+            className="site-wrapper overflow-hidden bg-default-2"
+            ref={eleRef}
+          >
+            <Header isDark={gContext.headerDark} />
+            <SidebarDashboardAgent />
             {children}
           </div>
 

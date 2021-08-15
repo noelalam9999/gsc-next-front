@@ -54,7 +54,7 @@ const Categories = () => {
             {/* <!-- End Single Category --> */}
             {/* <!-- Single Category --> */}
             <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-              <Link href="/dashboard-uni-registration">
+              <Link href="/institute-registration">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-spray square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
                   <img height="80px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1617937620/university_uanz3o.png"/>
