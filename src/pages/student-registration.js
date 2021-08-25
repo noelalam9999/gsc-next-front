@@ -125,20 +125,20 @@ class StudentRegistration extends Component {
     this.state = {
       viewCompleted: false,
       activeItem: {
-        name:"John Doe",
-        mobile:"+0922222222",
-        country:"USA",
-        gender:"Female",
-        birth_month:"March",
-        birth_year:"1998",
-        address1:"23 Wellstreet",
-        address2:"London,UK",
-        prev_qualification:"Alevel",
-        IELTSBand:"3.2",
-        Desiredlevel:"Undergraduate",
-        StudyDestination:"UK",
-        IntendedSemester:"Fall",
-        DesiredSubject:"Engineering"
+        name:"",
+        mobile:"",
+        country:"",
+        gender:"",
+        birth_month:"",
+        birth_year:"",
+        address1:"",
+        address2:"",
+        prev_qualification:"",
+        IELTSBand:"",
+        Desiredlevel:"",
+        StudyDestination:"",
+        IntendedSemester:"",
+        DesiredSubject:""
       },
       todoList: []
       };
@@ -179,12 +179,13 @@ console.log(item)
     axios
       .put(`https://ci-gsc.com/students/${item.id}/`, item)
       .then((res) => this.success())
-      .catch((err) => console.log(err));
+      .catch((err) => alert("Please fillup the mandatory fields"));
     return;
   }
   axios
     .post("https://ci-gsc.com/students/", item)
     .then((res) => this.success())
+    .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
     ;
 };
 
@@ -246,13 +247,13 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Name
+                                Name * 
                               </label>
                               <input
                             
                                 className="form-control h-px-48"
                                 name="name"
-                                placeholder="John Doe"
+                                placeholder="Your Full Name"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.name}
                               />
@@ -264,7 +265,7 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Country
+                                Country * 
                               </label>
                               <Select
                                 options={getCountries}
@@ -287,13 +288,13 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Mobile
+                                Mobile * 
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
                                 name="mobile"
-                                placeholder="eg. Collarts"
+                                placeholder="Your Phone Number with Country Code"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.mobile}
                               />
@@ -305,7 +306,7 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Gender
+                                Gender * 
                               </label>
                               <Select
                                 options={Gender}
@@ -326,7 +327,7 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Birth Month
+                                Birth Month * 
                               </label>
                               <Select
                                 options={BirthMonth}
@@ -344,7 +345,7 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Birth Year
+                                Birth Year * 
                               </label>
                               <Select
                               
@@ -371,7 +372,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                               name="address1"
-                                placeholder="eg. Collarts"
+                                placeholder="Your Street Address"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.address1}
                               />
@@ -389,7 +390,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                              name="address2"
-                                placeholder="eg. Collarts"
+                                placeholder="Your City"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.address2}
                               />
@@ -404,7 +405,7 @@ render(){
                                 htmlFor="select3"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                               Previous Qualification
+                               Previous Qualification * 
                               </label>
                               <Select
                                 options={PreviousQualification}
@@ -459,7 +460,7 @@ render(){
                                 htmlFor="address"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                               Study Destination
+                               Study Destination * 
                               </label>
                               <Select
                                 options={StudyDestination}
@@ -496,7 +497,7 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                              Desired Subject
+                              Desired Subject * 
                               </label>
                               <Select
                                 options={Subject}

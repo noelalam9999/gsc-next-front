@@ -39,7 +39,7 @@ const Services = () => {
                 <div className="services-content">
                   <h3 className="font-size-6 mb-7">Check Elligibility</h3>
                   <p className="font-size-4 text-default-color">
-                    Check which schools match your CGPA
+                    Check which schools match your GPA
                   </p>
                 </div>
               </div>
@@ -52,9 +52,9 @@ const Services = () => {
                   <img src={imgS2} alt="" />
                 </div>
                 <div className="services-content">
-                  <h3 className="font-size-6 mb-7">Apply to Institutes</h3>
+                  <h3 className="font-size-6 mb-7">Select Desired Institute</h3>
                   <p className="font-size-4 text-default-color">
-                   Fill out a form with your academic details
+                   Find the University that fits your academic goals
                   </p>
                 </div>
               </div>
@@ -67,9 +67,9 @@ const Services = () => {
                   <img src={imgS3} alt="" />
                 </div>
                 <div className="services-content">
-                  <h3 className="font-size-6 mb-7">Apply for Visa</h3>
+                  <h3 className="font-size-6 mb-7">Apply on GSC</h3>
                   <p className="font-size-4 text-default-color">
-                    Fill out another form with your legal details
+                    Receive Expert Guidance
                   </p>
                 </div>
               </div>

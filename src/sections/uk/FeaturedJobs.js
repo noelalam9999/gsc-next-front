@@ -3,9 +3,9 @@ import Link from "next/link";
 import imgF1 from "../../assets/image/l1/png/uk-uni-1.jpg";
 import imgF2 from "../../assets/image/l1/png/uk-uni-2.jpg";
 import imgF3 from "../../assets/image/l1/png/uk-uni-3.jpg";
-import imgF4 from "../../assets/image/l1/png/uk-uni-4.jpg";
-import imgF5 from "../../assets/image/l1/png/uk-uni-5.jpg";
-import imgF6 from "../../assets/image/l1/png/uk-uni-6.jpg";
+import imgF4 from "../../assets/image/l1/png/university_of_creative_arts.png";
+import imgF5 from "../../assets/image/l1/png/uxbridge.jpg";
+import imgF6 from "../../assets/image/l1/png/uni-of-hertfordshire.jpg";
 
 const FeaturedJobs = () => {
   return (
@@ -45,7 +45,7 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img height="125px" src={imgF1} alt="" />
+                      <img height="125px" src={imgF2} alt="" />
                     </a>
                   </Link>
                 </div>
@@ -117,12 +117,12 @@ const FeaturedJobs = () => {
                 <div className="d-block mb-7">
                   <Link href="/#">
                     <a>
-                      <img height="125px" src={imgF2} alt="" />
+                      <img height="125px" src={imgF1} alt="" />
                     </a>
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">Newcastle College</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Cardiff and Vale</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -192,7 +192,7 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">CATS College</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">University of Winchester</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -262,7 +262,7 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">University of Greenwich</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">University of Creative Arts</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -332,7 +332,7 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">Cardiff and Vale College</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">Uxbridge College</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
@@ -402,7 +402,7 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">York University</a>
+                  <a className="font-size-3 d-block mb-0 text-gray">University of Hertfordshire</a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">

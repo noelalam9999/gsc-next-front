@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/link";
 
 
-import imgF1 from "../../assets/image/svg/institute-flag-1.png";
+import imgF1 from "../../assets/image/svg/Africa.jpg";
 import imgF2 from "../../assets/image/svg/institute-flag-2.png";
 import imgF3 from "../../assets/image/svg/institute-flag-3.png";
-import imgF4 from "../../assets/image/svg/institute-flag-4.png";
+import imgF4 from "../../assets/image/svg/south_asia.jpg";
 import imgF5 from "../../assets/image/svg/institute-flag-5.png";
-import imgF6 from "../../assets/image/svg/institute-flag-6.png";
+import imgF6 from "../../assets/image/svg/south-america.jpg";
 
 const FeaturedJobs = () => {
   return (
@@ -19,9 +19,9 @@ const FeaturedJobs = () => {
           <div className="row justify-content-center">
             <div className="col-12 col-md-8 col-lg-6 col-xxl-5">
               <div className="text-center mb-8 mb-lg-18 px-xl-9 px-xxl-7">
-                <h2 className="font-size-9 mb-6">Country Statistics<br/></h2>
+                <h2 className="font-size-9 mb-6">Our Global Contacts<br/></h2>
                 <p className="font-size-4 text-default-color px-xs-9 px-md-0">
-                Students Sent Abroad by GSC in the Past Five Years
+               We have agents all-over the world
                 </p>
               </div>
             </div>
@@ -46,13 +46,13 @@ const FeaturedJobs = () => {
                   <div>
                     <Link href="/#">
                       <a className="font-size-3 text-default-color line-height-2">
-                      Bangladesh
+                      South Asia
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        4539 Students
+                        100+ Agents
                         </a>
                       </Link>
                     </h3>
@@ -64,7 +64,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                          Canada
+                          India
                         </a>
                       </Link>
                     </li>
@@ -72,18 +72,35 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                          UK
+                          Bangladesh
                         </a>
                       </Link>
                     </li>
                     <li>
                       <Link href="/#">
-                        <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
-                          <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          $40M-50M
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Pakistan
+                        </a>
+                      </Link>
+                    </li>   <li>
+                      <Link href="/#">
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Bhutan
+                        </a>
+                      </Link>
+                    </li>   <li>
+                      <Link href="/#">
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Mayanmar
                         </a>
                       </Link>
                     </li>
+                 
+                 
+                
                   </ul>
                   <Link href="/#">
                     <a className="bookmark-button toggle-item font-size-6 ml-auto line-height-reset px-0 mt-6 text-default-color  clicked"></a>
@@ -92,6 +109,8 @@ const FeaturedJobs = () => {
               </div>
               {/* <!-- End Single Featured Job --> */}
             </div>
+
+
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
               {/* <!-- Single Featured Job --> */}
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
@@ -106,13 +125,13 @@ const FeaturedJobs = () => {
                   <div>
                     <Link href="/#">
                       <a className="font-size-3 text-default-color line-height-2">
-                    Somalia
+                    South America
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        500 Students
+                        40+ Agents
                         </a>
                       </Link>
                     </h3>
@@ -124,7 +143,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                          Europe
+                          Argentina
                         </a>
                       </Link>
                     </li>
@@ -132,18 +151,19 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                         UK
+                         Brazil
                         </a>
                       </Link>
                     </li>
                     <li>
                       <Link href="/#">
-                        <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
-                          <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          $40M-50M
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Uruguay
                         </a>
                       </Link>
                     </li>
+               
                   </ul>
                   <Link href="/#">
                     <a className="bookmark-button toggle-item font-size-6 ml-auto line-height-reset px-0 mt-6 text-default-color  "></a>
@@ -152,8 +172,11 @@ const FeaturedJobs = () => {
               </div>
               {/* <!-- End Single Featured Job --> */}
             </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
-              {/* <!-- Single Featured Job --> */}
+
+
+            
+            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
+
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
                 <div className="media align-items-center">
                   <div className="square-52 mr-8 rounded">
@@ -166,13 +189,13 @@ const FeaturedJobs = () => {
                   <div>
                     <Link href="/#">
                       <a className="font-size-3 text-default-color line-height-2">
-                      Nepal
+                      Middle East
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        1500 Students
+                        30+ Agents
                         </a>
                       </Link>
                     </h3>
@@ -184,7 +207,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                          UK
+                          Saudi Arabia
                         </a>
                       </Link>
                     </li>
@@ -192,29 +215,31 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                          Canada
+                          UAE
                         </a>
                       </Link>
                     </li>
-                  
                     <li>
                       <Link href="/#">
-                        <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
-                          <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          $40M-50M
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Turkey
                         </a>
                       </Link>
                     </li>
+                 
                   </ul>
                   <Link href="/#">
                     <a className="bookmark-button toggle-item font-size-6 ml-auto line-height-reset px-0 mt-6 text-default-color  "></a>
                   </Link>
                 </div>
               </div>
-              {/* <!-- End Single Featured Job --> */}
-            </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
-              {/* <!-- Single Featured Job --> */}
+            
+            </div> */}
+
+
+            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
+   
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
                 <div className="media align-items-center">
                   <div className="square-52 mr-8 rounded">
@@ -227,13 +252,13 @@ const FeaturedJobs = () => {
                   <div>
                     <Link href="/#">
                       <a className="font-size-3 text-default-color line-height-2">
-                      Nigera
+                      South East Asia
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        650 Students
+                        27+ Agents
                         </a>
                       </Link>
                     </h3>
@@ -245,28 +270,40 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                          UK
+                          Malaysia
                         </a>
                       </Link>
                     </li>
                     <li>
                       <Link href="/#">
-                        <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
-                          <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          $40M-50M
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Indonesia
                         </a>
                       </Link>
                     </li>
+                    <li>
+                      <Link href="/#">
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Thailand
+                        </a>
+                      </Link>
+                    </li>
+                    
                   </ul>
                   <Link href="/#">
                     <a className="bookmark-button toggle-item font-size-6 ml-auto line-height-reset px-0 mt-6 text-default-color  "></a>
                   </Link>
                 </div>
               </div>
-              {/* <!-- End Single Featured Job --> */}
-            </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
-              {/* <!-- Single Featured Job --> */}
+            
+            </div> */}
+
+
+
+            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
+
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
                 <div className="media align-items-center">
                   <div className="square-52 bg-orange-2 mr-8 rounded">
@@ -279,13 +316,13 @@ const FeaturedJobs = () => {
                   <div>
                     <Link href="/#">
                       <a className="font-size-3 text-default-color line-height-2">
-                      India
+                      Eastern Europe
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        2245 Students
+                        20+ Agents
                         </a>
                       </Link>
                     </h3>
@@ -297,26 +334,38 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                          Canada
+                          Ukrain
                         </a>
                       </Link>
                     </li>
                     <li>
                       <Link href="/#">
-                        <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
-                          <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          $40M-50M
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Turkey
                         </a>
                       </Link>
                     </li>
+                    <li>
+                      <Link href="/#">
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                          Serbia
+                        </a>
+                      </Link>
+                    </li>
+                
                   </ul>
                   <Link href="/#">
                     <a className="bookmark-button toggle-item font-size-6 ml-auto line-height-reset px-0 mt-6 text-default-color  "></a>
                   </Link>
                 </div>
               </div>
-              {/* <!-- End Single Featured Job --> */}
+ 
             </div>
+ */}
+
+
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-9">
               {/* <!-- Single Featured Job --> */}
               <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3">
@@ -331,13 +380,13 @@ const FeaturedJobs = () => {
                   <div>
                     <Link href="/#">
                       <a className="font-size-3 text-default-color line-height-2">
-                      Ethiopia
+                      Africa
                       </a>
                     </Link>
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        356 Students
+                        20+ Agents
                         </a>
                       </Link>
                     </h3>
@@ -349,15 +398,23 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                         UK
+                         Somalia
                         </a>
                       </Link>
                     </li>
                     <li>
                       <Link href="/#">
-                        <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
-                          <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          $40M-50M
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                         Zambia
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/#">
+                        <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
+                          <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
+                         Egypt
                         </a>
                       </Link>
                     </li>

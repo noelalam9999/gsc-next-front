@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import Link from "next/link";
 import CountUp from "react-countup";
 import LazyLoad from "react-lazyload";
@@ -21,6 +21,27 @@ const defaultJobs = [
 ];
 
 const DashboardMain = () => {
+ 
+  const [List, setList] = useState(0);
+
+  useEffect(() =>  {
+
+    async function fetchMyAPI() {
+    try {
+      const res = await fetch('https://ci-gsc.com/students/?format=json');
+      console.log(res)
+      const todoList = await res.json();
+      setList(todoList)
+    } catch (e) {
+      console.log(e);
+  }
+    }
+    
+fetchMyAPI()
+    
+  },[])
+console.log(List)
+
   const gContext = useContext(GlobalContext);
   return (
     <>
@@ -204,7 +225,9 @@ const DashboardMain = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border border-color-2">
+                     
+                      { List.map((item, index)=>(
+                        <tr className="border border-color-2">
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
                           <Link href="/candidate-profile">
                             <a className="media min-width-px-235 align-items-center">
@@ -212,7 +235,7 @@ const DashboardMain = () => {
                                 <img src={imgP1} alt="" className="w-100" />
                               </div>
                               <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
-                                Nicolas Bradley
+                                {item.name}
                               </h4>
                             </a>
                           </Link>
@@ -260,7 +283,15 @@ const DashboardMain = () => {
                           </div>
                         </td>
                       </tr>
-                      <tr className="border border-color-2">
+                      
+                      
+                  )
+                     )
+
+
+                     } 
+                    
+                      {/* <tr className="border border-color-2">
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
                           <Link href="/candidate-profile">
                             <a className="media min-width-px-235 align-items-center">
@@ -483,7 +514,7 @@ const DashboardMain = () => {
                             </Link>
                           </div>
                         </td>
-                      </tr>
+                      </tr> */}
                     </tbody>
                   </table>
                 </div>

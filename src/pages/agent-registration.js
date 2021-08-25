@@ -166,22 +166,22 @@ class StudentRegistration extends Component {
     this.state = {
       viewCompleted: false,
       activeItem: {
-        name:"John Doe",
-        role:"Manager",
-        agency_name:"Study Partners International",
-        country:"India",
-        mobile:"+0922222222",
-        website:"spint.com",
-        offices:"Yes",
-        subagents:"Yes",
-        YearFounded:"1990",
-        number_of_staff:"34",
-        services_provided:"consultation, visa-processing, consultation",
-        students_sent_abroad:"34",
-        association_bin:"Yes",
-        associations:"IDFC",
-        recruitment_area:"Bangladesh",
-        charge:"No",
+        name:"",
+        role:"",
+        agency_name:"",
+        country:"",
+        mobile:"",
+        website:"",
+        offices:"",
+        subagents:"",
+        YearFounded:"",
+        number_of_staff:"",
+        services_provided:"",
+        students_sent_abroad:"",
+        association_bin:"",
+        associations:"",
+        recruitment_area:"",
+        facebooklink:"",
 
       },
       todoList: []
@@ -230,6 +230,7 @@ console.log(item)
   axios
     .post("https://ci-gsc.com/agents/", item)
     .then((res) => this.success())
+    .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
     ;
 };
 
@@ -291,13 +292,13 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Name
+                                Name * 
                               </label>
                               <input
                             
                                 className="form-control h-px-48"
                                 name="name"
-                                placeholder="John Doe"
+                                placeholder="Your Full Name"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.name}
                               />
@@ -309,14 +310,15 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Role
+                                Role * 
                               </label>
-                              <Select
-                                options={Role}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              <input
+                               
+                                className="form-control h-px-48"
                                 name="role"  
-                                border={false}
-                                onChange={this.handleChangeSelect}
+                                
+                                placeholder="Your Role in the Agency"
+                                onChange={this.handleChange}
                                 value={this.state.activeItem.role.value}
                                 
                               />
@@ -328,13 +330,13 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Agency Name
+                                Agency Name * 
                               </label>
                               <input
                             
                                 className="form-control h-px-48"
                                 name="agency_name"
-                                placeholder="John Doe"
+                                placeholder="The Name of Your Agency"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.agency_name}
                               />
@@ -346,7 +348,7 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Country
+                                Country * 
                               </label>
                               <Select
                                 options={getCountries}
@@ -370,13 +372,13 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Mobile
+                                Mobile * 
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
                                 name="mobile"
-                                placeholder="12345678"
+                                placeholder="Your Phonenumber with Country Code"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.mobile}
                               />
@@ -394,7 +396,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                                 name="website"
-                                placeholder="eg. Collarts"
+                                placeholder="The link to your Website"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.website}
                               />
@@ -403,24 +405,7 @@ render(){
                        
                         </div>
                         <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Do you have offices in Other Locations?
-                              </label>
-                              <Select
-                                options={Offices}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.offices.value}
-                              />
-                            </div>
-                          </div>
+                        
                           <div className="col-lg-6">
                             <div className="form-group">
                               <label
@@ -473,7 +458,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                                 name="number_of_staff"
-                                placeholder="eg. Collarts"
+                                placeholder="34"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.number_of_staff}
                               />
@@ -495,7 +480,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                                 name="services_provided"
-                                placeholder="eg. Collarts"
+                                placeholder="ticketing, Visa Processing, Application Processing"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.services_provided}
                               />
@@ -507,13 +492,13 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Average Students Sent Abroad
+                                Average Students Sent Abroad Per Year
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
                                 name="students_sent_abroad"
-                                placeholder="eg. Collarts"
+                                placeholder="100-150"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.students_sent_abroad}
                               />
@@ -553,7 +538,7 @@ render(){
                            type="text"
                            className="form-control h-px-48"
                            name="associations"
-                           placeholder="eg. Collarts"
+                           placeholder="FDEC, IPDC"
                            onChange={this.handleChange}
                            value={this.state.activeItem.students_sent_abroad}
                          />
@@ -575,7 +560,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                                 name="recruitment_area"
-                                placeholder="eg. Collarts"
+                                placeholder="Bangladesh, India, Kenya"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.recruitment_area}
                               />
@@ -587,15 +572,15 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Do you charge for Consultation?
+                                Facebook Link
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
-                                name="charge"
-                                placeholder="eg. Collarts"
+                                name="facebooklink"
+                                placeholder="The link to your agencies Facebook Page"
                                 onChange={this.handleChange}
-                                value={this.state.activeItem.charge}
+                                value={this.state.activeItem.facebooklink}
                               />
                             </div>
                           </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 import { Select } from "../../components/Core";
-import imgC1 from "../../assets/image/l3/png/hero-image-3.jpg";
+import imgC1 from "../../assets/image/l3/png/student-hero.jpg";
 import imgC2 from "../../assets/image/l3/png/hero-image-2.png";
 
 const defaultCountries = [
@@ -32,7 +32,7 @@ const Hero = () => {
                     Resettle Onto Your Dream Study Destination
                   </h1>
                   <p className="font-size-6">
-                  Global Study Contacts Specialize in Education Consultancy, Visa Processing, Job Scouting and Everything you need to start your new life
+                  Global Study Contacts Specialize in Education Consultancy, Visa Processing, Part-time Job Scouting, PR and Everything you need to start your new life
                   </p>
                 </div>
               </div>

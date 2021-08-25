@@ -5,7 +5,7 @@ import Services from "../sections/student/Services";
 import FeaturedJobs from "../sections/student/FeaturedJobs";
 import Content1 from "../sections/student/Content1";
 import Content2 from "../sections/student/Content2";
-import Slider from "../sections/student/Slider";
+import Slider from "../sections/landing2/Content2";
 import Pricing from "../sections/student/Pricing";
 
 const StudentPage = () => {

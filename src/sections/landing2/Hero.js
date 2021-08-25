@@ -30,10 +30,10 @@ const Hero = () => {
             >
               <div  className="row">
                 <div className="mobile-text col-xxl-8 col-xl-7 col-md-8 col-sm-10">
-                  <div className="text-primary font-size-5 font-weight-semibold mb-7">
+                  <div className="l400px-top-text text-primary font-size-5 font-weight-semibold mb-7">
                     150+ universities currently giving Scholarships
                   </div>
-                  <h1 className="hero-writing font-size-10 mb-9 text-black-2">
+                  <h1 className="l400px-main-text hero-writing font-size-10 mb-9 text-black-2">
                     Find the most promising Study Destinations!
                   </h1>
                   <p className="hero-writing font-size-5">

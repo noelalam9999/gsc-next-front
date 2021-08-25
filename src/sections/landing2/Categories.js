@@ -30,7 +30,7 @@ const Categories = () => {
           >
             {/* <!-- Single Category --> */}
             <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-              <Link href="/#">
+              <Link href="/students">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-blue square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
                   <img height="100px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1627252639/icon_1_q6v9fb.svg"/>
@@ -50,7 +50,7 @@ const Categories = () => {
             {/* <!-- End Single Category --> */}
             {/* <!-- Single Category --> */}
             <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-              <Link href="/#">
+              <Link href="/institutes">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-spray square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
                   <img height="110px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1627252639/icon_2_x3hthy.svg"/>
@@ -58,7 +58,7 @@ const Categories = () => {
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-5 font-weight-semibold text-black-2 line-height-1">
-                      Institues
+                      Institutes
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray">
                       <span>200+</span> Affiliations
@@ -70,7 +70,7 @@ const Categories = () => {
             {/* <!-- End Single Category --> */}
             {/* <!-- Single Category --> */}
             <div className="col-12 col-xl-3 col-lg-4 col-sm-6 col-xs-8">
-              <Link href="/#">
+              <Link href="/agents">
                 <a className="bg-white border border-color-2 rounded-4 pl-5 pt-10 pb-3 px-2 hover-shadow-2 mb-9 d-block w-100 text-center">
                   <div className="text-white bg-coral square-70 rounded-4 mb-7 font-size-7 text-center mx-auto">
                   <img height="110px" src="https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1627252639/icon_3_boelcg.svg"/>

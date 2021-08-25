@@ -23,13 +23,13 @@ const Content = () => {
                   University Applications made easy
                 </h2>
                 <p className="text-default-color font-size-5 mb-7 mb-lg-12 pr-xxl-13 pr-lg-0 pr-md-10">
-                 Our agents will help you fill up university forms, apply for visa and secure a job before your departure 
+                 Our agents will help you fill up university forms, apply for visa and secure a part-time job before your departure 
                 </p>
                 {/* <!-- content-2 section title end --> */}
                 {/* <!-- content-2 btn start --> */}
-                <Link href="/#">
+                <Link href="/signup">
                   <a className="text-green font-weight-bold text-uppercase font-size-3">
-                    Learn More <i className="fas fa-arrow-right ml-3"></i>
+                    Apply Now <i className="fas fa-arrow-right ml-3"></i>
                   </a>
                 </Link>
                 {/* <!-- content-2 btn end --> */}

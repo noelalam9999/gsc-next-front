@@ -2,9 +2,9 @@ import React, { useState, useEffect, memo } from "react";
 import Link from "next/link";
 import imgF1 from "../../assets/image/l1/png/uk-uni-2.jpg";
 import imgF2 from "../../assets/image/l1/png/Trent-University.jpg";
-import imgF3 from "../../assets/image/l1/png/namseoul.jpg";
+import imgF3 from "../../assets/image/l1/png/tafe.jpg";
 import imgF4 from "../../assets/image/l1/png/middle-tennesse.jpg";
-import imgF5 from "../../assets/image/l1/png/segi.jpg";
+import imgF5 from "../../assets/image/l1/png/university_of_creative_arts.png";
 import imgF6 from "../../assets/image/l1/png/east-china-uni.jpg";
 import renderItems from "../../../api";
 import Api from "../../../api";
@@ -56,13 +56,13 @@ const FeaturedJobs = () => {
                 </div>
                 <Link href="/#">
                   <a className="font-size-3 d-block mb-0 text-gray">
-                  Ulster University
+                  
                   </a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                      Accounting
+                    Ulster University
                     </a>
                   </Link>
                 </h2>
@@ -79,7 +79,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                        3.9/5
+                        Ranking : 3.9/5
                       </a>
                     </Link>
                   </li>
@@ -87,16 +87,15 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                        80K-90K
+                        Average Annual Fee: $14k-19k
                       </a>
                     </Link>
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                We are a university with a national and international reputation for excellence, innovation and regional engagement, making a major contribution to the economic, social and cultural development of Northern Ireland.
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/signup">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
@@ -126,12 +125,12 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">Trent University</a>
+                  <a className="font-size-3 d-block mb-0 text-gray"></a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                     Aviation Management
+                    Trent University
                     </a>
                   </Link>
                 </h2>
@@ -148,7 +147,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                        4/5
+                        Ranking : 4/5
                       </a>
                     </Link>
                   </li>
@@ -156,13 +155,12 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                        80K-90K
+                        Average Annual Fee: $36k-42k
                       </a>
                     </Link>
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                Internationalization is an integral part of Trent's commitment to unite diversity through people and experience. It involves bringing the world to Trent and opening up amazing opportunities for international discovery.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -195,12 +193,12 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">Namseoul University</a>
+                  <a className="font-size-3 d-block mb-0 text-gray"></a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                      Finance
+                      Tafe Gold Coast
                     </a>
                   </Link>
                 </h2>
@@ -209,7 +207,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        Korea
+                        Australia
                       </a>
                     </Link>
                   </li>
@@ -217,7 +215,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                        4.2/5
+                        Ranking : 4.2/5
                       </a>
                     </Link>
                   </li>
@@ -225,13 +223,12 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                        80K-90K
+                        Average Annual Fee: $10k-16k
                       </a>
                     </Link>
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                NamSeoul University is located in Cheonan City and was established in 1994 as a private university. In 2015, the NamSeoul University student body was approximately 12,000 students, including graduate students. The University offers thirty-four major courses from four different schools, a Korean graduate school, and the International Graduate School.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -264,12 +261,12 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">Middle Tennessee State University</a>
+                  <a className="font-size-3 d-block mb-0 text-gray"></a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                      International Business{" "}
+                    Middle Tennessee State University{" "}
                     </a>
                   </Link>
                 </h2>
@@ -286,7 +283,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                        3/5
+                        Ranking : 3/5
                       </a>
                     </Link>
                   </li>
@@ -294,14 +291,12 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                        80K-90K
+                        Average Annual Fee: $30k-38k
                       </a>
                     </Link>
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                Offering 300+ undergraduate and graduate degrees of study in diverse disciplines that prepare students for high-demand careers.
-                Many of our programs have earned national and, sometimes, international recognition for excellence.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -334,12 +329,12 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">SEGi University</a>
+                  <a className="font-size-3 d-block mb-0 text-gray"></a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                      Computer Science{" "}
+                      University of Creative Arts{" "}
                     </a>
                   </Link>
                 </h2>
@@ -348,7 +343,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                        Malaysia
+                        UK
                       </a>
                     </Link>
                   </li>
@@ -356,7 +351,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                        3.5/5
+                        Ranking : 3.5/5
                       </a>
                     </Link>
                   </li>
@@ -364,14 +359,12 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                        80K-90K
+                        Average Annual Fee: $10k-14k
                       </a>
                     </Link>
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district; offering globally recognised professional qualifications. 
-                Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia.
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">
@@ -404,12 +397,12 @@ const FeaturedJobs = () => {
                   </Link>
                 </div>
                 <Link href="/#">
-                  <a className="font-size-3 d-block mb-0 text-gray">East China University of Science & Technology</a>
+                  <a className="font-size-3 d-block mb-0 text-gray"></a>
                 </Link>
                 <h2 className="mt-n4">
                   <Link href="/#">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                      Political Science
+                    East China University of Science & Technology
                     </a>
                   </Link>
                 </h2>
@@ -426,7 +419,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                       3.4/5
+                        Ranking : 3.4/5
                       </a>
                     </Link>
                   </li>
@@ -434,14 +427,12 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                        80K-90K
+                        Average Annual Fee: $10k-14k
                       </a>
                     </Link>
                   </li>
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
-                10/1952  East China Institute of Chemical Technology was founded with the approval of the central government. 
-                It was the first single-subject chemical institute in China and was formed through the consolidation of the chemical departments of Jiaotong University, Aurora University, Utopia University, Soochou University and Jiangnan University
                 </p>
                 <div className="card-btn-group">
                   <Link href="/#">

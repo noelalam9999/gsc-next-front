@@ -38,7 +38,7 @@ const SignUp = () => {
     <Container className="text-center custom-container">
     <Row>
         <Col>
-          <h2 style={{marginTop:'100px',marginBottom:"100px"}}>Join Global Study Contacts to get Access to the <br/>Widest range of Universities All Around the World</h2>
+          <h2 style={{marginTop:'100px',marginBottom:"100px"}}>Global Study Contacts builds bridges between <br/>Students, Intitutes, Agents and Service Providers<br/><br/>Join Us Today</h2>
         </Col>
       </Row>
       <Row>

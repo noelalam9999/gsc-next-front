@@ -95,19 +95,20 @@ class StudentRegistration extends Component {
     this.state = {
       viewCompleted: false,
       activeItem: {
-        name:"KPI",
-        mobile:"+0922222222",
-        country:"USA",
-        UGfee:"50,000-100,000",
-        PGfee:"50,000-100,000",
-        Diplomafee:"50,000-100,000",
-        AccomodationCost:"6,000-12,000",
-        FallSemester:"august",
-        SpringSemester:"january",
-        SummerSemester:"may",
-        ranking:"3.5"
+        name:"",
+        mobile:"",
+        country:"",
+        UGfee:"",
+        PGfee:"",
+        Diplomafee:"",
+        AccomodationCost:"",
+        FallSemester:"",
+        SpringSemester:"",
+        SummerSemester:"",
+        ranking:""
       },
-      todoList: []
+      todoList: [],
+      
       };
   }
 
@@ -152,6 +153,7 @@ console.log(item)
   axios
     .post("https://ci-gsc.com/uni/", item)
     .then((res) => this.success())
+    .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
     ;
 };
 
@@ -230,7 +232,7 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                University Name
+                                University Name * 
                               </label>
                               <input
                                 type="text"
@@ -245,10 +247,28 @@ render(){
                           <div className="col-lg-6">
                             <div className="form-group">
                               <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Mobile * 
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="mobile"
+                                placeholder="+9901845671823"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.mobile}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Country
+                                Country * 
                               </label>
                               <Select
                                 options={getCountries}

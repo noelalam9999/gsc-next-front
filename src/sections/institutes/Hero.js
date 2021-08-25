@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 import { Select } from "../../components/Core";
-import imgC1 from "../../assets/image/l3/png/hero-image-3.jpg";
+import imgC1 from "../../assets/image/l3/png/uni-hero.jpg";
 import imgC2 from "../../assets/image/l3/png/hero-image-2.png";
 
 const defaultCountries = [
