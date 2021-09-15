@@ -6,6 +6,11 @@ import imgF3 from "../../assets/image/l1/png/tafe.jpg";
 import imgF4 from "../../assets/image/l1/png/middle-tennesse.jpg";
 import imgF5 from "../../assets/image/l1/png/university_of_creative_arts.png";
 import imgF6 from "../../assets/image/l1/png/east-china-uni.jpg";
+import iconF1 from "../../assets/image/l1/png/accomodations.png";
+import iconF2 from "../../assets/image/l1/png/internship.png";
+import iconF3 from "../../assets/image/l1/png/offer-letter.png";
+import iconF4 from "../../assets/image/l1/png/post-study-work-visa.png";
+import iconF5 from "../../assets/image/l1/png/work-while-studying.png";
 import renderItems from "../../../api";
 import Api from "../../../api";
 
@@ -91,6 +96,47 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
+
                 </ul>
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
@@ -159,7 +205,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
+                
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
@@ -227,7 +314,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
+               
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
@@ -295,7 +423,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
+              
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
@@ -363,7 +532,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
+               
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
@@ -431,7 +641,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
+              
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">

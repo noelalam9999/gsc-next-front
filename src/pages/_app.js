@@ -32,7 +32,63 @@ const MyApp = ({ Component, pageProps, router }) => {
       </GlobalProvider>
     );
   }
+  if (router.pathname.match(/dashboard/)) {
+    return (
+
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "dashboard" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
   if (router.pathname.match(/dashboard-main/)) {
+    return (
+
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "dashboard" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
+  if (router.pathname.match(/dashboard-agents/)) {
+    return (
+
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "dashboard" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
+  if (router.pathname.match(/dashboard-institutes/)) {
+    return (
+
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "dashboard" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
+  if (router.pathname.match(/dashboard-serviceproviders/)) {
     return (
 
       <GlobalProvider>

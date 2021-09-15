@@ -5,13 +5,13 @@ const Categories = () => {
   return (
     <>
       {/* <!-- Categories Area -->  */}
-      <div className="pb-13 pb-lg-25 bg-gradient-2">
+      <div  className="pb-13 pb-lg-25 bg-gradient-2">
         <div className="container">
           <hr className="pt-13 pt-lg-20" />
           {/* <!-- Section Top --> */}
           <div className="row align-items-center justify-content-center">
             {/* <!-- Section Title --> */}
-            <div className="col-12 col-xl-6 col-lg-7 col-md-9">
+            <div  className="col-12 col-xl-6 col-lg-7 col-md-9">
               <div className="text-center mb-12 mb-lg-17">
                 <h2 className="font-size-10 font-weight-bold mb-8">
                   We provide Services to four groups

@@ -11,7 +11,7 @@ const Brands = () => {
   return (
     <>
       {/* <!-- Brands Area --> */}
-      <div className="brands bg-black-2 dark-mode-texts pt-13 pt-lg-24 pb-12 pb-lg-23">
+      <div className="brands-1 bg-black-2 dark-mode-texts pt-13 pt-lg-24 pb-12 pb-lg-23">
         <div className="container">
           <div className="row">
             <div className="col-12">

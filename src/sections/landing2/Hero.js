@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 import { Select } from "../../components/Core";
-import imgP from "../../assets/image/patterns/hero-image-2.png";
+import imgP from "../../assets/image/patterns/hero-image-3.png";
 
 const defaultCountries = [
   { value: "uk", label: "UK" },
@@ -33,7 +33,7 @@ const Hero = () => {
                   <div className="l400px-top-text text-primary font-size-5 font-weight-semibold mb-7">
                     150+ universities currently giving Scholarships
                   </div>
-                  <h1 className="l400px-main-text hero-writing font-size-10 mb-9 text-black-2">
+                  <h1 className="l 400px-main-text hero-writing font-size-10 mb-9 text-black-2">
                     Find the most promising Study Destinations!
                   </h1>
                   <p className="hero-writing font-size-5">

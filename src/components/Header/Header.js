@@ -179,6 +179,7 @@ console.log(authUser)
                                               )
                                             )}
                                           </ul>
+                                        
                                         </li>
                                       ) : (
                                         <li className="drop-menu-item">
@@ -203,8 +204,10 @@ console.log(authUser)
                               </ul>
                             </li>
                           ) : (
+                            <>
                             <li className="nav-item" {...rest}>
                               {isExternal ? (
+                               <>
                                 <a
                                   className="nav-link"
                                   href={`${name}`}
@@ -213,7 +216,10 @@ console.log(authUser)
                                 >
                                   {label}
                                 </a>
+                             
+                                </>
                               ) : (
+                                <>
                                 <Link href={`/${name}`}>
                                   <a
                                     className="nav-link"
@@ -223,13 +229,24 @@ console.log(authUser)
                                     {label}
                                   </a>
                                 </Link>
+                              
+                                </>
                               )}
                             </li>
+                            
+                            </>
                           )}
                         </React.Fragment>
                       );
                     }
                   )}
+
+
+
+
+
+
+                            
                 </ul>
               </div>
             </div>
@@ -316,7 +333,7 @@ console.log(authUser)
               </div>
             )}
 
-            {gContext.header.button === "account" && (
+            {/* {gContext.header.button === "account" && (
               <div className="header-btns header-btn-devider ml-auto pr-2 ml-lg-6 d-none d-xs-flex">
                 <Link
                   
@@ -327,7 +344,7 @@ console.log(authUser)
                 </Link>
                 <Link
                   
-                  href="/signup"
+                  href="/registration-redirect"
                   // onClick={(e) => {
                   //   e.preventDefault();
                   //   gContext.toggleSignUpModal();
@@ -336,7 +353,7 @@ console.log(authUser)
                   Sign Up</a> 
                 </Link>
               </div>
-            )}
+            )} */}
 
             <ToggleButton
               className={`navbar-toggler btn-close-off-canvas ml-3 ${

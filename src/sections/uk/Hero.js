@@ -73,10 +73,7 @@ const Hero = () => {
                   </div>
                 </form>
                 {/* <!-- ./search-form --> */}
-                <p className="brands heading-default-color font-size-3 pt-7">
-                  <span className="text-smoke">Search keywords e.g.</span>{" "}
-                  Computer Science
-                </p>
+              
               </div>
             </div>
             {/* <!-- Hero Right Image --> */}

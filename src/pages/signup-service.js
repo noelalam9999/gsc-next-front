@@ -2,17 +2,22 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useAuth } from '../../AuthUserContext';
-
+import axios from 'axios';
 import {Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [passwordOne, setPasswordOne] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
+  const [record, setRecord] = useState({ email: '',usertype:'service' });
   const router = useRouter();
   const [error, setError] = useState(null);
 
   const { createUserWithEmailAndPassword } = useAuth();
+
+  const success = () => {
+    alert("Account Created. Please fill up these fields");
+  }
 
   const onSubmit = event => {
     setError(null)
@@ -21,8 +26,12 @@ const SignUp = () => {
     if(passwordOne === passwordTwo)
       createUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        console.log("Success. The user is created in Firebase")
-        router.push("/registration-redirect");
+        record.email = email;
+        axios
+        .post("https://ci-gsc.com/user/", record)
+        .then((res) => success())
+        .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
+        router.push("/service-registration");
       })
       .catch(error => {
         // An error occurred. Set error message to be displayed to user

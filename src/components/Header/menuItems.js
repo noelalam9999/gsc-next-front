@@ -106,6 +106,16 @@ export const menuItems = [
       },
     ],
   },
+  {
+    name: "registration-redirect",
+    label: "Sign Up"
+
+  },
+  {
+    name: "login",
+    label: "Login"
+
+  },
  
   
 ];

@@ -18,7 +18,7 @@ const Categories = () => {
       >
         <div className="container">
           {/* <!-- Section Top --> */}
-          <div className="row align-items-center pb-14">
+          <div className="row align-items-center">
             {/* <!-- Section Title --> */}
             <div className="col-12 col-lg-6">
               <div className="text-center text-lg-left mb-13 mb-lg-0">

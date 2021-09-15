@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Select } from "../../components/Core";
-import imgP from "../../assets/image/l1/png/hero-toronto.png";
+import imgP from "../../assets/image/l1/png/hero-toronto.jpg";
+import imgQ from "../../assets/image/l1/png/canada-hero-mobile.png";
 import imgH from "../../assets/image/patterns/hero-pattern.png";
 
 const desiredLevel = [
@@ -18,8 +19,11 @@ const Hero = () => {
       <div  className=" pt-26 pt-md-32 pt-lg-33 pt-xl-35 position-relative z-index-1 ">
         {/* <!-- .Hero pattern --> */}
         {/* <div className="pos-abs-tr w-50 z-index-n2"> */}
-        <div  className="pos-abs-tr  z-index-n2">
+        <div  className="canada-main pos-abs-tr  z-index-n2">
           <img src={imgP} alt="" className="" />
+        </div>
+        <div  className="flip-canada pos-abs-tr  z-index-n2">
+          <img src={imgQ} alt="" className="" />
         </div>
         {/* <!-- ./Hero pattern --> */}
         <div  className="container">
@@ -73,10 +77,7 @@ const Hero = () => {
                   </div>
                 </form>
                 {/* <!-- ./search-form --> */}
-                <p className="brands heading-default-color font-size-3 pt-7">
-                  <span className="text-smoke">Search keywords e.g.</span>{" "}
-                  Computer Science
-                </p>
+                
               </div>
             </div>
             {/* <!-- Hero Right Image --> */}

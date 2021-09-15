@@ -56,6 +56,7 @@ const Content = () => {
                   Why Choose <br className="d-none d-sm-block" />
                   Global Study Contacts
                 </h2>
+             
                 {/* <!-- content-1 section-title end --> */}
                 {/* <!-- media start --> */}
                 <div className="media mb-11">

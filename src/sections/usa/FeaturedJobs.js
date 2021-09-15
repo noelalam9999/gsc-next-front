@@ -7,6 +7,12 @@ import imgB4 from "../../assets/image/l1/png/usa-logo-4.jpg";
 import imgB5 from "../../assets/image/l1/png/usa-logo-5.jpg";
 import imgB6 from "../../assets/image/l1/png/usa-logo-6.jpg";
 
+import iconF1 from "../../assets/image/l1/png/accomodations.png";
+import iconF2 from "../../assets/image/l1/png/internship.png";
+import iconF3 from "../../assets/image/l1/png/offer-letter.png";
+import iconF4 from "../../assets/image/l1/png/post-study-work-visa.png";
+import iconF5 from "../../assets/image/l1/png/work-while-studying.png";
+
 const FeaturedJobs = () => {
   return (
     <>
@@ -86,11 +92,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
-                <p className="mb-7 font-size-4 text-gray">
-                For more than 30 years, Kwantlen Polytechnic University 
-                (KPU) has provided students with the skills they need for the careers they want.
-                </p>
+            
                 <div className="card-btn-group">
                   <Link href="/#">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
@@ -156,11 +199,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
-                <p className="mb-7 font-size-4 text-gray">
-                Emphasizing high-level, student-centered academics, a diverse and inclusive student body and powerful corporate, 
-                community and government links,  EUC is a trustworthy and reliable partner in your pursuit of higher education
-                </p>
+              
                 <div className="card-btn-group">
                   <Link href="/#">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
@@ -226,11 +306,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
-                <p className="mb-7 font-size-4 text-gray">
-                We are a thriving university with a deep commitment to teaching and research excellence. 
-                Established in 1840 by the Church of England, everything we do is underpinned by an unrelenting commitment to our values.
-                </p>
+              
                 <div className="card-btn-group">
                   <Link href="/#">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
@@ -296,11 +413,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
-                <p className="mb-7 font-size-4 text-gray">
-                We take our responsibilities seriously, applying sustainable development across our activities, working closely with students, 
-                staff and the wider community to help change the world for the better, aligning with the University's core values
-                </p>
+               
                 <div className="card-btn-group">
                   <Link href="/#">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
@@ -366,11 +520,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
-                <p className="mb-7 font-size-4 text-gray">
-                The University of Regina is a public research university located in Regina,
-                 Saskatchewan, Canada. Founded in 1911[5] as a private denominational high school of the Methodist Church of Canada,
-                </p>
+               
                 <div className="card-btn-group">
                   <Link href="/#">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
@@ -436,11 +627,48 @@ const FeaturedJobs = () => {
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
+                      {" "} Accomodation
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
+                        Internship Opportunity
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
+                      Offer Letter
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
+                        Post-Study Work Visa
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#">
+                      <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                      <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
+                        Work White Studying
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
-                <p className="mb-7 font-size-4 text-gray">
-                Established in 1987, College of Tourism and Hotel Management is a for-profit private 
-                higher-education institution located in the urban setting of the small city of Nicosia (population range of 50,000-249,999 inhabitants).
-                </p>
+             
                 <div className="card-btn-group">
                   <Link href="/#">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">

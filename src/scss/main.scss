@@ -160,11 +160,7 @@
    display: block!important;
    color:white!important;
   }
- .sticky-header{
-  background-color: rgb(0, 0, 0,0.5);
- height:100px!important;
- 
- }
+
   #hero-image1{
     background-color: rgb(0, 0, 0,0.5);
     height:100%;
@@ -174,14 +170,41 @@
     color: antiquewhite!important;
   }
   .brands{
-    visibility:hidden;
+   margin-top: 250px;
   }
+  .brands-1{
+    margin-top: 340px;
+   }
   .flip{
     -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   background-image: url("https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1628856101/hero-mobile-aus_goffte.jpg");
   }
   .flip-europe{
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+ background-image: url("https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1628856443/hero-mobile-europe_sbuexc.jpg");
+  }
+  .flip-usa{
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+ background-image: url("https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1631326772/hero-usa-phone_g5szhk.jpg");
+  }
+
+
+  .flip-canada{
+display:inline!important;
+ 
+
+  }
+  .canada-main{
+    display:none!important;
+  }
+  .home-main{
+    display:none!important;
+  }
+
+  .flip-uk{
     -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
  background-image: url("https://res.cloudinary.com/american-international-university-bangladesh/image/upload/v1628856443/hero-mobile-europe_sbuexc.jpg");
@@ -193,4 +216,17 @@
   font-size:large;
 }
 }
+.flip-canada{
+  display:none;
 
+
+}
+.canada-main{
+  -webkit-transform: scaleX(-1);
+transform: scaleX(-1);
+display:block;
+}
+.home-main{
+
+display:block;
+}
