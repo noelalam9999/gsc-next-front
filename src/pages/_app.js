@@ -32,20 +32,7 @@ const MyApp = ({ Component, pageProps, router }) => {
       </GlobalProvider>
     );
   }
-  if (router.pathname.match(/dashboard/)) {
-    return (
 
-      <GlobalProvider>
-           <AuthUserProvider>
-        <Layout pageContext={{ layout: "dashboard" }}>
-     
-          <Component {...pageProps} />
-        
-        </Layout>
-        </AuthUserProvider>
-      </GlobalProvider>
-    );
-  }
   if (router.pathname.match(/dashboard-main/)) {
     return (
 
@@ -60,20 +47,7 @@ const MyApp = ({ Component, pageProps, router }) => {
       </GlobalProvider>
     );
   }
-  if (router.pathname.match(/dashboard-agents/)) {
-    return (
 
-      <GlobalProvider>
-           <AuthUserProvider>
-        <Layout pageContext={{ layout: "dashboard" }}>
-     
-          <Component {...pageProps} />
-        
-        </Layout>
-        </AuthUserProvider>
-      </GlobalProvider>
-    );
-  }
   if (router.pathname.match(/dashboard-institutes/)) {
     return (
 
@@ -130,8 +104,21 @@ const MyApp = ({ Component, pageProps, router }) => {
       </GlobalProvider>
     );
   }
+  if (router.pathname.match(/student-dashboard/)) {
+    return (
 
-  if (router.pathname.match(/agent-registration/)) {
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "student" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
+  if (router.pathname.match(/agent-dashboard/)) {
     return (
 
       <GlobalProvider>

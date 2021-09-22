@@ -156,6 +156,8 @@ const FeaturedJobs = () => {
               </div>
               {/* <!-- End Feature One --> */}
             </div>
+
+            
             <div
               className="col-12 col-lg-4 col-md-6 px-xxl-7"
               data-aos="fade-up"

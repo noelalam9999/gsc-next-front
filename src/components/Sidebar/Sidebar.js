@@ -54,29 +54,27 @@ const Sidebar = () => {
     <>
       {/* <!-- Sidebar Start --> */}
       <div className="widgets mb-11">
-        <h4 className="font-size-6 font-weight-semibold mb-6">Job Type</h4>
+        <h4 className="font-size-6 font-weight-semibold mb-6">Academic Level</h4>
         <ul className="list-unstyled filter-check-list">
           <li className="mb-2">
-            <Check>Full Time</Check>
+            <Check>Undergraduate</Check>
           </li>
           <li className="mb-2">
-            <Check>Part Time</Check>
+            <Check>Diploma</Check>
           </li>
           <li className="mb-2">
-            <Check>Contract</Check>
+            <Check>Masters</Check>
           </li>
           <li className="mb-2">
-            <Check>Internship</Check>
+            <Check>PhD</Check>
           </li>
-          <li className="mb-2">
-            <Check>Temporary</Check>
-          </li>
+           
         </ul>
       </div>
       <div className="widgets mb-11 ">
         <div className="d-flex align-items-center pr-15 pr-xs-0 pr-md-0 pr-xl-22">
           <h4 className="font-size-6 font-weight-semibold mb-6 w-75">
-            Salary Range
+            Fee Range
           </h4>
           {/* <!-- Range Slider --> */}
 
@@ -178,24 +176,24 @@ const Sidebar = () => {
       </div>
       <div className="widgets mb-11">
         <h4 className="font-size-6 font-weight-semibold mb-6">
-          Experience Level{" "}
+          University Ranking{" "}
         </h4>
         <ul className="list-unstyled filter-check-list">
           <li className="mb-2">
-            <Check>All</Check>
+            <Check>4+ </Check>
           </li>
           <li className="mb-2">
-            <Check>Senior</Check>
+            <Check>3-2</Check>
           </li>
           <li className="mb-2">
-            <Check>Mid</Check>
+            <Check>2-1</Check>
           </li>
           <li className="mb-2">
-            <Check>Junior</Check>
+            <Check>Below 1</Check>
           </li>
         </ul>
       </div>
-      <div className="widgets mb-11">
+      {/* <div className="widgets mb-11">
         <h4 className="font-size-6 font-weight-semibold mb-6">Posted Time</h4>
         <ul className="list-unstyled filter-check-list">
           <li className="mb-2">
@@ -211,7 +209,7 @@ const Sidebar = () => {
             <Check>Last week</Check>
           </li>
         </ul>
-      </div>
+      </div> */}
       {/* <!-- Sidebar End --> */}
     </>
   );

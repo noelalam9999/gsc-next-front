@@ -26,6 +26,7 @@
     "next-fonts": "^1.2.0",
     "nookies": "^2.5.2",
     "polished": "^3.6.5",
+    "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-alert-template-mui": "^1.0.7",
     "react-bootstrap": "^1.0.1",

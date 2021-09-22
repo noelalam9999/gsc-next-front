@@ -28,7 +28,7 @@ const DashboardMain = () => {
 
     async function fetchMyAPI() {
     try {
-      const res = await fetch('https://ci-gsc.com/students/?format=json');
+      const res = await fetch('https://ci-gsc.com/uni/?format=json');
       console.log(res)
       const todoList = await res.json();
       setList(todoList)
@@ -143,7 +143,7 @@ console.log(List)
             <div className="mb-14">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
-                  <h3 className="font-size-6 mb-0">In Progress Applications</h3>
+                  <h3 className="font-size-6 mb-0">Partners</h3>
                 </div>
                 <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
@@ -205,7 +205,7 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          City
+                          Country
                         </th>
                         <th
                           scope="col"
@@ -249,7 +249,17 @@ console.log(List)
                         </th>
                         <td className="table-y-middle py-7 min-width-px-235 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.mobile}
+                            
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.workflow}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.partner_type}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
@@ -259,20 +269,20 @@ console.log(List)
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.products}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_month}
+                           34
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_year}
+                            45
                           </h3>
                         </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                        {/* <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
                             <a
                               href="/#"
@@ -285,12 +295,12 @@ console.log(List)
                               View Application
                             </a>
                           </div>
-                        </td>
+                        </td> */}
                         <td className="table-y-middle py-7 min-width-px-110 pr-0">
                           <div className="">
                             <Link href="/contact">
                               <a className="font-size-3 font-weight-bold text-green text-uppercase">
-                                Contact
+                               Email
                               </a>
                             </Link>
                           </div>

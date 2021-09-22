@@ -30,11 +30,11 @@ const SignUp = () => {
         .post("https://ci-gsc.com/user/", record)
         .then((res) => success())
         .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
-        router.push("/student-registration");
+        router.push(`/student-registration`);
       })
       .catch(error => {
         // An error occurred. Set error message to be displayed to user
-        setError(error.message)
+        setError(error.message)  
       });
     else
       setError("Password do not match")

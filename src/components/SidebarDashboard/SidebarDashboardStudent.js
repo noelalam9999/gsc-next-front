@@ -19,7 +19,7 @@ const Sidebar = () => {
             </Link>
           </div>
           <div className="my-15 px-11">
-            <Link href="/dashboard-uni-registration">
+            <Link href="/search">
               <a className="btn btn-primary btn-xl w-100 text-uppercase">
                 <span className="mr-5 d-inline-block">+</span>Apply to a Uni
               </a>
@@ -27,36 +27,36 @@ const Sidebar = () => {
           </div>
           <ul className="list-unstyled dashboard-layout-sidebar">
             <li className="">
-              <Link href="/dashboard-main">
+              <Link href="/students/student-dashboard">
                 <a className="px-10 py-1 my-5 font-size-4 font-weight-semibold flex-y-center">
                   <i className="icon icon-layout-11 mr-7"></i>Dashboard
                 </a>
               </Link>
             </li>
             <li className="">
-              <Link href="/dashboard-jobs">
+              <Link href="/students/student-dashboard-applications">
                 <a className="px-10 py-1 my-5 font-size-4 font-weight-semibold flex-y-center">
                   <i className="fas fa-briefcase mr-7"></i>Applications
                 </a>
               </Link>
             </li>
             <li className="">
-              <Link href="/dashboard-applicants">
+              <Link href="/students/student-dashboard-approved">
                 <a className="px-10 py-1 my-5 font-size-4 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Approved{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     1
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
-            <li className="">
+            {/* <li className="">
               <Link href="/dashboard-settings">
                 <a className="px-10 py-1 my-5 font-size-4 font-weight-semibold flex-y-center">
                   <i className="fas fa-cog mr-7"></i>Settings
                 </a>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </Collapse>

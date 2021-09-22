@@ -28,113 +28,107 @@ const Sidebar = () => {
           <ul style={{marginTop:"30px"}} className="list-unstyled dashboard-layout-sidebar">
             <li className="">
               <Link href="/dashboard-main">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="icon icon-layout-11 mr-7"></i>Dashboard
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-office-checkin-waiting">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-briefcase mr-7"></i>Office Check-in
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-enquiries">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Enquiries{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-clients">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Clients{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-services">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Services{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-partners">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Partners{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-products">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Products{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-applications">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Applications{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
        
-            <li className="">
-              <Link href="/dashboard-settings">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
-                  <i className="fas fa-cog mr-7"></i>Settings
-                </a>
-              </Link>
-            </li>
+       
             <li className="">
               <Link href="/dashboard-main-accounts-invoices">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Accounts{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-teams-users">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Teams{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-agents">
-                <a className="px-10 py-1 my-1 font-size-3 font-weight-semibold flex-y-center">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
                   <i className="fas fa-user mr-7"></i>Agents{" "}
-                  <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
-                  </span>
+                  </span> */}
                 </a>
               </Link>
             </li>

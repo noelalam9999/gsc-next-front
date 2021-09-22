@@ -3,6 +3,7 @@ import axios from 'axios';
 import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
 import 'firebase/firestore';
+import { useAuth } from '../../AuthUserContext';
 
 const FallSemester = [
   {name:"FallSemester", value: "jan", label: "Januray" },

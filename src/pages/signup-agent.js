@@ -31,7 +31,7 @@ const SignUp = () => {
         .post("https://ci-gsc.com/user/", record)
         .then((res) => success())
         .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
-        router.push("/agent-registration");
+        router.push("/agent-dashboard-registration");
       })
       .catch(error => {
         // An error occurred. Set error message to be displayed to user

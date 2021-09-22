@@ -5,11 +5,18 @@ import { Select } from "../components/Core";
 import 'firebase/firestore';
 
 
-const ProductType = [
-  {name:"ProductType", value: "rev", label: "Revenue From Client" },
-  {name:"ProductType", value: "comm", label: "Commision from Partner" },
+const RevenueType = [
+  {name:"RevenueType", value: "rev", label: "Revenue From Client" },
+  {name:"RevenueType", value: "comm", label: "Commision from Partner" },
  
 ];
+
+const ProductType = [
+  {name:"ProductType", value: "uni", label: "University Program" },
+  {name:"ProductType", value: "visa", label: "Visa Application" },
+ 
+];
+
 
 
 const IntakeMonth = [
@@ -70,6 +77,7 @@ class StudentRegistration extends Component {
         branches:"",
         product_type:"",
         revenue_type:"",
+        approx_fee:"",
         intake_month:"",
         duration:"",
         description:"",
@@ -98,7 +106,7 @@ class StudentRegistration extends Component {
 
 refreshList = () => {
   axios
-    .get("https://ci-gsc.com/uni")
+    .get("https://ci-gsc.com/product")
     .then((res) => this.success())
     .catch((err) => console.log(err));
 };
@@ -113,13 +121,13 @@ handleSubmit = (item) => {
 console.log(item)
   if (item.id) {
     axios
-      .put(`https://ci-gsc.com/uni/${item.id}/`, item)
+      .put(`https://ci-gsc.com/product/${item.id}/`, item)
       .then((res) => this.success())
       .catch((err) => console.log(err));
     return;
   }
   axios
-    .post("https://ci-gsc.com/uni/", item)
+    .post("https://ci-gsc.com/product/", item)
     .then((res) => this.success())
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
     ;
@@ -277,7 +285,7 @@ render(){
                                 Revenue Type
                               </label>
                               <Select
-                                options={PGfee}
+                                options={RevenueType}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                                 border={false}
                                 name="revenue_type"  
@@ -290,24 +298,40 @@ render(){
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
+                          <div className="form-group">
                               <label
-                                htmlFor="select3"
+                                htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Duration
+                               Duration * 
                               </label>
-                              <Select
-                                options={Diplomafee}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="duration"  
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.duration.value}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="duration"
+                                placeholder="eg. Collarts"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.duration}
                               />
                             </div>
                           </div>
                           <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Approx Fee * 
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="approx_fee"
+                                placeholder="eg. Collarts"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.approx_fee}
+                              />
+                            </div>
                             <div className="form-group position-relative">
                               <label
                                 htmlFor="address"

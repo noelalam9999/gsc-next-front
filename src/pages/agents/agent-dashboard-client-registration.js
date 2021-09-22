@@ -1,9 +1,13 @@
 import React, { Component } from "react"
 
-import PageWrapper from "../components/PageWrapper";
-import { Select } from "../components/Core";
+import PageWrapper from "../../components/PageWrapper";
+import { Select } from "../../components/Core";
 import 'firebase/firestore';
 import axios from 'axios';
+import { AuthUserProvider, useAuth } from '../../../AuthUserContext';
+import {withRouter} from 'next/router'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 import {
   Form,
@@ -11,7 +15,7 @@ import {
   Input,
 
 } from "reactstrap";
-
+import PropTypes from "prop-types";
 
 
 const Semester = [
@@ -153,12 +157,39 @@ const StudyDestination = [
 ];
 
 class StudentRegistration extends Component {
+ 
 
+
+  async componentDidMount() {
+
+
+    
+    let user = await firebase.auth().currentUser;
+  console.log(user);
+    try {
+      
+      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
+      console.log(res)
+      const todoList = await res.json();
+      this.setState({
+        todoList
+      });
+    } catch (e) {
+      console.log(e);
+  }
+  } 
+  
+  
   constructor(props) {
+   
+
+ 
+
     super(props);
     this.state = {
       viewCompleted: false,
       activeItem: {
+        email:this.props.router.query.id,
         name:"",
         mobile:"",
         country:"",
@@ -181,18 +212,7 @@ class StudentRegistration extends Component {
 
 
   
-  async componentDidMount() {
-    try {
-      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
-      console.log(res)
-      const todoList = await res.json();
-      this.setState({
-        todoList
-      });
-    } catch (e) {
-      console.log(e);
-  }
-  }
+
 
   success = () => {
     alert("We have received your registration information. You will get a confirmation email shortly");
@@ -234,6 +254,8 @@ handleChange = (e) => {
 
   this.setState({ activeItem });
 };
+
+
 handleChangeSelect = (e) => {
   console.log(e)
 
@@ -246,6 +268,8 @@ handleChangeSelect = (e) => {
 };
 
 render(){
+ 
+  //this.state.activeItem.email = user.email;
   return (
     <>
 
@@ -584,7 +608,7 @@ render(){
   );
       }
 };
-export default StudentRegistration;
+export default withRouter(StudentRegistration);
 
 export const getCountries = [
   { 
