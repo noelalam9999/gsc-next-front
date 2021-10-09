@@ -145,19 +145,37 @@ console.log(List)
                 <div className="col-lg-6 mb-lg-0 mb-4">
                   <h3 className="font-size-6 mb-0">Clients Prospects</h3>
                 </div>
-                <div className="col-lg-6">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Job:</p>
-                    <div className="h-px-48">
-                      <Select
-                        options={defaultJobs}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                        border={false}
-                      />
+                <div className="col-lg-4">
+                      
+                      <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+                     
+                        
+                        <div className="h-px-48">
+                          <Select
+                            options={defaultJobs}
+                            className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
+                            border={false}
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                <div className="col-lg-2">
+                <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
+                    <Link
+                  
+                  href="/dashboard-main-add-client"
+                  // onClick={(e) => {
+                  //   e.preventDefault();
+                  //   gContext.toggleSignUpModal();
+                  // }}
+                ><a className={`btn btn-${gContext.header.variant} text-uppercase font-size-3`}>
+                  Add Client</a> 
+                </Link>
+                    </div>
+                    </div>
+               
               </div>
+            
               <div className="bg-white shadow-8 pt-7 rounded pb-8 px-11">
                 <div className="table-responsive">
                   <table className="table table-striped">
@@ -173,49 +191,76 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Added From
+                          Added By
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                         Tags
+                          Gender   
                         </th>
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >
-                          Rating
-                        </th>
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >
-                          Internal ID
-                        </th>
+                   
+                    
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Phone
                         </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Date of Birth  
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Passport </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Country</th>
+                            <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Address</th>
+                           <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Previous Qualification</th>
+                           <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >IELTS Band</th>
+                         <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Desired Level</th>
+                         <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Study Destination</th>
+                         <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Intended Semester</th>
+                         <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Desired Subject</th>
                         
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Passport Number</th>
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Current City</th>
                           <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Assignee</th>
-                          <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Followers</th>
+                          
 
 <th
                           scope="col"
@@ -242,7 +287,7 @@ console.log(List)
                       { List.map((item, index)=>(
                         <tr className="border border-color-2">
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
-                          <Link href="/candidate-profile">
+                          <Link href={`/student/`+item.id}>
                             <a className="media min-width-px-235 align-items-center">
                               <div className="circle-36 mr-6">
                                 <img src={imgP1} alt="" className="w-100" />
@@ -253,31 +298,86 @@ console.log(List)
                             </a>
                           </Link>
                         </th>
-                        <td className="table-y-middle py-7 min-width-px-235 pr-0">
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            Self
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.gender}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
                             {item.mobile}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                          {item.email}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                          {item.birth_date} / {item.birth_month} / {item.birth_year}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                        <div className="">
+                            <a
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-black-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                gContext.toggleApplicationModal();
+                              }}
+                            >
+                              View Passport
+                            </a>
+                          </div>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.country} 
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_month}
+                          {item.address1}, {item.address2} 
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_year}
+                          {item.prev_qualification}
                           </h3>
                         </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.IELTSBand}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.Desiredlevel}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.StudyDestination}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.IntendedSemester}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.DesiredSubject}
+                          </h3>
+                        </td>
+                      
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
                             <a

@@ -1,181 +1,61 @@
-import React, { Component } from "react"
-
+import React , { Component } from "react";
+import axios from 'axios';
 import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
 import 'firebase/firestore';
-import axios from 'axios';
-
-import {
-  Form,
-  FormGroup,
-  Input,
-
-} from "reactstrap";
 
 
-
-const Semester = [
-  {name:"semester", value: "jan", label: "Januray" },
-  { name:"semester", value: "feb", label: "February" },
-  {name:"semester", value: "march", label: "March" },
-  {name:"semester", value: "april", label: "April" },
-  {name:"semester", value: "may", label: "May" },
-  {name:"semester", value: "june", label: "June" },
-  {name:"semester", value: "july", label: "July" },
-  {name:"semester", value: "august", label: "August" },
-  { name:"semester", value: "sept", label: "September" },
-  {name:"semester", value: "oct", label: "October" },
-  {name:"semester", value: "nov", label: "November" },
-  {name:"semester", value: "december", label: "December" },
+const RevenueType = [
+  {name:"RevenueType", value: "rev", label: "Revenue From Client" },
+  {name:"RevenueType", value: "comm", label: "Commision from Partner" },
+ 
 ];
 
-const BirthMonth = [
-  {name:"birth_month", value: "jan", label: "Januray" },
-  { name:"birth_month", value: "feb", label: "February" },
-  {name:"birth_month", value: "march", label: "March" },
-  {name:"birth_month", value: "april", label: "April" },
-  {name:"birth_month", value: "may", label: "May" },
-  {name:"birth_month", value: "june", label: "June" },
-  {name:"birth_month", value: "july", label: "July" },
-  {name:"birth_month", value: "august", label: "August" },
-  { name:"birth_month", value: "sept", label: "September" },
-  {name:"birth_month", value: "oct", label: "October" },
-  {name:"birth_month", value: "nov", label: "November" },
-  {name:"birth_month", value: "december", label: "December" },
-];
-
-const BirthDate = [
-  {name:"birth_date", value: "1", label: "1" },
-  {name:"birth_date", value: "2", label: "2" },
-  {name:"birth_date", value: "3", label: "3" },
-  {name:"birth_date", value: "4", label: "4" },
-  {name:"birth_date", value: "5", label: "5" },
-  {name:"birth_date", value: "6", label: "6" },
-  {name:"birth_date", value: "7", label: "7" },
-  {name:"birth_date", value: "8", label: "8" },
-  {name:"birth_date", value: "9", label: "9" },
-  {name:"birth_date", value: "10", label: "10" },
-  {name:"birth_date", value: "11", label: "11" },
-  {name:"birth_date", value: "12", label: "12" },
-  {name:"birth_date", value: "13", label: "13" },
-  {name:"birth_date", value: "14", label: "14" },
-  {name:"birth_date", value: "15", label: "15" },
-  {name:"birth_date", value: "16", label: "16" },
-  {name:"birth_date", value: "17", label: "17" },
-  {name:"birth_date", value: "18", label: "18" },
-  {name:"birth_date", value: "19", label: "19" },
-  {name:"birth_date", value: "20", label: "20" },
-  {name:"birth_date", value: "21", label: "21" },
-  {name:"birth_date", value: "22", label: "22" },
-  {name:"birth_date", value: "23", label: "23" },
-  {name:"birth_date", value: "24", label: "24" },
-  {name:"birth_date", value: "25", label: "25" },
-  {name:"birth_date", value: "26", label: "26" },
-  {name:"birth_date", value: "27", label: "27" },
-  {name:"birth_date", value: "28", label: "28" },
-  {name:"birth_date", value: "29", label: "29" },
-  {name:"birth_date", value: "30", label: "30" },
-  {name:"birth_date", value: "31", label: "31" },
-];
-
-const IntendedSemester = [
-  {name:"IntendedSemester", value: "fall", label: "Fall" },
-  { name:"IntendedSemester", value: "spring", label: "Spring" },
-  {name:"IntendedSemester", value: "summer", label: "Summer" },
-
-];
-
-
-const BirthYear = [
-  {name:"birth_year", value: "1990", label: "1990" },
-  {name:"birth_year", value: "1991", label: "1991" },
-  {name:"birth_year", value: "1992", label: "1992" },
-  {name:"birth_year", value: "1993", label: "1993" },
-  {name:"birth_year", value: "1994", label: "1994" },
-  {name:"birth_year", value: "1995", label: "1995" },
-  {name:"birth_year", value: "1996", label: "1996" },
-  {name:"birth_year", value: "1997", label: "1997" },
-  {name:"birth_year", value: "1998", label: "1998" },
-  {name:"birth_year", value: "1999", label: "1999" },
-  {name:"birth_year", value: "2000", label: "2000" },
-  {name:"birth_year", value: "2001", label: "2001" },
-  {name:"birth_year", value: "2002", label: "2002" },
-  {name:"birth_year", value: "2003", label: "2003" },
-];
-const PreviousQualification = [
-  {name:"prev_qualification", value: 'HSC', label: 'HSC' },
-  {name:"prev_qualification", value: 'Alevel', label: 'Alevel' },
-  {name:"prev_qualification", value: 'undergrad', label: 'Undergraduate' },
-  {name:"prev_qualification", value: 'postgrad', label: 'Postgraduate' },
-  {name:"prev_qualification", value: 'diploma', label: 'Diploma' },
-  {name:"prev_qualification", value: 'other', label: 'Other' },
-]
-const Subject = [
-  {name:"DesiredSubject", value: "Engineering", label: "Engineering" },
-  {name:"DesiredSubject", value: "Science", label: "Science" },
-  {name:"DesiredSubject", value: "Business", label: "Business" },
-  {name:"DesiredSubject", value: "LiberalArts", label: "Liberal Arts" },
-  {name:"DesiredSubject", value: "Arts", label: "Arts" },
-  {name:"DesiredSubject", value: "other", label: "Other" },
-]
-const IELTSBand = [
-  {name:"IELTSBand", value: '3', label: '3' },
-  {name:"IELTSBand", value: '3.2', label: '3.2' },
-  {name:"IELTSBand", value: '3.4', label: '3.4' },
-  {name:"IELTSBand", value: '3.6', label: '3.6' },
-  {name:"IELTSBand", value: '3.8', label: '3.8' },
-  {name:"IELTSBand", value: '4', label: '4' },
-]
-
-const Desiredlevel = [
-  {name:"Desiredlevel", value: 'HSC', label: 'HSC' },
-  {name:"Desiredlevel", value: 'Alevel', label: 'Alevel' },
-  {name:"Desiredlevel", value: 'undergrad', label: 'Undergraduate' },
-  {name:"Desiredlevel", value: 'postgrad', label: 'Postgraduate' },
-  {name:"Desiredlevel", value: 'diploma', label: 'Diploma' },
-  {name:"Desiredlevel", value: 'other', label: 'Other' },
-]
-const Gender = [
-  {name:"gender", value: "male", label: "Male" },
-  {name:"gender", value: "female", label: "Female" },
-  {name:"gender", value: "other", label: "Other" },
+const ProductType = [
+  {name:"ProductType", value: "uni", label: "University Program" },
+  {name:"ProductType", value: "visa", label: "Visa Application" },
  
 ];
 
 
-const StudyDestination = [
-  {name:"StudyDestination", value: "uk", label: "U.K." },
-  {name:"StudyDestination", value: "usa", label: "U.S.A." },
-  {name:"StudyDestination", value: "cn", label: "Canada" },
-  {name:"StudyDestination", value: "aus", label: "Australia" },
-  {name:"StudyDestination", value: "europe", label: "Europe" },
-  {name:"StudyDestination", value: "malay", label: "Malaysia" },
+
+const IntakeMonth = [
+  {name:"IntakeMonth", value: "jan", label: "Januray" },
+  {name:"IntakeMonth", value: "feb", label: "February" },
+  {name:"IntakeMonth", value: "march", label: "March" },
+  {name:"IntakeMonth", value: "april", label: "April" },
+  {name:"IntakeMonth", value: "may", label: "May" },
+  {name:"IntakeMonth", value: "june", label: "June" },
+  {name:"IntakeMonth", value: "july", label: "July" },
+  {name:"IntakeMonth", value: "august", label: "August" },
+  {name:"IntakeMonth", value: "sept", label: "September" },
+  {name:"IntakeMonth", value: "oct", label: "October" },
+  {name:"IntakeMonth", value: "nov", label: "November" },
+  {name:"IntakeMonth", value: "december", label: "December" },
 ];
+
 
 class StudentRegistration extends Component {
 
   constructor(props) {
+
     super(props);
     this.state = {
       viewCompleted: false,
       activeItem: {
         name:"",
-        mobile:"",
-        country:"",
-        gender:"",
-        birth_date:"",
-        birth_month:"",
-        birth_year:"",
-        address1:"",
-        address2:"",
-        prev_qualification:"",
-        IELTSBand:"",
-        Desiredlevel:"",
-        StudyDestination:"",
-        IntendedSemester:"",
-        DesiredSubject:""
+        partner:"",
+        branches:"",
+        product_type:"",
+        revenue_type:"",
+        approx_fee:"",
+        intake_month:"",  
+        duration:"",
+        description:"",
+        
       },
-      todoList: []
+      todoList: [],
+      
       };
   }
 
@@ -183,7 +63,7 @@ class StudentRegistration extends Component {
   
   async componentDidMount() {
     try {
-      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
+      const res = await fetch('https://ci-gsc.com/uni/?format=json');
       console.log(res)
       const todoList = await res.json();
       this.setState({
@@ -194,35 +74,37 @@ class StudentRegistration extends Component {
   }
   }
 
-  success = () => {
-    alert("We have received your registration information. You will get a confirmation email shortly");
-  
-  }
 
 refreshList = () => {
   axios
-    .get("https://ci-gsc.com/students")
-    .then((res) => this.setState({ todoList: res.data }))
+    .get("https://ci-gsc.com/service")
+    .then((res) => this.success())
     .catch((err) => console.log(err));
 };
 
+success = () => {
+  alert("We have received your registration information. You will get a confirmation email shortly");
+
+}
 
 handleSubmit = (item) => {
   
 console.log(item)
   if (item.id) {
     axios
-      .put(`https://ci-gsc.com/students/${item.id}/`, item)
+      .put(`https://ci-gsc.com/product/${item.id}/`, item)
       .then((res) => this.success())
-      .catch((err) => alert("Please fillup the mandatory fields"));
+      .catch((err) => console.log(err));
     return;
   }
   axios
-    .post("https://ci-gsc.com/students/", item)
+    .post("https://ci-gsc.com/product  /", item)
     .then((res) => this.success())
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
     ;
 };
+
+
 
 
 handleChange = (e) => {
@@ -246,33 +128,48 @@ handleChangeSelect = (e) => {
 };
 
 render(){
-  return (
+
+
+   return (
     <>
-
-
       <PageWrapper
         headerConfig={{
           button: "profile",
-          isFluvalue: true,
+          isFluid: true,
           bgClass: "bg-default",
           reveal: false,
         }}
       >
-     
         <div
           className="dashboard-main-container mt-24 mt-lg-31"
-          value="dashboard-body"
+          id="dashboard-body"
         >
           <div className="container">
             <div className="mb-15 mb-lg-23">
               <div className="row">
                 <div className="col-xxxl-9 px-lg-13 px-6">
                   <h5 className="font-size-6 font-weight-semibold mb-11">
-                    Please fill up the details so we can find the right University for you
+                    Please fill up the details to add a new Service into the GSC Directory
                   </h5>
                   <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                    
-            
+                    {/* <div className="upload-file mb-16 text-center">
+                      <div
+                        id="userActions"
+                        className="square-144 m-auto px-6 mb-7"
+                      >
+                        <label
+                          htmlFor="fileUpload"
+                          className="mb-0 font-size-4 text-smoke"
+                        >
+                          University Logo
+                        </label>
+                        <input
+                          type="file"
+                          id="fileUpload"
+                          className="sr-only"
+                        />
+                      </div>
+                    </div> */}
                     <form action="/">
                       <fieldset>
                         <div className="row mb-xl-1 mb-9">
@@ -282,56 +179,33 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Name * 
+                                Service Name * 
                               </label>
                               <input
-                            
+                                type="text"
                                 className="form-control h-px-48"
                                 name="name"
-                                placeholder="Your Full Name"
+                                placeholder="eg. Collarts"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.name}
                               />
                             </div>
                           </div>
                           <div className="col-lg-6">
-                            <div className="form-group">
+                          <div className="form-group">
                               <label
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Country * 
+                                Partner * 
                               </label>
                               <Select
                                 options={getCountries}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                
                                 border={false}
-                                name="country"  
+                                name="partner"  
                                 onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.country.value}
-                                
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Mobile * 
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="mobile"
-                                placeholder="Your Phone Number with Country Code"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.mobile}
+                                value={this.state.activeItem.partner.value}
                               />
                             </div>
                           </div>
@@ -341,115 +215,18 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Gender * 
+                                Branches
                               </label>
                               <Select
-                                options={Gender}
+                                options={getCountries}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                                 border={false}
-                                name="gender"
+                                name="branches"  
                                 onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.gender.value}
+                                value={this.state.activeItem.branches.value}
                               />
                             </div>
                           </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Date * 
-                              </label>
-                              <Select
-                                options={BirthDate}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_date.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Month * 
-                              </label>
-                              <Select
-                                options={BirthMonth}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_month.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Year * 
-                              </label>
-                              <Select
-                              
-                                options={BirthYear}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_year.value}
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Address Line 1
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                              name="address1"
-                                placeholder="Your Street Address"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.address1}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Address Line 2
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                             name="address2"
-                                placeholder="Your City"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.address2}
-                              />
-                            </div>
-                          </div>
-                       
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
@@ -458,14 +235,16 @@ render(){
                                 htmlFor="select3"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                               Previous Qualification * 
+                                Product Type * 
                               </label>
                               <Select
-                                options={PreviousQualification}
+                                options={ProductType}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                                 border={false}
+                                name="product_type"  
                                 onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.prev_qualification.value}
+                                value={this.state.activeItem.product_type.value}
+                                    
                               />
                             </div>
                           </div>
@@ -475,14 +254,15 @@ render(){
                                 htmlFor="address"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                IELTS Band
+                                Revenue Type
                               </label>
                               <Select
-                                options={IELTSBand}
+                                options={RevenueType}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                                 border={false}
+                                name="revenue_type"  
                                 onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.IELTSBand.value}
+                                value={this.state.activeItem.revenue_type.value}
                               />
                               <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
@@ -490,85 +270,87 @@ render(){
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
+                          <div className="form-group">
                               <label
-                                htmlFor="select3"
+                                htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Desired Level
+                               Duration 
                               </label>
-                              <Select
-                                options={Desiredlevel}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                               
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.Desiredlevel.value}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="duration"
+                                placeholder="eg. Collarts"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.duration}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="address"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Study Destination * 
-                              </label>
-                              <Select
-                                options={StudyDestination}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.StudyDestination.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
+                          <div className="form-group">
                               <label
-                                htmlFor="select3"
+                                htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Intended Semester
+                              Intake Months
                               </label>
-                              <Select
-                                options={IntendedSemester}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.IntendedSemester.value}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="intake_month"
+                                placeholder="eg. Collarts"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.intake_month}
                               />
                             </div>
                           </div>
                           <div className="col-lg-6">
-                            <div className="form-group position-relative">
+                          <div className="form-group">
                               <label
-                                htmlFor="select2"
+                                htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                              Desired Subject * 
+                                Approx Fee * 
                               </label>
-                              <Select
-                                options={Subject}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.DesiredSubject.value}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="approx_fee"
+                                placeholder="eg. Collarts"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.approx_fee}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
-                          </div>
-                        </div>
                       
+                          </div>
+                        </div>
+                        <div className="row mb-8">
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Description
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="description"
+                                placeholder="+9901845671823"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.description}
+                              />
+                            </div>
+                          </div>
                        
+                        </div>
+                   
                         <input
                               type="button"
-                              value="Save"
-                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                              value="Add Uni"
+                              className="btn btn-green btn-h-60 text-white min-width-px-210 rounded-5 text-uppercase"
                               onClick={() => this.handleSubmit(this.state.activeItem)}
                          />
                       </fieldset>
@@ -585,6 +367,7 @@ render(){
       }
 };
 export default StudentRegistration;
+
 
 export const getCountries = [
   { 

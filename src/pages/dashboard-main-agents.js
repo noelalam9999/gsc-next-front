@@ -132,7 +132,7 @@ console.log(List)
                 <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
                     <Link
                   
-                  href="/dashboard-agent-registration"
+                  href="/dashboard-main-add-agent"
                   // onClick={(e) => {
                   //   e.preventDefault();
                   //   gContext.toggleSignUpModal();

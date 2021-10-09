@@ -107,7 +107,7 @@ export const menuItems = [
     ],
   },
   {
-    name: "registration-redirect",
+    name: "registration",
     label: "Sign Up"
 
   },

@@ -159,6 +159,7 @@ class StudentRegistration extends Component {
     this.state = {
       viewCompleted: false,
       activeItem: {
+        email:"",
         name:"",
         mobile:"",
         country:"",
@@ -329,9 +330,27 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                                 name="mobile"
-                                placeholder="Your Phone Number with Country Code"
+                                placeholder="Client's Phonenumber with Country Code"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.mobile}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Email * 
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="email"
+                                placeholder="Clients Active Email Address"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.email}
                               />
                             </div>
                           </div>
@@ -425,7 +444,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                               name="address1"
-                                placeholder="Your Street Address"
+                                placeholder="Client's Street Address"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.address1}
                               />
@@ -443,7 +462,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                              name="address2"
-                                placeholder="Your City"
+                                placeholder="Client's City"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.address2}
                               />
@@ -513,7 +532,7 @@ render(){
                                 htmlFor="address"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                               Study Destination * 
+                               Desired Study Destination * 
                               </label>
                               <Select
                                 options={StudyDestination}

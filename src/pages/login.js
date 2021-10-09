@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -7,17 +7,99 @@ import { useAuth } from '../../AuthUserContext';
 import {Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
 
 export default function Login() {
+
+  const [List, setList] = useState([]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
+  const [userList, setUserList] = useState([]);
   const { signInWithEmailAndPassword } = useAuth();
+
+  useEffect(() =>  {
+
+    async function fetchMyAPI() {
+    try {
+
+      const res = await fetch('https://ci-gsc.com/students/?format=json');
+  
+      const todoList = await res.json();
+      setList(todoList)
+ 
+      // const user_list = await fetch('https://ci-gsc.com/user/?format=json')
+        
+      // const UserList = await user_list.json();
+      // await setUserList(UserList)
+
+
+      // for(var i = 0; i<userList.length; i++){
+      //   if(userList[i]['email'] == authUser.email){
+      //         await setUserType(userList[i]['usertype'])
+              
+      //   }
+      //   }
+
+
+      
+    } catch (e) {
+      console.log(e);
+  }
+    }
+    
+    async function fetchMyAPI2() {
+      
+      try {
+        const user_list = await fetch('https://ci-gsc.com/user/?format=json')
+        
+        const UserList = await user_list.json();
+        await setUserList(UserList)
+    
+          console.log(typeof userType)
+     
+      } catch (e) {
+        console.log(e);
+    }
+
+      }
+
+ fetchMyAPI()
+ fetchMyAPI2()
+
+
+  },[])
+
 
   const onSubmit = event => {
     setError(null)
     signInWithEmailAndPassword(email, password)
-    .then(authUser => {
-      router.push('/dashboard-main');
+    .then(authUser => {  
+      router.push('/decision');
+
+      // for(var i = 0; i<userList.length; i++){
+      //   console.log("inside forloop")
+      //   if(userList[i]['email'] == authUser.email){
+      //         if(userList[i]['usertype']== "student"){
+      //           router.push('/dashboard-main');
+      //         }
+      //         else if(userList[i]['usertype']== "agent"){
+      //           router.push('/agents/agent-dashboard');
+      //         }
+      //         else if(userList[i]['usertype']== "institute"){
+      //           router.push('/dashboard-main');
+      //         }
+              
+      //         else if(userList[i]['usertype']== "service_provider"){
+      //           router.push('/dashboard-main');
+      //         }
+
+              
+              
+      //   }  
+
+        
+      //   }
+      
     })
     .catch(error => {
       setError(error.message)

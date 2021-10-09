@@ -38,7 +38,7 @@ const Footer = () => {
                 <div className="btns d-flex justify-content-xl-end justify-content-center align-items-xl-center flex-wrap h-100  mx-n4">
                   <a
                     className="btn btn-outline-gallery btn-xl mx-4 mt-6 text-uppercase"
-                    href="/#"
+                    href="/login"
                     onClick={(e) => {
                       e.preventDefault();
                       gContext.toggleSignInModal();
@@ -48,7 +48,7 @@ const Footer = () => {
                   </a>
                   <a
                     className="btn btn-green btn-h-60 btn-xl mx-4 mt-6 text-uppercase"
-                    href="/#"
+                    href="/registration"
                     onClick={(e) => {
                       e.preventDefault();
                       gContext.toggleSignUpModal();

@@ -77,7 +77,7 @@ console.log(List)
                 <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
                     <Link
                   
-                  href="/dashboard-add-product"
+                  href="/dashboard-main-add-product"
                   // onClick={(e) => {
                   //   e.preventDefault();
                   //   gContext.toggleSignUpModal();
@@ -151,7 +151,7 @@ console.log(List)
                       { List.map((item, index)=>(
                         <tr className="border border-color-2">
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
-                          <Link href="/candidate-profile">
+                          <Link href={`/products/`+item.id}> 
                             <a className="media min-width-px-235 align-items-center">
                               <div className="circle-36 mr-6">
                                 <img src={imgP1} alt="" className="w-100" />

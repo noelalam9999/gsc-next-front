@@ -77,7 +77,7 @@ console.log(List)
                 <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
                     <Link
                   
-                  href="/dashboard-add-service"  
+                  href="/dashboard-main-add-service"  
                   // onClick={(e) => {
                   //   e.preventDefault();
                   //   gContext.toggleSignUpModal();
@@ -103,67 +103,49 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Added From
+                          Partner
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                         Tags
+                         Branches
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Rating
+                          Service Type
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Internal ID
+                          Revenue Type
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Phone
+                          Approximate fee
                         </th>
                         
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
-                        >Passport Number</th>
+                        >Duration</th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
-                        >Current City</th>
-                          <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Assignee</th>
-                          <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Followers</th>
+                        >Description</th>
+                         
+                         
 
-<th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Status</th>
-                          <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Applications</th>
-                         <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Last Updated</th>
 
-<th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Preffered Intake</th>
+                         
+                        
+
+
                       
                       </tr>
                     </thead>
@@ -172,7 +154,7 @@ console.log(List)
                       { List.map((item, index)=>(
                         <tr className="border border-color-2">
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
-                          <Link href="/candidate-profile">
+                          <Link href={`/services/`+item.id}>
                             <a className="media min-width-px-235 align-items-center">
                               <div className="circle-36 mr-6">
                                 <img src={imgP1} alt="" className="w-100" />

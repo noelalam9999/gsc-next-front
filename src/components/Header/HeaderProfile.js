@@ -22,7 +22,7 @@ const SiteHeader = styled.header`
   padding: 10px 0 10px 0;
   position: absolute !important;
   top: 0;
-  right: 0;
+  right: 0;   mn
   width: 100%;
   z-index: 999;
   @media ${device.lg} {
