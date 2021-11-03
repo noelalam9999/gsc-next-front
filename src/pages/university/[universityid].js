@@ -2,26 +2,19 @@ import React from "react";
 import { Nav, Tab } from "react-bootstrap";
 import Link from "next/link";
 import PageWrapper from "../../components/PageWrapper";
-
 import imgF1 from "../../assets/image/l2/png/featured-job-logo-1.png";
 import imgF2 from "../../assets/image/l2/png/featured-job-logo-2.png";
 import imgF3 from "../../assets/image/l2/png/featured-job-logo-3.png";
 import imgF4 from "../../assets/image/l2/png/featured-job-logo-4.png";
 import imgF5 from "../../assets/image/l2/png/featured-job-logo-5.png";
-
 import imgB1 from "../../assets/image/l1/png/feature-brand-1.png";
 import imgB2 from "../../assets/image/l1/png/feature-brand-4.png";
 import imgB3 from "../../assets/image/l1/png/feature-brand-5.png";
 import imgB4 from "../../assets/image/l3/png/github-mark.png";
-
-
-
 import imgF from "../../assets/image/svg/icon-fire-rounded.svg";
 import iconL from "../../assets/image/svg/icon-loaction-pin-black.svg";
 import iconS from "../../assets/image/svg/icon-suitecase.svg";
 import iconC from "../../assets/image/svg/icon-clock.svg";
-
-
 import imgB5 from "../../assets/image/l3/png/universal.png";
 
 const CompanyProfile = () => {
@@ -46,7 +39,7 @@ const CompanyProfile = () => {
               </div>
             </div>
             {/* <!-- back Button End --> */}
-            <div className="row ">
+            <div className="row">
               {/* <!-- Company Profile --> */}
               <div className="col-12 col-xl-9 col-lg-8">
                 <div className="bg-white rounded-4 pt-11 shadow-9">
@@ -69,7 +62,7 @@ const CompanyProfile = () => {
                         </Link>
                       </h2>
                       <span className="mb-0 text-gray font-size-4">
-                        UK
+                        Canada
                       </span>
                     </div>
                   </div>

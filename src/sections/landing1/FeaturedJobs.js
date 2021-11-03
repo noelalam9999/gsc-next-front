@@ -132,7 +132,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
-                        Work White Studying
+                        Work While Studying
                       </a>
                     </Link>
                   </li>
@@ -141,12 +141,12 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/signup">
+                  <Link href="/registration">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -243,7 +243,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
-                        Work White Studying
+                        Work While Studying
                       </a>
                     </Link>
                   </li>
@@ -252,12 +252,12 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -352,7 +352,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
-                        Work White Studying
+                        Work While Studying
                       </a>
                     </Link>
                   </li>
@@ -361,12 +361,12 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -461,7 +461,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
-                        Work White Studying
+                        Work While Studying
                       </a>
                     </Link>
                   </li>
@@ -470,12 +470,12 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -570,7 +570,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
-                        Work White Studying
+                        Work While Studying
                       </a>
                     </Link>
                   </li>
@@ -579,12 +579,12 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -679,7 +679,7 @@ const FeaturedJobs = () => {
                     <Link href="/#">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
-                        Work White Studying
+                        Work While Studying
                       </a>
                     </Link>
                   </li>
@@ -688,12 +688,12 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it

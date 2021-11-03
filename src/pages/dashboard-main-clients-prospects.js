@@ -13,11 +13,10 @@ import imgP4 from "../assets/image/table-one-profile-image-4.png";
 import imgP5 from "../assets/image/table-one-profile-image-5.png";
 
 const defaultJobs = [
-  { value: "pd", label: "Product Designer" },
-  { value: "gd", label: "Graphics Designer" },
-  { value: "fd", label: "Frontend Developer" },
-  { value: "bd", label: "Backend Developer" },
-  { value: "cw", label: "Content Writer" },
+  { value: "pd", label: "Under-graduate" },
+  { value: "gd", label: "Post-Graduate" },
+  { value: "fd", label: "Diploma" },
+  
 ];
 
 const DashboardMain = () => {

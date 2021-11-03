@@ -30,7 +30,7 @@ const CandidateProfile = () => {
             <div className="row justify-content-center">
               <div className="col-12 dark-mode-texts">
                 <div className="mb-9">
-                  <Link href="/#">
+                  <Link href="/dashboard-main-clients">
                     <a className="d-flex align-items-center ml-4">
                       <i className="icon icon-small-left bg-white circle-40 mr-5 font-size-7 text-black font-weight-bold shadow-8"></i>
                       <span className="text-uppercase font-size-3 font-weight-bold text-gray">
@@ -80,88 +80,108 @@ const CandidateProfile = () => {
                         {/* <!-- Excerpt Start --> */}
                         <div className="pr-xl-0 pr-xxl-14 p-5 px-xs-12 pt-7 pb-5">
                           <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
-                            About
+                            Qualifications
                           </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  Alevels
+                                </a>
+                              </Link>
+                            </li>
+                       
+                          
+                       
+                        
+                          </ul>
                           <p className="font-size-4 mb-8">
-                              Student ID - {studentId}
-                            A talented professional with an academic background
-                            in IT and proven commercial development experience
-                            as C++ developer since 1999. Has a sound knowledge
-                            of the software development life cycle. Was involved
-                            in more than 140 software development outsourcing
-                            projects.
-                          </p>
-                          <p className="font-size-4 mb-8">
-                            Programming Languages: C/C++, .NET C++, Python,
-                            Bash, Shell, PERL, Regular expressions, Python,
-                            Active-script.
+                           
                           </p>
                         </div>
                         {/* <!-- Excerpt End --> */}
                         {/* <!-- Skills --> */}
                         <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
                           <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
-                            Skills
+                            IELTS Band
                           </h4>
                           <ul className="list-unstyled d-flex align-items-center flex-wrap">
                             <li>
                               <Link href="/#">
                                 <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  Agile
+                                  5.6
                                 </a>
                               </Link>
                             </li>
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  Wireframing
-                                </a>
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  Prototyping
-                                </a>
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  Information
-                                </a>
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  Waterfall Model
-                                </a>
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  New Layout
-                                </a>
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  Browsing
-                                </a>
-                              </Link>
-                            </li>
+                          
                           </ul>
                         </div>
-                        {/* <!-- Skills End --> */}
-                        {/* <!-- Card Section Start --> */}
-                        <div className="border-top p-5 pl-xs-12 pt-7 pb-5">
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Desired Level
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  Under-grad
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Study Destination
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  UK
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Intended Semester 
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  Summer
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Desired Subject
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  Physics
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+
+                        {/* <div className="border-top p-5 pl-xs-12 pt-7 pb-5">
                           <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
                             Work Exprerience
                           </h4>
-                          {/* <!-- Single Card --> */}
+                     
                           <div className="w-100">
                             <div className="d-flex align-items-center pr-11 mb-9 flex-wrap flex-sm-nowrap">
                               <div className="square-72 d-block mr-8 mb-7 mb-sm-0">
@@ -203,8 +223,7 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          {/* <!-- Single Card End --> */}
-                          {/* <!-- Single Card --> */}
+                     
                           <div className="w-100">
                             <div className="d-flex align-items-center pr-11 mb-9 flex-wrap flex-sm-nowrap">
                               <div className="square-72 d-block mr-8 mb-7 mb-sm-0">
@@ -246,13 +265,13 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          {/* <!-- Single Card End --> */}
-                        </div>
+                    
+                        </div> */}
                         {/* <!-- Card Section End --> */}
                         {/* <!-- Card Section Start --> */}
                         <div className="border-top p-5 pl-xs-12 pt-7 pb-5">
                           <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
-                            Education
+                            Eligible Universities
                           </h4>
                           {/* <!-- Single Card --> */}
                           <div className="w-100">
@@ -274,11 +293,7 @@ const CandidateProfile = () => {
                                   </a>
                                 </Link>
                                 <div className="d-flex align-items-center justify-content-md-between flex-wrap">
-                                  <Link href="/#">
-                                    <a className="font-size-3 text-gray mr-5">
-                                      Jun 2017 - April 2020- 3 years
-                                    </a>
-                                  </Link>
+                                
                                   <Link href="/#">
                                     <a className="font-size-3 text-gray">
                                       <span
@@ -317,11 +332,7 @@ const CandidateProfile = () => {
                                   </a>
                                 </Link>
                                 <div className="d-flex align-items-center justify-content-md-between flex-wrap">
-                                  <Link href="/#">
-                                    <a className="font-size-3 text-gray mr-5">
-                                      Fed 2012 - April 2016 - 4 years
-                                    </a>
-                                  </Link>
+                                 
                                   <Link href="/#">
                                     <a className="font-size-3 text-gray">
                                       <span
@@ -425,7 +436,7 @@ const CandidateProfile = () => {
               <div className="col-12 col-xxl-3 col-md-4 offset-xxl-0 offset-lg-4 offset-md-5 order-3 order-xl-2 mt-xxl-0 mt-md-12">
                 <div className="pl-lg-5">
                   <h4 className="font-size-6 font-weight-semibold mb-0">
-                    Other experts
+                    Other Students
                   </h4>
                   <ul className="list-unstyled">
                     {/* <!-- Single List --> */}
@@ -444,7 +455,7 @@ const CandidateProfile = () => {
                               David Herison
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              UX/UI Designer
+                              GED
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -471,7 +482,7 @@ const CandidateProfile = () => {
                               Mark Zanitos
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Lead Product Designer
+                             Alevels
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -498,7 +509,7 @@ const CandidateProfile = () => {
                               Anna Frankin
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Visual Designer
+                              Graduate
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -525,7 +536,7 @@ const CandidateProfile = () => {
                               Jhony Vino
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Creative Director
+                              Graduate
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -552,7 +563,7 @@ const CandidateProfile = () => {
                               Aniasta Hemberg
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Creative Director
+                              Alevels
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />

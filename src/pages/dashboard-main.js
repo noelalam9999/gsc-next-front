@@ -13,11 +13,11 @@ import imgP4 from "../assets/image/table-one-profile-image-4.png";
 import imgP5 from "../assets/image/table-one-profile-image-5.png";
 
 const defaultJobs = [
-  { value: "pd", label: "Product Designer" },
-  { value: "gd", label: "Graphics Designer" },
-  { value: "fd", label: "Frontend Developer" },
-  { value: "bd", label: "Backend Developer" },
-  { value: "cw", label: "Content Writer" },
+  { value: "pd", label: "Australia" },
+  { value: "gd", label: "Canada" },
+  { value: "fd", label: "America" },
+  { value: "bd", label: "U.K." },
+  { value: "cw", label: "Europe" },
 ];
 
 const DashboardMain = () => {
@@ -249,7 +249,7 @@ const DashboardMain = () => {
                 </div>
                 <div className="col-lg-6">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Job:</p>
+                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Country:</p>
                     <div className="h-px-48">
                       <Select
                         options={defaultJobs}
@@ -346,7 +346,7 @@ const DashboardMain = () => {
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.birth_date}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">

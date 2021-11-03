@@ -13,11 +13,10 @@ import imgP4 from "../assets/image/table-one-profile-image-4.png";
 import imgP5 from "../assets/image/table-one-profile-image-5.png";
 
 const defaultJobs = [
-  { value: "pd", label: "Product Designer" },
-  { value: "gd", label: "Graphics Designer" },
-  { value: "fd", label: "Frontend Developer" },
-  { value: "bd", label: "Backend Developer" },
-  { value: "cw", label: "Content Writer" },
+  { value: "pd", label: "Under-graduate" },
+  { value: "gd", label: "Post-Graduate" },
+  { value: "fd", label: "Diploma" },
+  
 ];
 
 const DashboardMain = () => {
@@ -323,6 +322,7 @@ console.log(List)
                           {item.birth_date} / {item.birth_month} / {item.birth_year}
                           </h3>
                         </td>
+                        
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                         <div className="">
                             <a
@@ -377,7 +377,32 @@ console.log(List)
                           {item.DesiredSubject}
                           </h3>
                         </td>
-                      
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.email}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.email}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.email}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.email}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                          {item.email}
+                          </h3>
+                        </td>
+                     
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
                             <a

@@ -13,10 +13,11 @@ import imgP4 from "../assets/image/table-one-profile-image-4.png";
 import imgP5 from "../assets/image/table-one-profile-image-5.png";
 
 const defaultJobs = [
-  { value: "pd", label: "Under-graduate" },
-  { value: "gd", label: "Post-Graduate" },
-  { value: "fd", label: "Diploma" },
-  
+  { value: "pd", label: "Product Designer" },
+  { value: "gd", label: "Graphics Designer" },
+  { value: "fd", label: "Frontend Developer" },
+  { value: "bd", label: "Backend Developer" },
+  { value: "cw", label: "Content Writer" },
 ];
 
 const DashboardMain = () => {
@@ -54,11 +55,11 @@ console.log(List)
       >
         <div className="dashboard-main-container mt-25 mt-lg-31">
           <div className="container">
-            <div className="row mb-7">
+            <div className="row mb-1">
               <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-4">
                 {/* <!-- Single Category --> */}
                 <a
-                  href="/dashboard-main-clients-prospects"
+                  href="/dashboard-main-teams-offices"
                   className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
                 >
                   {/* <div className="text-blue bg-blue-opacity-1 circle-56 font-size-6 mr-7">
@@ -74,7 +75,7 @@ console.log(List)
                       </LazyLoad>
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray mb-0">
-                   Prospects
+                  Offices
                     </p>
                   </div>
                 </a>
@@ -83,7 +84,7 @@ console.log(List)
               <div className="col-xxl-3 col-xl-4 col-lg-3 col-sm-3">
                 {/* <!-- Single Category --> */}
                 <a
-                  href="/dashboard-main-clients"
+                  href="/dashboard-main-teams-users"
                   className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
                 >
                   {/* <div className="text-pink bg-pink-opacity-1 circle-56 font-size-6 mr-7">
@@ -99,82 +100,73 @@ console.log(List)
                       </LazyLoad>
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Clients
+                     Users
                     </p>
                   </div>
                 </a>
                 {/* <!-- End Single Category --> */}
               </div>
-              <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-3">
+              <div className="col-xxl-3 col-xl-4 col-lg-3 col-sm-3">
                 {/* <!-- Single Category --> */}
                 <a
-                  href="/#"
+                  href="/dashboard-main-teams-roles"
                   className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
                 >
-                  {/* <div className="text-orange bg-orange-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-eye"></i>
+                  {/* <div className="text-pink bg-pink-opacity-1 circle-56 font-size-6 mr-7">
+                    <i className="fas fa-user"></i>
                   </div> */}
                   {/* <!-- Category Content --> */}
                   <div className="">
                     <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
                       <LazyLoad>
                         <span className="counter">
-                          <CountUp
-                            duration={4}
-                            decimal="."
-                            decimals={1}
-                            end={16.5}
-                          />
+                          <CountUp duration={4} end={256} />
                         </span>
-                        K
                       </LazyLoad>
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Archived
+                     Roles
                     </p>
                   </div>
                 </a>
                 {/* <!-- End Single Category --> */}
               </div>
-        
+          
+     
           
             </div>
             <div className="mb-14">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
-                  <h3 className="font-size-6 mb-0">Clients Archived</h3>
+                  <h3 className="font-size-6 mb-0">Users</h3>
                 </div>
-                <div className="col-lg-4">
-                      
-                      <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                     
-                        
-                        <div className="h-px-48">
-                          <Select
-                            options={defaultJobs}
-                            className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                            border={false}
-                          />
-                        </div>
-                      </div>
+                <div className="col-lg-6">
+                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Job:</p>
+                    <div className="h-px-48">
+                      <Select
+                        options={defaultJobs}
+                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
+                        border={false}
+                      />
                     </div>
+                  </div>
+                </div>
                 <div className="col-lg-2">
                 <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
                     <Link
                   
-                  href="/dashboard-main-add-client"
+                  href="/dashboard-main-add-moderator"
                   // onClick={(e) => {
                   //   e.preventDefault();
                   //   gContext.toggleSignUpModal();
                   // }}
                 ><a className={`btn btn-${gContext.header.variant} text-uppercase font-size-3`}>
-                  Add Client</a> 
+                  Add Moderator</a> 
                 </Link>
                     </div>
                     </div>
-               
               </div>
-            
               <div className="bg-white shadow-8 pt-7 rounded pb-8 px-11">
                 <div className="table-responsive">
                   <table className="table table-striped">
@@ -190,95 +182,21 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Added By
+                         Position
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Gender   
-                        </th>
-                   
-                    
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >
-                          Phone
+                         Office
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Email
+                          Role
                         </th>
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >
-                          Date of Birth  
-                        </th>
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Passport </th>
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Country</th>
-                            <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Address</th>
-                           <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Previous Qualification</th>
-                           <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >IELTS Band</th>
-                         <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Desired Level</th>
-                         <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Study Destination</th>
-                         <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Intended Semester</th>
-                         <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Desired Subject</th>
-                        
-                          <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Assignee</th>
-                          
-
-<th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Status</th>
-                          <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Applications</th>
-                         <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Last Updated</th>
-
-<th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Preffered Intake</th>
-                      
+                     
                       </tr>
                     </thead>
                     <tbody>
@@ -286,7 +204,7 @@ console.log(List)
                       { List.map((item, index)=>(
                         <tr className="border border-color-2">
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
-                          <Link href={`/student/`+item.id}>
+                          <Link href="/candidate-profile">
                             <a className="media min-width-px-235 align-items-center">
                               <div className="circle-36 mr-6">
                                 <img src={imgP1} alt="" className="w-100" />
@@ -295,88 +213,33 @@ console.log(List)
                                 {item.name}
                               </h4>
                             </a>
-                          </Link>     
+                          </Link>
                         </th>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            Self
-                          </h3>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.gender}
-                          </h3>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                        <td className="table-y-middle py-7 min-width-px-235 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
                             {item.mobile}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.email}
+                            {item.country}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.birth_date} / {item.birth_month} / {item.birth_year}
-                          </h3>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                        <div className="">
-                            <a
-                              href="/#"
-                              className="font-size-3 font-weight-bold text-black-2 text-uppercase"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                gContext.toggleApplicationModal();
-                              }}
-                            >
-                              View Passport
-                            </a>
-                          </div>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.country} 
+                            {item.country}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.address1}, {item.address2} 
+                            {item.birth_month}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.prev_qualification}
+                            {item.birth_year}
                           </h3>
                         </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.IELTSBand}
-                          </h3>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.Desiredlevel}
-                          </h3>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.StudyDestination}
-                          </h3>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.IntendedSemester}
-                          </h3>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                          {item.DesiredSubject}
-                          </h3>
-                        </td>
-                      
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
                             <a

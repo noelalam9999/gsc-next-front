@@ -2,7 +2,7 @@ import React, { useContext, useEffect,useState } from "react";
 import { Nav, Tab } from "react-bootstrap";
 import Link from "next/link";
 import PageWrapper from "../../components/PageWrapper";
-import ProfileSidebar from "../../components/ProfileSidebar";
+import ProfileSidebarAgent from "../../components/ProfileSidebar/ProfileSidebarAgent";
 import {useRouter} from 'next/router'
 import imgB1 from "../../assets/image/l2/png/featured-job-logo-1.png";
 import imgB2 from "../../assets/image/l1/png/feature-brand-1.png";
@@ -84,7 +84,7 @@ const CandidateProfile = () => {
             <div className="row">
               {/* <!-- Left Sidebar Start --> */}
               <div className="col-12 col-xxl-3 col-lg-4 col-md-5 mb-11 mb-lg-0">
-                <ProfileSidebar />
+                <ProfileSidebarAgent />
               </div>
               {/* <!-- Left Sidebar End --> */}
               {/* <!-- Middle Content --> */}
@@ -126,6 +126,7 @@ const CandidateProfile = () => {
                           </p>
                           
                         </div>
+                   
                         {/* <!-- Excerpt End --> */}
                         {/* <!-- Skills --> */}
                         <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
@@ -136,7 +137,88 @@ const CandidateProfile = () => {
                             <li>
                               <Link href="/#">
                                 <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
-                                  Agile
+                                  Consultancy, Ticketing
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Certifications
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                 Certificate 1
+                                </a>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                 Certificate 2
+                                </a>
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Services
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  Consultancy, Ticketing
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                          Associations
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  FDBC, ARCB
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                          Consultancy fee
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  FDBC, ARCB
+                                </a>
+                              </Link>
+                            </li>
+                          
+                          </ul>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                          Students Sent Abroad
+                          </h4>
+                          <ul className="list-unstyled d-flex align-items-center flex-wrap">
+                            <li>
+                              <Link href="/#">
+                                <a className="bg-polar text-black-2  mr-6 px-7 mt-2 mb-2 font-size-3 rounded-3 min-height-32 d-flex align-items-center">
+                                  34
                                 </a>
                               </Link>
                             </li>
@@ -145,11 +227,11 @@ const CandidateProfile = () => {
                         </div>
                         {/* <!-- Skills End --> */}
                         {/* <!-- Card Section Start --> */}
-                        <div className="border-top p-5 pl-xs-12 pt-7 pb-5">
+                        {/* <div className="border-top p-5 pl-xs-12 pt-7 pb-5">
                           <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
                             Certifications
                           </h4>
-                          {/* <!-- Single Card --> */}
+                      
                           <div className="w-100">
                             <div className="d-flex align-items-center pr-11 mb-9 flex-wrap flex-sm-nowrap">
                               <div className="square-72 d-block mr-8 mb-7 mb-sm-0">
@@ -191,18 +273,15 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          {/* <!-- Single Card End --> */}
-                          {/* <!-- Single Card --> */}
-                         
-                          {/* <!-- Single Card End --> */}
-                        </div>
+                    
+                        </div> */}
                         {/* <!-- Card Section End --> */}
                         {/* <!-- Card Section Start --> */}
-                        <div className="border-top p-5 pl-xs-12 pt-7 pb-5">
+                        {/* <div className="border-top p-5 pl-xs-12 pt-7 pb-5">
                           <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
                             Agency Groups
                           </h4>
-                          {/* <!-- Single Card --> */}
+                       
                           <div className="w-100">
                             <div className="d-flex align-items-center pr-11 mb-9 flex-wrap flex-sm-nowrap">
                               <div className="square-72 d-block mr-8 mb-7 mb-sm-0">
@@ -244,11 +323,8 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          {/* <!-- Single Card End --> */}
-                          {/* <!-- Single Card --> */}
-                          
-                          {/* <!-- Single Card End --> */}
-                        </div>
+                     
+                        </div> */}
                         {/* <!-- Card Section End --> */}
                       </Tab.Pane>
                       <Tab.Pane eventKey="two">
@@ -333,7 +409,7 @@ const CandidateProfile = () => {
               <div className="col-12 col-xxl-3 col-md-4 offset-xxl-0 offset-lg-4 offset-md-5 order-3 order-xl-2 mt-xxl-0 mt-md-12">
                 <div className="pl-lg-5">
                   <h4 className="font-size-6 font-weight-semibold mb-0">
-                    Other experts
+                    Other Agents
                   </h4>
                   <ul className="list-unstyled">
                     {/* <!-- Single List --> */}
@@ -352,7 +428,7 @@ const CandidateProfile = () => {
                               David Herison
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              UX/UI Designer
+                              ABC Consulting
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -379,7 +455,7 @@ const CandidateProfile = () => {
                               Mark Zanitos
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Lead Product Designer
+                              Gro fast Consulting
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -406,7 +482,7 @@ const CandidateProfile = () => {
                               Anna Frankin
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Visual Designer
+                              Visualize Consulting
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -433,7 +509,7 @@ const CandidateProfile = () => {
                               Jhony Vino
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Creative Director
+                              Study Abroad ABC
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />
@@ -460,7 +536,7 @@ const CandidateProfile = () => {
                               Aniasta Hemberg
                             </h4>
                             <p className="mb-0 font-size-3 heading-default-color">
-                              Creative Director
+                              GIC Consulting
                             </p>
                             <span className="font-size-3 text-smoke">
                               <img className="mr-2" src={imgL} alt="" />

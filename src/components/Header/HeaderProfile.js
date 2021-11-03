@@ -10,7 +10,7 @@ import Offcanvas from "../Offcanvas";
 import NestedMenu from "../NestedMenu";
 import { device } from "../../utils";
 import Logo from "../Logo";
-import { menuItems } from "./menuItems";
+import { menuItems } from "./menuItemsProfile";
 import { useAuth } from '../../../AuthUserContext';
 import imgP from "../../assets/image/header-profile.png";
 

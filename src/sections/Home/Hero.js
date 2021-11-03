@@ -22,12 +22,12 @@ const Hero = () => {
         <div  className="home-main pos-abs-tr  z-index-n2">
           <img src={imgP} alt="" className="" />
         </div>
-        <div  className="flip-canada pos-abs-tr  z-index-n2">
+        <div  className="flip-canada pos-abs-tr z-index-n2">
           <img src={imgQ} alt="" className="" />
         </div>
         {/* <!-- ./Hero pattern --> */}
         <div className="container">
-          <div  className="row position-relative align-items-center">
+          <div  className="row pullup position-relative align-items-center">
             <div
               className="col-xxl-6 col-xl-7 col-lg-8 col-md-12 pt-lg-13 pb-lg-33 pb-xl-34 pb-md-33 pb-10"
               data-aos="fade-right"
@@ -38,7 +38,7 @@ const Hero = () => {
               Find the most promising Study Destinations!
               </h1>
               <div className="home-main">
-              <p style={{width:"330px"}} className="home-main font-size-5">
+              <p style={{color:"black", width:"330px"}} className="home-main font-size-5">
                   For over 30 years, Global Study Contacts has been the ‘home’ of overseas university applications, assisting self-funded students<br/> through the entire university application process.
                   </p>
                   </div>

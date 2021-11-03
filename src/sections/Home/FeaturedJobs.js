@@ -135,7 +135,7 @@ const FeaturedJobs = () => {
                 </ul>
                
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/registration">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>

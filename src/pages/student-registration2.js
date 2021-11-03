@@ -1,24 +1,525 @@
-import React, { Component } from "react"
-
-import PageWrapper from "../components/PageWrapper";
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Select } from "../components/Core";
-import 'firebase/firestore';
+//import Select from 'react-select';
+import Link from 'next/link';
+import { useAuth } from '../../AuthUserContext';
 import axios from 'axios';
-import { AuthUserProvider, useAuth, useAuthforClass } from '../../AuthUserContext';
-import {withRouter} from 'next/router'
-import firebase from "firebase/app";
+import {Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
+import PageWrapper from "../components/PageWrapper";
 import "firebase/auth";
+import firebase from "firebase/app";
 
-import {
-  Form,
-  FormGroup,
-  Input,
+
+const SignUp = () => {
+ 
+  const { authUser, loading,signOut } = useAuth();
+  let user = firebase.auth().currentUser;
+const email = authUser
+  //const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [country, setCountry] = useState([]);
+  const [mobile, setMobile] = useState([]);
+  const [gender, setGender] = useState([]);
+  const [BirthDate, setBirthDate] = useState([]);
+  const [BirthMonth, setBirthMonth] = useState([]);
+  const [BirthYear, setBirthYear] = useState([]);
+  const [address1, setaddress1] = useState([]);
+  const [address2, setaddress2] = useState([]);
+  const [PreviousQualification, setPreviousQualification] = useState([]);
+  const [IELTSBand, setIELTSBand] = useState([]);
+  const [DesiredLevel, setDesiredLevel] = useState([]);
+  const [StudyDestination, setStudyDestination] = useState([]);
+  const [IntendedSemester, setIntendedSemester] = useState([]);
+  const [DesiredSubject, setDesiredSubject] = useState([]);
+
+
+  const router = useRouter();
+  const [error, setError] = useState(null);
+  const [record, setRecord] = useState({ 
+    name: '',
+    email:email,
+    country:'',
+    gender:'',
+    birth_date:'',
+    birth_month:'',
+    birth_year:'',
+    address1:'',
+    address2:'',
+    prev_qualification:'',
+    IELTSBand:'',
+    DesiredLevel:'',
+    StudyDestination:'',
+    IntendedSemester:'',
+    DesiredSubject:'' });
+
+
+
+
+  const onCountryChange = selectedOption => {
+    setCountry(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onGenderChange = selectedOption => {
+    setGender(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onBirthDateChange = selectedOption => {
+    setBirthDate(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+  
+  const onBirthMonthChange = selectedOption => {
+    setBirthMonth(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onBirthYearChange = selectedOption => {
+    setBirthYear(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  
+  const onPreviousQualificationChange = selectedOption => {
+    setPreviousQualification(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onIELTSBandChange = selectedOption => {
+    setIELTSBand(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+  const onDesiredLevelChange = selectedOption => {
+    setDesiredLevel(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onStudyDestinationChange = selectedOption => {
+    setDesiredLevel(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onIntendedSemesterChange = selectedOption => {
+    setDesiredLevel(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onDesiredSubjectChange = selectedOption => {
+    setDesiredSubject(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const success = () => {
+    alert("Your Data has been recorded. We will suggest you some great Institutes shortly");
+  }
+  const onSubmit = event => {
+    setError(null)
+    //check if passwords match. If they do, create user in Firebase
+    // and redirect to your logged in page.
+    if(name!=""&&country!=""&&mobile!=""&&gender!=""&&BirthDate!==""&&BirthMonth!=""&&BirthYear!=""&&PreviousQualification!=""&&StudyDestination!=""&&DesiredSubject!="")
+     {
     
-} from "reactstrap";
-import PropTypes from "prop-types";
+        record.name = name;
+        record.country= country;
+        record.gender= gender;
+        record.birth_date= BirthDate;
+        record.birth_month= BirthMonth;
+        record.birth_year = BirthYear;
+        record.address1 = address1;
+        record.address2 = address2;
+        record.prev_qualification = PreviousQualification;
+        record.IELTSBand = IELTSBand;
+        record.DesiredLevel = DesiredLevel;
+        record.StudyDestination = StudyDestination;
+        record.IntendedSemester = IntendedSemester;
+        record.DesiredSubject = DesiredSubject;
+
+        axios
+        .post("https://ci-gsc.com/students/", record)
+        .then((res) => success())
+        .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
+     } 
+ 
+     
+    else
+      alert("Please Fill up the required Fields")
+      event.preventDefault();
+  };
+ 
+
+  
+
+  return (
+    <>
 
 
-const Semester = [
+    <PageWrapper
+      headerConfig={{
+        button: "profile",
+        isFluvalue: true,
+        bgClass: "bg-default",
+        reveal: false,
+      }}
+    >
+   
+      <div
+        className="dashboard-main-container mt-24 mt-lg-31"
+        value="dashboard-body"
+      >
+        <div className="container">
+          <div className="mb-15 mb-lg-23">
+            <div className="row">
+              <div className="col-xxxl-9 px-lg-13 px-6">
+                <h5 className="font-size-6 font-weight-semibold mb-11">
+                  Please fill up the details so we can find the right University for you
+                </h5>
+                <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
+                  
+          
+                  <form action="/">
+                    <fieldset>
+                      <div className="row mb-xl-1 mb-9">
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <label
+                              htmlFor="namedash"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Name * 
+                            </label>
+                            <input
+                          
+                              className="form-control h-px-48"
+                              name="name"
+                              placeholder="Your Full Name"
+                              onChange={(event) => setName(event.target.value)}
+                              value={name}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <label
+                              htmlFor="select2"
+                              className="d-block t
+                              ext-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Country * 
+                            </label>
+                            <Select
+                              options={getCountries}
+                              className="select3 "
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              name="country"  
+                              onChange={onCountryChange}
+                              value={country}
+                              
+                            />
+                          </div>
+                        </div>
+                     
+                      </div>
+                      <div className="row mb-xl-1 mb-9">
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <label
+                              htmlFor="namedash"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Mobile * 
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control h-px-48"
+                              name="mobile"
+                              placeholder="Your Phone Number with Country Code"
+                              onChange={(event) => setMobile(event.target.value)}
+                              value={mobile}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <label
+                              htmlFor="select2"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Gender * 
+                            </label>
+                            <Select
+                              options={Gender}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              name="gender"
+                              onChange={onGenderChange}
+                              value={gender}
+                            />
+                          </div>
+                        </div>
+                     
+                      </div>
+                      {/* <div className="row mb-xl-1 mb-9">
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <label
+                              htmlFor="namedash"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Certificate of the latest degree * 
+                            </label>
+                            <input type="file"
+                 id="image"
+                 accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <label
+                              htmlFor="namedash"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              IELTS Certificate
+                            </label>
+                            <input type="file"
+                 id="image"
+                 accept="image/png, image/jpeg"  onChange={this.handleImageChange2} required/>
+                          </div>
+                        </div>
+                     
+                      </div> */}
+                      <div className="row mb-xl-1 mb-9">
+                      <div className="col-lg-6 mb-xl-0 mb-7">
+                        <div className="form-group position-relative">
+                            <label
+                              htmlFor="select3"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Birth Date * 
+                            </label>
+                            <Select
+                              options={BirthDate}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              name="birth_date"
+                              onChange={onBirthDateChange}
+                              value={BirthDate}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                        <div className="form-group">
+                            <label
+                              htmlFor="select2"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Birth Month * 
+                            </label>
+                            <Select
+                              options={BirthMonth}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              
+                              onChange={onBirthMonthChange}
+                              value={BirthMonth}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <label
+                              htmlFor="select2"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Birth Year * 
+                            </label>
+                            <Select
+                            
+                              options={BirthYear}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              onChange={onBirthYearChange}
+                              value={BirthYear}
+                            />
+                          </div>
+                        </div>
+                     
+                      </div>
+                      <div className="row mb-xl-1 mb-9">
+                        <div className="col-lg-6">
+                        <div className="form-group">
+                            <label
+                              htmlFor="namedash"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Address Line 1
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control h-px-48"
+                            name="address1"
+                              placeholder="Your Street Address"
+                              onChange={(event) => setaddress1(event.target.value)}
+                              value={address1}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                        <div className="form-group">
+                            <label
+                              htmlFor="namedash"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Address Line 2
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control h-px-48"
+                           name="address2"
+                              placeholder="Your City"
+                              onChange={(event) => setaddress2(event.target.value)}
+                              value={address2}
+                            />
+                          </div>
+                        </div>
+                     
+                      </div>
+                      <div className="row mb-8">
+                        <div className="col-lg-6 mb-xl-0 mb-7">
+                          <div className="form-group position-relative">
+                            <label
+                              htmlFor="select3"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                             Previous Qualification * 
+                            </label>
+                            <Select
+                              options={PreviousQualification}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              onChange={onPreviousQualificationChange}
+                              value={PreviousQualification}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group position-relative">
+                            <label
+                              htmlFor="address"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              IELTS Band
+                            </label>
+                            <Select
+                              options={IELTSBand}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              onChange={onIELTSBandChange}
+                              value={IELTSBand}
+                            />
+                            <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row mb-8">
+                        <div className="col-lg-6 mb-xl-0 mb-7">
+                          <div className="form-group position-relative">
+                            <label
+                              htmlFor="select3"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Desired Level
+                            </label>
+                            <Select
+                              options={Desiredlevel}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                             
+                              onChange={onDesiredLevelChange}
+                              value={DesiredLevel}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group position-relative">
+                            <label
+                              htmlFor="address"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                             Study Destination * 
+                            </label>
+                            <Select
+                              options={StudyDestination}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              onChange={onStudyDestinationChange}
+                              value={StudyDestination}
+                            />
+                            <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row mb-8">
+                        <div className="col-lg-6 mb-xl-0 mb-7">
+                          <div className="form-group position-relative">
+                            <label
+                              htmlFor="select3"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                              Intended Semester
+                            </label>
+                            <Select
+                              options={IntendedSemester}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              onChange={onIntendedSemesterChange}
+                              value={IntendedSemester}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group position-relative">
+                            <label
+                              htmlFor="select2"
+                              className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                            >
+                            Desired Subject * 
+                            </label>
+                            <Select
+                              options={Subject}
+                              className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                              border={false}
+                              onChange={onDesiredSubjectChange}
+                              value={DesiredSubject}
+                            />
+                            <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                          </div>
+                        </div>
+                      </div>
+                    
+                     
+                      <input
+                            type="button"
+                            value="Save"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </PageWrapper>
+  </>
+);
+  
+}
+export const Semester = [
   {name:"semester", value: "jan", label: "Januray" },
   { name:"semester", value: "feb", label: "February" },
   {name:"semester", value: "march", label: "March" },
@@ -33,7 +534,7 @@ const Semester = [
   {name:"semester", value: "december", label: "December" },
 ];
 
-const BirthMonth = [
+export const BirthMonth = [
   {name:"birth_month", value: "jan", label: "Januray" },
   { name:"birth_month", value: "feb", label: "February" },
   {name:"birth_month", value: "march", label: "March" },
@@ -48,7 +549,7 @@ const BirthMonth = [
   {name:"birth_month", value: "december", label: "December" },
 ];
 
-const BirthDate = [
+export const BirthDate = [
   {name:"birth_date", value: "1", label: "1" },
   {name:"birth_date", value: "2", label: "2" },
   {name:"birth_date", value: "3", label: "3" },
@@ -82,7 +583,7 @@ const BirthDate = [
   {name:"birth_date", value: "31", label: "31" },
 ];
 
-const IntendedSemester = [
+export const IntendedSemester = [
   {name:"IntendedSemester", value: "fall", label: "Fall" },
   { name:"IntendedSemester", value: "spring", label: "Spring" },
   {name:"IntendedSemester", value: "summer", label: "Summer" },
@@ -90,7 +591,7 @@ const IntendedSemester = [
 ];
 
 
-const BirthYear = [
+export const BirthYear = [
   {name:"birth_year", value: "1990", label: "1990" },
   {name:"birth_year", value: "1991", label: "1991" },
   {name:"birth_year", value: "1992", label: "1992" },
@@ -106,7 +607,7 @@ const BirthYear = [
   {name:"birth_year", value: "2002", label: "2002" },
   {name:"birth_year", value: "2003", label: "2003" },
 ];
-const PreviousQualification = [
+export const PreviousQualification = [
   {name:"prev_qualification", value: 'HSC', label: 'HSC' },
   {name:"prev_qualification", value: 'Alevel', label: 'Alevel' },
   {name:"prev_qualification", value: 'undergrad', label: 'Undergraduate' },
@@ -114,7 +615,8 @@ const PreviousQualification = [
   {name:"prev_qualification", value: 'diploma', label: 'Diploma' },
   {name:"prev_qualification", value: 'other', label: 'Other' },
 ]
-const Subject = [
+
+export const Subject = [
   {name:"DesiredSubject", value: "Engineering", label: "Engineering" },
   {name:"DesiredSubject", value: "Science", label: "Science" },
   {name:"DesiredSubject", value: "Business", label: "Business" },
@@ -122,7 +624,7 @@ const Subject = [
   {name:"DesiredSubject", value: "Arts", label: "Arts" },
   {name:"DesiredSubject", value: "other", label: "Other" },
 ]
-const IELTSBand = [
+export const IELTSBand = [
   {name:"IELTSBand", value: '3', label: '3' },
   {name:"IELTSBand", value: '3.2', label: '3.2' },
   {name:"IELTSBand", value: '3.4', label: '3.4' },
@@ -131,7 +633,7 @@ const IELTSBand = [
   {name:"IELTSBand", value: '4', label: '4' },
 ]
 
-const Desiredlevel = [
+export const Desiredlevel = [
   {name:"Desiredlevel", value: 'HSC', label: 'HSC' },
   {name:"Desiredlevel", value: 'Alevel', label: 'Alevel' },
   {name:"Desiredlevel", value: 'undergrad', label: 'Undergraduate' },
@@ -139,7 +641,7 @@ const Desiredlevel = [
   {name:"Desiredlevel", value: 'diploma', label: 'Diploma' },
   {name:"Desiredlevel", value: 'other', label: 'Other' },
 ]
-const Gender = [
+export const Gender = [
   {name:"gender", value: "male", label: "Male" },
   {name:"gender", value: "female", label: "Female" },
   {name:"gender", value: "other", label: "Other" },
@@ -147,7 +649,7 @@ const Gender = [
 ];
 
 
-const StudyDestination = [
+export const StudyDestination = [
   {name:"StudyDestination", value: "uk", label: "U.K." },
   {name:"StudyDestination", value: "usa", label: "U.S.A." },
   {name:"StudyDestination", value: "cn", label: "Canada" },
@@ -155,526 +657,6 @@ const StudyDestination = [
   {name:"StudyDestination", value: "europe", label: "Europe" },
   {name:"StudyDestination", value: "malay", label: "Malaysia" },
 ];
-
-class StudentRegistration extends Component {
- 
-
- 
-  async componentDidMount() {
-
-
-    
-    
-    try {
-      
-      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
-      console.log(res)
-      const todoList = await res.json();
-      this.setState({
-        todoList
-      });
-    } catch (e) {
-      console.log(e);
-  }
-  } 
-  
-  
-  constructor(props) {
-   
-
-
-    super(props); 
-    const email = this.props.classes
-    console.log(email)
-    this.state = {
-      viewCompleted: false,
-      image:"",
-      image2:"",
-      activeItem: {
-        email:email,
-        name:"",
-        mobile:"",
-        country:"",
-        gender:"",
-        birth_date:"",
-        birth_month:"",
-        birth_year:"",
-        address1:"",
-        address2:"",
-        prev_qualification:"",
-        IELTSBand:"",
-        Desiredlevel:"",
-        StudyDestination:"",
-        IntendedSemester:"",
-        DesiredSubject:""
-      },
-      todoList: []
-      };
-  }
-
-
-  
-
-
-  success = () => {
-    alert("We have received your registration information. You will get a confirmation email shortly");
-  
-  }
-
-refreshList = () => {
-  axios
-    .get("https://ci-gsc.com/students")
-    .then((res) => this.setState({ todoList: res.data }))
-    .catch((err) => console.log(err));
-};
-
-
-handleSubmit = (item) => {
-  
-
-  if (item.id) {
-    axios
-      .put(`https://ci-gsc.com/students/${item.id}/`, item)
-      .then((res) => this.success())
-      .catch((err) => alert("Please fillup the mandatory fields"));
-    return;
-  }
-  axios
-    .post("https://ci-gsc.com/students/", item)
-    .then((res) => this.success())
-    .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
-    ;
-
-    let form_data = new FormData();
-    form_data.append('image', this.state.image, this.state.image.name);
-    form_data.append('title', this.state.activeItem.name);
-    form_data.append('content', this.state.activeItem.mobile);
-    let url = 'https://ci-gsc.com/posts/';
-    axios.post(url, form_data, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    })
-    .then(res => {
-      console.log(res.data);
-    })
-    .catch(err => console.log(err))
- 
-};
-
-handleImageChange = (e) => {
-  this.setState({
-    image: e.target.files[0]
-  })
-};
-
-handleImageChange2 = (e) => {
-  this.setState({
-    image2: e.target.files[0]
-  })
-};
-
-
-handleChange = (e) => {
-  console.log(e)
-  let { name, value } = e.target;
-
-
-  const activeItem = { ...this.state.activeItem, [name]: value };
-
-  this.setState({ activeItem });
-};
-
-
-handleChangeSelect = (e) => {
-  console.log(e)
-
-  let { name,value } = e;
-
-
-  const activeItem = { ...this.state.activeItem, [name]: value };
-
-  this.setState({ activeItem });
-};
-
-render(){
-
-  //this.state.activeItem.email = user.email;
-  return (
-    <>
-
-
-      <PageWrapper
-        headerConfig={{
-          button: "profile",
-          isFluvalue: true,
-          bgClass: "bg-default",
-          reveal: false,
-        }}
-      >
-     
-        <div
-          className="dashboard-main-container mt-24 mt-lg-31"
-          value="dashboard-body"
-        >
-          <div className="container">
-            <div className="mb-15 mb-lg-23">
-              <div className="row">
-                <div className="col-xxxl-9 px-lg-13 px-6">
-                  <h5 className="font-size-6 font-weight-semibold mb-11">
-                    Please fill up the details so we can find the right University for you
-                  </h5>
-                  <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                    
-            
-                    <form action="/">
-                      <fieldset>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Name * 
-                              </label>
-                              <input
-                            
-                                className="form-control h-px-48"
-                                name="name"
-                                placeholder="Your Full Name"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.name}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Country * 
-                              </label>
-                              <Select
-                                options={getCountries}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                
-                                border={false}
-                                name="country"  
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.country.value}
-                                
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Mobile * 
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="mobile"
-                                placeholder="Your Phone Number with Country Code"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.mobile}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Gender * 
-                              </label>
-                              <Select
-                                options={Gender}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="gender"
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.gender.value}
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Certificate of the latest degree * 
-                              </label>
-                              <input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                IELTS Certificate
-                              </label>
-                              <input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={this.handleImageChange2} required/>
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Date * 
-                              </label>
-                              <Select
-                                options={BirthDate}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_date.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Month * 
-                              </label>
-                              <Select
-                                options={BirthMonth}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_month.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Year * 
-                              </label>
-                              <Select
-                              
-                                options={BirthYear}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_year.value}
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Address Line 1
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                              name="address1"
-                                placeholder="Your Street Address"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.address1}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Address Line 2
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                             name="address2"
-                                placeholder="Your City"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.address2}
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Previous Qualification * 
-                              </label>
-                              <Select
-                                options={PreviousQualification}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.prev_qualification.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="address"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                IELTS Band
-                              </label>
-                              <Select
-                                options={IELTSBand}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.IELTSBand.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Desired Level
-                              </label>
-                              <Select
-                                options={Desiredlevel}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                               
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.Desiredlevel.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="address"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Study Destination * 
-                              </label>
-                              <Select
-                                options={StudyDestination}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.StudyDestination.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Intended Semester
-                              </label>
-                              <Select
-                                options={IntendedSemester}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.IntendedSemester.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                              Desired Subject * 
-                              </label>
-                              <Select
-                                options={Subject}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.DesiredSubject.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
-                        </div>
-                      
-                       
-                        <input
-                              type="button"
-                              value="Save"
-                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                              onClick={() => this.handleSubmit(this.state.activeItem)}
-                         />
-                      </fieldset>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </PageWrapper>
-    </>
-  );
-      }
-};
-//export default withRouter(StudentRegistration);
-
-export default withRouter(() => {
-  const { authUser, loading,signOut } = useAuth();
-  return (
-      <StudentRegistration classes={authUser} />
-  )
-})
 
 export const getCountries = [
   { 
@@ -1671,3 +1653,4 @@ export const getCountries = [
     label: "Zimbabwe"
   }
 ]
+export default SignUp;

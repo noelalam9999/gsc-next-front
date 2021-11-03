@@ -27,7 +27,7 @@ const Sidebar = (props) => {
               </h4>
               <p className="mb-8">
                 <Link href="/#">
-                  <a className="text-gray font-size-4">Alevels</a>
+                  <a className="text-gray font-size-4">Managing Director,<br/> ABC Consulting</a>
                 </Link>
               </p>
               {/* <div className="icon-link d-flex align-items-center justify-content-center flex-wrap">
@@ -95,10 +95,18 @@ const Sidebar = (props) => {
               {/* <!-- Single List --> */}
               {/* <!-- Single List --> */}
               <div className="mb-7">
-                <p className="font-size-4 mb-0">Date of Birth</p>
+                <p className="font-size-4 mb-0">website</p>
                 <h5 className="font-size-4 font-weight-semibold mb-0">
                   <Link href="/#">
-                    <a className="text-break">4/5/2000</a>
+                    <a className="text-break">Abcconsulting.com</a>
+                  </Link>
+                </h5>
+              </div>
+              <div className="mb-7">
+                <p className="font-size-4 mb-0">facebook</p>
+                <h5 className="font-size-4 font-weight-semibold mb-0">
+                  <Link href="/#">
+                    <a className="text-break">Go to facebook</a>
                   </Link>
                 </h5>
               </div>

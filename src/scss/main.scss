@@ -215,11 +215,17 @@ display:inline!important;
 .l400px-main-text{
   font-size:large;
 }
+.pullup{
+  top:0px!important;
+}
 }
 .flip-canada{
   display:none;
 
 
+}
+.pullup{
+  top:-100px;
 }
 .canada-main{
   -webkit-transform: scaleX(-1);
@@ -229,4 +235,7 @@ display:block;
 .home-main{
 
 display:block;
+}
+.select3{
+  border: 1px solid #e5e5e5;
 }

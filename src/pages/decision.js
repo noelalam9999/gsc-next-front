@@ -48,6 +48,9 @@ export default function Login() {
            if(UserList[i]['usertype']== "student"){
               router.push('/dashboard-main');
             }
+            else if(UserList[i]['usertype']== "admin"){
+              router.push('/agents/agent-dashboard');
+            }
             else if(UserList[i]['usertype']== "agent"){
               router.push('/agents/agent-dashboard');
             }

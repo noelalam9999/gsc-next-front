@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
 import Firebase from './Firebase';
 
-const formatAuthUser = (user) => ({
-  uid: user.uid,
-  email: user.email
-});
+// const formatAuthUser = (user) => ({
+//   uid: user.uid,
+//   email: user.email
+// });
+
+const formatAuthUser = (user) => (  
+    user.email
+  );
 
 export default function useFirebaseAuth() {
   const [authUser, setAuthUser] = useState(null);

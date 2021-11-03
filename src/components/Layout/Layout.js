@@ -5,6 +5,7 @@ import Helmet from "next/head";
 import AOS from "aos";
 
 import Header from "../Header";
+import Header2 from "../Header/HeaderProfile";
 import Footer from "../Footer";
 
 import SidebarDashboard from "../SidebarDashboard";
@@ -144,7 +145,7 @@ const Layout = ({ children, pageContext }) => {
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <Header isDark={gContext.headerDark} />
+            <Header2 isDark={gContext.headerDark} />
             <SidebarDashboard />
             {children}
           </div>
@@ -180,7 +181,7 @@ else
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <Header isDark={gContext.headerDark} />
+            <Header2 isDark={gContext.headerDark} />
             <SidebarDashboardStudent />
             {children}
           </div>
@@ -216,7 +217,7 @@ else
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <Header isDark={gContext.headerDark} />
+            <Header2 isDark={gContext.headerDark} />
             <SidebarDashboardInstitute />
             {children}
           </div>
@@ -252,7 +253,7 @@ else
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <Header isDark={gContext.headerDark} />
+            <Header2 isDark={gContext.headerDark} />
             <SidebarDashboardAgent />
             {children}
           </div>

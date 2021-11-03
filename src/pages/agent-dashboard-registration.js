@@ -167,6 +167,8 @@ class StudentRegistration extends Component {
     super(props);
     this.state = {
       viewCompleted: false,
+      image:"",
+      image2:"",
       activeItem: {
         name:"",
         role:"",
@@ -220,6 +222,18 @@ success = () => {
 
 }
 
+handleImageChange = (e) => {
+  this.setState({
+    image: e.target.files[0]
+  })
+};
+
+handleImageChange2 = (e) => {
+  this.setState({
+    image2: e.target.files[0]
+  })
+};
+
 handleSubmit = (item) => {
   
 console.log(item)
@@ -235,6 +249,22 @@ console.log(item)
     .then((res) => this.success())
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
     ;
+
+
+    let form_data = new FormData();
+    form_data.append('image', this.state.image, this.state.image.name);
+    form_data.append('title', this.state.activeItem.name);
+    form_data.append('content', this.state.activeItem.mobile);
+    let url = 'https://ci-gsc.com/posts/';
+    axios.post(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'  
+      }
+    })
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => console.log(err))
 };
 
 
@@ -284,9 +314,27 @@ render(){
                     Please fill up the details so we can connect you and your students with the right Universities
                   </h5>
                   <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                    
+                      
             
                     <form action="/">
+                         {/* <div className="upload-file mb-16 text-center">
+                      <div
+                        id="userActions"
+                        className="square-144 m-auto px-6 mb-7"
+                      >
+                        <label
+                          htmlFor="fileUpload"
+                          className="mb-0 font-size-4 text-smoke"
+                        >
+                          University Logo
+                        </label>
+                        <input
+                          type="file"
+                          id="fileUpload"
+                          className="sr-only"
+                        />
+                      </div>
+                    </div> */} 
                       <fieldset>
                         <div className="row mb-xl-1 mb-9">
                           <div className="col-lg-6">
@@ -366,7 +414,39 @@ render(){
                           </div>
                        
                         </div>
-
+                        <div className="row mb-xl-1 mb-9">
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Certification 1
+                              </label>
+                              <input 
+                              type="file"
+                              id="image"
+                              accept="image/png, image/jpeg" 
+                              onChange={this.handleImageChange} required/>
+                            </div>
+                          </div>
+                       
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Certification 2
+                              </label>
+                              <input 
+                              type="file"
+                              id="image2"
+                              accept="image/png, image/jpeg" 
+                              onChange={this.handleImageChange2} required/>
+                            </div>
+                          </div>
+                        </div>
 
                         <div className="row mb-xl-1 mb-9">
                           <div className="col-lg-6">
