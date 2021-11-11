@@ -10,12 +10,7 @@ import iconF2 from "../../assets/image/l1/png/internship.png";
 import iconF3 from "../../assets/image/l1/png/offer-letter.png";
 import iconF4 from "../../assets/image/l1/png/post-study-work-visa.png";
 import iconF5 from "../../assets/image/l1/png/work-while-studying.png";
-import imgB1 from "../../assets/image/l1/png/feature-brand-1.png";
-import imgB2 from "../../assets/image/l1/png/feature-brand-2.png";
-import imgB3 from "../../assets/image/l1/png/feature-brand-3.png";
-import imgB4 from "../../assets/image/l1/png/feature-brand-4.png";
-import imgB5 from "../../assets/image/l1/png/feature-brand-5.png";
-import imgB6 from "../../assets/image/l1/png/feature-brand-6.png";
+
 
 const defaultCountries = [
   { value: "uk", label: "United Kingdom" },
@@ -30,6 +25,16 @@ const SearchGrid = () => {
  const { authUser, loading,signOut } = useAuth();
   const [List, setList] = useState([]);
   const [userList, setUserList] = useState([]);
+
+  const [count, setCount] = useState(8);
+ 
+  console.log(count)
+  function Loadmore (){
+ console.log("loadmore clicked")
+ setCount(count+8)
+ 
+  }
+
   useEffect(() =>  {
 
     async function fetchMyAPI() {
@@ -142,7 +147,7 @@ const SearchGrid = () => {
                     <div className="row justify-content-center">
 
 
-                    { List.map((item, index)=>(
+                    { List.slice(0,count).map((item, index)=>(
                            <div
                            className="col-12 col-lg-6 col-md-6 px-xxl-7"
                           
@@ -164,7 +169,7 @@ const SearchGrid = () => {
                              <h2 className="mt-n4">
                                <Link href="/#">
                                  <a className="font-size-7 text-black-2 font-weight-bold mb-4">
-                                 Ulster University
+                                 {item.name}
                                  </a>
                                </Link>
                              </h2>
@@ -266,12 +271,12 @@ const SearchGrid = () => {
                     </div>
                   </div>
                   <div className="text-center pt-5 pt-lg-13">
-                    <Link href="/#">
+                  <button style={{border:"none",background:"none"}} onClick={Loadmore} >
                       <a className="text-green font-weight-bold text-uppercase font-size-3 d-flex align-items-center justify-content-center">
                         Load More{" "}
                         <i className="fas fa-sort-down ml-3 mt-n2 font-size-4"></i>
                       </a>
-                    </Link>
+                   </button>
                   </div>
                 </div>
               

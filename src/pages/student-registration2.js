@@ -14,18 +14,20 @@ import firebase from "firebase/app";
 const SignUp = () => {
  
   const { authUser, loading,signOut } = useAuth();
-  let user = firebase.auth().currentUser;
+
 const email = authUser
   //const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [LatestDegree, setLatestDegree] = useState([]);
+  const [IELTSCert, setIELTS] = useState([]);
   const [country, setCountry] = useState([]);
-  const [mobile, setMobile] = useState([]);
+  const [mobile, setMobile] = useState("");
   const [gender, setGender] = useState([]);
   const [BirthDate, setBirthDate] = useState([]);
   const [BirthMonth, setBirthMonth] = useState([]);
   const [BirthYear, setBirthYear] = useState([]);
-  const [address1, setaddress1] = useState([]);
-  const [address2, setaddress2] = useState([]);
+  const [address1, setaddress1] = useState("");
+  const [address2, setaddress2] = useState("");
   const [PreviousQualification, setPreviousQualification] = useState([]);
   const [IELTSBand, setIELTSBand] = useState([]);
   const [DesiredLevel, setDesiredLevel] = useState([]);
@@ -38,7 +40,8 @@ const email = authUser
   const [error, setError] = useState(null);
   const [record, setRecord] = useState({ 
     name: '',
-    email:email,
+    email:'',
+    mobile:'',
     country:'',
     gender:'',
     birth_date:'',
@@ -48,14 +51,39 @@ const email = authUser
     address2:'',
     prev_qualification:'',
     IELTSBand:'',
-    DesiredLevel:'',
+    Desiredlevel:'',
     StudyDestination:'',
     IntendedSemester:'',
     DesiredSubject:'' });
 
 
+    const [LatestDegreerecord, setLatestDegreeRecord] = useState({ 
+      image: null,
+      email:'',
+      });
 
+      const [IELTSCertrecord, setIELTSCertRecord] = useState({ 
+      image: null,
+      email:'',
+      });
 
+console.log(authUser)
+const Year = [
+  {name:"birth_year", value: "1990", label: "1990" },
+  {name:"birth_year", value: "1991", label: "1991" },
+  {name:"birth_year", value: "1992", label: "1992" },
+  {name:"birth_year", value: "1993", label: "1993" },
+  {name:"birth_year", value: "1994", label: "1994" },
+  {name:"birth_year", value: "1995", label: "1995" },
+  {name:"birth_year", value: "1996", label: "1996" },
+  {name:"birth_year", value: "1997", label: "1997" },
+  {name:"birth_year", value: "1998", label: "1998" },
+  {name:"birth_year", value: "1999", label: "1999" },
+  {name:"birth_year", value: "2000", label: "2000" },
+  {name:"birth_year", value: "2001", label: "2001" },
+  {name:"birth_year", value: "2002", label: "2002" },
+  {name:"birth_year", value: "2003", label: "2003" },
+];
   const onCountryChange = selectedOption => {
     setCountry(selectedOption);
     console.log(`Option selected:`, selectedOption);
@@ -97,12 +125,12 @@ const email = authUser
   };
 
   const onStudyDestinationChange = selectedOption => {
-    setDesiredLevel(selectedOption);
+    setStudyDestination(selectedOption);
     console.log(`Option selected:`, selectedOption);
   };
 
   const onIntendedSemesterChange = selectedOption => {
-    setDesiredLevel(selectedOption);
+    setIntendedSemester(selectedOption);
     console.log(`Option selected:`, selectedOption);
   };
 
@@ -111,35 +139,91 @@ const email = authUser
     console.log(`Option selected:`, selectedOption);
   };
 
+  const handleImageChange = e => {
+    setLatestDegreeRecord({
+      image: e.target.files[0]
+    }) 
+  };
+  const handleImageChange2 = e => {
+    setIELTSCertRecord({
+      image: e.target.files[0]
+    }) 
+  };
+
   const success = () => {
     alert("Your Data has been recorded. We will suggest you some great Institutes shortly");
   }
+
+
+  //-------------------HANDLE SUBMIT---------------------------
   const onSubmit = event => {
     setError(null)
     //check if passwords match. If they do, create user in Firebase
     // and redirect to your logged in page.
     if(name!=""&&country!=""&&mobile!=""&&gender!=""&&BirthDate!==""&&BirthMonth!=""&&BirthYear!=""&&PreviousQualification!=""&&StudyDestination!=""&&DesiredSubject!="")
      {
-    
+        record.email = authUser
         record.name = name;
-        record.country= country;
-        record.gender= gender;
-        record.birth_date= BirthDate;
-        record.birth_month= BirthMonth;
-        record.birth_year = BirthYear;
+        record.mobile = mobile;
+        record.country= country.value;
+        record.gender= gender.value;
+        record.birth_date= BirthDate.value;
+        record.birth_month= BirthMonth.value;
+        record.birth_year = BirthYear.value;
         record.address1 = address1;
         record.address2 = address2;
-        record.prev_qualification = PreviousQualification;
-        record.IELTSBand = IELTSBand;
-        record.DesiredLevel = DesiredLevel;
-        record.StudyDestination = StudyDestination;
-        record.IntendedSemester = IntendedSemester;
-        record.DesiredSubject = DesiredSubject;
+        record.prev_qualification = PreviousQualification.value;
+        record.IELTSBand = IELTSBand.value == null ? "" : IELTSBand.value;
+        record.Desiredlevel = DesiredLevel.value == null ? "" : Desiredlevel.value;
+        record.StudyDestination = StudyDestination.value;
+        record.IntendedSemester = IntendedSemester.value == null ? "" : IntendedSemester.value;
+        record.DesiredSubject = DesiredSubject.value;
+
+
+        IELTSCertrecord.email = authUser;
+
+
+        LatestDegreerecord.email = authUser;
+        
+
+
+        let IELTSCertform_data = new FormData();
+        IELTSCertform_data.append('image', IELTSCertrecord.image, IELTSCertrecord.image.name);
+        IELTSCertform_data.append('email', IELTSCertrecord.email);
+        
+        let LatestDegreeform_data = new FormData();
+        LatestDegreeform_data.append('image', LatestDegreerecord.image, LatestDegreerecord.image.name);
+        LatestDegreeform_data.append('email', LatestDegreerecord.email);
+       
 
         axios
         .post("https://ci-gsc.com/students/", record)
         .then((res) => success())
         .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
+
+        let url = 'https://ci-gsc.com/ieltscert/';
+        axios.post(url, IELTSCertform_data, {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => console.log(err))
+        console.log("Posted" + IELTSCertrecord)
+
+        let url2 = 'https://ci-gsc.com/latestdegree/';
+        axios.post(url2, LatestDegreeform_data, {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => console.log(err))
+        console.log("Posted" + LatestDegreerecord)
      } 
  
      
@@ -176,8 +260,6 @@ const email = authUser
                   Please fill up the details so we can find the right University for you
                 </h5>
                 <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                  
-          
                   <form action="/">
                     <fieldset>
                       <div className="row mb-xl-1 mb-9">
@@ -261,7 +343,7 @@ const email = authUser
                         </div>
                      
                       </div>
-                      {/* <div className="row mb-xl-1 mb-9">
+                      <div className="row mb-xl-1 mb-9">
                         <div className="col-lg-6">
                           <div className="form-group">
                             <label
@@ -272,7 +354,7 @@ const email = authUser
                             </label>
                             <input type="file"
                  id="image"
-                 accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
+                 accept="image/png, image/jpeg" onChange={handleImageChange} required/>
                           </div>
                         </div>
                         <div className="col-lg-6">
@@ -285,11 +367,13 @@ const email = authUser
                             </label>
                             <input type="file"
                  id="image"
-                 accept="image/png, image/jpeg"  onChange={this.handleImageChange2} required/>
+                 accept="image/png, image/jpeg" onChange={handleImageChange2} required/>
                           </div>
                         </div>
                      
-                      </div> */}
+                      </div>
+               
+
                       <div className="row mb-xl-1 mb-9">
                       <div className="col-lg-6 mb-xl-0 mb-7">
                         <div className="form-group position-relative">
@@ -300,7 +384,7 @@ const email = authUser
                               Birth Date * 
                             </label>
                             <Select
-                              options={BirthDate}
+                              options={Date}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
                               name="birth_date"
@@ -318,7 +402,7 @@ const email = authUser
                               Birth Month * 
                             </label>
                             <Select
-                              options={BirthMonth}
+                              options={Month}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
                               
@@ -337,7 +421,7 @@ const email = authUser
                             </label>
                             <Select
                             
-                              options={BirthYear}
+                              options={Year}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
                               onChange={onBirthYearChange}
@@ -396,7 +480,7 @@ const email = authUser
                              Previous Qualification * 
                             </label>
                             <Select
-                              options={PreviousQualification}
+                              options={Qualification}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
                               onChange={onPreviousQualificationChange}
@@ -451,7 +535,7 @@ const email = authUser
                              Study Destination * 
                             </label>
                             <Select
-                              options={StudyDestination}
+                              options={Destination}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
                               onChange={onStudyDestinationChange}
@@ -471,7 +555,7 @@ const email = authUser
                               Intended Semester
                             </label>
                             <Select
-                              options={IntendedSemester}
+                              options={Semester}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
                               onChange={onIntendedSemesterChange}
@@ -519,22 +603,8 @@ const email = authUser
 );
   
 }
-export const Semester = [
-  {name:"semester", value: "jan", label: "Januray" },
-  { name:"semester", value: "feb", label: "February" },
-  {name:"semester", value: "march", label: "March" },
-  {name:"semester", value: "april", label: "April" },
-  {name:"semester", value: "may", label: "May" },
-  {name:"semester", value: "june", label: "June" },
-  {name:"semester", value: "july", label: "July" },
-  {name:"semester", value: "august", label: "August" },
-  { name:"semester", value: "sept", label: "September" },
-  {name:"semester", value: "oct", label: "October" },
-  {name:"semester", value: "nov", label: "November" },
-  {name:"semester", value: "december", label: "December" },
-];
 
-export const BirthMonth = [
+export const Month = [
   {name:"birth_month", value: "jan", label: "Januray" },
   { name:"birth_month", value: "feb", label: "February" },
   {name:"birth_month", value: "march", label: "March" },
@@ -549,7 +619,7 @@ export const BirthMonth = [
   {name:"birth_month", value: "december", label: "December" },
 ];
 
-export const BirthDate = [
+export const Date = [
   {name:"birth_date", value: "1", label: "1" },
   {name:"birth_date", value: "2", label: "2" },
   {name:"birth_date", value: "3", label: "3" },
@@ -583,7 +653,7 @@ export const BirthDate = [
   {name:"birth_date", value: "31", label: "31" },
 ];
 
-export const IntendedSemester = [
+export const Semester = [
   {name:"IntendedSemester", value: "fall", label: "Fall" },
   { name:"IntendedSemester", value: "spring", label: "Spring" },
   {name:"IntendedSemester", value: "summer", label: "Summer" },
@@ -591,23 +661,23 @@ export const IntendedSemester = [
 ];
 
 
-export const BirthYear = [
-  {name:"birth_year", value: "1990", label: "1990" },
-  {name:"birth_year", value: "1991", label: "1991" },
-  {name:"birth_year", value: "1992", label: "1992" },
-  {name:"birth_year", value: "1993", label: "1993" },
-  {name:"birth_year", value: "1994", label: "1994" },
-  {name:"birth_year", value: "1995", label: "1995" },
-  {name:"birth_year", value: "1996", label: "1996" },
-  {name:"birth_year", value: "1997", label: "1997" },
-  {name:"birth_year", value: "1998", label: "1998" },
-  {name:"birth_year", value: "1999", label: "1999" },
-  {name:"birth_year", value: "2000", label: "2000" },
-  {name:"birth_year", value: "2001", label: "2001" },
-  {name:"birth_year", value: "2002", label: "2002" },
-  {name:"birth_year", value: "2003", label: "2003" },
-];
-export const PreviousQualification = [
+// export const BirthYear = [
+//   {name:"birth_year", value: "1990", label: "1990" },
+//   {name:"birth_year", value: "1991", label: "1991" },
+//   {name:"birth_year", value: "1992", label: "1992" },
+//   {name:"birth_year", value: "1993", label: "1993" },
+//   {name:"birth_year", value: "1994", label: "1994" },
+//   {name:"birth_year", value: "1995", label: "1995" },
+//   {name:"birth_year", value: "1996", label: "1996" },
+//   {name:"birth_year", value: "1997", label: "1997" },
+//   {name:"birth_year", value: "1998", label: "1998" },
+//   {name:"birth_year", value: "1999", label: "1999" },
+//   {name:"birth_year", value: "2000", label: "2000" },
+//   {name:"birth_year", value: "2001", label: "2001" },
+//   {name:"birth_year", value: "2002", label: "2002" },
+//   {name:"birth_year", value: "2003", label: "2003" },
+// ];
+export const Qualification = [
   {name:"prev_qualification", value: 'HSC', label: 'HSC' },
   {name:"prev_qualification", value: 'Alevel', label: 'Alevel' },
   {name:"prev_qualification", value: 'undergrad', label: 'Undergraduate' },
@@ -649,7 +719,7 @@ export const Gender = [
 ];
 
 
-export const StudyDestination = [
+export const Destination = [
   {name:"StudyDestination", value: "uk", label: "U.K." },
   {name:"StudyDestination", value: "usa", label: "U.S.A." },
   {name:"StudyDestination", value: "cn", label: "Canada" },

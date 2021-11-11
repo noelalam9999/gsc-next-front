@@ -40,6 +40,7 @@ const Check = ({ children }) => {
     <CheckStyled
       className={`toggle-item ${active ? "active" : ""}`}
       onClick={() => {
+        console.log(children.toString())
         setActive(!active);
       }}
     >

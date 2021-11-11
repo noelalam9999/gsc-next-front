@@ -1,39 +1,614 @@
-import React, { Component } from "react"
-
-import PageWrapper from "../components/PageWrapper";
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Select } from "../components/Core";
-import 'firebase/firestore';
+//import Select from 'react-select';
+import Link from 'next/link';
+import { useAuth } from '../../AuthUserContext';
 import axios from 'axios';
-import { AuthUserProvider, useAuth, useAuthforClass } from '../../AuthUserContext';
-import {withRouter} from 'next/router'
-import firebase from "firebase/app";
+import {Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
+import PageWrapper from "../components/PageWrapper";
 import "firebase/auth";
+import firebase from "firebase/app";
 
-import {
-  Form,
-  FormGroup,
-  Input,
-    
-} from "reactstrap";
-import PropTypes from "prop-types";
-
-
-const Semester = [
-  {name:"semester", value: "jan", label: "Januray" },
-  { name:"semester", value: "feb", label: "February" },
-  {name:"semester", value: "march", label: "March" },
-  {name:"semester", value: "april", label: "April" },
-  {name:"semester", value: "may", label: "May" },
-  {name:"semester", value: "june", label: "June" },
-  {name:"semester", value: "july", label: "July" },
-  {name:"semester", value: "august", label: "August" },
-  { name:"semester", value: "sept", label: "September" },
-  {name:"semester", value: "oct", label: "October" },
-  {name:"semester", value: "nov", label: "November" },
-  {name:"semester", value: "december", label: "December" },
+export const YearFounded = [
+  {name:"YearFounded", value: "1990", label: "1990" },
+  {name:"YearFounded", value: "1991", label: "1991" },
+  {name:"YearFounded", value: "1992", label: "1992" },
+  {name:"YearFounded", value: "1993", label: "1993" },
+  {name:"YearFounded", value: "1994", label: "1994" },
+  {name:"YearFounded", value: "1995", label: "1995" },
+  {name:"YearFounded", value: "1996", label: "1996" },
+  {name:"YearFounded", value: "1997", label: "1997" },
+  {name:"YearFounded", value: "1998", label: "1998" },
+  {name:"YearFounded", value: "1999", label: "1999" },
+  {name:"YearFounded", value: "2000", label: "2000" },
+  {name:"YearFounded", value: "2001", label: "2001" },
+  {name:"YearFounded", value: "2002", label: "2002" },
+  {name:"YearFounded", value: "2003", label: "2003" },
+  {name:"YearFounded", value: "2004", label: "2004" },
+  {name:"YearFounded", value: "2005", label: "2005" },
+  {name:"YearFounded", value: "2006", label: "2006" },
+  {name:"YearFounded", value: "2007", label: "2007" },
+  {name:"YearFounded", value: "2008", label: "2008" },
+  {name:"YearFounded", value: "2009", label: "2009" },
+  {name:"YearFounded", value: "2010", label: "2010" },
+  {name:"YearFounded", value: "2011", label: "2011" },
+  {name:"YearFounded", value: "2012", label: "2012" },
+  {name:"YearFounded", value: "2013", label: "2013" },
+  {name:"YearFounded", value: "2014", label: "2014" },
+  {name:"YearFounded", value: "2015", label: "2015" },
+  {name:"YearFounded", value: "2016", label: "2016" },
+  {name:"YearFounded", value: "2017", label: "2017" },
+  {name:"YearFounded", value: "2018", label: "2018" },
+  {name:"YearFounded", value: "2019", label: "2019" },
+  {name:"YearFounded", value: "2020", label: "2020" },
+  {name:"YearFounded", value: "2021", label: "2021" },
 ];
 
-const BirthMonth = [
+export const Role = [
+  {name:"Role", value: "ceo", label: "C.E.O." },
+  {name:"Role", value: "manager", label: "Manager" },
+  {name:"Role", value: "sub-agent", label: "Sub-Agent" },
+  {name:"Role", value: "employee", label: "Employee" },
+ ];
+ export const Offices = [
+  {name:"Offices", value: "yes", label: "Yes" },
+  {name:"Offices", value: "no", label: "No" },
+ 
+ ];
+ export  const SubAgents = [
+  {name:"SubAgents", value: "yes", label: "Yes" },
+  {name:"SubAgents", value: "no", label: "No" },
+ 
+ ];
+ export const Associations = [
+  {name:"Associations", value: "yes", label: "Yes" },
+  {name:"Associations", value: "no", label: "No" },
+ 
+ ];
+
+const SignUp = () => {
+ 
+  const { authUser, loading,signOut } = useAuth();
+
+const email = authUser
+  //const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [role, setRole] = useState([]);
+  const [agency_name, setAgency_name] = useState([]);
+  const [country, setCountry] = useState([]);
+  const [mobile, setMobile] = useState("");
+  const [website, setWebsite] = useState([]);
+  const [offices, setOffices] = useState([]);
+  const [subagents, setSubagents] = useState([]);
+  const [YearFoundeddata, setYearFounded] = useState([]);
+  const [number_of_staff, setNumber_of_staff] = useState("");
+  const [services_provided, setServices_provided] = useState("");
+  const [students_sent_abroad, setStudents_sent_abroad] = useState([]);
+  const [association_bin, setAssociation_bin] = useState([]);
+  const [associations, setAssociations] = useState([]);
+  const [recruitment_area, setRecruitment_area] = useState([]);
+  const [facebooklink, setFacebooklink] = useState([]);
+  const [charge, setCharge] = useState([]);
+
+
+  const router = useRouter();
+  const [error, setError] = useState(null);
+  const [record, setRecord] = useState({ 
+    email:"",
+    name:"",
+    role:"",
+    agency_name:"",
+    country:"",
+    mobile:"",
+    website:"",
+    subagents:"",
+    YearFoundeddata:"",
+    number_of_staff:"",
+    services_provided:"",
+    students_sent_abroad:"",
+    association_bin:"", 
+    associations:"",
+    recruitment_area:"",
+    facebooklink:"",
+    charge:"",
+  });
+
+
+    const [Document, setDocument] = useState({ 
+      image: null,
+      email:'',
+      });
+
+      
+
+console.log(authUser)
+
+  const onCountryChange = selectedOption => {
+    setCountry(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onSubagentsChange = selectedOption => {
+    setSubagents(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  const onYearFoundedChange = selectedOption => {
+    setYearFounded(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+  
+  const onAssociationsChange = selectedOption => {
+    setAssociation_bin(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
+
+  
+
+  const handleImageChange = e => {
+    setDocument({
+      image: e.target.files[0]
+    }) 
+  };
+ 
+
+  const success = () => {
+    alert("Your Data has been recorded. We will suggest you some great Institutes shortly");
+  }
+
+
+  //-------------------HANDLE SUBMIT---------------------------
+  const onSubmit = event => {
+    setError(null)
+    //check if passwords match. If they do, create user in Firebase
+    // and redirect to your logged in page.
+    if(name!=""&&country!=""&&mobile!=""&&gender!=""&&BirthDate!==""&&BirthMonth!=""&&BirthYear!=""&&PreviousQualification!=""&&StudyDestination!=""&&DesiredSubject!="")
+     {
+        record.email = authUser
+        record.name = name;
+        record.role = role;
+        record.agency_name= agency_name;
+        record.country= country.value;
+        record.mobile= mobile;
+        record.website= website;
+        record.subagents = subagents;
+        record.YearFoundeddata = YearFoundeddata.value;
+        record.number_of_staff = number_of_staff;
+        record.services_provided = services_provided;
+        record.students_sent_abroad = students_sent_abroad;
+        record.association_bin = association_bin;
+        record.associations = associations;
+        record.recruitment_area = recruitment_area;
+        record.facebooklink = facebooklink;
+        record.charge = charge;
+        Document.email = authUser;
+
+        let Documentform_data = new FormData();
+        Documentform_data.append('image', Document.image, Document.image.name);
+        Documentform_data.append('email', Document.email);
+        
+        
+       
+
+        axios
+        .post("https://ci-gsc.com/agents/", record)
+        .then((res) => success())
+        .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
+
+        let url = 'https://ci-gsc.com/agentcert/';
+        axios.post(url, Documentform_data, {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => console.log(err))
+      
+
+     } 
+ 
+     
+    else
+      alert("Please Fill up the required Fields")
+      event.preventDefault();
+  };
+ 
+
+  
+
+  return (
+    <>
+
+
+      <PageWrapper
+        headerConfig={{
+          button: "profile",
+          isFluvalue: true,
+          bgClass: "bg-default",
+          reveal: false,
+        }}
+      >
+     
+        <div
+          className="dashboard-main-container mt-24 mt-lg-31"
+          value="dashboard-body"
+        >
+          <div className="container">
+            <div className="mb-15 mb-lg-23">
+              <div className="row">
+                <div className="col-xxxl-9 px-lg-13 px-6">
+                  <h5 className="font-size-6 font-weight-semibold mb-11">
+                    Please fill up the details so we can connect you and your students with the right Universities
+                  </h5>
+                  <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
+                      
+            
+                    <form action="/">
+                         {/* <div className="upload-file mb-16 text-center">
+                      <div
+                        id="userActions"
+                        className="square-144 m-auto px-6 mb-7"
+                      >
+                        <label
+                          htmlFor="fileUpload"
+                          className="mb-0 font-size-4 text-smoke"
+                        >
+                          University Logo
+                        </label>
+                        <input
+                          type="file"
+                          id="fileUpload"
+                          className="sr-only"
+                        />
+                      </div>
+                    </div> */} 
+                      <fieldset>
+                        <div className="row mb-xl-1 mb-9">
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Name * 
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="name"
+                                placeholder="Your Full Name"
+                                onChange={(event) => setName(event.target.value)}
+                                value={name}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Role * 
+                              </label>
+                              <input
+                               
+                                className="form-control h-px-48"
+                                name="role"  
+                                
+                                placeholder="Your Role in the Agency"
+                                onChange={(event) => setRole(event.target.value)}
+                                value={role}
+                                
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Agency Name * 
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="agency_name"
+                                placeholder="The Name of Your Agency"
+                                onChange={(event) => setAgency_name(event.target.value)}
+                                value={agency_name}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Country * 
+                              </label>
+                              <Select
+                                options={getCountries}
+                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                                name="country"  
+                                border={false}
+                                onChange={onCountryChange}
+                                value={country}
+                                
+                              />
+                            </div>
+                          </div>
+                       
+                        </div>
+                        <div className="row mb-xl-1 mb-9">
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Certification 1
+                              </label>
+                              <input 
+                              type="file"
+                              id="image"
+                              accept="image/png, image/jpeg" 
+                              onChange={handleImageChange} required/>
+                            </div>
+                          </div>
+                       
+                        
+                        </div>
+
+                        <div className="row mb-xl-1 mb-9">
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Mobile * 
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="mobile"
+                                placeholder="Your Phonenumber with Country Code"
+                                onChange={(event) => setMobile(event.target.value)}
+                                value={mobile}
+                              />
+                            </div>
+                          </div>
+                            <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Website
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="website"
+                                placeholder="The link to your Website"
+                                onChange={(event) => setWebsite(event.target.value)}
+                                value={website}
+                              />
+                            </div>
+                          </div>
+                       
+                        </div>
+                        <div className="row mb-xl-1 mb-9">
+                        
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Do you have Sub-agents
+                              </label>
+                              <Select
+                              
+                                options={SubAgents}
+                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                                border={false}
+                                onChange={onSubagentsChange}
+                                value={subagents}
+                              />
+                            </div>
+                          </div>
+                       
+                        </div>
+
+                        <div className="row mb-xl-1 mb-9">
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Year Founded
+                              </label>
+                              <Select
+                                options={YearFounded}
+                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                                border={false}
+                                
+                                onChange={onYearFoundedChange}
+                                value={YearFoundeddata}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Number of Staff
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="number_of_staff"
+                                placeholder="34"
+                                onChange={(event) => setNumber_of_staff(event.target.value)}
+                                value={number_of_staff}
+                              />
+                            </div>
+                          </div>
+                       
+                        </div>
+                        <div className="row mb-xl-1 mb-9">
+                     
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Services Provided
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="services_provided"
+                                placeholder="ticketing, Visa Processing, Application Processing"
+                                onChange={(event) => setServices_provided(event.target.value)}
+                                value={services_provided}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Average Students Sent Abroad Per Year
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="students_sent_abroad"
+                                placeholder="100-150"
+                                onChange={(event) => setStudents_sent_abroad(event.target.value)}
+                                value={students_sent_abroad}
+                              />
+                            </div>
+                          </div>
+                       
+                        </div>
+                        <div className="row mb-xl-1 mb-9">
+                     
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Are you part of any Associations
+                              </label>
+                              <Select
+                              
+                                options={SubAgents}
+                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                                border={false}
+                                onChange={onAssociationsChange}
+                                value={association_bin}
+                              />
+                            </div>
+                          </div>
+                     <div className="col-lg-6">
+                       <div className="form-group">
+                         <label
+                           htmlFor="namedash"
+                           className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                         >
+                           Associations you are a part of
+                         </label>
+                         <input
+                           type="text"
+                           className="form-control h-px-48"
+                           name="associations"
+                           placeholder="FDEC, IPDC"
+                           onChange={(event) => setAssociations(event.target.value)}
+                           value={students_sent_abroad}
+                         />
+                       </div>
+                     </div>
+                  
+                   </div>
+                   <div className="row mb-xl-1 mb-9">
+                     
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Where do you recruit Students from?
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="recruitment_area"
+                                placeholder="Bangladesh, India, Kenya"
+                                onChange={(event) => setRecruitment_area(event.target.value)}
+                                value={recruitment_area}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Facebook Link
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="facebooklink"
+                                placeholder="The link to your agencies Facebook Page"
+                                onChange={(event) => setFacebooklink(event.target.value)}
+                                value={facebooklink}
+                              />
+                            </div>
+                          </div>
+                       
+                        </div>
+                      
+                     
+                       
+                        <input
+                              type="button"
+                              value="Save"
+                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                              onClick={onSubmit}
+                         />
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </PageWrapper>
+    </>
+);
+  
+}
+
+export const Month = [
   {name:"birth_month", value: "jan", label: "Januray" },
   { name:"birth_month", value: "feb", label: "February" },
   {name:"birth_month", value: "march", label: "March" },
@@ -48,7 +623,7 @@ const BirthMonth = [
   {name:"birth_month", value: "december", label: "December" },
 ];
 
-const BirthDate = [
+export const Date = [
   {name:"birth_date", value: "1", label: "1" },
   {name:"birth_date", value: "2", label: "2" },
   {name:"birth_date", value: "3", label: "3" },
@@ -82,7 +657,7 @@ const BirthDate = [
   {name:"birth_date", value: "31", label: "31" },
 ];
 
-const IntendedSemester = [
+export const Semester = [
   {name:"IntendedSemester", value: "fall", label: "Fall" },
   { name:"IntendedSemester", value: "spring", label: "Spring" },
   {name:"IntendedSemester", value: "summer", label: "Summer" },
@@ -90,23 +665,23 @@ const IntendedSemester = [
 ];
 
 
-const BirthYear = [
-  {name:"birth_year", value: "1990", label: "1990" },
-  {name:"birth_year", value: "1991", label: "1991" },
-  {name:"birth_year", value: "1992", label: "1992" },
-  {name:"birth_year", value: "1993", label: "1993" },
-  {name:"birth_year", value: "1994", label: "1994" },
-  {name:"birth_year", value: "1995", label: "1995" },
-  {name:"birth_year", value: "1996", label: "1996" },
-  {name:"birth_year", value: "1997", label: "1997" },
-  {name:"birth_year", value: "1998", label: "1998" },
-  {name:"birth_year", value: "1999", label: "1999" },
-  {name:"birth_year", value: "2000", label: "2000" },
-  {name:"birth_year", value: "2001", label: "2001" },
-  {name:"birth_year", value: "2002", label: "2002" },
-  {name:"birth_year", value: "2003", label: "2003" },
-];
-const PreviousQualification = [
+// export const BirthYear = [
+//   {name:"birth_year", value: "1990", label: "1990" },
+//   {name:"birth_year", value: "1991", label: "1991" },
+//   {name:"birth_year", value: "1992", label: "1992" },
+//   {name:"birth_year", value: "1993", label: "1993" },
+//   {name:"birth_year", value: "1994", label: "1994" },
+//   {name:"birth_year", value: "1995", label: "1995" },
+//   {name:"birth_year", value: "1996", label: "1996" },
+//   {name:"birth_year", value: "1997", label: "1997" },
+//   {name:"birth_year", value: "1998", label: "1998" },
+//   {name:"birth_year", value: "1999", label: "1999" },
+//   {name:"birth_year", value: "2000", label: "2000" },
+//   {name:"birth_year", value: "2001", label: "2001" },
+//   {name:"birth_year", value: "2002", label: "2002" },
+//   {name:"birth_year", value: "2003", label: "2003" },
+// ];
+export const Qualification = [
   {name:"prev_qualification", value: 'HSC', label: 'HSC' },
   {name:"prev_qualification", value: 'Alevel', label: 'Alevel' },
   {name:"prev_qualification", value: 'undergrad', label: 'Undergraduate' },
@@ -114,7 +689,8 @@ const PreviousQualification = [
   {name:"prev_qualification", value: 'diploma', label: 'Diploma' },
   {name:"prev_qualification", value: 'other', label: 'Other' },
 ]
-const Subject = [
+
+export const Subject = [
   {name:"DesiredSubject", value: "Engineering", label: "Engineering" },
   {name:"DesiredSubject", value: "Science", label: "Science" },
   {name:"DesiredSubject", value: "Business", label: "Business" },
@@ -122,7 +698,7 @@ const Subject = [
   {name:"DesiredSubject", value: "Arts", label: "Arts" },
   {name:"DesiredSubject", value: "other", label: "Other" },
 ]
-const IELTSBand = [
+export const IELTSBand = [
   {name:"IELTSBand", value: '3', label: '3' },
   {name:"IELTSBand", value: '3.2', label: '3.2' },
   {name:"IELTSBand", value: '3.4', label: '3.4' },
@@ -131,7 +707,7 @@ const IELTSBand = [
   {name:"IELTSBand", value: '4', label: '4' },
 ]
 
-const Desiredlevel = [
+export const Desiredlevel = [
   {name:"Desiredlevel", value: 'HSC', label: 'HSC' },
   {name:"Desiredlevel", value: 'Alevel', label: 'Alevel' },
   {name:"Desiredlevel", value: 'undergrad', label: 'Undergraduate' },
@@ -139,7 +715,7 @@ const Desiredlevel = [
   {name:"Desiredlevel", value: 'diploma', label: 'Diploma' },
   {name:"Desiredlevel", value: 'other', label: 'Other' },
 ]
-const Gender = [
+export const Gender = [
   {name:"gender", value: "male", label: "Male" },
   {name:"gender", value: "female", label: "Female" },
   {name:"gender", value: "other", label: "Other" },
@@ -147,7 +723,7 @@ const Gender = [
 ];
 
 
-const StudyDestination = [
+export const Destination = [
   {name:"StudyDestination", value: "uk", label: "U.K." },
   {name:"StudyDestination", value: "usa", label: "U.S.A." },
   {name:"StudyDestination", value: "cn", label: "Canada" },
@@ -155,527 +731,6 @@ const StudyDestination = [
   {name:"StudyDestination", value: "europe", label: "Europe" },
   {name:"StudyDestination", value: "malay", label: "Malaysia" },
 ];
-
-class StudentRegistration extends Component {
- 
-
- 
-  async componentDidMount() {
-
-
-    
-    
-    try {
-      
-      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
-      console.log(res)
-      const todoList = await res.json();
-      this.setState({
-        todoList
-      });
-    } catch (e) {
-      console.log(e);
-  }
-  } 
-  
-  
-  constructor(props) {
-   
-
-
-    super(props); 
-    
-    const email = this.props.classes
-    console.log(email)
-    this.state = {
-      viewCompleted: false,
-      image:"",
-      image2:"",
-      activeItem: {
-        email:email,
-        name:"",
-        mobile:"",
-        country:"",
-        gender:"",
-        birth_date:"",
-        birth_month:"",
-        birth_year:"",
-        address1:"",
-        address2:"",
-        prev_qualification:"",
-        IELTSBand:"",
-        Desiredlevel:"",
-        StudyDestination:"",
-        IntendedSemester:"",
-        DesiredSubject:""
-      },
-      todoList: []
-      };
-  }
-
-
-  
-
-
-  success = () => {
-    alert("We have received your registration information. You will get a confirmation email shortly");
-  
-  }
-
-refreshList = () => {
-  axios
-    .get("https://ci-gsc.com/students")
-    .then((res) => this.setState({ todoList: res.data }))
-    .catch((err) => console.log(err));
-};
-
-
-handleSubmit = (item) => {
-  
-
-  if (item.id) {
-    axios
-      .put(`https://ci-gsc.com/students/${item.id}/`, item)
-      .then((res) => this.success())
-      .catch((err) => alert("Please fillup the mandatory fields"));
-    return;
-  }
-  axios
-    .post("https://ci-gsc.com/students/", item)
-    .then((res) => this.success())
-    .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
-    ;
-
-    let form_data = new FormData();
-    form_data.append('image', this.state.image, this.state.image.name);
-    form_data.append('title', this.state.activeItem.name);
-    form_data.append('content', this.state.activeItem.mobile);
-    let url = 'https://ci-gsc.com/posts/';
-    axios.post(url, form_data, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    })
-    .then(res => {
-      console.log(res.data);
-    })
-    .catch(err => console.log(err))
- 
-};
-
-handleImageChange = (e) => {
-  this.setState({
-    image: e.target.files[0]
-  })
-};
-
-handleImageChange2 = (e) => {
-  this.setState({
-    image2: e.target.files[0]
-  })
-};
-
-
-handleChange = (e) => {
-  console.log(e)
-  let { name, value } = e.target;
-
-
-  const activeItem = { ...this.state.activeItem, [name]: value };
-
-  this.setState({ activeItem });
-};
-
-
-handleChangeSelect = (e) => {
-  console.log(e)
-
-  let { name,value } = e;
-
-
-  const activeItem = { ...this.state.activeItem, [name]: value };
-
-  this.setState({ activeItem });
-};
-
-render(){
-
-  //this.state.activeItem.email = user.email;
-  return (
-    <>
-
-
-      <PageWrapper
-        headerConfig={{
-          button: "profile",
-          isFluvalue: true,
-          bgClass: "bg-default",
-          reveal: false,
-        }}
-      >
-     
-        <div
-          className="dashboard-main-container mt-24 mt-lg-31"
-          value="dashboard-body"
-        >
-          <div className="container">
-            <div className="mb-15 mb-lg-23">
-              <div className="row">
-                <div className="col-xxxl-9 px-lg-13 px-6">
-                  <h5 className="font-size-6 font-weight-semibold mb-11">
-                    Please fill up the details so we can find the right University for you
-                  </h5>
-                  <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                    
-            
-                    <form action="/">
-                      <fieldset>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Name * 
-                              </label>
-                              <input
-                            
-                                className="form-control h-px-48"
-                                name="name"
-                                placeholder="Your Full Name"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.name}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Country * 
-                              </label>
-                              <Select
-                                options={getCountries}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                
-                                border={false}
-                                name="country"  
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.country.value}
-                                
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Mobile * 
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="mobile"
-                                placeholder="Your Phone Number with Country Code"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.mobile}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Gender * 
-                              </label>
-                              <Select
-                                options={Gender}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="gender"
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.gender.value}
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Certificate of the latest degree * 
-                              </label>
-                              <input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                IELTS Certificate
-                              </label>
-                              <input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={this.handleImageChange2} required/>
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Date * 
-                              </label>
-                              <Select
-                                options={BirthDate}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_date.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Month * 
-                              </label>
-                              <Select
-                                options={BirthMonth}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_month.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Birth Year * 
-                              </label>
-                              <Select
-                              
-                                options={BirthYear}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.birth_year.value}
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-xl-1 mb-9">
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Address Line 1
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                              name="address1"
-                                placeholder="Your Street Address"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.address1}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Address Line 2
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                             name="address2"
-                                placeholder="Your City"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.address2}
-                              />
-                            </div>
-                          </div>
-                       
-                        </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Previous Qualification * 
-                              </label>
-                              <Select
-                                options={PreviousQualification}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.prev_qualification.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="address"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                IELTS Band
-                              </label>
-                              <Select
-                                options={IELTSBand}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.IELTSBand.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Desired Level
-                              </label>
-                              <Select
-                                options={Desiredlevel}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                               
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.Desiredlevel.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="address"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Study Destination * 
-                              </label>
-                              <Select
-                                options={StudyDestination}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.StudyDestination.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Intended Semester
-                              </label>
-                              <Select
-                                options={IntendedSemester}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.IntendedSemester.value}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                              Desired Subject * 
-                              </label>
-                              <Select
-                                options={Subject}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.DesiredSubject.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
-                        </div>
-                      
-                       
-                        <input
-                              type="button"
-                              value="Save"
-                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                              onClick={() => this.handleSubmit(this.state.activeItem)}
-                         />
-                      </fieldset>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </PageWrapper>
-    </>
-  );
-      }
-};
-//export default withRouter(StudentRegistration);
-
-export default withRouter(() => {
-  const { authUser, loading,signOut } = useAuth();
-  return (
-      <StudentRegistration classes={authUser} />
-  )
-})
 
 export const getCountries = [
   { 
@@ -1672,3 +1727,4 @@ export const getCountries = [
     label: "Zimbabwe"
   }
 ]
+export default SignUp;

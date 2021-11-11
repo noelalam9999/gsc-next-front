@@ -1,15 +1,15 @@
 import React, { useContext, useEffect,useState } from "react";
 import Link from "next/link";
-import PageWrapper from "../../components/PageWrapper";
-import Sidebar from "../../components/Sidebar";
-import { Select } from "../../components/Core";
-import { useAuth } from '../../../AuthUserContext';
-import imgF1 from "../../assets/image/l1/png/Trent-University.jpg";
-import iconF1 from "../../assets/image/l1/png/accomodations.png";
-import iconF2 from "../../assets/image/l1/png/internship.png";
-import iconF3 from "../../assets/image/l1/png/offer-letter.png";
-import iconF4 from "../../assets/image/l1/png/post-study-work-visa.png";
-import iconF5 from "../../assets/image/l1/png/work-while-studying.png";
+import PageWrapper from "../../../components/PageWrapper";
+import Sidebar from "../../../components/Sidebar";
+import { Select } from "../../../components/Core";
+import { useAuth } from '../../../../AuthUserContext';
+import imgF1 from "../../../assets/image/l1/png/Trent-University.jpg";
+import iconF1 from "../../../assets/image/l1/png/accomodations.png";
+import iconF2 from "../../../assets/image/l1/png/internship.png";
+import iconF3 from "../../../assets/image/l1/png/offer-letter.png";
+import iconF4 from "../../../assets/image/l1/png/post-study-work-visa.png";
+import iconF5 from "../../../assets/image/l1/png/work-while-studying.png";
 
 
 const defaultCountries = [
@@ -23,40 +23,30 @@ const defaultCountries = [
 const SearchGrid = () => {
   const [userType, setUserType] = useState("");
  const { authUser, loading,signOut } = useAuth();
- 
- const [count, setCount] = useState(8);
-
- const [config,setConfig] = useState({
-   undergrad:'',
-   diploma:'',
-   masters:'',
-   phd:'',
-   
- })
-
- function handleCallback(child){
-setConfig(child)
- }
- 
- console.log(count)
- function Loadmore (){
-
-setCount(count+8)
-
- }
   const [List, setList] = useState([]);
   const [userList, setUserList] = useState([]);
+
+  const [count, setCount] = useState(8);
+ 
+  console.log(count)
+  function Loadmore (){
+ console.log("loadmore clicked")
+ setCount(count+8)
+ 
+  }
+
   useEffect(() =>  {
 
     async function fetchMyAPI() {
     try {
 
       const res = await fetch('https://ci-gsc.com/uni/?format=json');
-      const filtered = todoList.filter(function(val, i, a) {return val.country=="Australia";});
-      const todoList = await res.json();
-      setList(todoList)
- 
   
+      const todoList = await res.json();
+      const filtered = todoList.filter(function(val, i, a) {return val.country=="Europe";});
+      setList(filtered)
+ 
+   
 
 
       
@@ -81,7 +71,7 @@ setCount(count+8)
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-4 col-xs-8">
-                <Sidebar parentCallback = {handleCallback}/>
+                <Sidebar />
               </div>
               <div className="col-12 col-md-8 col-xs-12 ">
                 {/* <!-- form --> */}
@@ -270,8 +260,8 @@ setCount(count+8)
                    
                     </div>
                   </div>
-                  <div  className="text-center pt-5 pt-lg-13">
-               <button style={{border:"none",background:"none"}} onClick={Loadmore} >
+                  <div className="text-center pt-5 pt-lg-13">
+                  <button style={{border:"none",background:"none"}} onClick={Loadmore} >
                       <a className="text-green font-weight-bold text-uppercase font-size-3 d-flex align-items-center justify-content-center">
                         Load More{" "}
                         <i className="fas fa-sort-down ml-3 mt-n2 font-size-4"></i>

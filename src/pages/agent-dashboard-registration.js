@@ -16,42 +16,11 @@ import {
 
 
 
-const Semester = [
-  {name:"semester", value: "jan", label: "Januray" },
-  { name:"semester", value: "feb", label: "February" },
-  {name:"semester", value: "march", label: "March" },
-  {name:"semester", value: "april", label: "April" },
-  {name:"semester", value: "may", label: "May" },
-  {name:"semester", value: "june", label: "June" },
-  {name:"semester", value: "july", label: "July" },
-  {name:"semester", value: "august", label: "August" },
-  { name:"semester", value: "sept", label: "September" },
-  {name:"semester", value: "oct", label: "October" },
-  {name:"semester", value: "nov", label: "November" },
-  {name:"semester", value: "december", label: "December" },
-];
 
-const BirthMonth = [
-  {name:"birth_month", value: "jan", label: "Januray" },
-  { name:"birth_month", value: "feb", label: "February" },
-  {name:"birth_month", value: "march", label: "March" },
-  {name:"birth_month", value: "april", label: "April" },
-  {name:"birth_month", value: "may", label: "May" },
-  {name:"birth_month", value: "june", label: "June" },
-  {name:"birth_month", value: "july", label: "July" },
-  {name:"birth_month", value: "august", label: "August" },
-  { name:"birth_month", value: "sept", label: "September" },
-  {name:"birth_month", value: "oct", label: "October" },
-  {name:"birth_month", value: "nov", label: "November" },
-  {name:"birth_month", value: "december", label: "December" },
-];
 
-const IntendedSemester = [
-  {name:"IntendedSemester", value: "fall", label: "Fall" },
-  { name:"IntendedSemester", value: "spring", label: "Spring" },
-  {name:"IntendedSemester", value: "summer", label: "Summer" },
 
-];
+
+
 
 
 const YearFounded = [
@@ -88,55 +57,15 @@ const YearFounded = [
   {name:"YearFounded", value: "2020", label: "2020" },
   {name:"YearFounded", value: "2021", label: "2021" },
 ];
-const PreviousQualification = [
-  {name:"prev_qualification", value: 'HSC', label: 'HSC' },
-  {name:"prev_qualification", value: 'Alevel', label: 'Alevel' },
-  {name:"prev_qualification", value: 'undergrad', label: 'Undergraduate' },
-  {name:"prev_qualification", value: 'postgrad', label: 'Postgraduate' },
-  {name:"prev_qualification", value: 'diploma', label: 'Diploma' },
-  {name:"prev_qualification", value: 'other', label: 'Other' },
-]
-const Subject = [
-  {name:"DesiredSubject", value: "Engineering", label: "Engineering" },
-  {name:"DesiredSubject", value: "Science", label: "Science" },
-  {name:"DesiredSubject", value: "Business", label: "Business" },
-  {name:"DesiredSubject", value: "LiberalArts", label: "Liberal Arts" },
-  {name:"DesiredSubject", value: "Arts", label: "Arts" },
-  {name:"DesiredSubject", value: "other", label: "Other" },
-]
-const IELTSBand = [
-  {name:"IELTSBand", value: '3', label: '3' },
-  {name:"IELTSBand", value: '3.2', label: '3.2' },
-  {name:"IELTSBand", value: '3.4', label: '3.4' },
-  {name:"IELTSBand", value: '3.6', label: '3.6' },
-  {name:"IELTSBand", value: '3.8', label: '3.8' },
-  {name:"IELTSBand", value: '4', label: '4' },
-]
-
-const Desiredlevel = [
-  {name:"Desiredlevel", value: 'HSC', label: 'HSC' },
-  {name:"Desiredlevel", value: 'Alevel', label: 'Alevel' },
-  {name:"Desiredlevel", value: 'undergrad', label: 'Undergraduate' },
-  {name:"Desiredlevel", value: 'postgrad', label: 'Postgraduate' },
-  {name:"Desiredlevel", value: 'diploma', label: 'Diploma' },
-  {name:"Desiredlevel", value: 'other', label: 'Other' },
-]
-const Gender = [
-  {name:"gender", value: "male", label: "Male" },
-  {name:"gender", value: "female", label: "Female" },
-  {name:"gender", value: "other", label: "Other" },
- 
-];
 
 
-const StudyDestination = [
-  {name:"StudyDestination", value: "uk", label: "U.K." },
-  {name:"StudyDestination", value: "usa", label: "U.S.A." },
-  {name:"StudyDestination", value: "cn", label: "Canada" },
-  {name:"StudyDestination", value: "aus", label: "Australia" },
-  {name:"StudyDestination", value: "europe", label: "Europe" },
-  {name:"StudyDestination", value: "malay", label: "Malaysia" },
-];
+
+
+
+
+
+
+
 
 const Role = [
   {name:"Role", value: "ceo", label: "C.E.O." },
