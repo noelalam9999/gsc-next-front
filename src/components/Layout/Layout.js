@@ -8,6 +8,7 @@ import Header from "../Header";
 import Header2 from "../Header/HeaderProfile";
 import Footer from "../Footer";
 
+
 import SidebarDashboard from "../SidebarDashboard";
 import SidebarDashboardStudent from "../SidebarDashboard/SidebarDashboardStudent";
 import SidebarDashboardAgent from "../SidebarDashboard/SidebarDashboardAgent";
@@ -281,7 +282,8 @@ else
           </Helmet>
           <Loader id="loading" className={visibleLoader ? "" : "inActive"} />
           <div className="site-wrapper overflow-hidden" ref={eleRef}>  
-            <Header isDark={gContext.headerDark} />
+          {authUser == null ?  <Header isDark={gContext.headerDark} /> : <Header2 isDark={gContext.headerDark} />}
+           
             {children}
 
             <Footer isDark={gContext.footerDark} />

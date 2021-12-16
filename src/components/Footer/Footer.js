@@ -3,9 +3,11 @@ import Link from "next/link";
 import GlobalContext from "../../context/GlobalContext";
 import Logo from "../Logo";
 import imgM from "../../assets/image/l1/png/message.png";
+import { useRouter } from 'next/router';
 
 const Footer = () => {
   const gContext = useContext(GlobalContext);
+  const router = useRouter();
   return (
     <>
       <footer className="footer bg-ebony-clay dark-mode-texts">
@@ -40,8 +42,7 @@ const Footer = () => {
                     className="btn btn-outline-gallery btn-xl mx-4 mt-6 text-uppercase"
                     href="/login"
                     onClick={(e) => {
-                      e.preventDefault();
-                      gContext.toggleSignInModal();
+                      router.push('/login');
                     }}
                   >
                     Log in
@@ -50,8 +51,7 @@ const Footer = () => {
                     className="btn btn-green btn-h-60 btn-xl mx-4 mt-6 text-uppercase"
                     href="/registration"
                     onClick={(e) => {
-                      e.preventDefault();
-                      gContext.toggleSignUpModal();
+                      router.push('/registration');
                     }}
                   >
                     Register

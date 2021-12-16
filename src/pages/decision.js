@@ -46,7 +46,7 @@ export default function Login() {
       console.log("inside forloop")
       if(UserList[i]['email'] == authUser.email){
            if(UserList[i]['usertype']== "student"){
-              router.push('/dashboard-main');
+              router.push('/students/student-dashboard');
             }
             else if(UserList[i]['usertype']== "admin"){
               router.push('/agents/agent-dashboard');

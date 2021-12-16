@@ -94,6 +94,7 @@ class StudentRegistration extends Component {
 
     super(props);
     this.state = {
+      image:"",
       viewCompleted: false,
       activeItem: {
         name:"",
@@ -151,15 +152,35 @@ console.log(item)
       .catch((err) => console.log(err));
     return;
   }
+  
   axios
     .post("https://ci-gsc.com/uni/", item)
     .then((res) => this.success())
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
-    ;
+
+    let form_data = new FormData();
+    form_data.append('image', this.state.image, this.state.image.name);
+    form_data.append('mobile', this.state.activeItem.name);
+    
+    let url = 'https://ci-gsc.com/unilogo/';
+    axios.post(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "))
 };
 
 
 
+handleImageChange = (e) => {
+  this.setState({
+    image: e.target.files[0]
+  })
+};
 
 handleChange = (e) => {
   console.log(e)
@@ -206,24 +227,7 @@ render(){
                     Please fill up the details to add a new University into GSC directory
                   </h5>
                   <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                    {/* <div className="upload-file mb-16 text-center">
-                      <div
-                        id="userActions"
-                        className="square-144 m-auto px-6 mb-7"
-                      >
-                        <label
-                          htmlFor="fileUpload"
-                          className="mb-0 font-size-4 text-smoke"
-                        >
-                          University Logo
-                        </label>
-                        <input
-                          type="file"
-                          id="fileUpload"
-                          className="sr-only"
-                        />
-                      </div>
-                    </div> */}
+                    
                     <form action="/">
                       <fieldset>
                         <div className="row mb-xl-1 mb-9">
@@ -261,6 +265,22 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.mobile}
                               />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                                style={{paddingBottom:"10px"}}
+                              >
+                                University Logo * 
+                              </label>
+                              <input 
+                              type="file"
+                              id="image"
+                              accept="image/png, image/jpeg"  
+                              onChange={this.handleImageChange} required/>
                             </div>
                           </div>
                           <div className="col-lg-6">

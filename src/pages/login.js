@@ -15,56 +15,73 @@ export default function Login() {
   const [error, setError] = useState(null);
   const router = useRouter();
   const [userList, setUserList] = useState([]);
-  const { signInWithEmailAndPassword } = useAuth();
+  const { signInWithEmailAndPassword,authUser } = useAuth();
+
+  async function fetchMyAPI2(param) {
+      
+    try {
+      const user_list = await fetch('https://ci-gsc.com/user/?format=json')
+      
+      let UserList = await user_list.json();
+      
+  
+   
+   console.log(UserList)
+
+   for(var i = 0; i<UserList.length; i++){
+   
+    if(UserList[i]['email'] == param){
+
+         if(UserList[i]['usertype']== "student"){
+           
+            router.push('/students/student-dashboard');
+          }
+          else if(UserList[i]['usertype']== "admin"){
+            
+            router.push('/dashboard-main');
+          }
+          else if(UserList[i]['usertype']== "agent"){
+            
+            router.push('/agents/agent-dashboard');
+          }
+          else if(UserList[i]['usertype']== "institute"){
+            
+            router.push('/dashboard-main');
+          }
+          
+          else if(UserList[i]['usertype']== "service_provider"){
+            
+            router.push('/dashboard-main');
+          }
+
+          
+          
+    }  
+
+    
+    }
+    } catch (e) {
+      console.log(e);
+  }
+
+    }
 
   useEffect(() =>  {
 
     async function fetchMyAPI() {
     try {
-
       const res = await fetch('https://ci-gsc.com/students/?format=json');
-  
       const todoList = await res.json();
       setList(todoList)
  
-      // const user_list = await fetch('https://ci-gsc.com/user/?format=json')
-        
-      // const UserList = await user_list.json();
-      // await setUserList(UserList)
-
-
-      // for(var i = 0; i<userList.length; i++){
-      //   if(userList[i]['email'] == authUser.email){
-      //         await setUserType(userList[i]['usertype'])
-              
-      //   }
-      //   }
-
-
-      
     } catch (e) {
       console.log(e);
   }
     }
     
-    async function fetchMyAPI2() {
-      
-      try {
-        const user_list = await fetch('https://ci-gsc.com/user/?format=json')
-        
-        const UserList = await user_list.json();
-        await setUserList(UserList)
-    
-          console.log(typeof userType)
-     
-      } catch (e) {
-        console.log(e);
-    }
-
-      }
 
  fetchMyAPI()
- fetchMyAPI2()
+ 
 
 
   },[])
@@ -74,31 +91,9 @@ export default function Login() {
     setError(null)
     signInWithEmailAndPassword(email, password)
     .then(authUser => {  
-      router.push('/decision');
-
-      // for(var i = 0; i<userList.length; i++){
-      //   console.log("inside forloop")
-      //   if(userList[i]['email'] == authUser.email){
-      //         if(userList[i]['usertype']== "student"){
-      //           router.push('/dashboard-main');
-      //         }
-      //         else if(userList[i]['usertype']== "agent"){
-      //           router.push('/agents/agent-dashboard');
-      //         }
-      //         else if(userList[i]['usertype']== "institute"){
-      //           router.push('/dashboard-main');
-      //         }
-              
-      //         else if(userList[i]['usertype']== "service_provider"){
-      //           router.push('/dashboard-main');
-      //         }
-
-              
-              
-      //   }  
-
-        
-      //   }
+      console.log(email)
+      fetchMyAPI2(email)
+      
       
     })
     .catch(error => {
@@ -150,7 +145,7 @@ export default function Login() {
            </FormGroup>
            <FormGroup row>
             <Col>
-              No account? <Link href="/signup">Create one</Link>
+              No account? <Link href="/registration">Create one</Link>
             </Col>
           </FormGroup>
           </Form>

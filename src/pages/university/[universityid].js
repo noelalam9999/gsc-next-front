@@ -1,12 +1,9 @@
-import React from "react";
+import React,{ useContext, useEffect,useState } from "react";
 import { Nav, Tab } from "react-bootstrap";
 import Link from "next/link";
 import PageWrapper from "../../components/PageWrapper";
 import imgF1 from "../../assets/image/l2/png/featured-job-logo-1.png";
-import imgF2 from "../../assets/image/l2/png/featured-job-logo-2.png";
-import imgF3 from "../../assets/image/l2/png/featured-job-logo-3.png";
-import imgF4 from "../../assets/image/l2/png/featured-job-logo-4.png";
-import imgF5 from "../../assets/image/l2/png/featured-job-logo-5.png";
+
 import imgB1 from "../../assets/image/l1/png/feature-brand-1.png";
 import imgB2 from "../../assets/image/l1/png/feature-brand-4.png";
 import imgB3 from "../../assets/image/l1/png/feature-brand-5.png";
@@ -16,8 +13,50 @@ import iconL from "../../assets/image/svg/icon-loaction-pin-black.svg";
 import iconS from "../../assets/image/svg/icon-suitecase.svg";
 import iconC from "../../assets/image/svg/icon-clock.svg";
 import imgB5 from "../../assets/image/l3/png/universal.png";
+import { useAuth } from '../../../AuthUserContext';
+import axios from 'axios';
+import {useRouter} from 'next/router'
 
 const CompanyProfile = () => {
+  const router = useRouter();
+  const uniId = router.query.universityid;
+  const [List, setList] = useState([]);
+  const { authUser, loading,signOut } = useAuth();
+  const [record, setRecord] = useState({
+    client_name: '',
+    partner:'',
+      
+  });
+
+  const onSubmit = event => {
+    record.client_name = authUser
+    record.partner = uniId
+    console.log(record)
+    axios
+    .post("https://ci-gsc.com/application/", record)
+    .then((res) => alert("Your request to apply to "+List[0].name+" has been received. GSC will evaluate and reach out to you shortly"))
+    .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
+  }
+
+  useEffect(() =>  {
+
+    async function fetchMyAPI() {
+    try {
+      const res = await fetch('https://ci-gsc.com/uni/?format=json');
+      console.log(res)
+      const todoList = await res.json();
+      const filtered = todoList.filter(function(val, i, a) {return val.id==uniId;});
+      setList(filtered)
+    } catch (e) {
+      console.log(e);
+  }
+    }
+    
+fetchMyAPI()
+    
+  },uniId)
+
+
   return (
     <>
       <PageWrapper headerConfig={{ button: "profile" }}>
@@ -39,6 +78,8 @@ const CompanyProfile = () => {
               </div>
             </div>
             {/* <!-- back Button End --> */}
+            
+            { List.map((item, index)=>(
             <div className="row">
               {/* <!-- Company Profile --> */}
               <div className="col-12 col-xl-9 col-lg-8">
@@ -55,19 +96,20 @@ const CompanyProfile = () => {
                     </Link>
                     <div className="">
                       <h2 className="mt-xs-n5">
+                      
                         <Link href="/#">
                           <a className="font-size-6 text-black-2 font-weight-semibold">
-                            University of Regina
+                            {item.name}
                           </a>
                         </Link>
                       </h2>
                       <span className="mb-0 text-gray font-size-4">
-                        Canada
+                        {item.country}
                       </span>
                     </div>
                   </div>
                   {/* <!-- Tab Section Start --> */}
-                  <Tab.Container id="left-tabs-example" defaultActiveKey="jobs">
+                  <Tab.Container id="left-tabs-example" defaultActiveKey="company">
                     <Nav
                       className="nav border-bottom border-mercury pl-12"
                       role="tablist"
@@ -90,7 +132,7 @@ const CompanyProfile = () => {
                       </li>
                     </Nav>
                     {/* <!-- Tab Content --> */}
-                    <Tab.Content className="bg-default-1 pl-12 pt-10 pb-7 pr-12 pr-xxl-24">
+                    <Tab.Content className="bg-white pl-12 pt-10 pb-7 pr-12 pr-xxl-24">
                       <Tab.Pane eventKey="jobs">
                         {/* <!-- Middle Body Start --> */}
                         <div className="row">
@@ -158,19 +200,7 @@ const CompanyProfile = () => {
                         </div>
                         <div className="col-md-5">
                           <ul className="d-flex list-unstyled mr-n3 flex-wrap mr-n8 justify-content-md-end">
-                            <li className="mt-2 mr-8 font-size-small text-black-2 d-flex">
-                              <span
-                                className="mr-4"
-                                css={`
-                                  margin-top: -2px;
-                                `}
-                              >
-                                <img src={iconL} alt="" />
-                              </span>
-                              <span className="font-weight-semibold">
-                                Berlyn, UK
-                              </span>
-                            </li>
+                            
                             <li className="mt-2 mr-8 font-size-small text-black-2 d-flex">
                               <span
                                 className="mr-4"
@@ -184,19 +214,7 @@ const CompanyProfile = () => {
                                 Full-time
                               </span>
                             </li>
-                            <li className="mt-2 mr-8 font-size-small text-black-2 d-flex">
-                              <span
-                                className="mr-4"
-                                css={`
-                                  margin-top: -2px;
-                                `}
-                              >
-                                <img src={iconC} alt="" />
-                              </span>
-                              <span className="font-weight-semibold">
-                                9d ago
-                              </span>
-                            </li>
+                            
                           </ul>
                         </div>
                       </div>
@@ -227,45 +245,6 @@ const CompanyProfile = () => {
                       <Tab.Pane eventKey="company">
                         {/* <!-- Middle Body Start --> */}
                         <div className="row">
-                          {/* <!-- Single Widgets Start --> */}
-                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
-                            <div className="mb-8">
-                              <p className="font-size-4">University Ranking</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                4
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Est. Since</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                               1940
-                              </h5>
-                            </div>
-                          </div>
-                          {/* <!-- Single Widgets End --> */}
-                          {/* <!-- Single Widgets Start --> */}
-                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
-                          <div className="mb-8">
-                              <p className="font-size-4">Average Diploma Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                $23,000
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Average Undergraduate Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                $50,000
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Average Post-Graduate Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                $40,000
-                              </h5>
-                            </div>
-                            
-                          </div>
-                          {/* <!-- Single Widgets End --> */}
                           {/* <!-- Single Widgets Start --> */}
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                             <div className="mb-8">
@@ -300,7 +279,67 @@ const CompanyProfile = () => {
                                 </Link>
                               </div>
                             </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">University Ranking</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                4
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Est. Since</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                               1940
+                              </h5>
+                            </div>
                           </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <p className="font-size-4">Average Diploma Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.Diplomafee}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Average Undergraduate Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.UGfee}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Average Post-Graduate Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.PGfee}
+                              </h5>
+                            </div>
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <p className="font-size-4">Fall Semester Start</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.FallSemester}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Spring Semester Start</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.SpringSemester}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Summer Semester Start</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.SummerSemester}
+                              </h5>
+                            </div>
+                            
+                          </div>
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          
                           {/* <!-- Single Widgets End --> */}
                         </div>
                         {/* <!-- Middle Body End --> */}
@@ -319,25 +358,15 @@ const CompanyProfile = () => {
                             marketing strategy that resonates with your target
                             audience.
                           </p>
-                          <p className="font-size-4  mb-8">
-                            You’ve been disappointed with your traffic and
-                            conversions so far, but with an overwhelming number
-                            of things to do, you’ve put off doing anything about
-                            it until now.
-                          </p>
-                          <p className="font-size-4 mb-8">
-                            So you’ve come to Upwork, looking for someone that
-                            can craft creative content and killer sales copy to
-                            help you reach more people and make more sales.
-                          </p>
-                          <p className="font-size-4 mb-8">
-                            But your troubles aren’t over just yet; it isn’t
-                            easy to find someone who can create the high-quality
-                            content you need. But your troubles aren’t over just
-                            yet.
-                          </p>
+                      
                         </div>
                         {/* <!-- Excerpt End --> */}
+                        <input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />
                       </Tab.Pane>
                     </Tab.Content>
                     {/* <!-- Tab Content End --> */}
@@ -467,6 +496,8 @@ const CompanyProfile = () => {
               </div>
               {/* <!-- end Sidebar --> */}
             </div>
+           
+            ))}
           </div>
         </div>
       </PageWrapper>

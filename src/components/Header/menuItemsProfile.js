@@ -107,6 +107,11 @@ export const menuItems = [
     ],
   },
  
+  {
+    name: "dashboard-main",
+    label: "Dashboard"
+
+  },
  
   
 ];

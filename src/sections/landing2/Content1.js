@@ -69,7 +69,7 @@ const Content = () => {
                   <div className="media-body pl-7">
                     <h5 className="mb-5 h5">30 years of Un-detered Service</h5>
                     <p className="mb-0 font-size-4 text-default-color">
-                      Global Study Contacts has been working tirelessly for the past 30 years to ensure placement of students in the right countries 
+                      Global Study Contacts (part of Contacts International) has been working tirelessly for the past 30 years to ensure placement of students in the right countries 
                     </p>
                   </div>
                   {/* <!-- media body start --> */}

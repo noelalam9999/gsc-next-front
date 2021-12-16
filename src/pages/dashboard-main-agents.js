@@ -182,13 +182,58 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Associated Office
+                          Agency Name
                         </th>
-                        
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
-                        >Clients Count</th>
+                        >
+                          Website
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Offices
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Subagents
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Year Founded
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Number of Staff
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Services Provided
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Recruitment Area
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Service Charge</th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Students Sent Abroad</th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
@@ -238,9 +283,45 @@ console.log(List)
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            
+                            {item.agency_name}
                           </h3>
                         </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.website}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.offices}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.subagents}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.year_founded}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.number_of_staff}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.services_provided}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.recruitment_area}
+                          </h3>
+                        </td>
+                       
                         {/* <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
                             <a
@@ -259,7 +340,16 @@ console.log(List)
                           <div className="">
                             <Link href="/contact">
                               <a className="font-size-3 font-weight-bold text-green text-uppercase">
-                                23
+                                {item.charge}
+                              </a>
+                            </Link>
+                          </div>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-110 pr-0">
+                          <div className="">
+                            <Link href="/contact">
+                              <a className="font-size-3 font-weight-bold text-green text-uppercase">
+                                {item.students_sent_abroad}
                               </a>
                             </Link>
                           </div>
@@ -268,7 +358,7 @@ console.log(List)
                           <div className="">
                             <Link href="/#">
                               <a className="font-size-3 font-weight-bold text-red-2 text-uppercase">
-                                56
+                                0
                               </a>
                             </Link>
                           </div>

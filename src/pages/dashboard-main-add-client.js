@@ -4,14 +4,18 @@ import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
 import 'firebase/firestore';
 import axios from 'axios';
+import { AuthUserProvider, useAuth, useAuthforClass } from '../../AuthUserContext';
+import {withRouter} from 'next/router'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 import {
   Form,
   FormGroup,
   Input,
-
+    
 } from "reactstrap";
-
+import PropTypes from "prop-types";
 
 
 const Semester = [
@@ -144,20 +148,49 @@ const Gender = [
 
 
 const StudyDestination = [
-  {name:"StudyDestination", value: "uk", label: "U.K." },
-  {name:"StudyDestination", value: "usa", label: "U.S.A." },
-  {name:"StudyDestination", value: "cn", label: "Canada" },
-  {name:"StudyDestination", value: "aus", label: "Australia" },
-  {name:"StudyDestination", value: "europe", label: "Europe" },
-  {name:"StudyDestination", value: "malay", label: "Malaysia" },
+  {name:"StudyDestination", value: "UK", label: "U.K." },
+  {name:"StudyDestination", value: "USA", label: "U.S.A." },
+  {name:"StudyDestination", value: "Canada", label: "Canada" },
+  {name:"StudyDestination", value: "Australia", label: "Australia" },
+  {name:"StudyDestination", value: "Europe", label: "Europe" },
+  {name:"StudyDestination", value: "Malay", label: "Malaysia" },
 ];
 
 class StudentRegistration extends Component {
+ 
 
+ 
+  async componentDidMount() {
+
+
+    
+    
+    try {
+      
+      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
+      console.log(res)
+      const todoList = await res.json();
+      this.setState({
+        todoList
+      });
+    } catch (e) {
+      console.log(e);
+  }
+  } 
+  
+  
   constructor(props) {
-    super(props);
+   
+
+
+    super(props); 
+    
+    const email = this.props.classes
+    console.log(email)
     this.state = {
       viewCompleted: false,
+      image:"",
+      image2:"",
       activeItem: {
         email:"",
         name:"",
@@ -182,18 +215,7 @@ class StudentRegistration extends Component {
 
 
   
-  async componentDidMount() {
-    try {
-      const res = await fetch('https://ci-gsc.com/heroes/?format=json');
-      console.log(res)
-      const todoList = await res.json();
-      this.setState({
-        todoList
-      });
-    } catch (e) {
-      console.log(e);
-  }
-  }
+
 
   success = () => {
     alert("We have received your registration information. You will get a confirmation email shortly");
@@ -210,7 +232,7 @@ refreshList = () => {
 
 handleSubmit = (item) => {
   
-console.log(item)
+
   if (item.id) {
     axios
       .put(`https://ci-gsc.com/students/${item.id}/`, item)
@@ -223,6 +245,34 @@ console.log(item)
     .then((res) => this.success())
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
     ;
+
+    let form_data = new FormData();
+    form_data.append('image', this.state.image, this.state.image.name);
+    form_data.append('title', this.state.activeItem.name);
+    form_data.append('content', this.state.activeItem.mobile);
+    let url = 'https://ci-gsc.com/posts/';
+    axios.post(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => console.log(err))
+ 
+};
+
+handleImageChange = (e) => {
+  this.setState({
+    image: e.target.files[0]
+  })
+};
+
+handleImageChange2 = (e) => {
+  this.setState({
+    image2: e.target.files[0]
+  })
 };
 
 
@@ -235,6 +285,8 @@ handleChange = (e) => {
 
   this.setState({ activeItem });
 };
+
+
 handleChangeSelect = (e) => {
   console.log(e)
 
@@ -247,6 +299,8 @@ handleChangeSelect = (e) => {
 };
 
 render(){
+
+  //this.state.activeItem.email = user.email;
   return (
     <>
 
@@ -269,7 +323,7 @@ render(){
               <div className="row">
                 <div className="col-xxxl-9 px-lg-13 px-6">
                   <h5 className="font-size-6 font-weight-semibold mb-11">
-                    Client registration form
+Client Registration Form
                   </h5>
                   <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
                     
@@ -292,6 +346,24 @@ render(){
                                 placeholder="Your Full Name"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.name}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Email * 
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="email"
+                                placeholder="Your Full Name"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.email}
                               />
                             </div>
                           </div>
@@ -330,27 +402,9 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                                 name="mobile"
-                                placeholder="Client's Phonenumber with Country Code"
+                                placeholder="Your Phone Number with Country Code"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.mobile}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Email * 
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="email"
-                                placeholder="Clients Active Email Address"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.email}
                               />
                             </div>
                           </div>
@@ -370,6 +424,41 @@ render(){
                                 onChange={this.handleChangeSelect}
                                 value={this.state.activeItem.gender.value}
                               />
+                            </div>
+                          </div>
+                       
+                        </div>
+                        <div className="row mb-xl-1 mb-9">
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <span >
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                                
+                              >
+                                
+                                Certificate of the latest degree * 
+                              </label>
+                              </span>
+                              <input 
+                              type="file"
+                              id="image"
+                              accept="image/png, image/jpeg"  
+                              onChange={this.handleImageChange} required/>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                IELTS Certificate
+                              </label>
+                              <input type="file"
+                   id="image"
+                   accept="image/png, image/jpeg"  onChange={this.handleImageChange2} required/>
                             </div>
                           </div>
                        
@@ -444,7 +533,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                               name="address1"
-                                placeholder="Client's Street Address"
+                                placeholder="Your Street Address"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.address1}
                               />
@@ -462,7 +551,7 @@ render(){
                                 type="text"
                                 className="form-control h-px-48"
                              name="address2"
-                                placeholder="Client's City"
+                                placeholder="Your City"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.address2}
                               />
@@ -532,7 +621,7 @@ render(){
                                 htmlFor="address"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                               Desired Study Destination * 
+                               Study Destination * 
                               </label>
                               <Select
                                 options={StudyDestination}
@@ -603,7 +692,14 @@ render(){
   );
       }
 };
-export default StudentRegistration;
+//export default withRouter(StudentRegistration);
+
+export default withRouter(() => {
+  const { authUser, loading,signOut } = useAuth();
+  return (
+      <StudentRegistration classes={authUser} />
+  )
+})
 
 export const getCountries = [
   { 

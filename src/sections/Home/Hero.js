@@ -39,7 +39,7 @@ const Hero = () => {
               </h1>
               <div className="home-main">
               <p style={{color:"black", width:"330px"}} className="home-main font-size-5">
-                  For over 30 years, Global Study Contacts has been the ‘home’ of overseas university applications, assisting self-funded students<br/> through the entire university application process.
+                  For over 30 years, Global Study Contacts (part of Contacts International) has been the ‘home’ of overseas university applications, assisting self-funded students<br/> through the entire university application process.
                   </p>
                   </div>
               <div className="">

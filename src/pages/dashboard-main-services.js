@@ -28,7 +28,7 @@ const DashboardMain = () => {
 
     async function fetchMyAPI() {
     try {
-      const res = await fetch('https://ci-gsc.com/students/?format=json');
+      const res = await fetch('https://ci-gsc.com/service/?format=json');
       console.log(res)
       const todoList = await res.json();
       setList(todoList)
@@ -156,38 +156,47 @@ console.log(List)
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
                           <Link href={`/services/`+item.id}>
                             <a className="media min-width-px-235 align-items-center">
-                              <div className="circle-36 mr-6">
-                                <img src={imgP1} alt="" className="w-100" />
-                              </div>
-                              <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
+                            <td className="table-y-middle py-7 min-width-px-235 pr-0">     
+                              <h4 className="font-size-4 font-weight-bold mb-0 text-black-2">
                                 {item.name}
                               </h4>
+                              </td>
                             </a>
                           </Link>
                         </th>
                         <td className="table-y-middle py-7 min-width-px-235 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.mobile}
+                            {item.partner}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.branches}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.product_type}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_month}
+                            {item.approx_fee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_year}
+                            {item.revenue_type}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.duration}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.description}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">

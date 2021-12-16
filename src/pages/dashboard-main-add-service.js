@@ -12,7 +12,8 @@ const RevenueType = [
 ];
 
 const ProductType = [
-  {name:"ProductType", value: "uni", label: "University Program" },
+  {name:"ProductType", value: "ticketing", label: "Ticketing" },
+  {name:"ProductType", value: "finance", label: "Finance" },
   {name:"ProductType", value: "visa", label: "Visa Application" },
  
 ];

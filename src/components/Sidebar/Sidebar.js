@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styled from "styled-components";
 import { Range, getTrackBackground } from "react-range";
 
 const STEP = 1;
-const MIN = 50;
+const MIN = 20;
 const MAX = 180;
 
 const CheckStyled = styled.span`
@@ -33,15 +33,15 @@ const CheckStyled = styled.span`
   }
 `;
 
-const Check = ({ children }) => {
-  const [active, setActive] = useState(false);
+const Check = ({ children,parentCallback }) => {
+  const [active, setActive] = useState(true);
 
   return (
     <CheckStyled
       className={`toggle-item ${active ? "active" : ""}`}
       onClick={() => {
-        console.log(children.toString())
         setActive(!active);
+        parentCallback(children.toString())
       }}
     >
       {children}
@@ -49,8 +49,19 @@ const Check = ({ children }) => {
   );
 };
 
-const Sidebar = () => {
-  const [rangeValues, setRangeValues] = useState([70, 150]);
+
+
+
+
+
+
+const Sidebar = ({parentCallback,FeeRange,setRanking}) => {
+  const [rangeValues, setRangeValues] = useState([20, 100]);
+  useEffect(() =>  {
+
+    FeeRange(rangeValues)
+   
+     },[rangeValues])
   return (
     <>
       {/* <!-- Sidebar Start --> */}
@@ -58,16 +69,16 @@ const Sidebar = () => {
         <h4 className="font-size-6 font-weight-semibold mb-6">Academic Level</h4>
         <ul className="list-unstyled filter-check-list">
           <li className="mb-2">
-            <Check>Undergraduate</Check>
+            <Check parentCallback = {parentCallback}>Undergraduate</Check>
           </li>
           <li className="mb-2">
-            <Check>Diploma</Check>
+            <Check parentCallback = {parentCallback}>Diploma</Check>
           </li>
           <li className="mb-2">
-            <Check>Masters</Check>
+            <Check parentCallback = {parentCallback}>Masters</Check>
           </li>
           <li className="mb-2">
-            <Check>PhD</Check>
+            <Check parentCallback = {parentCallback}>PhD</Check>
           </li>
            
         </ul>
@@ -181,16 +192,16 @@ const Sidebar = () => {
         </h4>
         <ul className="list-unstyled filter-check-list">
           <li className="mb-2">
-            <Check>4+ </Check>
+            <Check parentCallback = {parentCallback}>3-4</Check>
           </li>
           <li className="mb-2">
-            <Check>3-2</Check>
+            <Check parentCallback = {parentCallback}>2-3</Check>
           </li>
           <li className="mb-2">
-            <Check>2-1</Check>
+            <Check parentCallback = {parentCallback}>1-2</Check>
           </li>
           <li className="mb-2">
-            <Check>Below 1</Check>
+            <Check parentCallback = {parentCallback}>1{">"}</Check>
           </li>
         </ul>
       </div>

@@ -3,37 +3,28 @@ import axios from 'axios';
 import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
 import 'firebase/firestore';
+import { useAuth } from '../../AuthUserContext';
+import SidebarDashboard from "../components/SidebarDashboard";
+import { withRouter } from 'next/router'
 
+const department = [
+    {name:"department", value: "business", label: "Business." },
+    {name:"department", value: "arts", label: "Arts" },
+    {name:"department", value: "engineering", label: "Engineering" },
+    {name:"department", value: "science", label: "Science" },
+    {name:"department", value: "social_science", label: "Social Science" },
+    {name:"department", value: "medical", label: "Medical" },
+  ];
 
-const RevenueType = [
-  {name:"RevenueType", value: "rev", label: "Revenue From Client" },
-  {name:"RevenueType", value: "comm", label: "Commision from Partner" },
+  const duration = [
+    {name:"duration", value: "1", label: "One Year" },
+    {name:"duration", value: "2", label: "Two Years" },
+    {name:"duration", value: "3", label: "Three Years" },
+    {name:"duration", value: "4", label: "Four Years" },
+    {name:"duration", value: "5", label: "Five Years" },
+    
+  ];
  
-];
-
-const ProductType = [
-  {name:"ProductType", value: "uni", label: "University Program" },
-  {name:"ProductType", value: "visa", label: "Visa Application" },
- 
-];
-
-
-
-const IntakeMonth = [
-  {name:"IntakeMonth", value: "jan", label: "Januray" },
-  {name:"IntakeMonth", value: "feb", label: "February" },
-  {name:"IntakeMonth", value: "march", label: "March" },
-  {name:"IntakeMonth", value: "april", label: "April" },
-  {name:"IntakeMonth", value: "may", label: "May" },
-  {name:"IntakeMonth", value: "june", label: "June" },
-  {name:"IntakeMonth", value: "july", label: "July" },
-  {name:"IntakeMonth", value: "august", label: "August" },
-  {name:"IntakeMonth", value: "sept", label: "September" },
-  {name:"IntakeMonth", value: "oct", label: "October" },
-  {name:"IntakeMonth", value: "nov", label: "November" },
-  {name:"IntakeMonth", value: "december", label: "December" },
-];
-
 
 class StudentRegistration extends Component {
 
@@ -41,17 +32,15 @@ class StudentRegistration extends Component {
 
     super(props);
     this.state = {
-      viewCompleted: false,
+      
+
       activeItem: {
-        name:"",
-        partner:"",
-        branches:"",
-        product_type:"",
-        revenue_type:"",
-        approx_fee:"",
-        intake_month:"",  
+        program_name:"",
         duration:"",
-        description:"",
+        required_ielts:"",
+        fee:"",
+        department:"",
+        partner:"",
         
       },
       todoList: [],
@@ -62,8 +51,18 @@ class StudentRegistration extends Component {
 
   
   async componentDidMount() {
+    this.setState({activeItem: {
+        program_name:"",
+        duration:"",
+        required_ielts:"",
+        fee:"",
+        department:"",
+        partner:this.props.router.query.loc,
+        
+      }})
+      
     try {
-      const res = await fetch('https://ci-gsc.com/uni/?format=json');
+      const res = await fetch('https://ci-gsc.com/uni/'+this.props.router.query.loc);
       console.log(res)
       const todoList = await res.json();
       this.setState({
@@ -72,36 +71,33 @@ class StudentRegistration extends Component {
     } catch (e) {
       console.log(e);
   }
+  
   }
 
 
 refreshList = () => {
   axios
-    .get("https://ci-gsc.com/service")
+    .get("https://ci-gsc.com/uni")
     .then((res) => this.success())
     .catch((err) => console.log(err));
 };
 
 success = () => {
-  alert("We have received your registration information. You will get a confirmation email shortly");
+  alert(this.state.activeItem.program_name+" Added under "+ todoList[0].name );
 
 }
 
 handleSubmit = (item) => {
-  
+    
 console.log(item)
-  if (item.id) {
-    axios
-      .put(`https://ci-gsc.com/product/${item.id}/`, item)
-      .then((res) => this.success())
-      .catch((err) => console.log(err));
-    return;
-  }
+  
+  
   axios
-    .post("https://ci-gsc.com/product  /", item)
+    .post("https://ci-gsc.com/program/", item)
     .then((res) => this.success())
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
-    ;
+
+
 };
 
 
@@ -140,6 +136,7 @@ render(){
           reveal: false,
         }}
       >
+          <SidebarDashboard/>
         <div
           className="dashboard-main-container mt-24 mt-lg-31"
           id="dashboard-body"
@@ -149,27 +146,10 @@ render(){
               <div className="row">
                 <div className="col-xxxl-9 px-lg-13 px-6">
                   <h5 className="font-size-6 font-weight-semibold mb-11">
-                    Please fill up the details to add a new Service into the GSC Directory
+                    Please fill up the details to add a new University into GSC directory
                   </h5>
                   <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                    {/* <div className="upload-file mb-16 text-center">
-                      <div
-                        id="userActions"
-                        className="square-144 m-auto px-6 mb-7"
-                      >
-                        <label
-                          htmlFor="fileUpload"
-                          className="mb-0 font-size-4 text-smoke"
-                        >
-                          University Logo
-                        </label>
-                        <input
-                          type="file"
-                          id="fileUpload"
-                          className="sr-only"
-                        />
-                      </div>
-                    </div> */}
+                    
                     <form action="/">
                       <fieldset>
                         <div className="row mb-xl-1 mb-9">
@@ -179,33 +159,15 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Service Name * 
+                                Program Name * 
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
-                                name="name"
-                                placeholder="eg. Collarts"
+                                name="program_name"
+                                placeholder="Bachelor of Science in Computer Science"
                                 onChange={this.handleChange}
-                                value={this.state.activeItem.name}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="select2"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Partner * 
-                              </label>
-                              <Select
-                                options={getCountries}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="partner"  
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.partner.value}
+                                value={this.state.activeItem.program_name}
                               />
                             </div>
                           </div>
@@ -215,15 +177,51 @@ render(){
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Branches
+                                Duration 
                               </label>
                               <Select
-                                options={getCountries}
+                                options={duration}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                                 border={false}
-                                name="branches"  
+                                name="duration"  
                                 onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.branches.value}
+                                value={this.state.activeItem.duration.value}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Required IELTS * 
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="required_ielts"
+                                placeholder="ielts score required to do this course"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.required_ielts}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Fee * 
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="fee"
+                                placeholder="fee required to do this program"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.fee}
                               />
                             </div>
                           </div>
@@ -235,118 +233,24 @@ render(){
                                 htmlFor="select3"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Product Type * 
+                                Department
                               </label>
                               <Select
-                                options={ProductType}
+                                options={department}
                                 className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                                 border={false}
-                                name="product_type"  
+                                name="department"  
                                 onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.product_type.value}
-                                    
+                                value={this.state.activeItem.department.value}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="address"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Revenue Type
-                              </label>
-                              <Select
-                                options={RevenueType}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="revenue_type"  
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.revenue_type.value}
-                              />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
-                            </div>
-                          </div>
+                          
                         </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Duration 
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="duration"
-                                placeholder="eg. Collarts"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.duration}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                              Intake Months
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="intake_month"
-                                placeholder="eg. Collarts"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.intake_month}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                          <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Approx Fee * 
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="approx_fee"
-                                placeholder="eg. Collarts"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.approx_fee}
-                              />
-                            </div>
-                      
-                          </div>
-                        </div>
-                        <div className="row mb-8">
-                        <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Description
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="description"
-                                placeholder="+9901845671823"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.description}
-                              />
-                            </div>
-                          </div>
+                        
+                        
                        
-                        </div>
-                   
+                       
                         <input
                               type="button"
                               value="Add Uni"
@@ -366,7 +270,7 @@ render(){
   );
       }
 };
-export default StudentRegistration;
+export default withRouter(StudentRegistration);
 
 
 export const getCountries = [

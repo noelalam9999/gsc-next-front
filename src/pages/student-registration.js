@@ -148,12 +148,12 @@ const Gender = [
 
 
 const StudyDestination = [
-  {name:"StudyDestination", value: "uk", label: "U.K." },
-  {name:"StudyDestination", value: "usa", label: "U.S.A." },
-  {name:"StudyDestination", value: "cn", label: "Canada" },
-  {name:"StudyDestination", value: "aus", label: "Australia" },
-  {name:"StudyDestination", value: "europe", label: "Europe" },
-  {name:"StudyDestination", value: "malay", label: "Malaysia" },
+  {name:"StudyDestination", value: "UK", label: "U.K." },
+  {name:"StudyDestination", value: "USA", label: "U.S.A." },
+  {name:"StudyDestination", value: "Canada", label: "Canada" },
+  {name:"StudyDestination", value: "Australia", label: "Australia" },
+  {name:"StudyDestination", value: "Europe", label: "Europe" },
+  {name:"StudyDestination", value: "Malay", label: "Malaysia" },
 ];
 
 class StudentRegistration extends Component {
@@ -413,15 +413,21 @@ render(){
                         <div className="row mb-xl-1 mb-9">
                           <div className="col-lg-6">
                             <div className="form-group">
+                              <span >
                               <label
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                                
                               >
+                                
                                 Certificate of the latest degree * 
                               </label>
-                              <input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
+                              </span>
+                              <input 
+                              type="file"
+                              id="image"
+                              accept="image/png, image/jpeg"  
+                              onChange={this.handleImageChange} required/>
                             </div>
                           </div>
                           <div className="col-lg-6">

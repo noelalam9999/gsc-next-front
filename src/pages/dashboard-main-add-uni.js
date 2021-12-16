@@ -3,6 +3,7 @@ import axios from 'axios';
 import PageWrapper from "../components/PageWrapper";
 import { Select } from "../components/Core";
 import 'firebase/firestore';
+import { useAuth } from '../../AuthUserContext';
 
 const FallSemester = [
   {name:"FallSemester", value: "jan", label: "Januray" },
@@ -78,6 +79,13 @@ const AccomodationCost = [
   {name:"AccomodationCost", value: "24,000<", label: "24,000<" },
 ];
 
+const IELTSRequirement = [
+  {name:"IELTSRequirement", value: "7.5", label: "7.5" },
+  {name:"IELTSRequirement", value: "7", label: "7" },
+  {name:"IELTSRequirement", value: "6.5", label: "6.5" },
+  {name:"IELTSRequirement", value: "6", label: "6" },
+];
+
 const defaultLocations = [
   { value: "uk", label: "U.K." },
   { value: "usa", label: "U.S.A." },
@@ -93,8 +101,11 @@ class StudentRegistration extends Component {
 
     super(props);
     this.state = {
+      disable:false,
+      image:"",
       viewCompleted: false,
       activeItem: {
+        email:"",
         name:"",
         mobile:"",
         country:"",
@@ -106,7 +117,7 @@ class StudentRegistration extends Component {
         SpringSemester:"",
         SummerSemester:"",
         ranking:"",
-        email:""
+        IELTSRequirement:"",
       },
       todoList: [],
       
@@ -138,11 +149,15 @@ refreshList = () => {
 
 success = () => {
   alert("We have received your registration information. You will get a confirmation email shortly");
+  
+  
 
 }
 
 handleSubmit = (item) => {
-  
+  this.setState({
+    disable:true
+  })
 console.log(item)
   if (item.id) {
     axios
@@ -151,15 +166,37 @@ console.log(item)
       .catch((err) => console.log(err));
     return;
   }
+  
   axios
     .post("https://ci-gsc.com/uni/", item)
     .then((res) => this.success())
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
-    ;
+
+    let form_data = new FormData();
+    form_data.append('image', this.state.image, this.state.image.name);
+    form_data.append('email', this.state.activeItem.email);
+
+    let url = 'https://ci-gsc.com/unilogo/';
+    axios.post(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => console.log(err))
+    
+
 };
 
 
 
+handleImageChange = (e) => {
+  this.setState({
+    image: e.target.files[0]
+  })
+};
 
 handleChange = (e) => {
   console.log(e)
@@ -170,10 +207,11 @@ handleChange = (e) => {
 
   this.setState({ activeItem });
 };
-handleChangeSelect = (e) => {  
+handleChangeSelect = (e) => {
   console.log(e)
 
   let { name,value } = e;
+
 
   const activeItem = { ...this.state.activeItem, [name]: value };
 
@@ -205,24 +243,7 @@ render(){
                     Please fill up the details to add a new University into GSC directory
                   </h5>
                   <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
-                    {/* <div className="upload-file mb-16 text-center">
-                      <div
-                        id="userActions"
-                        className="square-144 m-auto px-6 mb-7"
-                      >
-                        <label
-                          htmlFor="fileUpload"
-                          className="mb-0 font-size-4 text-smoke"
-                        >
-                          University Logo
-                        </label>
-                        <input
-                          type="file"
-                          id="fileUpload"
-                          className="sr-only"
-                        />
-                      </div>
-                    </div> */}
+                    
                     <form action="/">
                       <fieldset>
                         <div className="row mb-xl-1 mb-9">
@@ -268,16 +289,32 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                               Email* 
+                                Email * 
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
                                 name="email"
-                                placeholder="Primary Contact's Email"
+                                placeholder="contact email of the institute"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.email}
                               />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                                style={{paddingBottom:"10px"}}
+                              >
+                                University Logo * 
+                              </label>
+                              <input 
+                              type="file"
+                              id="image"
+                              accept="image/png, image/jpeg"  
+                              onChange={this.handleImageChange} required/>
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -295,6 +332,24 @@ render(){
                                 name="country"  
                                 onChange={this.handleChangeSelect}
                                 value={this.state.activeItem.country.value}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                IELTS Requirement * 
+                              </label>
+                              <Select
+                                options={IELTSRequirement}
+                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                                border={false}
+                                name="IELTSRequirement"  
+                                onChange={this.handleChangeSelect}
+                                value={this.state.activeItem.IELTSRequirement.value}
                               />
                             </div>
                           </div>
@@ -457,6 +512,7 @@ render(){
                         </div>
                        
                         <input
+                        disabled ={this.state.disable}
                               type="button"
                               value="Add Uni"
                               className="btn btn-green btn-h-60 text-white min-width-px-210 rounded-5 text-uppercase"
@@ -532,8 +588,12 @@ export const getCountries = [
     label: "Aruba"
   },
   {
-    name:"country", value: "AU",
+    name:"country", value: "Australia",
     label: "Australia"
+  },
+  {
+    name:"country", value: "Europe",
+    label: "Europe"
   },
   {
     name:"country", value: "AT",
@@ -640,7 +700,7 @@ export const getCountries = [
     label: "Cameroon"
   },
   {
-    name:"country", value: "CA",
+    name:"country", value: "Canada",
     label: "Canada"
   },
   {
@@ -1413,7 +1473,7 @@ export const getCountries = [
     label: "United Arab Emirates"
   },
   {
-    name:"country", value: "GB",
+    name:"country", value: "UK",
     label: "United Kingdom"
   },
   {
@@ -1421,7 +1481,7 @@ export const getCountries = [
     label: "United States Minor Outlying Islands"
   },
   {
-    name:"country", value: "US",
+    name:"country", value: "USA",
     label: "United States"
   },
   {

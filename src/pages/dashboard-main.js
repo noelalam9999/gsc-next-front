@@ -34,21 +34,6 @@ const DashboardMain = () => {
   
       const todoList = await res.json();
       setList(todoList)
- 
-      // const user_list = await fetch('https://ci-gsc.com/user/?format=json')
-        
-      // const UserList = await user_list.json();
-      // await setUserList(UserList)
-
-
-      // for(var i = 0; i<userList.length; i++){
-      //   if(userList[i]['email'] == authUser.email){
-      //         await setUserType(userList[i]['usertype'])
-              
-      //   }
-      //   }
-
-
       
     } catch (e) {
       console.log(e);
@@ -244,7 +229,7 @@ const DashboardMain = () => {
             <div className="mb-14">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
-                  <h3 className="font-size-6 mb-0">In Progress Applications {userType}</h3>
+                  <h3 className="font-size-6 mb-0">In Progress Applications </h3>
                  
                 </div>
                 <div className="col-lg-6">
