@@ -3,47 +3,51 @@ import { Nav, Tab } from "react-bootstrap";
 import Link from "next/link";
 import PageWrapper from "../../components/PageWrapper";
 import imgF1 from "../../assets/image/l2/png/featured-job-logo-1.png";
-
-import imgB1 from "../../assets/image/l1/png/feature-brand-1.png";
-import imgB2 from "../../assets/image/l1/png/feature-brand-4.png";
-import imgB3 from "../../assets/image/l1/png/feature-brand-5.png";
-import imgB4 from "../../assets/image/l3/png/github-mark.png";
 import imgF from "../../assets/image/svg/icon-fire-rounded.svg";
-import iconL from "../../assets/image/svg/icon-loaction-pin-black.svg";
 import iconS from "../../assets/image/svg/icon-suitecase.svg";
-import iconC from "../../assets/image/svg/icon-clock.svg";
-import imgB5 from "../../assets/image/l3/png/universal.png";
 import { useAuth } from '../../../AuthUserContext';
 import axios from 'axios';
 import {useRouter} from 'next/router'
+import OtherUnis from "../../sections/institutes/OtherUnis";
 
 const CompanyProfile = () => {
   const router = useRouter();
   const uniId = router.query.universityid;
   const [List, setList] = useState([]);
   const { authUser, loading,signOut } = useAuth();
+  const [Complete, setComplete] = useState(false)
+  const [User,setUser] = useState([])
   const [record, setRecord] = useState({
     client_name: '',
     partner:'',
       
   });
 
+  
+
   const onSubmit = event => {
+    console.log(Complete)
+if(Complete){  
     record.client_name = authUser
     record.partner = uniId
-    console.log(record)
+    
     axios
     .post("https://ci-gsc.com/application/", record)
     .then((res) => alert("Your request to apply to "+List[0].name+" has been received. GSC will evaluate and reach out to you shortly"))
     .catch((err) => alert("Please fillup the mandatory fields, the ones with the asterisks * "));
+}
+else{
+  alert("please complete your profile creation in edit profile if you are a Student")
+}
   }
 
   useEffect(() =>  {
+ 
 
     async function fetchMyAPI() {
     try {
       const res = await fetch('https://ci-gsc.com/uni/?format=json');
-      console.log(res)
+      
       const todoList = await res.json();
       const filtered = todoList.filter(function(val, i, a) {return val.id==uniId;});
       setList(filtered)
@@ -53,10 +57,31 @@ const CompanyProfile = () => {
     }
     
 fetchMyAPI()
-    
+
   },uniId)
 
-
+  useEffect(() =>  {
+    console.log(authUser)
+    async function fetchMyAPI2() {
+      try {
+        let res = await fetch('https://ci-gsc.com/students/?format=json');
+        
+        let todoList = await res.json();
+        const student = todoList.filter(function(val, i, a) {return val.email==authUser;});
+        console.log(student)
+        if(student[0].address1 == null || student[0].address2 ==null || student[0].IELTSBand ==null || student[0].Desiredlevel == null || student[0].IntendedSemester ==null){
+          console.log(student.address1 + student.address2 + student.IELTSBand +student.Desiredlevel + student.IntendedSemester)
+          setComplete(false)
+        }
+        else{
+          setComplete(true)
+        }
+      } catch (e) {
+        console.log(e);
+    }
+      }
+      fetchMyAPI2()
+    },authUser)
   return (
     <>
       <PageWrapper headerConfig={{ button: "profile" }}>
@@ -248,10 +273,14 @@ fetchMyAPI()
                           {/* <!-- Single Widgets Start --> */}
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                             <div className="mb-8">
-                              <p className="font-size-4">Opportunities</p>
+                              <p className="font-size-4">Opportunities and Facilities</p>
                               <h5 className="font-size-4 font-weight-semibold">
-                                Work while Studying, Internship, Scholarship
-                            
+                                {item.Accomodation =="yes" && (<>Accomodation</>)},
+                                {item.Internship =="yes" && (<>Internship</>)},
+                                {item.OfferLetter =="yes" && (<>Offer Letter</>)},
+                                {item.WorkVisa =="yes" && (<>Work Visa</>)},
+                                {item.WorkStudy =="yes" && (<>Work Study</>)}
+
                               </h5>
                             </div>
                             <div className="mb-8">
@@ -361,12 +390,24 @@ fetchMyAPI()
                       
                         </div>
                         {/* <!-- Excerpt End --> */}
-                        <input
+                        {authUser!=null && (<input
                             type="button"
                             value="Apply Now"
                             className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
                             onClick={onSubmit}
+                       />)}
+                       {authUser==null && (<><input
+                            type="button"
+                            value="Sign-up"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/registration")}
                        />
+                       <span style={{paddingRight:"10px"}}></span><input
+                            type="button"
+                            value="Login"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/login")}
+                       /></>)}
                       </Tab.Pane>
                     </Tab.Content>
                     {/* <!-- Tab Content End --> */}
@@ -376,124 +417,7 @@ fetchMyAPI()
               </div>
               {/* <!-- Company Profile End --> */}
               {/* <!-- Sidebar --> */}
-              <div className="col-12 col-xl-3 col-lg-4 col-md-5 col-sm-6">
-                <div className="pt-11 pt-lg-0 pl-lg-5">
-                  <h4 className="font-size-6 font-weight-semibold mb-0">
-                    Similar Institutes
-                  </h4>
-                  <ul className="list-unstyled">
-                    {/* <!-- Single List --> */}
-                    <li className="border-bottom">
-                      <Link href="/#">
-                        <a className="media align-items-center py-9">
-                          <div className="mr-7">
-                            <img
-                              className="square-72 rounded-5"
-                              src={imgB1}
-                              alt=""
-                            />
-                          </div>
-                          <div className="mt-n4">
-                            <h4 className="mb-0 font-size-6 font-weight-semibold">
-                              Google INC.
-                            </h4>
-                            <p className="mb-0 font-size-4">
-                              Online Marketplace
-                            </p>
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                    {/* <!-- Single List End --> */}
-                    {/* <!-- Single List --> */}
-                    <li className="border-bottom">
-                      <Link href="/#">
-                        <a className="media align-items-center py-9">
-                          <div className="mr-7">
-                            <img
-                              className="square-72 rounded-5"
-                              src={imgB2}
-                              alt=""
-                            />
-                          </div>
-                          <div className="mt-n4">
-                            <h4 className="mb-0 font-size-6 font-weight-semibold">
-                              Uber
-                            </h4>
-                            <p className="mb-0 font-size-4">
-                              Ride Sharing Company
-                            </p>
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                    {/* <!-- Single List End --> */}
-                    {/* <!-- Single List --> */}
-                    <li className="border-bottom">
-                      <Link href="/#">
-                        <a className="media align-items-center py-9">
-                          <div className="mr-7">
-                            <img
-                              className="square-72 rounded-5"
-                              src={imgB3}
-                              alt=""
-                            />
-                          </div>
-                          <div className="mt-n4">
-                            <h4 className="mb-0 font-size-6 font-weight-semibold">
-                              Facebook
-                            </h4>
-                            <p className="mb-0 font-size-4">Social Network</p>
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                    {/* <!-- Single List End --> */}
-                    {/* <!-- Single List --> */}
-                    <li className="border-bottom">
-                      <Link href="/#">
-                        <a className="media align-items-center py-9">
-                          <div className="mr-5">
-                            <img
-                              className="square-72 rounded-5"
-                              src={imgB4}
-                              alt=""
-                            />
-                          </div>
-                          <div className="mt-n4">
-                            <h4 className="mb-0 font-size-6 font-weight-semibold">
-                              GitHub
-                            </h4>
-                            <p className="mb-0 font-size-4">Online Software</p>
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                    {/* <!-- Single List End --> */}
-                    {/* <!-- Single List --> */}
-                    <li className="">
-                      <Link href="/#">
-                        <a className="media align-items-center py-9">
-                          <div className="mr-7">
-                            <img
-                              className="square-72 rounded-5"
-                              src={imgB5}
-                              alt=""
-                            />
-                          </div>
-                          <div className="mt-n4">
-                            <h4 className="mb-0 font-size-6 font-weight-semibold">
-                              Uniliver
-                            </h4>
-                            <p className="mb-0 font-size-4">Manufacturer</p>
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                    {/* <!-- Single List End --> */}
-                  </ul>
-                </div>
-              </div>
+              <OtherUnis/>
               {/* <!-- end Sidebar --> */}
             </div>
            

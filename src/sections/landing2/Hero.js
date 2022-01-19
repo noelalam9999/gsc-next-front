@@ -13,6 +13,24 @@ const defaultCountries = [
 ];
 
 const Hero = () => {
+
+  const [programName, setProgramName] = useState("");
+  const [studyDestination, setStudyDestination] = useState("");
+  
+  const onSubmit = event => {
+    setError(null)
+    //check if passwords match. If they do, create user in Firebase
+    // and redirect to your logged in page.
+    
+        router.push(`/search/`+studyDestination+`/`+studyDestination);
+    
+  };
+
+
+ 
+  
+  
+  
   return (
     <>
       {/* <!-- Hero Area --> */}
@@ -58,7 +76,10 @@ const Hero = () => {
                         className="form-control focus-reset pl-13"
                         type="text"
                         id="keyword"
+                        name ="name"
                         placeholder="Type Program Name"
+                        onChange={(event) => setProgramName(event.target.value)}
+                        value={programName}
                       />
                       <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
                         <i className="icon icon-zoom-2 text-primary font-weight-bold"></i>
@@ -70,6 +91,8 @@ const Hero = () => {
                         options={defaultCountries}
                         className="pl-8 h-100 arrow-3 font-size-4 d-flex align-items-center w-100"
                         border={false}
+                        onChange={(event) => setStudyDestination(event.target.value)}
+                        value={studyDestination}
                       />
 
                       <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">

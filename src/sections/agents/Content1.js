@@ -43,11 +43,9 @@ const Content = () => {
                   We provide agents the best <div className="text-green">Commision Rates</div>
                 </h2>
                 <p className="text-default-color font-size-5 mb-7 mb-lg-12 pr-xxl-13 pr-lg-0 pr-md-10">
-                GSC boasts its lucrative commission rates in this highly competitive consultancy market. On peak seasons rates go as high as <strong>15%</strong>
+                GSC boasts its lucrative commission rates in this highly competitive consultancy market. GSC has helped more than 200 business grow out of their home office<strong></strong>
                 </p>
-                <p className="text-default-color font-size-5 mb-7 mb-lg-12 pr-xxl-13 pr-lg-0 pr-md-10">
-                More than 5 recruitments =  <strong>0</strong> administration cost 
-                </p>
+                
                 {/* <!-- content section title end --> */}
                 {/* <!-- content-2 btn start --> */}
                 <Link href="/#">

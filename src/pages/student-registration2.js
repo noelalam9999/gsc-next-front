@@ -86,7 +86,6 @@ const Year = [
 ];
   const onCountryChange = selectedOption => {
     setCountry(selectedOption);
-    console.log(`Option selected:`, selectedOption);
   };
 
   const onGenderChange = selectedOption => {

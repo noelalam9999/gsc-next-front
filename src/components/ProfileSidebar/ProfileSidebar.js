@@ -30,6 +30,7 @@ const Sidebar = (props) => {
                   <a className="text-gray font-size-4">Alevels</a>
                 </Link>
               </p>
+              
               {/* <div className="icon-link d-flex align-items-center justify-content-center flex-wrap">
                 <Link href="/#">
                   <a className="text-smoke circle-32 bg-concrete mr-5 hover-bg-green">

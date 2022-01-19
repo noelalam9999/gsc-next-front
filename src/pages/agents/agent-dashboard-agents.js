@@ -13,17 +13,15 @@ import imgP4 from "../../assets/image/table-one-profile-image-4.png";
 import imgP5 from "../../assets/image/table-one-profile-image-5.png";
 
 const defaultJobs = [
-  { value: "pd", label: "Product Designer" },
-  { value: "gd", label: "Graphics Designer" },
-  { value: "fd", label: "Frontend Developer" },
-  { value: "bd", label: "Backend Developer" },
-  { value: "cw", label: "Content Writer" },
+  { value: "active", label: "Active" },
+  { value: "inactive", label: "Inactive" },
+
 ];
 
 const DashboardMain = () => {
  
   const [List, setList] = useState([]);
-
+  const { authUser, loading,signOut } = useAuth();
   useEffect(() =>  {
 
     async function fetchMyAPI() {
@@ -31,7 +29,8 @@ const DashboardMain = () => {
       const res = await fetch('https://ci-gsc.com/agents/?format=json');
       console.log(res)
       const todoList = await res.json();
-      setList(todoList)
+      let filtered = todoList.filter(function(val, i, a) {return val.added_by==authUser;});
+      setList(filtered)
     } catch (e) {
       console.log(e);
   }
@@ -39,7 +38,7 @@ const DashboardMain = () => {
     
 fetchMyAPI()
     
-  },[])
+  },authUser)
 console.log(List)
 
   const gContext = useContext(GlobalContext);
@@ -56,56 +55,8 @@ console.log(List)
         <div className="dashboard-main-container mt-25 mt-lg-31">
           <div className="container">
             <div className="row mb-1">
-              <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-4">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-agents"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  {/* <div className="text-blue bg-blue-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-briefcase"></i>
-                  </div> */}
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={6} end={5} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                  Active
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
-              <div className="col-xxl-3 col-xl-4 col-lg-3 col-sm-3">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-agents-inactive"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  {/* <div className="text-pink bg-pink-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-user"></i>
-                  </div> */}
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={4} end={256} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Inactive
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
+           
+              
          
            
      
@@ -193,7 +144,14 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Applications Count</th>
-                    
+                    <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Associations</th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Do you charge</th>
                        
                         
                      
@@ -268,7 +226,16 @@ console.log(List)
                           <div className="">
                             <Link href="/#">
                               <a className="font-size-3 font-weight-bold text-red-2 text-uppercase">
-                                56
+                                {item.associations}
+                              </a>
+                            </Link>
+                          </div>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-100 pr-0">
+                          <div className="">
+                            <Link href="/#">
+                              <a className="font-size-3 font-weight-bold text-red-2 text-uppercase">
+                                {item.charge}
                               </a>
                             </Link>
                           </div>
@@ -286,7 +253,8 @@ console.log(List)
                     </tbody>
                   </table>
                 </div>
-                <div className="pt-2">
+
+                {/* <div className="pt-2">
                   <nav aria-label="Page navigation example">
                     <ul className="pagination pagination-hover-primary rounded-0 ml-n2">
                       <li className="page-item rounded-0 flex-all-center">
@@ -349,7 +317,7 @@ console.log(List)
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
             </div>
 

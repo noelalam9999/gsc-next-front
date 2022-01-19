@@ -51,11 +51,13 @@ const SelectStyled = ({
   bg = "#fff",
   border = true,
   accentColor = "success",
+
   name = "item",
   indicator = true,
   options = defaultOptions,
   ...rest
 }) => {
+  
   return (
     <Select
       styles={getCustomStyles(theme, accentColor, bg, border, indicator)}

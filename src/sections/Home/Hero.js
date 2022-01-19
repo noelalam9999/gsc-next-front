@@ -1,9 +1,11 @@
-import React from "react";
-
+import React,{ useState } from "react";
+import { Button } from "react-bootstrap";
 import { Select } from "../../components/Core";
 import imgP from "../../assets/image/l1/png/hero-image-3.png";
 import imgQ from "../../assets/image/l1/png/hero-main-mobile.png";
 import imgH from "../../assets/image/patterns/hero-pattern.png";
+
+import { useRouter } from 'next/router';
 
 const desiredLevel = [
   { value: "diploma", label: "Diploma" },
@@ -12,7 +14,33 @@ const desiredLevel = [
  
 ];
 
+const StudyDestination = [
+  {name:"StudyDestination", value: "uk", label: "U.K." },
+  {name:"StudyDestination", value: "usa", label: "U.S.A." },
+  {name:"StudyDestination", value: "canada", label: "Canada" },
+  {name:"StudyDestination", value: "australia", label: "Australia" },
+  {name:"StudyDestination", value: "europe", label: "Europe" },
+ 
+];
+
 const Hero = () => {
+
+
+  const [programName, setProgramName] = useState("");
+  const [studyDestination, setStudyDestination] = useState("");
+  const router = useRouter();
+  const onSubmit = event => {
+    console.log(studyDestination)
+    //check if passwords match. If they do, create user in Firebase
+    // and redirect to your logged in page.
+    
+        router.push(`/search/`+studyDestination.value+`/`+programName);
+    
+  };
+  const onStudyDestinationChange = selectedOption => {
+    setStudyDestination(selectedOption);
+    console.log(`Option selected:`, selectedOption);
+  };
   return (
     <>
       {/* <!-- Hero Area --> */}
@@ -44,42 +72,52 @@ const Hero = () => {
                   </div>
               <div className="">
                 {/* <!-- .search-form --> */}
-                <form action="/" className="search-form shadow-6">
-                  <div className="filter-search-form-1 bg-white rounded-sm shadow-4">
-                    <div className="filter-inputs">
-                      <div className="form-group position-relative">
-                        <input
-                          className="form-control focus-reset pl-13"
-                          type="text"
-                          id="keyword"
-                          placeholder="Desired Subject"
-                        />
-                        <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
-                          <i className="icon icon-zoom-2 text-primary font-weight-bold"></i>
-                        </span>
-                      </div>
-                      {/* <!-- .select-city starts --> */}
-                      <div className="form-group position-relative">
-                        <Select
-                          options={desiredLevel}
-                          className="pl-8 h-100 arrow-3 font-size-4 d-flex align-items-center w-100"
-                          border={false}
-                        />
+                <form className="search-form shadow-6">
+                <div className="filter-search-form-2 bg-white rounded-sm shadow-7 pr-8 py-7 pl-6">
+                  <div className="filter-inputs">
+                    <div className="form-group position-relative">
+                      <input
+                        className="form-control focus-reset pl-13"
+                        type="text"
+                        id="keyword"
+                        name ="name"
+                        placeholder="Program Name"
+                        onChange={(event) => setProgramName(event.target.value)}
+                        value={programName}
+                      />
+                      <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
+                        <i className="icon icon-zoom-2 text-primary font-weight-bold"></i>
+                      </span>
+                    </div>
+                    {/* <!-- .select-city starts --> */}
+                    <div className="form-group position-relative">
+                      <Select
+                        options={StudyDestination}
+                        className="pl-8 h-100 arrow-3 font-size-4 d-flex align-items-center w-100"
+                        border={false}
+                        name="StudyDestination"
+                        onChange={onStudyDestinationChange}
+                        value={studyDestination}
+                      />
 
-                        <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
-                          <i className="icon icon-pin-3 text-primary font-weight-bold"></i>
-                        </span>
-                      </div>
-                      {/* <!-- ./select-city ends --> */}
+                      <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
+                        <i className="icon icon-pin-3 text-primary font-weight-bold"></i>
+                      </span>
                     </div>
-                    {/* <!-- .Hero Button --> */}
-                    <div className="button-block">
-                      <button className="btn btn-primary line-height-reset h-100 btn-submit w-100 text-uppercase">
-                        Search
-                      </button>
-                    </div>
-                    {/* <!-- ./Hero Button --> */}
+                    {/* <!-- ./select-city ends --> */}
                   </div>
+                  <div className="button-block">
+                    <Button
+                      
+                      className="line-height-reset h-100 btn-submit w-100 text-uppercase"
+                      onClick ={ onSubmit}
+                    >
+                      Search
+                    </Button>
+                 
+                  </div>
+                  
+                </div>
                 </form>
                 {/* <!-- ./search-form --> */}
                 {/* <p className="brands heading-default-color font-size-3 pt-7">

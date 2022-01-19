@@ -7,10 +7,12 @@ import { Select } from "../../components/Core";
 import GlobalContext from "../../context/GlobalContext";
 import { useAuth } from '../../../AuthUserContext';
 import imgP1 from "../../assets/image/table-one-profile-image-1.png";
-import imgP2 from "../../assets/image/table-one-profile-image-2.png";
-import imgP3 from "../../assets/image/table-one-profile-image-3.png";
-import imgP4 from "../../assets/image/table-one-profile-image-4.png";
-import imgP5 from "../../assets/image/table-one-profile-image-5.png";
+import AppliedIntakeDate from "../../components/Applications/AppliedIntakeDate";
+import Partner from "../../components/Applications/Partner";
+import ClientPhone from "../../components/Applications/ClientPhone";
+import Product from "../../components/Applications/Product";
+import ProfilePicture from "../../sections/agents/ProfilePicture";
+
 
 const defaultJobs = [
   { value: "accomodation_service", label: "Accomodation Service" },
@@ -21,17 +23,31 @@ const defaultJobs = [
 ];
 
 const DashboardMain = () => {
- 
+  const { authUser, loading,signOut } = useAuth();
   const [List, setList] = useState([]);
-
+  const [UniList,setUniList] = useState([])
+console.log("UniList")
+  console.log(UniList)
   useEffect(() =>  {
 
     async function fetchMyAPI() {
     try {
-      const res = await fetch('https://ci-gsc.com/students/?format=json');
-      console.log(res)
-      const todoList = await res.json();
-      setList(todoList)
+      let res = await fetch('https://ci-gsc.com/students/?format=json');
+
+      let todoList = await res.json();
+      let filtered = todoList.filter(function(val, i, a) {return val.added_by==authUser;});
+      res = await fetch('https://ci-gsc.com/application/?format=json');
+
+      todoList = await res.json();
+
+      let filtered_application = []
+      filtered.forEach(function(item){
+        filtered_application = filtered_application.concat(todoList.filter(function(val, i, a) {return val.client_name==item.email;}))
+    })
+
+      // filtered = todoList.filter(function(val, i, a) {return val.added_by==filtered.id;});
+      setList(filtered_application)
+      
     } catch (e) {
       console.log(e);
   }
@@ -39,8 +55,8 @@ const DashboardMain = () => {
     
 fetchMyAPI()
     
-  },[])
-console.log(List)
+  },authUser)
+
 
   const gContext = useContext(GlobalContext);
   return (
@@ -167,41 +183,102 @@ console.log(List)
                      
                       { List.map((item, index)=>(
                         <tr className="border border-color-2">
+                          
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
                           <Link href="/candidate-profile">
                             <a className="media min-width-px-235 align-items-center">
-                              <div className="circle-36 mr-6">
-                                <img src={imgP1} alt="" className="w-100" />
-                              </div>
+                         
                               <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
-                                {item.name}
+                                {item.id}
                               </h4>
                             </a>
                           </Link>
                         </th>
                         <td className="table-y-middle py-7 min-width-px-235 pr-0">
+                        <Link href="/candidate-profile">
+                            <a className="media min-width-px-235 align-items-center">
+                            <ProfilePicture email = {item.client_name}/>
+                              <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
+                                {item.client_name}
+                              </h4>
+                            </a>
+                          </Link>
+                        </td>
+
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.mobile}
+                           
+                          <AppliedIntakeDate client={item.client_name}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                           
+                            <ClientPhone client={item.client_name}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.client_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_month}
+                            {item.application_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_year}
+                         
+                            <Product client={item.client_name}/>
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            
+                           <Partner uni={item.partner}/>
+                          </h3>
+                        </td>
+                        
+                        
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.partner_branches}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.partner_client_id}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.workflow}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.application_start_by}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.application_start_by_branch}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status_in_queue}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.created_at}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
@@ -249,7 +326,8 @@ console.log(List)
                     </tbody>
                   </table>
                 </div>
-                <div className="pt-2">
+
+                {/* <div className="pt-2">
                   <nav aria-label="Page navigation example">
                     <ul className="pagination pagination-hover-primary rounded-0 ml-n2">
                       <li className="page-item rounded-0 flex-all-center">
@@ -312,7 +390,7 @@ console.log(List)
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
             </div>
 

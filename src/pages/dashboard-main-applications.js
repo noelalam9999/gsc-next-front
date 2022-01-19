@@ -7,10 +7,12 @@ import { Select } from "../components/Core";
 import GlobalContext from "../context/GlobalContext";
 import { useAuth } from '../../AuthUserContext';
 import imgP1 from "../assets/image/table-one-profile-image-1.png";
-import imgP2 from "../assets/image/table-one-profile-image-2.png";
-import imgP3 from "../assets/image/table-one-profile-image-3.png";
-import imgP4 from "../assets/image/table-one-profile-image-4.png";
-import imgP5 from "../assets/image/table-one-profile-image-5.png";
+import axios from 'axios';
+import AppliedIntakeDate from "../components/Applications/AppliedIntakeDate";
+import Partner from "../components/Applications/Partner";
+import ClientPhone from "../components/Applications/ClientPhone";
+import Product from "../components/Applications/Product";
+import ProfilePicture from "../sections/agents/ProfilePicture";
 
 const defaultJobs = [
   { value: "accomodation_service", label: "Accomodation Service" },
@@ -24,13 +26,15 @@ const DashboardMain = () => {
  
   const [List, setList] = useState([]);
 
+
   useEffect(() =>  {
 
     async function fetchMyAPI() {
     try {
-      const res = await fetch('https://ci-gsc.com/students/?format=json');
-      console.log(res)
-      const todoList = await res.json();
+      let res = await fetch('https://ci-gsc.com/application/?format=json');
+
+      let todoList = await res.json();
+
       setList(todoList)
     } catch (e) {
       console.log(e);
@@ -40,6 +44,59 @@ const DashboardMain = () => {
 fetchMyAPI()
     
   },[])
+
+  const  refreshList = async () => {
+    const res = await fetch('https://ci-gsc.com/application/?format=json');
+    console.log(res)
+    const todoList = await res.json();
+    setList(todoList)
+ 
+  };
+  const StartApply =  (item) =>  {
+
+    item.status = "application started"
+   
+     axios
+    .put(`https://ci-gsc.com/application/${item.id}/`, item)
+    .then((res) => refreshList(1),alert("status changed to applied"))
+    .catch((err) => console.log(err));
+  
+  return;
+  }
+  
+  const ApplicationComplete =  (item) =>  {
+
+    item.status = "applied"
+   
+     axios
+    .put(`https://ci-gsc.com/application/${item.id}/`, item)
+    .then((res) => refreshList(1),alert("status changed to applied"))
+    .catch((err) => console.log(err));
+  
+  return;
+  }
+  const Rejected =  (item) =>  {
+
+    item.status = "rejected"
+   
+     axios
+    .put(`https://ci-gsc.com/application/${item.id}/`, item)
+    .then((res) => refreshList(1),alert("status changed to rejected"))
+    .catch((err) => console.log(err));
+  
+  return;
+  }
+  const Approved =  (item) =>  {
+
+    item.status = "approved"
+   
+     axios
+    .put(`https://ci-gsc.com/application/${item.id}/`, item)
+    .then((res) => refreshList(1),alert("status changed to Approved"))
+    .catch((err) => console.log(err));
+  
+  return;
+  }
 console.log(List)
 
   const gContext = useContext(GlobalContext);
@@ -55,146 +112,7 @@ console.log(List)
       >
         <div className="dashboard-main-container mt-25 mt-lg-31">
           <div className="container">
-          <div className="row mb-7">
-          <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-6">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-applications-pending"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  <div className="text-blue bg-blue-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-briefcase"></i>
-                  </div>
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={6} end={5} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                    Pending
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
-              <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-6">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-applications"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  <div className="text-blue bg-blue-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-briefcase"></i>
-                  </div>
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={6} end={5} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                    Active
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
-              <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-6">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-applications-approved"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  <div className="text-pink bg-pink-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-user"></i>
-                  </div>
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={4} end={256} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Approved
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
-              <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-6">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-applications-archived"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  <div className="text-orange bg-orange-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-eye"></i>
-                  </div>
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp
-                            duration={4}
-                            decimal="."
-                            decimals={1}
-                            end={16.5}
-                          />
-                        </span>
-                        K
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Archived
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
-              
-              {/* <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-6">
-
-                <a
-                  href="/#"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  <div className="text-egg-blue bg-egg-blue-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-mouse-pointer"></i>
-                  </div>
-         
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp
-                            duration={4}
-                            decimal="."
-                            decimals={1}
-                            end={18.6}
-                          />
-                        </span>
-                        %
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                      Partners
-                    </p>
-                  </div>
-                </a>
-              
-              </div> */}
-            </div>
+          
             <div className="mb-14">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
@@ -305,77 +223,239 @@ console.log(List)
                     <tbody>
                      
                       { List.map((item, index)=>(
-                        <tr className="border border-color-2">
-                        <th scope="row" className="pl-6 border-0 py-7 pr-0">
-                          <Link href="/candidate-profile">
-                            <a className="media min-width-px-235 align-items-center">
-                              <div className="circle-36 mr-6">
-                                <img src={imgP1} alt="" className="w-100" />
-                              </div>
-                              <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
-                                {item.name}
-                              </h4>
-                            </a>
-                          </Link>
-                        </th>
-                        <td className="table-y-middle py-7 min-width-px-235 pr-0">
+                   <tr className="border border-color-2">
+                          
+                   <th scope="row" className="pl-6 border-0 py-7 pr-0">
+        
+                       <a className="media min-width-px-235 align-items-center">
+                    
+                         <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
+                           {item.id}
+                         </h4>
+                       </a>
+                 
+                   </th>
+                   <td className="table-y-middle py-7 min-width-px-235 pr-0">
+            
+                       <a className="media min-width-px-235 align-items-center">
+                       <ProfilePicture email={item.client_name}/>
+                         <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
+                           {item.client_name}
+                         </h4>
+                       </a>
+           
+                   </td>
+
+
+               <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.mobile}
+                           
+                          <AppliedIntakeDate client={item.client_name}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                           
+                            <ClientPhone client={item.client_name}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.client_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_month}
+                            {item.application_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_year}
+                         
+                            <Product client={item.client_name}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            
+                           <Partner uni={item.partner}/>
+                          </h3>
+                        </td>
+                   
+                   
+                   <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.partner_branches}
+                     </h3>
+                   </td>
+                   <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.partner_client_id}
+                     </h3>
+                   </td>
+                   <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.workflow}
+                     </h3>
+                   </td>
+                   <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.application_start_by}
+                     </h3>
+                   </td>
+                   <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.application_start_by_branch}
+                     </h3>
+                   </td>
+                   <td  
+                        className="table-y-middle py-7 min-width-px-170 pr-0">
+
+                    <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.status}
+                     </h3>
+                     
+                   </td>
+                   {/* <td  onMouseEnter={() => setStatusDropdownVisibility(true)}
+                        onMouseLeave={() => setStatusDropdownVisibility(false)}
+                        className="table-y-middle py-7 min-width-px-170 pr-0">
+
+                     {StatusDropdownVisible == false &&(<h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.status}
+                     </h3>)}
+                     {StatusDropdownVisible == true && (
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       
+                     </h3>
+                   )}
+                   </td> */}
+                 
+                   <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.status_in_queue}
+                     </h3>
+                   </td>
+                   <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                     <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                       {item.created_at}
+                     </h3>
+                   </td>
+
+                   {item.status ==null && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
                             <a
+                            
                               href="/#"
-                              className="font-size-3 font-weight-bold text-black-2 text-uppercase"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
                               onClick={(e) => {
                                 e.preventDefault();
-                                gContext.toggleApplicationModal();
+                                StartApply(item);
                               }}
                             >
-                              View Application
+                              Start Application
                             </a>
                           </div>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-110 pr-0">
+                        </td>)}
+                   {item.status =="pending" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
-                            <Link href="/contact">
-                              <a className="font-size-3 font-weight-bold text-green text-uppercase">
-                                Contact
-                              </a>
-                            </Link>
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                StartApply(item);
+                              }}
+                            >
+                              Start Application
+                            </a>
                           </div>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-100 pr-0">
+                        </td>)}
+                        {item.status =="" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
-                            <Link href="/#">
-                              <a className="font-size-3 font-weight-bold text-red-2 text-uppercase">
-                                Reject
-                              </a>
-                            </Link>
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                StartApply(item);
+                              }}
+                            >
+                              Start Application
+                            </a>
                           </div>
-                        </td>
-                      </tr>
+                        </td>)}
+                        {item.status =="application started" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                ApplicationComplete(item);
+                              }}
+                            >
+                              Application Complete
+                            </a>
+                          </div>
+                        </td>)}
+                        {item.status =="applied" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-red-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                Rejected(item);
+                              }}
+                            >
+                              Set Rejected
+                            </a>
+                          </div>
+                        </td>)}
+                        {item.status =="applied" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                Approved(item);
+                              }}
+                            >
+                              Set Approved
+                            </a>
+                          </div>
+                        </td>)}
+                        {item.status =="rejected" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                StartApply(item);
+                              }}
+                            >
+                              Re-apply
+                            </a>
+                          </div>
+                        </td>)}
+                        {item.status =="approved" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                          
+                              Complete
+                            
+                          </div>
+                        </td>)}
+                 
+                 
+                 </tr>
                       
                       
                   )
@@ -388,7 +468,8 @@ console.log(List)
                     </tbody>
                   </table>
                 </div>
-                <div className="pt-2">
+
+                {/* <div className="pt-2">
                   <nav aria-label="Page navigation example">
                     <ul className="pagination pagination-hover-primary rounded-0 ml-n2">
                       <li className="page-item rounded-0 flex-all-center">
@@ -451,7 +532,7 @@ console.log(List)
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
             </div>
 

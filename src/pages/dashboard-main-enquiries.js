@@ -286,7 +286,8 @@ console.log(List)
                     </tbody>
                   </table>
                 </div>
-                <div className="pt-2">
+
+                {/* <div className="pt-2">
                   <nav aria-label="Page navigation example">
                     <ul className="pagination pagination-hover-primary rounded-0 ml-n2">
                       <li className="page-item rounded-0 flex-all-center">
@@ -349,7 +350,7 @@ console.log(List)
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
             </div>
 

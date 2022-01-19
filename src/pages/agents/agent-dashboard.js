@@ -7,80 +7,56 @@ import { Select } from "../../components/Core";
 import GlobalContext from "../../context/GlobalContext";
 import { useAuth } from '../../../AuthUserContext';
 import imgP1 from "../../assets/image/table-one-profile-image-1.png";
-import imgP2 from "../../assets/image/table-one-profile-image-2.png";
-import imgP3 from "../../assets/image/table-one-profile-image-3.png";
-import imgP4 from "../../assets/image/table-one-profile-image-4.png";
-import imgP5 from "../../assets/image/table-one-profile-image-5.png";
 
-const defaultJobs = [
-  { value: "pd", label: "Product Designer" },
-  { value: "gd", label: "Graphics Designer" },
-  { value: "fd", label: "Frontend Developer" },
-  { value: "bd", label: "Backend Developer" },
-  { value: "cw", label: "Content Writer" },
+import AppliedIntakeDate from "../../components/Applications/AppliedIntakeDate";
+import Partner from "../../components/Applications/Partner";
+import ClientPhone from "../../components/Applications/ClientPhone";
+import Product from "../../components/Applications/Product";
+import ProfilePicture from "../../sections/agents/ProfilePicture";
+import ApprovedApplicationsCount from "../../sections/agents/ApprovedApplicationsCount";
+import StudentsCount from "../../sections/agents/StudentsCount";
+import SubAgentsCount from "../../sections/agents/SubAgentsCount";
+
+const IntendedSemester = [
+  {name:"IntendedSemester", value: "fall", label: "Fall" },
+  { name:"IntendedSemester", value: "spring", label: "Spring" },
+  {name:"IntendedSemester", value: "summer", label: "Summer" },
+
 ];
 
 const DashboardMain = () => {
   const [userType, setUserType] = useState("");
  const { authUser, loading,signOut } = useAuth();
   const [List, setList] = useState([]);
+  const [ApprovedApplications, setApprovedApplications] = useState("")
   const [userList, setUserList] = useState([]);
   useEffect(() =>  {
 
     async function fetchMyAPI() {
     try {
+      let res = await fetch('https://ci-gsc.com/students/?format=json');
+      let todoList = await res.json();
+      let filtered = todoList.filter(function(val, i, a) {return val.added_by==authUser;});
+      res = await fetch('https://ci-gsc.com/application/?format=json');
+      todoList = await res.json();
 
-      const res = await fetch('https://ci-gsc.com/students/?format=json');
-  
-      const todoList = await res.json();
-      setList(todoList)
- 
-      // const user_list = await fetch('https://ci-gsc.com/user/?format=json')
-        
-      // const UserList = await user_list.json();
-      // await setUserList(UserList)
+      let filtered_application = []
+      filtered.forEach(function(item){
+      filtered_application = filtered_application.concat(todoList.filter(function(val, i, a) {return val.client_name==item.email;}))})
 
+      setList(filtered_application)
 
-      // for(var i = 0; i<userList.length; i++){
-      //   if(userList[i]['email'] == authUser.email){
-      //         await setUserType(userList[i]['usertype'])
-              
-      //   }
-      //   }
-
-
-      
+       
     } catch (e) {
       console.log(e);
   }
     }
     
-    async function fetchMyAPI2() {
-      
-      try {
-        const user_list = await fetch('https://ci-gsc.com/user/?format=json')
-        
-        const UserList = await user_list.json();
-        await setUserList(UserList)
-        for(var i = 0; i<userList.length; i++){
-          if(userList[i]['email'] == authUser.email){
-                setUserType(userList[i]['usertype'])
-                
-          }
-          }
-          console.log(typeof userType)
-     
-      } catch (e) {
-        console.log(e);
-    }
-
-      }
+  
 
  fetchMyAPI()
- fetchMyAPI2()
 
-
-  },[])
+  },authUser)
 
 
   const gContext = useContext(GlobalContext);
@@ -107,18 +83,7 @@ const DashboardMain = () => {
                     <i className="fas fa-briefcase"></i>
                   </div>
                   {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={6} end={5} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                    Total Leads
-                    </p>
-                  </div>
+            <ApprovedApplicationsCount/>
                 </a>
                 {/* <!-- End Single Category --> */}
               </div>
@@ -136,12 +101,12 @@ const DashboardMain = () => {
                     <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
                       <LazyLoad>
                         <span className="counter">
-                          <CountUp duration={4} end={256} />
+                          <CountUp duration={4} end={List.length} />
                         </span>
                       </LazyLoad>
                     </h5>
                     <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Total Prospects
+                     Active Applications
                     </p>
                   </div>
                 </a>
@@ -157,24 +122,7 @@ const DashboardMain = () => {
                     <i className="fas fa-eye"></i>
                   </div>
                   {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp
-                            duration={4}
-                            decimal="."
-                            decimals={1}
-                            end={16.5}
-                          />
-                        </span>
-                        K
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Total Clients
-                    </p>
-                  </div>
+                  <StudentsCount/>
                 </a>
                 {/* <!-- End Single Category --> */}
               </div>
@@ -188,24 +136,7 @@ const DashboardMain = () => {
                     <i className="fas fa-mouse-pointer"></i>
                   </div>
                   {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp
-                            duration={4}
-                            decimal="."
-                            decimals={1}
-                            end={18.6}
-                          />
-                        </span>
-                        %
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                      Prospects Rating
-                    </p>
-                  </div>
+               <SubAgentsCount/>
                 </a>
                 {/* <!-- End Single Category --> */}
               </div>
@@ -218,10 +149,10 @@ const DashboardMain = () => {
                 </div>
                 <div className="col-lg-6">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Job:</p>
+                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Intended Semester:</p>
                     <div className="h-px-48">
                       <Select
-                        options={defaultJobs}
+                        options={IntendedSemester}
                         className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
                         border={false}
                       />
@@ -235,97 +166,191 @@ const DashboardMain = () => {
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
+                    <tr>
                         <th
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
-                          Name 
+                          Application ID
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Mobile
+                          Client Name
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Country
+                         Applied Intake Date
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Birth Date
+                          Client Phone
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Birth Month
+                          Client Assignee
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Birth Year
+                          Application Assignees
                         </th>
                         
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
-                        ></th>
+                        >Product</th>
+                       <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Partner</th>
+                         <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Partner Branches</th>
+<th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Partner's Client ID'</th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Workflow</th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Application Start By</th>
+
+<th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Application Start By Branch</th><th
+                        scope="col"
+                        className="border-0 font-size-4 font-weight-normal"
+                      >Status</th>
+<th
+                        scope="col"
+                        className="border-0 font-size-4 font-weight-normal"
+                      >Stage in Queue</th>
+                      <th
+                        scope="col"
+                        className="border-0 font-size-4 font-weight-normal"
+                      >Created At</th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         ></th>
-                        <th
-                          scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        ></th>
+                      
                       </tr>
                     </thead>
                     <tbody>
                      
                       { List.map((item, index)=>(
                         <tr className="border border-color-2">
+                          
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
-                          <Link href={`/student/`+item.id}>
+                          <Link href="/candidate-profile">
                             <a className="media min-width-px-235 align-items-center">
-                              <div className="circle-36 mr-6">
-                                <img src={imgP1} alt="" className="w-100" />
-                              </div>
+                         
                               <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
-                                {item.name}
+                                {item.id}
                               </h4>
                             </a>
                           </Link>
                         </th>
                         <td className="table-y-middle py-7 min-width-px-235 pr-0">
+                        <Link href="/candidate-profile">
+                            <a className="media min-width-px-235 align-items-center">
+                            <ProfilePicture email={item.client_name}/>
+                              <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
+                                {item.client_name}
+                              </h4>
+                            </a>
+                          </Link>
+                        </td>
+
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.mobile}
+                           
+                          <AppliedIntakeDate client={item.client_name}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                           
+                            <ClientPhone client={item.client_name}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.client_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_month}
+                            {item.application_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_year}
+                         
+                            <Product client={item.client_name}/>
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            
+                           <Partner uni={item.partner}/>
+                          </h3>
+                        </td>
+                        
+                        
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.partner_branches}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.partner_client_id}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.workflow}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.application_start_by}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.application_start_by_branch}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status_in_queue}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.created_at}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
@@ -376,7 +401,7 @@ const DashboardMain = () => {
 
 
 
-                <div className="pt-2">
+                {/* <div className="pt-2">
                   <nav aria-label="Page navigation example">
                     <ul className="pagination pagination-hover-primary rounded-0 ml-n2">
                       <li className="page-item rounded-0 flex-all-center">
@@ -439,10 +464,10 @@ const DashboardMain = () => {
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div className="mb-18">
+            {/* <div className="mb-18">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
                   <h3 className="font-size-6 mb-0">Client Application Status</h3>
@@ -562,8 +587,8 @@ const DashboardMain = () => {
                   </table>
                 </div>
               </div>
-            </div>
-            <div className="mb-18">
+            </div> */}
+            {/* <div className="mb-18">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
                   <h3 className="font-size-6 mb-0">Application By User</h3>
@@ -683,8 +708,8 @@ const DashboardMain = () => {
                   </table>
                 </div>
               </div>
-            </div>
-            <div className="mb-18">
+            </div> */}
+            {/* <div className="mb-18">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
                   <h3 className="font-size-6 mb-0">Partners By Application</h3>
@@ -804,8 +829,8 @@ const DashboardMain = () => {
                   </table>
                 </div>
               </div>
-            </div>
-            <div className="mb-18">
+            </div> */}
+            {/* <div className="mb-18">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
                   <h3 className="font-size-6 mb-0">Products By Application</h3>
@@ -925,7 +950,7 @@ const DashboardMain = () => {
                   </table>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </PageWrapper>

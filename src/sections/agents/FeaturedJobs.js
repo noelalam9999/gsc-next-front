@@ -49,7 +49,7 @@ const FeaturedJobs = () => {
                     <h3 className="font-size-6 mb-0">
                       <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Commission Rate : 13-15%
+                        Ranking : 4.5
                         </a>
                       </Link>
                     </h3>
@@ -69,7 +69,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          Approx Earning per Student : $2000
+                          Approx International Students : 890
                         </a>
                       </Link>
                     </li>
@@ -101,7 +101,7 @@ const FeaturedJobs = () => {
                     <h3 className="font-size-6 mb-0">
                     <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Commission Rate : 13-15%
+                        Ranking : 4.5
                         </a>
                       </Link>
                     </h3>
@@ -121,7 +121,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          Approx Earning per Student : $2000
+                          Approx International Students : 3000
                         </a>
                       </Link>
                     </li>
@@ -153,7 +153,7 @@ const FeaturedJobs = () => {
                     <h3 className="font-size-6 mb-0">
                     <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Commission Rate : 13-15%
+                        Ranking : 4.5
                         </a>
                       </Link>
                     </h3>
@@ -173,7 +173,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          Approx Earning per Student : $2000
+                          Approx International Students : 2500
                         </a>
                       </Link>
                     </li>
@@ -205,7 +205,7 @@ const FeaturedJobs = () => {
                     <h3 className="font-size-6 mb-0">
                     <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Commission Rate : 13-15%
+                        Ranking : 4.5
                         </a>
                       </Link>
                     </h3>
@@ -225,7 +225,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          Approx Earning per Student : $2000
+                          Approx International Students : 3100
                         </a>
                       </Link>
                     </li>
@@ -257,7 +257,7 @@ const FeaturedJobs = () => {
                     <h3 className="font-size-6 mb-0">
                     <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Commission Rate : 13-15%
+                        Ranking : 4.5
                         </a>
                       </Link>
                     </h3>
@@ -277,7 +277,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          Approx Earning per Student : $2000
+                          Approx International Students : 4400
                         </a>
                       </Link>
                     </li>
@@ -309,7 +309,7 @@ const FeaturedJobs = () => {
                     <h3 className="font-size-6 mb-0">
                     <Link href="/#">
                         <a className="heading-default-color font-weight-semibold">
-                        Commission Rate : 13-15%
+                        Ranking : 4.5
                         </a>
                       </Link>
                     </h3>
@@ -329,7 +329,7 @@ const FeaturedJobs = () => {
                       <Link href="/#">
                         <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3 min-width-px-100 px-3 flex-all-center mr-6 h-px-33 mt-4">
                           <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                          Approx Earning per Student : $2000
+                          Approx International Students : 2000
                         </a>
                       </Link>
                     </li>

@@ -29,21 +29,21 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="icon icon-layout-11 mr-7"></i>Dashboard
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903931/monitor_yahvra.png" alt="" />Dashboard
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-office-checkin-waiting">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-briefcase mr-7"></i>Office Check-in
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903932/work_sp7tby.png" alt="" />Office Check-in
                 </a>
               </Link>
             </li>
             <li className="">
               <Link href="/dashboard-main-enquiries">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Enquiries{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903930/files_qjg6uy.png" alt="" />Enquiries{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -53,7 +53,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-clients">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Clients{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903932/rating_ks3yvo.png" alt="" />Clients{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -63,7 +63,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-services">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Services{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903932/plane_qwnyky.png" alt="" />Services{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -73,7 +73,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-partners">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Partners{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903930/deal_xvhkmj.png" alt="" />Partners{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -83,7 +83,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-products">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Products{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903930/delivery-box_kyjtwu.png" alt="" />Products{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -93,7 +93,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-applications">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Applications{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903931/resume_h1xatk.png" alt="" />Applications{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -105,7 +105,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-accounts-invoices">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Accounts{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903930/accounts_ji00gp.png" alt="" />Accounts{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -115,7 +115,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-teams-users">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Teams{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903930/brainstorm_d4r4vs.png" alt="" />Teams{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}
@@ -125,7 +125,7 @@ const Sidebar = () => {
             <li className="">
               <Link href="/dashboard-main-agents">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                  <i className="fas fa-user mr-7"></i>Agents{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903930/agent_ygpzuw.png" alt="" />Agents{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}

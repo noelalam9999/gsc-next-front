@@ -6,6 +6,9 @@ import AOS from "aos";
 
 import Header from "../Header";
 import Header2 from "../Header/HeaderProfile";
+import HeaderAgent from "../Header/HeaderProfileAgent";
+import HeaderStudent from "../Header/HeaderProfileStudent";
+import HeaderUni from "../Header/HeaderProfileUni";
 import Footer from "../Footer";
 
 
@@ -64,10 +67,26 @@ const Layout = ({ children, pageContext }) => {
   const gContext = useContext(GlobalContext);
   const { authUser, loading, signOut } = useAuth();
   const [visibleLoader, setVisibleLoader] = useState(true);
+const [userType,setUserType] = useState("")
 
+  async function fetchMyAPI() {
+    try {
+
+      const res = await fetch('https://ci-gsc.com/user/');
+  
+      const todoList = await res.json();
+      const filtered = todoList.filter(function(val, i, a) {return val.email==authUser;});
+      setUserType(filtered[0].usertype)
+      
+    } catch (e) {
+      console.log(e);
+  }
+    }
   useEffect(() => {
     AOS.init({ once: true });
     setVisibleLoader(false);
+    fetchMyAPI()
+
   }, []);
 
   // Navbar style based on scroll
@@ -146,6 +165,7 @@ const Layout = ({ children, pageContext }) => {
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
+            
             <Header2 isDark={gContext.headerDark} />
             <SidebarDashboard />
             {children}
@@ -182,7 +202,7 @@ else
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <Header2 isDark={gContext.headerDark} />
+            <HeaderStudent isDark={gContext.headerDark} />
             <SidebarDashboardStudent />
             {children}
           </div>
@@ -218,7 +238,7 @@ else
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <Header2 isDark={gContext.headerDark} />
+            <HeaderUni isDark={gContext.headerDark} />
             <SidebarDashboardInstitute />
             {children}
           </div>
@@ -254,7 +274,7 @@ else
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <Header2 isDark={gContext.headerDark} />
+            <HeaderAgent isDark={gContext.headerDark} />
             <SidebarDashboardAgent />
             {children}
           </div>
@@ -282,7 +302,7 @@ else
           </Helmet>
           <Loader id="loading" className={visibleLoader ? "" : "inActive"} />
           <div className="site-wrapper overflow-hidden" ref={eleRef}>  
-          {authUser == null ?  <Header isDark={gContext.headerDark} /> : <Header2 isDark={gContext.headerDark} />}
+          {authUser == null ?  <Header isDark={gContext.headerDark} /> : userType == "admin" ? <Header2 isDark={gContext.headerDark} /> : userType == "agent" ? <HeaderAgent isDark={gContext.headerDark}/> : userType == "student" ? <HeaderStudent/> : <Header/>} 
            
             {children}
 

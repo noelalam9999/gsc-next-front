@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
-const DatePickerStyled = styled.div`
+export const DatePickerStyled = styled.div`
   display: flex;
   align-items: center;
   height: 45px;
@@ -28,11 +28,13 @@ const DatePickerStyled = styled.div`
   }
 `;
 
-const DatePickerComponent = ({ className }) => {
+const DatePickerComponent = ({ onDayClick,selectedDays,className }) => {
   const today = new Date();
   return (
     <DatePickerStyled>
       <DayPickerInput
+      onDayClick={onDayClick}
+      selectedDays ={selectedDays}
         dayPickerProps={{ disabledDays: { before: today } }}
         value={today}
         inputProps={{ className: className, readOnly: true, required: true }}

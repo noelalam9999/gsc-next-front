@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import styled from "styled-components";
 import { Container, Dropdown } from "react-bootstrap";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
@@ -53,8 +53,29 @@ const Header = () => {
   const gContext = useContext(GlobalContext);
   const [showScrolling, setShowScrolling] = useState(false);
   const [showReveal, setShowReveal] = useState(false);
-
   const size = useWindowSize();
+
+  const [List, setList] = useState("");
+  useEffect(() =>  {
+
+    async function fetchMyAPI() {
+    try {
+      let res = await fetch('https://ci-gsc.com/profilepicture/?format=json');
+      let todoList = await res.json();
+      let filtered = todoList.filter(function(val, i, a) {return val.email==authUser;});
+      setList(filtered[0].image)
+    } catch (e) {
+      console.log(e);
+  }
+    }
+    
+  
+
+ fetchMyAPI()
+
+
+
+  },authUser)
 
   useScrollPosition(({ prevPos, currPos }) => {
     if (currPos.y < 0) {
@@ -272,7 +293,7 @@ console.log(authUser)
                       className="proile media ml-7 flex-y-center"
                     >
                       <div className="circle-40">
-                        <img src={imgP} alt="" />
+                        <img style={{height:"40px"}} src={"https://ci-gsc.com"+List} alt="" />
                       </div>
                       <i className="fas fa-chevron-down heading-default-color ml-6"></i>
                     </Dropdown.Toggle>

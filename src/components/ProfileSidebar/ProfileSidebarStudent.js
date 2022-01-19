@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
-import imgP from "../../assets/image/l3/png/pro-img.png";
 
+import ProfilePicture from "../../sections/agents/ProfilePicture"
 const ProfileSidebarStudent = (List) => {
   console.log(List)
   return (
@@ -17,9 +17,9 @@ const ProfileSidebarStudent = (List) => {
           <div className="bg-white shadow-9 rounded-4">
             <div className="px-5 py-7 text-center border-bottom border-mercury">
               <Link href="/#">
-                <a className="mb-4">
-                  <img className="circle-54" src={imgP} alt="" />
-                </a>
+              <a className="mb-5">
+               <ProfilePicture email={item.email}/>
+               </a>
               </Link>
               <h4 className="mb-0">
                 <Link href="/#">
@@ -33,7 +33,11 @@ const ProfileSidebarStudent = (List) => {
                   <a className="text-gray font-size-4">{item.prev_qualification}</a>
                 </Link>
               </p>
-              
+              <p className="mb-0">
+              <Link href={'/student/edit-agent/'+item.id}>
+                  <a className="text-blue font-weight-semibold font-size-5">Edit</a>
+                </Link>
+              </p>
             </div>
             {/* <!-- Top End --> */}
             {/* <!-- Bottom Start --> */}
@@ -55,7 +59,7 @@ const ProfileSidebarStudent = (List) => {
                     className="text-black-2 text-break"
                     href="mailto:name_ac@gmail.com"
                   >
-                    name_ac@gmail.com
+                    {item.email}
                   </a>
                 </h5>
               </div>

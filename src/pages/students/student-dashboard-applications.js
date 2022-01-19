@@ -7,10 +7,11 @@ import { Select } from "../../components/Core";
 import GlobalContext from "../../context/GlobalContext";
 import { useAuth } from '../../../AuthUserContext';
 import imgP1 from "../../assets/image/table-one-profile-image-1.png";
-import imgP2 from "../../assets/image/table-one-profile-image-2.png";
-import imgP3 from "../../assets/image/table-one-profile-image-3.png";
-import imgP4 from "../../assets/image/table-one-profile-image-4.png";
-import imgP5 from "../../assets/image/table-one-profile-image-5.png";
+
+import AppliedIntakeDate from "../../components/Applications/AppliedIntakeDate";
+import Partner from "../../components/Applications/Partner";
+import ClientPhone from "../../components/Applications/ClientPhone";
+import Product from "../../components/Applications/Product";
 
 const defaultJobs = [
   { value: "accomodation_service", label: "Accomodation Service" },
@@ -23,15 +24,17 @@ const defaultJobs = [
 const DashboardMain = () => {
  
   const [List, setList] = useState([]);
-
+  const { authUser, loading,signOut } = useAuth();
   useEffect(() =>  {
 
     async function fetchMyAPI() {
     try {
-      const res = await fetch('https://ci-gsc.com/students/?format=json');
+      const res = await fetch('https://ci-gsc.com/application/?format=json');
       console.log(res)
       const todoList = await res.json();
-      setList(todoList)
+      let filtered = todoList.filter(function(val, i, a) {return val.client_name==authUser;});
+      let filtered_approved = filtered.filter(function(val, i, a) {return val.status!="approved";});
+      setList(filtered_approved)
     } catch (e) {
       console.log(e);
   }
@@ -39,7 +42,7 @@ const DashboardMain = () => {
     
 fetchMyAPI()
     
-  },[])
+  },authUser)
 console.log(List)
 
   const gContext = useContext(GlobalContext);
@@ -59,7 +62,7 @@ console.log(List)
             <div className="mb-14">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
-                  <h3 className="font-size-6 mb-0">Products</h3>
+                  <h3 className="font-size-6 mb-0">Applications</h3>
                 </div>
                 <div className="col-lg-6">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
@@ -78,7 +81,7 @@ console.log(List)
                 <div className="table-responsive">
                   <table className="table table-striped">
                   <thead>
-                      <tr>
+                  <tr>
                         <th
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
@@ -86,41 +89,62 @@ console.log(List)
                           Application ID
                         </th>
                         <th
-                        scope="col"
-                        className="border-0 font-size-4 font-weight-normal"
-                      >Status</th>
-
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Institute</th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                          Applied Intake Date
                         </th>
-                  
+                      
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Agent
+                          Client Assignee
                         </th>
-                       
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Application Assignees
+                        </th>
                         
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Product</th>
-                       <th
+                     
+                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
-                        >Partner</th>
-                       
+                        >Partner Branches</th>
+<th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Partner's Client ID'</th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Workflow</th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Application Start By</th>
 
-                   
-
-                   
-
-
-
+<th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Application Start By Branch</th><th
+                        scope="col"
+                        className="border-0 font-size-4 font-weight-normal"
+                      >Status</th>
+<th
+                        scope="col"
+                        className="border-0 font-size-4 font-weight-normal"
+                      >Stage in Queue</th>
                       <th
                         scope="col"
                         className="border-0 font-size-4 font-weight-normal"
@@ -136,41 +160,87 @@ console.log(List)
                      
                       { List.map((item, index)=>(
                         <tr className="border border-color-2">
+                          
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
                           <Link href="/candidate-profile">
                             <a className="media min-width-px-235 align-items-center">
-                              <div className="circle-36 mr-6">
-                                <img src={imgP1} alt="" className="w-100" />
-                              </div>
+                         
                               <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
-                                {item.name}
+                                {item.id}
                               </h4>
                             </a>
                           </Link>
                         </th>
-                        <td className="table-y-middle py-7 min-width-px-235 pr-0">
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.mobile}
+                            
+                           <Partner uni={item.partner}/>
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                           
+                          <AppliedIntakeDate client={item.client_name}/>
+                          </h3>
+                        </td>
+                      
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.client_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.country}
+                            {item.application_assignee}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_month}
+                         
+                            <Product client={item.client_name}/>
+                          </h3>
+                        </td>
+                     
+                        
+                        
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.partner_branches}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.birth_year}
+                            {item.partner_client_id}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.workflow}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.application_start_by}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.application_start_by_branch}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status_in_queue}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.created_at}
                           </h3>
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
@@ -187,24 +257,8 @@ console.log(List)
                             </a>
                           </div>
                         </td>
-                        <td className="table-y-middle py-7 min-width-px-110 pr-0">
-                          <div className="">
-                            <Link href="/contact">
-                              <a className="font-size-3 font-weight-bold text-green text-uppercase">
-                                Contact
-                              </a>
-                            </Link>
-                          </div>
-                        </td>
-                        <td className="table-y-middle py-7 min-width-px-100 pr-0">
-                          <div className="">
-                            <Link href="/#">
-                              <a className="font-size-3 font-weight-bold text-red-2 text-uppercase">
-                                Reject
-                              </a>
-                            </Link>
-                          </div>
-                        </td>
+                  
+                  
                       </tr>
                       
                       
@@ -218,7 +272,8 @@ console.log(List)
                     </tbody>
                   </table>
                 </div>
-                <div className="pt-2">
+
+                {/* <div className="pt-2">
                   <nav aria-label="Page navigation example">
                     <ul className="pagination pagination-hover-primary rounded-0 ml-n2">
                       <li className="page-item rounded-0 flex-all-center">
@@ -281,7 +336,7 @@ console.log(List)
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
             </div>
 

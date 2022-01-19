@@ -136,43 +136,23 @@ console.log(List)
           
             </div>
             <div className="mb-14">
-
-            <div className="row mb-11 align-items-center">
+              <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">
-                  <h3 className="font-size-6 mb-0">Team</h3>
+                  <h3 className="font-size-6 mb-0">Offices</h3>
                 </div>
-                <div className="col-lg-4">
-                      
-                      <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                     
-                        
-                        <div className="h-px-48">
-                          <Select
-                            options={defaultJobs}
-                            className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                            border={false}
-                          />
-                        </div>
-                      </div>
+                <div className="col-lg-6">
+                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Job:</p>
+                    <div className="h-px-48">
+                      <Select
+                        options={defaultJobs}
+                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
+                        border={false}
+                      />
                     </div>
-                <div className="col-lg-2">
-                <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
-                    <Link
-                  
-                  href="/dashboard-main-add-moderator"
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   gContext.toggleSignUpModal();
-                  // }}
-                ><a className={`btn btn-${gContext.header.variant} text-uppercase font-size-3`}>
-                  Add Moderator</a> 
-                </Link>
-                    </div>
-                    </div>
-               
+                  </div>
+                </div>
               </div>
-
-
               <div className="bg-white shadow-8 pt-7 rounded pb-8 px-11">
                 <div className="table-responsive">
                   <table className="table table-striped">
@@ -188,21 +168,39 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                         Position
+                          City 
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                         Office
+                         Country
                         </th>
                         <th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
-                          Role
+                         Mobile
                         </th>
-                     
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Phone
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >
+                          Contact Person
+                        </th>
+                        
+                        <th
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        >Actions</th>
+                        
+                  
                       </tr>
                     </thead>
                     <tbody>
@@ -291,7 +289,8 @@ console.log(List)
                     </tbody>
                   </table>
                 </div>
-                <div className="pt-2">
+
+                {/* <div className="pt-2">
                   <nav aria-label="Page navigation example">
                     <ul className="pagination pagination-hover-primary rounded-0 ml-n2">
                       <li className="page-item rounded-0 flex-all-center">
@@ -354,7 +353,7 @@ console.log(List)
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
             </div>
 

@@ -355,7 +355,7 @@ function Loadmore (){
                              <p className="mb-7 font-size-4 text-gray">
                              </p>
                              <div className="card-btn-group">
-                               <Link href="/signup">
+                               <Link href={'/university/'+item.id}>
                                  <a className="btn btn-green text-uppercase btn-medium rounded-3">
                                    Apply Now
                                  </a>

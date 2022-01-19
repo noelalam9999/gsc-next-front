@@ -1,23 +1,15 @@
 import React,{ useContext, useEffect,useState } from "react";
 import { Nav, Tab } from "react-bootstrap";
 import Link from "next/link";
-import PageWrapper from "../../components/PageWrapper";
-import ProfileSidebar from "../../components/ProfileSidebar";
-
-import imgB1 from "../../assets/image/l2/png/featured-job-logo-1.png";
-import imgB2 from "../../assets/image/l1/png/feature-brand-1.png";
-import imgB3 from "../../assets/image/svg/harvard.svg";
-import imgB4 from "../../assets/image/svg/mit.svg";
-
 import imgT1 from "../../assets/image/l3/png/team-member-1.png";
-import imgT2 from "../../assets/image/l3/png/team-member-2.png";
-import imgT3 from "../../assets/image/l3/png/team-member-3.png";
-import imgT4 from "../../assets/image/l3/png/team-member-4.png";
-import imgT5 from "../../assets/image/l3/png/team-member-5.png";
 import {useRouter} from 'next/router'
 import imgL from "../../assets/image/svg/icon-loaction-pin-black.svg";
+import { useAuth } from '../../../AuthUserContext';
+import ProfilePicture from "../../sections/agents/ProfilePicture";
 
 const UniCard = (List) => {
+  console.log(List)
+  const { authUser, loading,signOut } = useAuth();
     const router = useRouter();
     const studentId = router.query.studentid;
     // const [List, setList] = useState([]);
@@ -29,12 +21,12 @@ const UniCard = (List) => {
       
       async function fetchMyAPI2() {
         try {
-          console.log("inside fetch API1")
+         
           const res = await fetch('https://ci-gsc.com/students/');
       
           const todoList = await res.json();
-
-          setUniList(todoList)
+          const filtered = todoList.filter(function(val, i, a) {return val.added_by==authUser;});
+          setUniList(filtered)
           
         } catch (e) {
           console.log(e);
@@ -67,11 +59,7 @@ const UniCard = (List) => {
                       <Link href="/#">
                         <a className="media align-items-center py-9 flex-wrap">
                           <div className="mr-7">
-                            <img
-                              className="square-72 rounded-3"
-                              src={imgT1}
-                              alt=""
-                            />
+                     <ProfilePicture email={item.email}/>
                           </div>
                           <div className="">
                             <h4 className="mb-0 font-size-5 font-weight-semibold">

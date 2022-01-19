@@ -21,55 +21,141 @@ const defaultCountries = [
 ];
 
 const SearchGrid = () => {
+  
   const [userType, setUserType] = useState("");
  const { authUser, loading,signOut } = useAuth();
   const [List, setList] = useState([]);
+  let [filtered, setfiltered] = useState([]);
   const [userList, setUserList] = useState([]);
   const [count, setCount] = useState(8);
- 
-  console.log(count)
-  function Loadmore (){
- console.log("loadmore clicked")
- setCount(count+8)
- 
-  }
-  useEffect(() =>  {
+  const [config,setConfig] = useState({
+    Undergraduate: true,
+    Diploma:true,
+    Masters:true,
+    PhD:true,
+    threetofour:true,
+    twotothree:true,
+    onetotwo:true,
+    zerotoone:true,
+    feelower:'',
+    feehigher:''
+    
+  })
 
-    async function fetchMyAPI() {
+
+  async function fetchMyAPI() {
     try {
 
       const res = await fetch('https://ci-gsc.com/uni/?format=json');
-  
-      const todoList = await res.json();
-      const filtered = todoList.filter(function(val, i, a) {return val.country=="USA";});
-      setList(filtered)
- 
-      // const user_list = await fetch('https://ci-gsc.com/user/?format=json')
-        
-      // const UserList = await user_list.json();
-      // await setUserList(UserList)
-
-
-      // for(var i = 0; i<userList.length; i++){
-      //   if(userList[i]['email'] == authUser.email){
-      //         await setUserType(userList[i]['usertype'])
-              
-      //   }
-      //   }
-
-
       
+      let todoList = await res.json();
+      
+      let filtered = []
+      let filtered_1 = []
+      let filtered_2 = []
+      let filtered_3 = []
+      let filtered_4 = []
+      let filtered_ranking = []
+      todoList = todoList.filter(function(val, i, a) {return val.country=="USA";})
+      if(config.Undergraduate == true){
+          filtered = filtered.concat(todoList.filter(function(val, i, a) {return val.UGfee!=null;}))
+      }
+    
+      if(config.Diploma ==true){
+      filtered = filtered.concat(todoList.filter(function(val, i, a) {return val.Diplomafee!=null;}))
+      }
+      
+      if(config.PhD ==true){
+      filtered = filtered.concat(todoList.filter(function(val, i, a) {return val.PGfee!=null;}))
+      }
+      if(config.threetofour ==true){
+    
+       filtered_4 = filtered.filter(function(val, i, a) {return val.ranking<=4 && val.ranking>=3;})
+      }
+      if(config.twotothree ==true){
+      
+        filtered_3 = filtered.filter(function(val, i, a) {return val.ranking<=3 && val.ranking>=2;})
+       }
+       if(config.onetotwo ==true){
+     
+        filtered_2 = filtered.filter(function(val, i, a) {return val.ranking<=2 && val.ranking>=1;})
+       }
+       if(config.zerotoone ==true){
+   
+        filtered_1 = filtered.filter(function(val, i, a) {return val.ranking<=1 && val.ranking>-1;})
+       }
+       filtered_ranking = filtered_ranking.concat(filtered_1,filtered_2,filtered_3,filtered_4)
+      const uniqueNames = filtered_ranking.filter((val,id,array) => array.indexOf(val) == id);
+
+     
+      setList(uniqueNames)
+
+
+
+
+
+
+ 
     } catch (e) {
       console.log(e);
   }
     }
-    
 
+
+  useEffect(() =>  {
 
  fetchMyAPI()
 
+  },[config])
 
-  },[])
+
+
+ const FeeRange = (e) => {
+   console.log(e[0])
+  setConfig( {
+    ...config,
+    "feelower": e[0],
+    "feehigher":e[1]
+  })
+
+
+  }
+
+
+  const handleDegreeCallback = (e) => {
+   if (e=="3-4" || e=="2-3" || e=="1-2" || e=="1>" ){
+    e = (e=="3-4") ? "threetofour" : (e=="2-3") ? "twotothree" : (e=="1-2") ? "onetotwo" : (e=="1>") ? "zerotoone" : "threetofour"
+
+   }
+  console.log(e)
+   if(config[e]==true){
+    setConfig( {
+      ...config,
+      [e]: false,
+    })
+
+   }
+   else{
+    setConfig( {
+      ...config,
+      [e]: true,
+    })
+
+   }
+  }
+
+
+  console.log(config)
+
+function Loadmore (){
+
+ setCount(count+8)
+ 
+  }
+
+
+
+
 
 
 
@@ -80,7 +166,7 @@ const SearchGrid = () => {
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-4 col-xs-8">
-                <Sidebar />
+                <Sidebar parentCallback = {handleDegreeCallback} FeeRange = {FeeRange} />
               </div>
               <div className="col-12 col-md-8 col-xs-12 ">
                 {/* <!-- form --> */}
@@ -185,18 +271,44 @@ const SearchGrid = () => {
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                                      <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                                     Ranking : 3.9/5
+                                     Ranking : {item.ranking}
                                    </a>
                                  </Link>
                                </li>
+                               {item.UGfee !=null && 
+                                  <li>
+                                  <Link href="/#">
+                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                                      <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
+                                      Average UG Fee: $14k-19k
+                                    </a>
+                                  </Link>
+                                </li>
+                               
+                               }
+                            {item.PGfee !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                                      <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                                     Average Annual Fee: $14k-19k
+                                     Average PG Fee: $14k-19k
                                    </a>
                                  </Link>
                                </li>
+
+}
+
+{item.Diplomafee !=null && 
+                               <li>
+                                 <Link href="/#">
+                                   <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                                     <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
+                                     Average Annual Diploma Fee: $14k-19k
+                                   </a>
+                                 </Link>
+                               </li>
+
+}
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -241,8 +353,9 @@ const SearchGrid = () => {
                              </ul>
                              <p className="mb-7 font-size-4 text-gray">
                              </p>
+                             
                              <div className="card-btn-group">
-                               <Link href="/signup">
+                               <Link href={'/university/'+item.id}>
                                  <a className="btn btn-green text-uppercase btn-medium rounded-3">
                                    Apply Now
                                  </a>
