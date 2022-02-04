@@ -45,14 +45,14 @@ const CandidateProfile = () => {
             <div className="row justify-content-center">
               <div className="col-12 dark-mode-texts">
                 <div className="mb-9">
-                  <Link href="/dashboard-main-clients">
-                    <a className="d-flex align-items-center ml-4">
+                
+                    <a onClick={() => router.back()} className="d-flex align-items-center ml-4">
                       <i className="icon icon-small-left bg-white circle-40 mr-5 font-size-7 text-black font-weight-bold shadow-8"></i>
                       <span className="text-uppercase font-size-3 font-weight-bold text-gray">
                         Back
                       </span>
                     </a>
-                  </Link>
+               
                 </div>
               </div>
             </div>

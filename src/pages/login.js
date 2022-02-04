@@ -53,6 +53,10 @@ export default function Login() {
             
             router.push('/dashboard-main');
           }
+          else if(UserList[i]['usertype']== "team-member"){
+            
+            router.push('/team-member/team');
+          }
 
           
           

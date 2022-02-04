@@ -201,6 +201,9 @@ class AddStudent extends Component {
         address2:"",
         prev_qualification:"Alevel",
         IELTSBand:"3.2",
+        TOEFL:"",
+        Duolingo:"",
+        PTE:"",
         Desiredlevel:"Alevel",
         StudyDestination:"USA",
         IntendedSemester:"spring",
@@ -627,23 +630,78 @@ Client Registration Form
                             </div>
                           </div>
                           <div className="col-lg-6">
-                            <div className="form-group position-relative">
+                          <div className="form-group">
                               <label
-                                htmlFor="address"
+                                htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                IELTS Band
+                                IELTS
                               </label>
-                              <Select
-                                options={IELTSBand}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                onChange={this.handleChangeSelect}
-                                value={this.state.activeItem.IELTSBand.value}
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="IELTSBand"
+                                placeholder="7"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.IELTSBand}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
                           </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                TOEFL 
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="TOEFL"
+                                placeholder="78"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.TOEFL}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                PTE
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="PTE"
+                                placeholder="95"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.PTE}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Duolingo
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="Duolingo"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.Duolingo}
+                              />
+                            </div>
+                          </div>
+
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">

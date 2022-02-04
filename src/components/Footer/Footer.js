@@ -1,13 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext,  useState, useEffect } from "react";
 import Link from "next/link";
 import GlobalContext from "../../context/GlobalContext";
 import Logo from "../Logo";
 import imgM from "../../assets/image/l1/png/message.png";
 import { useRouter } from 'next/router';
+import { IoIosArrowRoundUp } from "react-icons/io";
+import { animateScroll } from "react-scroll";
 
 const Footer = () => {
   const gContext = useContext(GlobalContext);
   const router = useRouter();
+  const [scroll, setScroll] = useState(0);
+  const [top, setTop] = useState(0);
+
+  
+  useEffect(() => {
+    setTop(100);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const scrollToTop = () => {
+    animateScroll.scrollToTop();
+  };
+
+  const handleScroll = () => {
+    setScroll(window.scrollY);
+  };
   return (
     <>
       <footer className="footer bg-ebony-clay dark-mode-texts">
@@ -72,14 +92,28 @@ const Footer = () => {
               {/* <!-- footer logo End --> */}
               {/* <!-- media start --> */}
               <div className="media mb-11">
-                <img src={imgM} className="align-self-center mr-3" alt="" />
-                <div className="media-body pl-5">
+                {/* <img src={imgM} className="align-self-center mr-3" alt="" /> */}
+                <div className=" media-body pl-5">
                   <p className="mb-0 font-size-4 text-white">Contact us at</p>
                   <Link href="/#">
                     <a className="mb-0 font-size-4 font-weight-bold">
                       info@ci-gsc.com
                     </a>
                   </Link>
+                  <Link href="/#">
+                          <a className="heading-default-color font-size-4 font-weight-normal">
+                      
+                       <div>
+                       House no.-54/A(3rd Floor),
+                       Road-132, 
+                        <br/>Gulshan-1, 
+                       Dhaka-1212
+</div>
+
+
+
+                          </a>
+                        </Link>
                 </div>
               </div>
               {/* <!-- media start --> */}
@@ -128,15 +162,10 @@ const Footer = () => {
                       <li className="mb-6">
                         <Link href="/#">
                           <a className="heading-default-color font-size-4 font-weight-normal">
-                       <strong >   Dhaka</strong>
-                       <div>
-                       1. House no. - 54/A, 
-                       Road - 132, 
-                       (3rd Floor), Gulshan -1, 
-                       Dhaka- 1212
-</div>
+                   
+                          <strong >   Dhaka</strong>
 <div>
-                         2. 249,Moghbazar Chourasta,1st Floor,
+                       249,Moghbazar Chourasta,1st Floor,
                           Dhaka-1217,Bangladesh. 
                           Mob:+880 1715-482363
 </div>
@@ -307,6 +336,12 @@ Mob:+41 079 471 95 92.
             </div>
           </div>
         </div>
+        <button
+        className={`scroll-top ${scroll > top ? "show" : ""}`}
+        onClick={() => scrollToTop()}
+      >
+        <IoIosArrowRoundUp />
+      </button>
       </footer>
     </>
   );

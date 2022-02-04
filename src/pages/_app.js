@@ -132,7 +132,20 @@ const MyApp = ({ Component, pageProps, router }) => {
       </GlobalProvider>
     );
   }
+  if (router.pathname.match(/team/)) {
+    return (
 
+      <GlobalProvider>
+           <AuthUserProvider>
+        <Layout pageContext={{ layout: "team" }}>
+     
+          <Component {...pageProps} />
+        
+        </Layout>
+        </AuthUserProvider>
+      </GlobalProvider>
+    );
+  }
   return (
     
     <GlobalProvider>

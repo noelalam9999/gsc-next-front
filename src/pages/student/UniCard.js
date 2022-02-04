@@ -24,7 +24,7 @@ const UniCard = (List) => {
       
           const todoList = await res.json();
           let filtered = todoList.filter(function(val, i, a) {return val.country==List.List[0].StudyDestination;});
-          filtered = filtered.filter(function(val, i, a) {return val.IELTSRequirement<=List.List[0].IELTSBand;});
+          filtered = filtered.filter(function(val, i, a) {return val.UGIELTSReq<=List.List[0].IELTSBand;});
           setUniList(filtered)
           
         } catch (e) {

@@ -239,3 +239,35 @@ display:block;
 .select3{
   border: 1px solid #e5e5e5;
 }
+.scroll-top {
+  font-size: 25px;
+
+  position: fixed;
+  z-index: 999;
+  right: 25px;
+  bottom: 25px;
+
+  visibility: hidden;
+
+  width: 50px;
+  height: 50px;
+
+  text-align: center;
+
+  opacity: 0;
+  color: $white;
+  border: none;
+  border-radius: 50%;
+  background: #6ae1ab;
+
+  &:hover {
+    background-color: #f26f21;
+  }
+
+  &.show {
+    visibility: visible;
+
+    opacity: 1;
+  }
+}
+

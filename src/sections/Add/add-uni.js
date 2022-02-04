@@ -8,95 +8,18 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import "react-day-picker/lib/style.css";
 import { DatePickerStyled } from "../../components/DatePicker/DatePicker";
 
-const FallSemester = [
-  {name:"FallSemester", value: "jan", label: "Januray" },
-  {name:"FallSemester", value: "feb", label: "February" },
-  {name:"FallSemester", value: "march", label: "March" },
-  {name:"FallSemester", value: "april", label: "April" },
-  {name:"FallSemester", value: "may", label: "May" },
-  {name:"FallSemester", value: "june", label: "June" },
-  {name:"FallSemester", value: "july", label: "July" },
-  {name:"FallSemester", value: "august", label: "August" },
-  {name:"FallSemester", value: "sept", label: "September" },
-  {name:"FallSemester", value: "oct", label: "October" },
-  {name:"FallSemester", value: "nov", label: "November" },
-  {name:"FallSemester", value: "december", label: "December" },
-];
-
-const SpringSemester = [
-  {name:"SpringSemester", value: "jan", label: "Januray" },
-  {name:"SpringSemester", value: "feb", label: "February" },
-  {name:"SpringSemester", value: "march", label: "March" },
-  {name:"SpringSemester", value: "april", label: "April" },
-  {name:"SpringSemester", value: "may", label: "May" },
-  {name:"SpringSemester", value: "june", label: "June" },
-  {name:"SpringSemester", value: "july", label: "July" },
-  {name:"SpringSemester", value: "august", label: "August" },
-  {name:"SpringSemester", value: "sept", label: "September" },
-  {name:"SpringSemester", value: "oct", label: "October" },
-  {name:"SpringSemester", value: "nov", label: "November" },
-  {name:"SpringSemester", value: "december", label: "December" },
-];
-
-const SummerSemester = [
-  {name:"SummerSemester", value: "jan", label: "Januray" },
-  {name:"SummerSemester", value: "feb", label: "February" },
-  {name:"SummerSemester", value: "march", label: "March" },
-  {name:"SummerSemester", value: "april", label: "April" },
-  {name:"SummerSemester", value: "may", label: "May" },
-  {name:"SummerSemester", value: "june", label: "June" },
-  {name:"SummerSemester", value: "july", label: "July" },
-  {name:"SummerSemester", value: "august", label: "August" },
-  {name:"SummerSemester", value: "sept", label: "September" },
-  {name:"SummerSemester", value: "oct", label: "October" },
-  {name:"SummerSemester", value: "nov", label: "November" },
-  {name:"SummerSemester", value: "december", label: "December" },
-];
 
 
-const UGfee = [
-  {name:"UGfee", value: "<50,000", label: "<50,000" },
-  {name:"UGfee", value: "50,000-100,000", label: "50,000-100,000" },
-  {name:"UGfee", value: "100,000-200,000", label: "100,000-200,000" },
-  {name:"UGfee", value: "200,000<", label: "200,000" },
-];
 
-const PGfee = [
-  {name:"PGfee", value: "<50,000", label: "<50,000" },
-  {name:"PGfee", value: "50,000-100,000", label: "50,000-100,000" },
-  {name:"PGfee", value: "100,000-200,000", label: "100,000-200,000" },
-  {name:"PGfee", value: "200,000<", label: "200,000" },
-];
 
-const Diplomafee = [
-  {name:"Diplomafee", value: "<50,000", label: "<50,000" },
-  {name:"Diplomafee", value: "50,000-100,000", label: "50,000-100,000" },
-  {name:"Diplomafee", value: "100,000-200,000", label: "100,000-200,000" },
-  {name:"Diplomafee", value: "200,000<", label: "200,000" },
-];
 
-const AccomodationCost = [
-  {name:"AccomodationCost", value: "<6,000", label: "<6,000" },
-  {name:"AccomodationCost", value: "6,000-12,000", label: "6,000-12,000" },
-  {name:"AccomodationCost", value: "12,000-24,000", label: "12,000-24,000" },
-  {name:"AccomodationCost", value: "24,000<", label: "24,000<" },
-];
 
-const IELTSRequirement = [
-  {name:"IELTSRequirement", value: "7.5", label: "7.5" },
-  {name:"IELTSRequirement", value: "7", label: "7" },
-  {name:"IELTSRequirement", value: "6.5", label: "6.5" },
-  {name:"IELTSRequirement", value: "6", label: "6" },
-];
 
-const defaultLocations = [
-  { value: "uk", label: "U.K." },
-  { value: "usa", label: "U.S.A." },
-  { value: "cn", label: "Canada" },
-  { value: "aus", label: "Australia" },
-  { value: "europe", label: "Europe" },
-  { value: "malay", label: "Malaysia" },
-];
+
+
+
+
+
 
 const Accomodation = [
   {name:"Accomodation", value: "yes", label: "Yes" },
@@ -168,6 +91,7 @@ class AddUni extends Component {
         PGPTEReq:"",
         PGDuolingoReq:"",
         PGAppfee:"",
+        MinDeposit:"",
         Diplomafee:"",
         AccomodationCostUG:"",
         AccomodationCostPG:"",
@@ -184,12 +108,17 @@ class AddUni extends Component {
         Intake5AppDeadline:"",
         Intake6AppDeadline:"",
         ranking:"",
-        HSCReq:"",
+        HSCReqUG:"",
+        HSCReqPG:"",
         Accomodation:"no",
         Internship:"no",
         OfferLetter:"no",
         WorkVisa:"no",
-        WorkStudy:"no"
+        WorkStudy:"no",
+        ScholarshipReq:"",
+        UGExtra:"",
+        PGExtra:"",
+        UGReq:""
       },
       todoList: [],
       
@@ -394,7 +323,7 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Mobile * 
+                                Mobile 
                               </label>
                               <input
                                 type="text"
@@ -412,7 +341,7 @@ render(){
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Email * 
+                                Email
                               </label>
                               <input
                                 type="text"
@@ -431,7 +360,7 @@ render(){
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                                 style={{paddingBottom:"10px"}}
                               >
-                                University Logo * 
+                                University Logo 
                               </label>
                               <input 
                               type="file"
@@ -464,15 +393,33 @@ render(){
                                 htmlFor="select3"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                HSC Requirement
+                                HSC Requirement UG
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
-                                name="HSCReq"
+                                name="HSCReqUG"
                                 placeholder="3"
                                 onChange={this.handleChange}
-                                value={this.state.activeItem.HSCReq}
+                                value={this.state.activeItem.HSCReqUG}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                HSC Requirement PG
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="HSCReqPG"
+                                placeholder="3"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.HSCReqPG}
                               />
                             </div>
                           </div>
@@ -532,6 +479,7 @@ render(){
                               />
                             </div>
                           </div>
+                        
                           <div className="col-lg-6 mb-xl-0 mb-7">
                             <div className="form-group position-relative">
                               <label
@@ -589,6 +537,28 @@ render(){
                          
                           </div>
                           <div className="row mb-8">
+                        <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               UG Extra Requirement
+                              </label>
+                              <textarea
+                                type="text"
+                                className="form-control h-px-248"
+                                name="UGExtra"
+                                placeholder=""
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.UGExtra}
+                              />
+                           
+                            </div>
+                          </div>
+
+                        </div>
+                          <div className="row mb-8">
                           <div className="col-lg-6">
                             <div className="form-group position-relative">
                               <label
@@ -599,13 +569,13 @@ render(){
                               </label>
                               <input
                                 type="text"
-                                className="form-control h-px-48"
+                                className="form-control h-px-148"
                                 name="PGfee"
                                 placeholder="10,000"
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.PGfee}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                           
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -624,10 +594,10 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.PGIELTSReq}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                           
                             </div>
                           </div>
-                          <div className="col-lg-6">
+                          <div className="col-lg-6 mb-xl-0 mb-7">
                             <div className="form-group position-relative">
                               <label
                                 htmlFor="address"
@@ -643,7 +613,7 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.PGTOEFLReq}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+ 
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -662,7 +632,7 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.PGPTEReq}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                              
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -681,7 +651,26 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.PGDuolingoReq}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                             
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                PG UG Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="UGReq"
+                                placeholder="3.77"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.UGReq}
+                              />
+                              
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -700,9 +689,31 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.PGAppfee}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                             
                             </div>
                           </div>
+                        </div>
+                        <div className="row mb-8">
+                        <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                              PG Extra Requirements
+                              </label>
+                              <textarea
+                                type="text"
+                                className="form-control h-px-248"
+                                name="PGExtra"
+                                placeholder=""
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.PGExtra}
+                              />
+                             
+                            </div>
+                          </div>
+
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
@@ -739,7 +750,7 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.AccomodationCostUG}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -758,9 +769,49 @@ render(){
                                 onChange={this.handleChange}
                                 value={this.state.activeItem.AccomodationCostPG}
                               />
-                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            
                             </div>
                           </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Min Deposit
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="MinDeposit"
+                                placeholder="$7900"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.MinDeposit}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row mb-8">
+                        <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Scholarship Requirements
+                              </label>
+                              <textarea
+                                type="text"
+                                className="form-control h-px-248"
+                                name="ScholarshipReq"
+                                placeholder="3400"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.ScholarshipReq}
+                              />
+                           
+                            </div>
+                          </div>
+
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
@@ -821,8 +872,7 @@ render(){
                            />
                             </div>
                           </div>
-                        </div>
-                        <div className="row mb-8">
+                       
                           <div className="col-lg-6 mb-xl-0 mb-7">
                             <div className="form-group position-relative">
                               <label
@@ -1075,7 +1125,7 @@ render(){
                         </div>
                        
                         <input
-                        disabled ={this.state.disable}
+                    
                               type="button"
                               value="Add Uni"
                               className="btn btn-green btn-h-60 text-white min-width-px-210 rounded-5 text-uppercase"

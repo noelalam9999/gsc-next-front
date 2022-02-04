@@ -2,8 +2,8 @@ import React , { Component, useEffect,useState } from "react";
 import axios from 'axios';
 import { Select } from "../../components/Core";
 import 'firebase/firestore';
-import SidebarDashboard from "../../components/SidebarDashboard/SidebarDashboard";
-
+import Link from "next/link";
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 const FallSemester = [
   {name:"FallSemester", value: "jan", label: "Januray" },
@@ -127,48 +127,94 @@ const Accomodation = [
 const EditUni = (props) =>  {
 
   const [disable, setDisable] = useState("");
-  const [id, setId] = useState("");
-  
+  const [intakeCount, setIntakeCount] = useState(3);
+  const [id, setId] = useState(""); 
   const [image, setImage] = useState([])
   const [imageChanged,setImageChanged] = useState(false)
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [country, setCountry] = useState("");
   const [UGfeedata, setUGfee] = useState("");
+  const [UGIELTSReq, setUGIELTSReq] = useState("");
+  const [UGTOEFLReq, setUGTOEFLReq] = useState("");
+  const [UGPTEReq, setUGPTEReq] = useState("");
+  const [UGDuolingoReq, setUGDuolingoReq] = useState("");
+  const [UGAppfee, setUGAppfee] = useState("");
+  
   const [PGfeedata, setPGfee] = useState(""); 
+  const [PGIELTSReq, setPGIELTSReq] = useState("");
+  const [PGTOEFLReq, setPGTOEFLReq] = useState("");
+  const [PGPTEReq, setPGPTEReq] = useState("");
+  const [PGDuolingoReq, setPGDuolingoReq] = useState("");
+  const [PGAppfee, setPGAppfee] = useState("");
+  const [HSCReq, setHSCReq] = useState("");
+  
   const [DiplomaFeedata, setDiplomaFee] = useState("");
-  const [AccomodationCostdata, setAccomodationCost] = useState("");
+  const [AccomodationCostUG, setAccomodationCostUG] = useState("");
+  
+  const [AccomodationCostPG, setAccomodationCostPG] = useState("");
   const [FallSemesterdata, setFallSemester] = useState("");
   const [SpringSemesterdata, setSpringSemester] = useState("");
   const [SummerSemesterdata, setSummerSemester] = useState("");
+  const [Intake4, setIntake4] = useState("");
+  const [Intake5, setIntake5] = useState("");
+  const [Intake6, setIntake6] = useState("");
+  const [FallSemesterAppDeadline, setFallSemesterAppDeadline] = useState("");
+  const [SpringSemesterAppDeadline, setSpringSemesterAppDeadline] = useState("");
+  const [SummerSemesterAppDeadline, setSummerSemesterAppDeadline] = useState("");
+  const [Intake4AppDeadline, setIntake4AppDeadline] = useState("");
+  const [Intake5AppDeadline, setIntake5AppDeadline] = useState("");
+  const [Intake6AppDeadline, setIntake6AppDeadline] = useState("");
+
   const [ranking, setRanking] = useState("");
-  const [IELTSRequirementdata, setIELTSRequirement] = useState("");
   const [Accomodationdata, setAccomodation] = useState("");
   const [Internshipdata, setInternship] = useState("");
   const [OfferLetterdata, setOfferLetter] = useState("");
   const [WorkVisadata, setWorkVisa] = useState("");
   const [WorkStudydata, setWorkStudy] = useState("");
+  const [ScholarshipReq, setScholarshipReq] = useState("");
 const [record,setRecord] = useState( {  
                                       id:"",
                                       email:"",
                                       name:"",
                                       mobile:"",
                                       country:"",
+                                      HSCReq:"",
                                       UGfee:"",
+                                      UGIELTSReq:"",
+                                      UGTOEFLReq:"",
+                                      UGPTEReq:"",
+                                      UGDuolingoReq:"",
+                                      UGAppfee:"",
                                       PGfee:"",
+                                      PGIELTSReq:"",
+                                      PGTOEFLReq:"",
+                                      PGPTEReq:"",
+                                      PGDuolingoReq:"",
+                                      PGAppfee:"",
                                       Diplomafee:"",
-                                      AccomodationCost:"",
+                                      AccomodationCostUG:"",
+                                      AccomodationCostPG:"",
                                       FallSemester:"",
                                       SpringSemester:"",
                                       SummerSemester:"",
+                                      Intake4:"",
+                                      Intake5:"",
+                                      Intake6:"",                                      
+                                      FallSemesterAppDeadline:"",
+                                      SpringSemesterAppDeadline:"",
+                                      SummerSemesterAppDeadline:"",
+                                      Intake4AppDeadline:"",
+                                      Intake5AppDeadline:"",
+                                      Intake6AppDeadline:"",
                                       ranking:"",
-                                      IELTSRequirement:"",
                                       Accomodation:"",
                                       Internship:"",
                                       OfferLetter:"",
                                       WorkVisa:"",
-                                      WorkStudy:""
+                                      WorkStudy:"",
+                                      ScholarshipReq:""
                                     })
                                     
         async function fetchMyAPI() {
@@ -185,14 +231,37 @@ const [record,setRecord] = useState( {
       setMobile(filtered[0].mobile)
       setCountry(filtered[0].country)
       setUGfee(filtered[0].UGfee)
+      setUGIELTSReq(filtered[0].UGIELTSReq)
+      setUGTOEFLReq(filtered[0].UGTOEFLReq)
+      setUGPTEReq(filtered[0].UGPTEReq)
+      setUGDuolingoReq(filtered[0].UGDuolingoReq)
+      setUGAppfee(filtered[0].UGAppfee)
       setPGfee(filtered[0].PGfee)
+      setPGIELTSReq(filtered[0].PGIELTSReq)
+      setPGTOEFLReq(filtered[0].PGTOEFLReq)
+      setPGPTEReq(filtered[0].PGPTEReq)
+      setPGDuolingoReq(filtered[0].PGDuolingoReq)
+      setPGAppfee(filtered[0].PGAppfee)
+      setHSCReq(filtered[0].HSCReq)
+      setAccomodationCostUG(filtered[0].AccomodationCostUG)
+      setAccomodationCostPG(filtered[0].AccomodationCostPG)
       setDiplomaFee(filtered[0].Diplomafee)
-      setAccomodationCost(filtered[0].AccomodationCost)
+      
       setFallSemester(filtered[0].FallSemester)
       setSpringSemester(filtered[0].SpringSemester)
       setSummerSemester(filtered[0].SummerSemester)
+      setIntake4(filtered[0].Intake4)
+      setIntake5(filtered[0].Intake5)
+      setIntake6(filtered[0].Intake6)
+      setFallSemesterAppDeadline(filtered[0].FallSemesterAppDeadline)
+      setSpringSemesterAppDeadline(filtered[0].SpringSemesterAppDeadline)
+      setSummerSemesterAppDeadline(filtered[0].SummerSemesterAppDeadline)
+      setIntake4AppDeadline(filtered[0].Intake4AppDeadline)
+      setIntake5AppDeadline(filtered[0].Intake5AppDeadline)
+      setIntake6AppDeadline(filtered[0].Intake6AppDeadline)
+      
       setRanking(filtered[0].ranking)
-      setIELTSRequirement(filtered[0].IELTSRequirement)
+      setScholarshipReq(filtered[0].ScholarshipReq)
       setAccomodation(filtered[0].Accomodation)
       setInternship(filtered[0].Internship)
       setOfferLetter(filtered[0].OfferLetter)
@@ -210,7 +279,11 @@ const [record,setRecord] = useState( {
   }
     }
 
-
+   const increaseIntake = () => {
+      let count = intakeCount + 1
+      setIntakeCount(count)
+      
+    }
   
 useEffect(() =>  {
 
@@ -219,7 +292,7 @@ useEffect(() =>  {
    },props.uniId)
 
 const success = () => {
-  alert("University Change");
+  alert("University details Changed");
 }
 
 const onCountryChange = selectedOption => {
@@ -278,20 +351,41 @@ const handleSubmit = (item) => {
   item.name=name,
   item.mobile=mobile,
   item.country=country,
+  item.HSCReq =HSCReq,
   item.UGfee=UGfeedata,
+  item.UGIELTSReq = UGIELTSReq,
+  item.UGTOEFLReq = UGTOEFLReq,
+  item.UGPTEReq = UGPTEReq,
+  item.UGDuolingoReq = UGDuolingoReq,
+  item.UGAppfee = UGAppfee,
   item.PGfee=PGfeedata,
+  item.PGIELTSReq = PGIELTSReq,
+  item.PGTOEFLReq = PGTOEFLReq,
+  item.PGPTEReq = PGPTEReq,
+  item.PGAppfee = PGAppfee,
+  item.PGDuolingoReq = PGDuolingoReq,
   item.Diplomafee=DiplomaFeedata,
-  item.AccomodationCost=AccomodationCostdata,
+  item.AccomodationCostPG=AccomodationCostPG,
+  item.AccomodationCostUG=AccomodationCostUG,
   item.FallSemester=FallSemesterdata,
   item.SpringSemester=SpringSemesterdata,
   item.SummerSemester=SummerSemesterdata,
+  item.Intake4 = Intake4,
+  item.Intake5= Intake5,
+  item.Intake6 = Intake6,
+  item.FallSemesterAppDeadline=FallSemesterAppDeadline,
+  item.SpringSemesterAppDeadline=SpringSemesterAppDeadline,
+  item.SummerSemesterAppDeadline=SummerSemesterAppDeadline,
+  item.Intake4AppDeadline = Intake4AppDeadline,
+  item.Intake5AppDeadline= Intake5AppDeadline,
+  item.Intake6AppDeadline = Intake6AppDeadline,
   item.ranking=ranking,
-  item.IELTSRequirement=IELTSRequirementdata,
   item.Accomodation=Accomodationdata,
   item.Internship=Internshipdata,
   item.OfferLetter=OfferLetterdata,
   item.WorkVisa=WorkVisadata,
-  item.WorkStudy=WorkStudydata
+  item.WorkStudy=WorkStudydata,
+  item.ScholarshipReq = ScholarshipReq
 
   if (item.id) {
     axios
@@ -301,8 +395,8 @@ const handleSubmit = (item) => {
     return;
   }
   
-
-    let form_data = new FormData();
+if(imageChanged)
+    {let form_data = new FormData();
     form_data.append('image', image, image.name);
     form_data.append('email', email);
 
@@ -315,26 +409,75 @@ const handleSubmit = (item) => {
     .then(res => {
       console.log(res.data);
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err))}
     
 
 };
+function handleFallSemesterDayClick(day, { selected }) {
+  setFallSemester(day.toDateString())
+}
+function handleSpringSemesterDayClick(day, { selected }) {
+  setSpringSemester(day.toDateString())
+}
+function handleSummerSemesterDayClick(day, { selected }) {
+  setSummerSemester(day.toDateString())
+}
+function handleIntake4SemesterDayClick(day, { selected }) {
+  setIntake4(day.toDateString())
+}
+function handleIntake5SemesterDayClick(day, { selected }) {
+  setIntake5(day.toDateString())
+}
+function handleIntake6SemesterDayClick(day, { selected }) {
+  setIntake6(day.toDateString())
+}
+function handleFallSemesterAppDayClick(day, { selected }) {
+  setFallSemesterAppDeadline(day.toDateString())
+}
+function handleSpringSemesterAppDayClick(day, { selected }) {
+  setSpringSemesterAppDeadline(day.toDateString())
+}
+function handleSummerSemesterAppDayClick(day, { selected }) {
+  setSummerSemesterAppDeadline(day.toDateString())
+}
+function handleIntake4SemesterAppDayClick(day, { selected }) {
+  setIntake4AppDeadline(day.toDateString())}
 
+function handleIntake5SemesterAppDayClick(day, { selected }) {
+  setIntake5AppDeadline(day.toDateString())
+}
+function handleIntake6SemesterAppDayClick(day, { selected }) {
+
+  setIntake6AppDeadline(day.toDateString())
+}
 
    return (
     <>
      
-        <SidebarDashboard/>
         <div
-          className="dashboard-main-container mt-24 mt-lg-31"
-          id="dashboard-body"
+          className=" mt-24 mt-lg-31"
+          id=""
         >
           <div className="container">
+          <div className="row justify-content-center">
+              <div className="col-12 dark-mode-texts">
+                <div className="mb-9">
+                  <Link href={'/university/'+props.uniId}>
+                    <a className="d-flex align-items-center ml-4">
+                      <i className="icon icon-small-left bg-white circle-40 mr-5 font-size-7 text-black font-weight-bold shadow-8"></i>
+                      <span className="text-uppercase font-size-3 font-weight-bold text-gray">
+                        Back
+                      </span>
+                    </a>
+                  </Link>
+                </div>
+              </div>
+            </div>
             <div className="mb-15 mb-lg-23">
               <div className="row">
                 <div className="col-xxxl-9 px-lg-13 px-6">
                   <h5 className="font-size-6 font-weight-semibold mb-11">
-                    Please fill up the details to edit the details for {name}
+                    Editing {name}
                   </h5>
                   <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
                     
@@ -411,7 +554,7 @@ const handleSubmit = (item) => {
                               type="file"
                               id="image"
                               accept="image/png, image/jpeg"  
-                              onChange={(event) => setEmail(event.target.value)} required/>
+                              onChange={handleImageChange} required/>
                             </div>
                             
                           </div>
@@ -421,7 +564,7 @@ const handleSubmit = (item) => {
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Country : 
+                                Country * : 
                               </label>
                               
 
@@ -442,15 +585,15 @@ const handleSubmit = (item) => {
                                 htmlFor="select2"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                IELTS Requirement * 
+                                HSC Requirement 
                               </label>
-                              <Select
-                                options={IELTSRequirement}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="IELTSRequirement"  
-                                onChange={onIETLSRequirementChange}
-                                value={IELTSRequirementdata}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="HSCReq"
+                                placeholder="3"
+                                onChange={(event) => setHSCReq(event.target.value)}
+                                value={HSCReq}
                               />
                             </div>
                           </div>
@@ -462,16 +605,128 @@ const handleSubmit = (item) => {
                                 htmlFor="select3"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Average Undergraduate Fee
+                                Annual Undergraduate Fee
                               </label>
-                              <Select
-                                options={UGfee}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="UGfee"  
-                                onChange={onUGfeeChange}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="UGfee"
+                                placeholder="10,000"
+                                onChange={(event) => setUGfee(event.target.value)}
                                 value={UGfeedata}
                               />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                UG IELTS Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="UGIELTSReq"
+                                placeholder="6"
+                                onChange={(event) => setUGIELTSReq(event.target.value)}
+                                value={UGIELTSReq}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                UG TOEFL Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="UGTOEFLReq"
+                                placeholder="79"
+                                onChange={(event) => setPGTOEFLReq(event.target.value)}
+                                value={UGTOEFLReq}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                UG PTE Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="UGPTEReq"
+                                placeholder="50"
+                                onChange={(event) => setUGPTEReq(event.target.value)}
+                                value={UGPTEReq}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                UG Duolingo Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="UGDuolingoReq"
+                                placeholder="95"
+                                onChange={(event) => setUGDuolingoReq(event.target.value)}
+                                value={UGDuolingoReq}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                UG Application Fee
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="UGAppfee"
+                                placeholder="60USD"
+                                onChange={(event) => setUGAppfee(event.target.value)}
+                                value={UGAppfee}
+                              />
+                            </div>
+                          </div>
+                         
+                          </div>
+                          <div className="row mb-8">
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Annual Post-Graduate Fee
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-148"
+                                name="PGfee"
+                                placeholder="10,000"
+                                onChange={(event) => setPGfee(event.target.value)}
+                                value={PGfeedata}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -480,15 +735,91 @@ const handleSubmit = (item) => {
                                 htmlFor="address"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Average Post-Graduate Fee
+                                PG IELTS Requirement
                               </label>
-                              <Select
-                                options={PGfee}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="PGfee"  
-                                onChange={onPGfeeChange}
-                                value={PGfeedata}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="PGIELTSReq"
+                                placeholder="6"
+                                onChange={(event) => setPGIELTSReq(event.target.value)}
+                                value={PGIELTSReq}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                PG TOEFL Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="PGTOEFLReq"
+                                placeholder="50"
+                                onChange={(event) => setPGTOEFLReq(event.target.value)}
+                                value={PGTOEFLReq}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                PG PTE Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="PGPTEReq"
+                                placeholder="53"
+                                onChange={(event) => setPGPTEReq(event.target.value)}
+                                value={PGPTEReq}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                PG Duolingo Requirement
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="PGDuolingoReq"
+                                placeholder="100"
+                                onChange={(event) => setPGDuolingoReq(event.target.value)}
+                                value={PGDuolingoReq}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                PG Application Fee 
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="PGAppfee"
+                                placeholder="60USD"
+                                onChange={(event) => setPGAppfee(event.target.value)}
+                                value={PGAppfee}
                               />
                               <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
@@ -501,14 +832,14 @@ const handleSubmit = (item) => {
                                 htmlFor="select3"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Average Diploma Fee
+                                Annual Diploma Fee
                               </label>
-                              <Select
-                                options={Diplomafee}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="Diplomafee"  
-                                onChange={onDiplomafeeChange}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="Diplomafee"
+                                placeholder="contact email of the institute"
+                                onChange={(event) => setDiplomaFee(event.target.value)}
                                 value={DiplomaFeedata}
                               />
                             </div>
@@ -519,19 +850,60 @@ const handleSubmit = (item) => {
                                 htmlFor="address"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                               Accomodation Cost
+                               Accomodation Cost/Semester UG
                               </label>
-                              <Select
-                                options={AccomodationCost}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="AccomodationCost"  
-                                onChange={onAccomodationCostChange}
-                                value={AccomodationCostdata}
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="AccomodationCostUG"
+                                placeholder="3400"
+                                onChange={(event) => setAccomodationCostUG(event.target.value)}
+                                value={AccomodationCostUG}
                               />
                               <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
                           </div>
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Accomodation Cost/Semester PG
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="AccomodationCostPG"
+                                placeholder="3400"
+                                onChange={(event) => setAccomodationCostPG(event.target.value)}
+                                value={AccomodationCostPG}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row mb-8">
+                        <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Scholarship Requirements
+                              </label>
+                              <textarea
+                                type="text"
+                                className="form-control h-px-248"
+                                name="ScholarshipReq"
+                                placeholder="3400"
+                                onChange={(event) => setScholarshipReq(event.target.value)}
+                                value={ScholarshipReq}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            </div>
+                          </div>
+
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
@@ -542,14 +914,25 @@ const handleSubmit = (item) => {
                               >
                                 Start of Fall semester
                               </label>
-                              <Select
-                                options={FallSemester}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="FallSemester"  
-                                onChange={onFallSemesterChange}
-                                value={FallSemesterdata}
-                              />
+                           
+                              <DayPickerInput
+                            onDayChange={handleFallSemesterDayClick}
+                            selectedDays={FallSemester}
+                           />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Fall Semester Application Deadline
+                              </label>
+                           <DayPickerInput
+                            onDayChange={handleFallSemesterAppDayClick}
+                            selectedDays={FallSemesterAppDeadline}
+                           />
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -560,19 +943,28 @@ const handleSubmit = (item) => {
                               >
                                Start of Spring Semester
                               </label>
-                              <Select
-                                options={SpringSemester}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="SpringSemester"  
-                                onChange={onSpringSemesterChange}
-                                value={SpringSemesterdata}
-                              />
+                              <DayPickerInput
+                            onDayChange={handleSpringSemesterDayClick}
+                            selectedDays={SpringSemester}
+                           />
                               <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
                           </div>
-                        </div>
-                        <div className="row mb-8">
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Spring Semester Application Deadline
+                              </label>
+                              <DayPickerInput
+                            onDayChange={handleSpringSemesterAppDayClick}
+                            selectedDays={SpringSemesterAppDeadline}
+                           />
+                            </div>
+                          </div>
+                       
                           <div className="col-lg-6 mb-xl-0 mb-7">
                             <div className="form-group position-relative">
                               <label
@@ -581,16 +973,138 @@ const handleSubmit = (item) => {
                               >
                                 Start of Summer semester
                               </label>
-                              <Select
-                                options={SummerSemester}
-                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
-                                border={false}
-                                name="SummerSemester"  
-                                onChange={onSummerSemesterChange}
-                                value={SummerSemesterdata}
-                              />
+                              <DayPickerInput
+                            onDayChange={handleSummerSemesterDayClick}
+                            selectedDays={SummerSemester}
+                           />
                             </div>
                           </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Summer Semester Application Deadline
+                              </label>
+                              <DayPickerInput
+                            onDayChange={handleSummerSemesterAppDayClick}
+                            selectedDays={SummerSemesterAppDeadline}
+                           />
+                            </div>
+                          </div>
+                          {intakeCount>3 && (
+                            <>
+                             <div className="col-lg-6 mb-xl-0 mb-7">
+                             <div className="form-group position-relative">
+                               <label
+                                 htmlFor="select3"
+                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                               >
+                                 Start of Intake 4
+                               </label>
+                               <DayPickerInput
+                            onDayChange={handleIntake4SemesterDayClick}
+                            selectedDays={Intake4}
+                           />
+                             </div>
+                           </div>
+                             <div className="col-lg-6 mb-xl-0 mb-7">
+                             <div className="form-group position-relative">
+                               <label
+                                 htmlFor="select3"
+                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                               >
+                                 Intake 4 Application Deadline
+                               </label>
+                               <DayPickerInput
+                            onDayChange={handleIntake4SemesterAppDayClick}
+                            selectedDays={setIntake4AppDeadline}
+                           />
+                             </div>
+                           </div>
+                           </>
+                          )
+                          }
+                                       {intakeCount>4 && (
+                                         <>
+                             <div className="col-lg-6 mb-xl-0 mb-7">
+                             <div className="form-group position-relative">
+                               <label
+                                 htmlFor="select3"
+                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                               >
+                                 Start of Intake 5
+                               </label>
+                               <DayPickerInput
+                            onDayChange={handleIntake5SemesterDayClick}
+                            selectedDays={Intake5}
+                           />
+                             </div>
+                           </div>
+                           <div className="col-lg-6 mb-xl-0 mb-7">
+                             <div className="form-group position-relative">
+                               <label
+                                 htmlFor="select3"
+                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                               >
+                                Intake 5 Application Deadline
+                               </label>
+                               <DayPickerInput
+                            onDayChange={handleIntake5SemesterAppDayClick}
+                            selectedDays={Intake5AppDeadline}
+                           />
+                             </div>
+                           </div>
+                           </>
+                          )
+                          }
+                                       {intakeCount>5 && (
+                                         <>
+                             <div className="col-lg-6 mb-xl-0 mb-7">
+                             <div className="form-group position-relative">
+                               <label
+                                 htmlFor="select3"
+                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                               >
+                                 Start of Intake 6
+                               </label>
+                               <DayPickerInput
+                            onDayChange={handleIntake6SemesterDayClick}
+                            selectedDays={Intake6}
+                           />
+                             </div>
+                           </div>
+                              <div className="col-lg-6 mb-xl-0 mb-7">
+                              <div className="form-group position-relative">
+                                <label
+                                  htmlFor="select3"
+                                  className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                                >
+                                  Intake 6 Application Deadline
+                                </label>
+                                <DayPickerInput
+                             onDayChange={handleIntake6SemesterAppDayClick}
+                             selectedDays={Intake6AppDeadline}
+                            />
+                              </div>
+                            </div>
+                            </>
+                          )
+                          }
+                          </div>
+                          <div className="row mb-8">
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                          <input
+
+                              type="button"
+                              value="Add intake"
+                              className="btn btn-blue btn-h-30 text-white min-width-px-100 rounded-5 text-uppercase"
+                              onClick={() => increaseIntake()}
+                         />
+                         </div>
+                            </div>
+                            <div className="row mb-8">
                           <div className="col-lg-6">
                             <div className="form-group">
                               <label
@@ -677,9 +1191,8 @@ const handleSubmit = (item) => {
                               options={WorkVisa}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
-                              onChange={onWorkStudyChange}
-                              // value={WorkVisadata}
-                              defaultValue={WorkVisadata}
+                              onChange={onWorkVisaChange}
+                              value={WorkVisadata}
                             />
                             </div>
                           </div>
@@ -696,13 +1209,12 @@ const handleSubmit = (item) => {
                               options={WorkStudy}
                               className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
                               border={false}
-                              onChange={onWorkVisaChange}
-                              value={WorkVisadata}
+                              onChange={onWorkStudyChange}
+                              value={WorkStudydata}
                             />
                             </div>
                           </div>
                         </div>
-                       
                         <input
                         disabled ={disable}
                               type="button"

@@ -35,6 +35,7 @@ import { useAuth } from '../../../AuthUserContext';
 import "firebase/auth";
 
 import firebase from "firebase/app";
+import SidebarDashboardTeam from "../SidebarDashboard/SidebarDashboardTeam";
 
 const Loader = styled.div`
   position: fixed;
@@ -276,6 +277,41 @@ else
           >
             <HeaderAgent isDark={gContext.headerDark} />
             <SidebarDashboardAgent />
+            {children}
+          </div>
+
+          <ModalVideo />
+          <ModalApplication />
+          <ModalSignIn />
+          <ModalSignUp />
+        </div>
+      </ThemeProvider>
+    );
+  }
+  if (pageContext.layout === "team") {
+    return (
+      <ThemeProvider
+        theme={
+          gContext.themeDark ? getTheme(modes.dark) : getTheme(modes.light)
+        }
+      >
+        <div data-theme-mode-panel-active data-theme="light">
+          <GlobalStyle />
+          <Helmet>
+            <title>Global Study Contacts</title>
+            <link rel="icon" type="image/png" href={imgFavicon} />
+          </Helmet>
+          <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
+            <div className="load-circle">
+              <span className="one"></span>
+            </div>
+          </Loader>
+          <div
+            className="site-wrapper overflow-hidden bg-default-2"
+            ref={eleRef}
+          >
+            <HeaderAgent isDark={gContext.headerDark} />
+            <SidebarDashboardTeam />
             {children}
           </div>
 

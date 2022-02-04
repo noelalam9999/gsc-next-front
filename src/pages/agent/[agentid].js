@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageWrapper from "../../components/PageWrapper";
 import ProfileSidebarAgent from "../../components/ProfileSidebar/ProfileSidebarAgent";
 import {useRouter} from 'next/router'
+
 import imgT1 from "../../assets/image/l3/png/team-member-1.png";
 import imgT2 from "../../assets/image/l3/png/team-member-2.png";
 import imgT3 from "../../assets/image/l3/png/team-member-3.png";
@@ -15,7 +16,7 @@ import OtherAgents from "../../sections/agents/OtherAgents";
 const CandidateProfile = () => {
   const router = useRouter();
   const agentId = router.query.agentid;
-  
+ 
   const [List, setList] = useState([]);
   useEffect(() =>  {
 
@@ -25,14 +26,8 @@ const CandidateProfile = () => {
       const res = await fetch('https://ci-gsc.com/agents/');
       const todoList = await res.json();
       console.log(todoList)
-      const filtered = todoList.filter(function(val, i, a) {return val.id==agentId;});
-    
-      setList(filtered)
- 
-     
-
-
-      
+      const filtered = todoList.filter(function(val, i, a) {return val.id==agentId;}); 
+      setList(filtered)      
     } catch (e) {
       console.log(e);
   }
@@ -56,14 +51,14 @@ const CandidateProfile = () => {
             <div className="row justify-content-center">
               <div className="col-12 dark-mode-texts">
                 <div className="mb-9">
-                  <Link href={`/dashboard-main-agents`}>
-                    <a className="d-flex align-items-center ml-4">
+                 
+                    <a onClick={() => router.back()} className="d-flex align-items-center ml-4">
                       <i className="icon icon-small-left bg-white circle-40 mr-5 font-size-7 text-black font-weight-bold shadow-8"></i>
                       <span className="text-uppercase font-size-3 font-weight-bold text-gray">
                         Back
                       </span>
                     </a>
-                  </Link>
+           
                 </div>
               </div>
             </div>

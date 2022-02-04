@@ -8,7 +8,9 @@ import iconS from "../../assets/image/svg/icon-suitecase.svg";
 import { useAuth } from '../../../AuthUserContext';
 import axios from 'axios';
 import {useRouter} from 'next/router'
+import Unilogo from "../../sections/uni/UniLogo";
 import OtherUnis from "../../sections/institutes/OtherUnis";
+import EditUni from "../../sections/uni/EditUni";
 
 const CompanyProfile = () => {
   const router = useRouter();
@@ -91,14 +93,14 @@ fetchMyAPI()
             <div className="row justify-content-center">
               <div className="col-12 mt-13 dark-mode-texts">
                 <div className="mb-9">
-                  <Link href="/#">
-                    <a className="d-flex align-items-center ml-4">
+                
+                    <a onClick={() => router.back()} className="d-flex align-items-center ml-4">
                       <i className="icon icon-small-left bg-white circle-40 mr-5 font-size-7 text-black font-weight-bold shadow-8"></i>
                       <span className="text-uppercase font-size-3 font-weight-bold text-gray">
                         Back
                       </span>
                     </a>
-                  </Link>
+               
                 </div>
               </div>
             </div>
@@ -112,11 +114,7 @@ fetchMyAPI()
                   <div className="d-xs-flex align-items-center pl-xs-12 mb-8 text-center text-xs-left">
                     <Link href="/#">
                       <a className="mr-xs-7 mb-5 mb-xs-0">
-                        <img
-                          className="square-72 rounded-6"
-                          src={imgF1}
-                          alt=""
-                        />
+                  <Unilogo email={item.email}/>
                       </a>
                     </Link>
                     <div className="">
@@ -132,6 +130,10 @@ fetchMyAPI()
                         {item.country}
                       </span>
                     </div>
+                    <div style={{paddingLeft:"40px"}} className="">
+                    
+              <EditUni email={authUser} uniId={item.id}/>
+                    </div>
                   </div>
                   {/* <!-- Tab Section Start --> */}
                   <Tab.Container id="left-tabs-example" defaultActiveKey="company">
@@ -145,6 +147,31 @@ fetchMyAPI()
                           className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
                         >
                           Institute
+                        </Nav.Link>
+                      </li>
+                     
+                      <li className="tab-menu-items nav-item pr-12">
+                        <Nav.Link
+                          eventKey="requirements"
+                          className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
+                        >
+                          Requirement
+                        </Nav.Link>
+                      </li>
+                      <li className="tab-menu-items nav-item pr-12">
+                        <Nav.Link
+                          eventKey="fees"
+                          className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
+                        >
+                          Fees
+                        </Nav.Link>
+                      </li>
+                      <li className="tab-menu-items nav-item pr-12">
+                        <Nav.Link
+                          eventKey="scholarship"
+                          className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
+                        >
+                          Scholarship
                         </Nav.Link>
                       </li>
                       <li className="tab-menu-items nav-item pr-12">
@@ -326,46 +353,83 @@ fetchMyAPI()
                           {/* <!-- Single Widgets Start --> */}
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                           <div className="mb-8">
-                              <p className="font-size-4">Average Diploma Fee</p>
+                              <p className="font-size-4">Fall Semester</p>
                               <h5 className="font-size-4 font-weight-semibold">
-                                ${item.Diplomafee}
+                                {item.FallSemester}
                               </h5>
                             </div>
                             <div className="mb-8">
-                              <p className="font-size-4">Average Undergraduate Fee</p>
+                              <p className="font-size-4">Spring Semester</p>
                               <h5 className="font-size-4 font-weight-semibold">
-                                ${item.UGfee}
+                                {item.SpringSemester}
                               </h5>
                             </div>
                             <div className="mb-8">
-                              <p className="font-size-4">Average Post-Graduate Fee</p>
+                              <p className="font-size-4">Summer Semester</p>
                               <h5 className="font-size-4 font-weight-semibold">
-                                ${item.PGfee}
+                                {item.SummerSemester}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Intake 4</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.Intake4}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Intake 5</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.Intake5}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Intake 6</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.Intake6}
                               </h5>
                             </div>
                             
                           </div>
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                           <div className="mb-8">
-                              <p className="font-size-4">Fall Semester Start</p>
+                              <p className="font-size-4">Fall Application Deadline</p>
                               <h5 className="font-size-4 font-weight-semibold">
-                                {item.FallSemester}
+                                {item.FallSemesterAppDeadline}
                               </h5>
                             </div>
                             <div className="mb-8">
-                              <p className="font-size-4">Spring Semester Start</p>
+                              <p className="font-size-4">Spring Application Deadline</p>
                               <h5 className="font-size-4 font-weight-semibold">
-                                {item.SpringSemester}
+                                {item.SpringSemesterAppDeadline}
                               </h5>
                             </div>
                             <div className="mb-8">
-                              <p className="font-size-4">Summer Semester Start</p>
+                              <p className="font-size-4">Summer Application Deadline</p>
                               <h5 className="font-size-4 font-weight-semibold">
-                                {item.SummerSemester}
+                                {item.SummerSemesterAppDeadline}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">I4 Application Deadline</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.Intake4AppDeadline}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">I5 Application Deadline</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.Intake5AppDeadline}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">I6 Application Deadline</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.Intake6AppDeadline}
                               </h5>
                             </div>
                             
                           </div>
+                      
                           {/* <!-- Single Widgets End --> */}
                           {/* <!-- Single Widgets Start --> */}
                           
@@ -409,6 +473,215 @@ fetchMyAPI()
                             onClick={()=>router.push("/login")}
                        /></>)}
                       </Tab.Pane>
+                      <Tab.Pane eventKey="requirements">
+                        {/* <!-- Middle Body Start --> */}
+                        <div className="row">
+                    
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <p className="font-size-4">UG IELTS Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.UGIELTSReq}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">UG TOEFL Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.UGTOEFLReq}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">UG Duolingo Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.UGDuolingoReq}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">UG PTE Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.UGPTEReq}
+                              </h5>
+                            </div>
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <p className="font-size-4">PG IELTS Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.PGIELTSReq}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">PG TOEFL Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.PGTOEFLReq}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">PG Duolingo Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.PGDuolingoReq}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">PG PTE Requirement</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                {item.PGPTEReq}
+                              </h5>
+                            </div>
+                          </div>
+                    
+                        </div>
+                      
+                  
+                        {/* <!-- Excerpt End --> */}
+                        {authUser!=null && (<input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />)}
+                       {authUser==null && (<><input
+                            type="button"
+                            value="Sign-up"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/registration")}
+                       />
+                       <span style={{paddingRight:"10px"}}></span><input
+                            type="button"
+                            value="Login"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/login")}
+                       /></>)}
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="fees">
+                        {/* <!-- Middle Body Start --> */}
+                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                         
+              
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <p className="font-size-4">Annual Diploma Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.Diplomafee}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Annual Undergraduate Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.UGfee}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">Annual Post-Graduate Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.PGfee}
+                              </h5>
+                            </div>
+                         
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <p className="font-size-4">Diploma Application Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.UGAppfee}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">UG Application Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.UGAppfee}
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">PG Application Fee</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.PGAppfee}
+                              </h5>
+                            </div>
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <p className="font-size-4">Diploma Accomodation Cost</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.AccomodationCostUG}/Sems
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">UG Accomodation Cost</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.AccomodationCostUG}/Sems
+                              </h5>
+                            </div>
+                            <div className="mb-8">
+                              <p className="font-size-4">PG Accomodation Cost</p>
+                              <h5 className="font-size-4 font-weight-semibold">
+                                ${item.AccomodationCostPG}/Sems
+                              </h5>
+                            </div>
+                            
+                          </div>
+               
+                        </div>
+                  
+                        <div className="pr-xl-0 pr-xxl-22 pt-5">
+                   
+                      
+                        </div>
+                        {/* <!-- Excerpt End --> */}
+                        {authUser!=null && (<input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />)}
+                       {authUser==null && (<><input
+                            type="button"
+                            value="Sign-up"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/registration")}
+                       />
+                       <span style={{paddingRight:"10px"}}></span><input
+                            type="button"
+                            value="Login"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/login")}
+                       /></>)}
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="scholarship">
+                        {/* <!-- Middle Body Start --> */}
+                    
+                        {/* <!-- Middle Body End --> */}
+                        {/* <!-- Excerpt Start --> */}
+                        <div className="pr-xl-0 pr-xxl-22 pt-5">
+                          <h4 className="font-size-6 mb-7">Scholarship Requirements</h4>
+                          <p className="font-size-4 mb-8">
+                           {item.ScholarshipReq}
+                          </p>
+                       
+                      
+                        </div>
+                        {/* <!-- Excerpt End --> */}
+                        {authUser!=null && (<input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />)}
+                       {authUser==null && (<><input
+                            type="button"
+                            value="Sign-up"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/registration")}
+                       />
+                       <span style={{paddingRight:"10px"}}></span><input
+                            type="button"
+                            value="Login"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/login")}
+                       /></>)}
+                      </Tab.Pane>
                     </Tab.Content>
                     {/* <!-- Tab Content End --> */}
                     {/* <!-- Tab Section End --> */}
@@ -417,7 +690,7 @@ fetchMyAPI()
               </div>
               {/* <!-- Company Profile End --> */}
               {/* <!-- Sidebar --> */}
-              <OtherUnis/>
+             <OtherUnis/>
               {/* <!-- end Sidebar --> */}
             </div>
            

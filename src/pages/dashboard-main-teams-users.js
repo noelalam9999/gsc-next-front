@@ -28,7 +28,7 @@ const DashboardMain = () => {
 
     async function fetchMyAPI() {
     try {
-      const res = await fetch('https://ci-gsc.com/students/?format=json');
+      const res = await fetch('https://ci-gsc.com/team-member/?format=json');
       console.log(res)
       const todoList = await res.json();
       setList(todoList)
@@ -55,103 +55,29 @@ console.log(List)
       >
         <div className="dashboard-main-container mt-25 mt-lg-31">
           <div className="container">
-            <div className="row mb-1">
-              <div className="col-xxl-3 col-xl-4 col-lg-6 col-sm-4">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-teams-offices"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  {/* <div className="text-blue bg-blue-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-briefcase"></i>
-                  </div> */}
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={6} end={5} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                  Offices
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
-              <div className="col-xxl-3 col-xl-4 col-lg-3 col-sm-3">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-teams-users"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  {/* <div className="text-pink bg-pink-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-user"></i>
-                  </div> */}
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={4} end={256} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Users
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
-              <div className="col-xxl-3 col-xl-4 col-lg-3 col-sm-3">
-                {/* <!-- Single Category --> */}
-                <a
-                  href="/dashboard-main-teams-roles"
-                  className="media bg-white rounded-4 pl-8 pt-9 pb-9 pr-7 hover-shadow-1 mb-9 shadow-8"
-                >
-                  {/* <div className="text-pink bg-pink-opacity-1 circle-56 font-size-6 mr-7">
-                    <i className="fas fa-user"></i>
-                  </div> */}
-                  {/* <!-- Category Content --> */}
-                  <div className="">
-                    <h5 className="font-size-8 font-weight-semibold text-black-2 line-height-reset font-weight-bold mb-1">
-                      <LazyLoad>
-                        <span className="counter">
-                          <CountUp duration={4} end={256} />
-                        </span>
-                      </LazyLoad>
-                    </h5>
-                    <p className="font-size-4 font-weight-normal text-gray mb-0">
-                     Roles
-                    </p>
-                  </div>
-                </a>
-                {/* <!-- End Single Category --> */}
-              </div>
           
-     
-          
-            </div>
             <div className="mb-14">
-              <div className="row mb-11 align-items-center">
-                <div className="col-lg-6 mb-lg-0 mb-4">
-                  <h3 className="font-size-6 mb-0">Offices</h3>
+            <div className="row mb-11 align-items-center">
+                <div className="col-lg-10 mb-lg-0 mb-4">
+                  <h3 className="font-size-6 mb-0">Team Members</h3>
                 </div>
-                <div className="col-lg-6">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                    <p className="font-size-4 mb-0 mr-6 py-2">Filter by Job:</p>
-                    <div className="h-px-48">
-                      <Select
-                        options={defaultJobs}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                        border={false}
-                      />
+               
+               
+                <div className="col-lg-2">
+                <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
+                    <Link
+                  
+                  href="/dashboard-main-add-team-member"
+                  // onClick={(e) => {
+                  //   e.preventDefault();
+                  //   gContext.toggleSignUpModal();
+                  // }}
+                ><a className={`btn btn-${gContext.header.variant} text-uppercase font-size-3`}>
+                  Add Team Member</a> 
+                </Link>
                     </div>
-                  </div>
-                </div>
+                    </div>
+                    
               </div>
               <div className="bg-white shadow-8 pt-7 rounded pb-8 px-11">
                 <div className="table-responsive">
@@ -277,15 +203,7 @@ console.log(List)
                           </div>
                         </td>
                       </tr>
-                      
-                      
-                  )
-                     )
-
-
-                     } 
-                    
-                 
+                  ))} 
                     </tbody>
                   </table>
                 </div>
