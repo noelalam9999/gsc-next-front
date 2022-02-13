@@ -262,35 +262,35 @@ Mob:+41 079 471 95 92.
                     {/* <!-- widget social menu start --> */}
                     <ul className="widget-links pl-0 list-unstyled list-hover-primary">
                       <li className="mb-6">
-                        <Link href="/#">
+                        <Link href="/uk">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                             UK
                           </a>
                         </Link>
                       </li>
                       <li className="mb-6">
-                        <Link href="/#">
+                        <Link href="/usa">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                             USA
                           </a>
                         </Link>
                       </li>
                       <li className="mb-6">
-                        <Link href="/#">
+                        <Link href="/europe">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                             Europe
                           </a>
                         </Link>
                       </li>
                       <li className="mb-6">
-                        <Link href="/#">
+                        <Link href="/canada">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                             Canada
                           </a>
                         </Link>
                       </li>
                       <li className="mb-6">
-                        <Link href="/#">
+                        <Link href="/australia ">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                             Australia
                           </a>
@@ -309,14 +309,14 @@ Mob:+41 079 471 95 92.
                     {/* <!-- footer widget title end --> */}
                     <ul className="widget-links pl-0 list-unstyled list-hover-primary">
                       <li className="mb-6">
-                        <Link href="/#">
+                        <Link href="/privacy-policy">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                             Privacy Policy
                           </a>
                         </Link>
                       </li>
                       <li className="mb-6">
-                        <Link href="/#">
+                        <Link href="/terms-and-conditions">
                           <a className="heading-default-color font-size-4 font-weight-normal">
                             Terms &amp; Conditions
                           </a>
@@ -325,7 +325,7 @@ Mob:+41 079 471 95 92.
                       <li className="mb-6">
                         <Link href="/#">
                           <a className="heading-default-color font-size-4 font-weight-normal">
-                            Return Policy
+                            Refund Policy
                           </a>
                         </Link>
                       </li>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import Link from "next/link";
 import { Collapse } from "react-bootstrap";
 import GlobalContext from "../../context/GlobalContext";

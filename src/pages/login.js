@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
+import Firebase from '../../Firebase';
 import { useAuth } from '../../AuthUserContext';
 
 import {Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
@@ -16,7 +16,25 @@ export default function Login() {
   const router = useRouter();
   const [userList, setUserList] = useState([]);
   const { signInWithEmailAndPassword,authUser } = useAuth();
+  var actionCodeSettings = {
+    // After password reset, the user will be give the ability to go back
+    // to this page.
+    url: 'https://www.gsc.co.com/login',
+    handleCodeInApp: false
+  };
 
+function forgotPassword(){
+  if(email!=null)
+  {Firebase.auth().sendPasswordResetEmail(email,actionCodeSettings)
+    .then(function () {
+        alert('Please check your email...')
+    }).catch(function (e) {
+        console.log(e)
+    }) }
+    else{
+alert("please type in your email")
+    }
+}
   async function fetchMyAPI2(param) {
       
     try {
@@ -149,9 +167,17 @@ export default function Login() {
            </FormGroup>
            <FormGroup row>
             <Col>
+          <a style={{color:"blue"}} type="button" onClick={()=>{forgotPassword()}}>Forgot Password</a>
+            </Col>
+         
+          </FormGroup>
+           <FormGroup row>
+            <Col>
               No account? <Link href="/registration">Create one</Link>
             </Col>
+         
           </FormGroup>
+        
           </Form>
         </Col>
       </Row>

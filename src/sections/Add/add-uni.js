@@ -9,18 +9,6 @@ import "react-day-picker/lib/style.css";
 import { DatePickerStyled } from "../../components/DatePicker/DatePicker";
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 const Accomodation = [
   {name:"Accomodation", value: "yes", label: "Yes" },
   {name:"Accomodation", value: "no", label: "No" },
