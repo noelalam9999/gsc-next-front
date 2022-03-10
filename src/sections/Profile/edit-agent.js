@@ -201,6 +201,22 @@ const success = () => {
     })
     .catch(err => this.fail_image())
   }
+  if(image2){
+    let form_data = new FormData();
+    form_data.append('image', image, image.name);
+    form_data.append('email', email);
+
+    let url = 'https://ci-gsc.com/profilepicture/'+id;
+    axios.put(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'  
+      }
+    })
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => this.fail_image())
+  }
 }
 const fail = () => {
   alert("Please fillup the mandatory fields, the ones with the asterisks * ")
@@ -415,7 +431,7 @@ console.log(item)
                                 htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                Certification 2
+                                Profile Picture
                               </label>
                               <input 
                               type="file"

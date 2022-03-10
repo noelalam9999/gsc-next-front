@@ -176,89 +176,89 @@ return;
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
-                        <th
+                      <tr className="th-sticky">
+                        <th className="th-sticky"
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Name
                         </th>
                      
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Phone
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Email
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Country
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Agency Name
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Website
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Offices
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Subagents
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Year Founded
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Number of Staff
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Services Provided
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Recruitment Area
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Service Charge</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Students Sent Abroad</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Applications Count</th>

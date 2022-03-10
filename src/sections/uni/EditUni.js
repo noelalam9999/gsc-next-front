@@ -3,6 +3,8 @@ import {useRouter} from 'next/router'
 import Link from "next/link";
 
 const EditUni = (email) => {
+
+  console.log(email)
     const router = useRouter();
     const uniId = router.query.universityid;
     // const [List, setList] = useState([]);
@@ -35,14 +37,14 @@ const EditUni = (email) => {
   
    fetchMyAPI2()
   
-    },email)
+    },email.email)
 
 
 
   return (
  <>
 
-                          { uniList && (
+                          { uniList==true && (
                           <>
                              <Link href={'/university/edit/'+uniId }>
                   <a className="text-blue font-weight-semibold font-size-5">Edit</a>

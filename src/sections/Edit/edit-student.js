@@ -370,7 +370,7 @@ const handleSubmit = (item) => {
   if (item.id) {
     console.log(item)
     axios
-      .put(`https://ci-gsc.com/students/${item.id}/`, item)
+      .put(`https://ci-gsc.com/students/`, item)
       .then((res) => success())
       .catch((err) => console.log(err));
     return;

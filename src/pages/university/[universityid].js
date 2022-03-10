@@ -9,14 +9,17 @@ import { useAuth } from '../../../AuthUserContext';
 import axios from 'axios';
 import {useRouter} from 'next/router'
 import Unilogo from "../../sections/uni/UniLogo";
-import OtherUnis from "../../sections/institutes/OtherUnis";
+
 import EditUni from "../../sections/uni/EditUni";
+import ProfileSidebarUniversity from "../../components/ProfileSidebar/ProfileSidebarUniversity";
+import OtherUniversities from "../../sections/uni/OtherUniversities";
 
 const CompanyProfile = () => {
   const router = useRouter();
   const uniId = router.query.universityid;
   const [List, setList] = useState([]);
   const { authUser, loading,signOut } = useAuth();
+  const [Country, setCountry] = useState(""); 
   const [Complete, setComplete] = useState(false)
   const [User,setUser] = useState([])
   const [record, setRecord] = useState({
@@ -28,7 +31,7 @@ const CompanyProfile = () => {
   
 
   const onSubmit = event => {
-    console.log(Complete)
+
 if(Complete){  
     record.client_name = authUser
     record.partner = uniId
@@ -43,6 +46,11 @@ else{
 }
   }
 
+  const onSubmitNull = event => {
+    router.push('/signup-student');
+
+  }
+
   useEffect(() =>  {
  
 
@@ -51,8 +59,9 @@ else{
       const res = await fetch('https://ci-gsc.com/uni/?format=json');
       
       const todoList = await res.json();
-      const filtered = todoList.filter(function(val, i, a) {return val.id==uniId;});
+      const filtered = todoList.filter(function(val, i, a) {return val.id==uniId;})  ;
       setList(filtered)
+      setCountry(filtered[0].country)
     } catch (e) {
       console.log(e);
   }
@@ -86,84 +95,72 @@ fetchMyAPI()
     },authUser)
   return (
     <>
-      <PageWrapper headerConfig={{ button: "profile" }}>
-        <div className="bg-default-2 pt-16 pt-lg-22 pb-lg-27">
+          <PageWrapper headerConfig={{ button: "profile" }}>
+        <div className="bg-default-2 order-2 order-xl-1 pt-22 pt-lg-25 pb-13 pb-xxl-32">
           <div className="container">
             {/* <!-- back Button --> */}
             <div className="row justify-content-center">
-              <div className="col-12 mt-13 dark-mode-texts">
+              <div className="col-12 dark-mode-texts">
                 <div className="mb-9">
-                
+                 
                     <a onClick={() => router.back()} className="d-flex align-items-center ml-4">
                       <i className="icon icon-small-left bg-white circle-40 mr-5 font-size-7 text-black font-weight-bold shadow-8"></i>
                       <span className="text-uppercase font-size-3 font-weight-bold text-gray">
                         Back
                       </span>
                     </a>
-               
+           
                 </div>
               </div>
             </div>
             {/* <!-- back Button End --> */}
-            
-            { List.map((item, index)=>(
             <div className="row">
-              {/* <!-- Company Profile --> */}
-              <div className="col-12 col-xl-9 col-lg-8">
-                <div className="bg-white rounded-4 pt-11 shadow-9">
-                  <div className="d-xs-flex align-items-center pl-xs-12 mb-8 text-center text-xs-left">
-                    <Link href="/#">
-                      <a className="mr-xs-7 mb-5 mb-xs-0">
-                  <Unilogo email={item.email}/>
-                      </a>
-                    </Link>
-                    <div className="">
-                      <h2 className="mt-xs-n5">
-                      
-                        <Link href="/#">
-                          <a className="font-size-6 text-black-2 font-weight-semibold">
-                            {item.name}
-                          </a>
-                        </Link>
-                      </h2>
-                      <span className="mb-0 text-gray font-size-4">
-                        {item.country}
-                      </span>
-                    </div>
-                    <div style={{paddingLeft:"40px"}} className="">
-                    
-              <EditUni email={authUser} uniId={item.id}/>
-                    </div>
-                  </div>
-                  {/* <!-- Tab Section Start --> */}
-                  <Tab.Container id="left-tabs-example" defaultActiveKey="company">
+              {/* <!-- Left Sidebar Start --> */}
+              <div className="col-12 col-xxl-3 col-lg-4 col-md-5 mb-11 mb-lg-0">
+               <ProfileSidebarUniversity List={List} />
+             </div>
+           
+
+              {/* <!-- Left Sidebar End --> */}
+              {/* <!-- Middle Content --> */}
+              <div className="col-12 col-xxl-9 col-lg-8 col-md-7 order-2 order-xl-1">
+                <Tab.Container id="left-tabs-example" defaultActiveKey="undergrad">
+                  <div className="bg-white rounded-4 shadow-9">
+                    {/* <!-- Tab Section Start --> */}
                     <Nav
                       className="nav border-bottom border-mercury pl-12"
                       role="tablist"
                     >
                       <li className="tab-menu-items nav-item pr-12">
                         <Nav.Link
-                          eventKey="company"
+                          eventKey="undergrad"
                           className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
                         >
-                          Institute
-                        </Nav.Link>
-                      </li>
-                     
-                      <li className="tab-menu-items nav-item pr-12">
-                        <Nav.Link
-                          eventKey="requirements"
-                          className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
-                        >
-                          Requirement
+                          Under-graduate
                         </Nav.Link>
                       </li>
                       <li className="tab-menu-items nav-item pr-12">
                         <Nav.Link
-                          eventKey="fees"
+                          eventKey="postgrad"
                           className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
                         >
-                          Fees
+                          Post-graduate
+                        </Nav.Link>
+                      </li>
+                      <li className="tab-menu-items nav-item pr-12">
+                        <Nav.Link
+                          eventKey="foundation"
+                          className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
+                        >
+                          Foundation
+                        </Nav.Link>
+                      </li>
+                      <li className="tab-menu-items nav-item pr-12">
+                        <Nav.Link
+                          eventKey="highschool"
+                          className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
+                        >
+                          High-School
                         </Nav.Link>
                       </li>
                       <li className="tab-menu-items nav-item pr-12">
@@ -171,465 +168,588 @@ fetchMyAPI()
                           eventKey="scholarship"
                           className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
                         >
-                          Scholarship
-                        </Nav.Link>
-                      </li>
-                      <li className="tab-menu-items nav-item pr-12">
-                        <Nav.Link
-                          eventKey="jobs"
-                          className="text-uppercase font-size-3 font-weight-bold text-default-color py-3 px-0"
-                        >
-                          Programs
+                          Scholarships
                         </Nav.Link>
                       </li>
                     </Nav>
                     {/* <!-- Tab Content --> */}
-                    <Tab.Content className="bg-white pl-12 pt-10 pb-7 pr-12 pr-xxl-24">
-                      <Tab.Pane eventKey="jobs">
-                        {/* <!-- Middle Body Start --> */}
-                        <div className="row">
-          
-              {/* <!-- Main Body --> */}
-              <div className="col-12 col-xl-12 col-lg-12">
-                {/* <!-- form --> */}
-             
-                <div className="pt-12">
-             
-                  <div className="mb-8">
-                    {/* <!-- Single Featured Job --> */}
-                    <div className="pt-9 px-xl-9 px-lg-7 px-7 pb-7 light-mode-texts bg-white rounded hover-shadow-3 ">
-                      <div className="row">
-                        <div className="col-md-6">
-                          <div className="media align-items-center">
-                            {/* <div className="square-72 d-block mr-8">
-                              <img src={imgF1} alt="" />
-                            </div> */}
-                            <div>
-                              <h3 className="mb-0">
-                                <Link href="/#">
-                                  <a className="font-size-6 heading-default-color">
-                                    Diploma on Fashion Designing
-                                  </a>
-                                </Link>
-                              </h3>
-                              <Link href="/#">
-                                <a className="font-size-3 text-default-color line-height-2">
-                                  Duration : 2years
-                                </a>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-6 text-right pt-7 pt-md-5">
-                          <div className="media justify-content-md-end">
-                            <div className="image mr-5 mt-2">
-                              <img src={imgF} alt="" />
-                            </div>
-                            <p className="font-weight-bold font-size-7 text-hit-gray mb-0">
-                              <span className="text-black-2">$80-90K</span>                             </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row pt-8">
-                        <div className="col-md-7">
-                          <ul className="d-flex list-unstyled mr-n3 flex-wrap">
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-regent-opacity-15 min-width-px-96 mr-3 text-center rounded-3 px-6 py-1 font-size-3 text-black-2 mt-2">
-                                  Art
-                                </a>
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/#">
-                                <a className="bg-regent-opacity-15 min-width-px-96 mr-3 text-center rounded-3 px-6 py-1 font-size-3 text-black-2 mt-2">
-                                  IELTS band 6
-                                </a>
-                              </Link>
-                            </li>
-                         
-                          </ul>
-                        </div>
-                        <div className="col-md-5">
-                          <ul className="d-flex list-unstyled mr-n3 flex-wrap mr-n8 justify-content-md-end">
-                            
-                            <li className="mt-2 mr-8 font-size-small text-black-2 d-flex">
-                              <span
-                                className="mr-4"
-                                css={`
-                                  margin-top: -2px;
-                                `}
-                              >
-                                <img src={iconS} alt="" />
-                              </span>
-                              <span className="font-weight-semibold">
-                                Full-time
-                              </span>
-                            </li>
-                            
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <!-- End Single Featured Job --> */}
-                  </div>
-                 
-              
-              
-              
-                  
-                  <div className="text-center pt-5 pt-lg-13">
-                    <Link href="/#">
-                      <a className="text-green font-weight-bold text-uppercase font-size-3">
-                        Load More <i className="fas fa-sort-down ml-3"></i>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-                {/* <!-- form end --> */}
-              </div>
-            </div>
-                        {/* <!-- Middle Body End --> */}
+                    <Tab.Content>
+                    { List.map((item, index)=>(
+                      <Tab.Pane eventKey="undergrad">
                         {/* <!-- Excerpt Start --> */}
-                   
-                        {/* <!-- Excerpt End --> */}
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="company">
-                        {/* <!-- Middle Body Start --> */}
-                        <div className="row">
-                          {/* <!-- Single Widgets Start --> */}
-                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
-                            <div className="mb-8">
-                              <p className="font-size-4">Opportunities and Facilities</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.Accomodation =="yes" && (<>Accomodation</>)},
-                                {item.Internship =="yes" && (<>Internship</>)},
-                                {item.OfferLetter =="yes" && (<>Offer Letter</>)},
-                                {item.WorkVisa =="yes" && (<>Work Visa</>)},
-                                {item.WorkStudy =="yes" && (<>Work Study</>)}
-
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Social Media</p>
-                              <div className="icon-link d-flex align-items-center">
-                                <Link href="/#">
-                                  <a className="text-smoke circle-32 bg-concrete mr-5">
-                                    <i className="fab fa-linkedin"></i>
-                                  </a>
-                                </Link>
-                                <Link href="/#">
-                                  <a className="text-smoke circle-32 bg-concrete mr-5">
-                                    <i className="fab fa-facebook-f"></i>
-                                  </a>
-                                </Link>
-                                <Link href="/#">
-                                  <a className="text-smoke circle-32 bg-concrete mr-5">
-                                    <i className="fab fa-twitter"></i>
-                                  </a>
-                                </Link>
-                                <Link href="/#">
-                                  <a className="text-smoke circle-32 bg-concrete mr-5">
-                                    <i className="fa fa-globe"></i>
-                                  </a>
-                                </Link>
-                              </div>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">University Ranking</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                4
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Est. Since</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                               1940
-                              </h5>
-                            </div>
-                          </div>
-                          
-                          {/* <!-- Single Widgets End --> */}
+                        <div className="pr-xl-0 pr-xxl-14 p-5 px-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Intake 
+                          </h4>
+                          <div className="row">
                           {/* <!-- Single Widgets Start --> */}
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                           <div className="mb-8">
-                              <p className="font-size-4">Fall Semester</p>
-                              <h5 className="font-size-4 font-weight-semibold">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
                                 {item.FallSemester}
-                              </h5>
+                              </p>
                             </div>
                             <div className="mb-8">
-                              <p className="font-size-4">Spring Semester</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.SpringSemester}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Summer Semester</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.SummerSemester}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Intake 4</p>
-                              <h5 className="font-size-4 font-weight-semibold">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
                                 {item.Intake4}
-                              </h5>
+                              </p>
                             </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Intake 5</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.Intake5}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Intake 6</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.Intake6}
-                              </h5>
-                            </div>
-                            
-                          </div>
-                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
-                          <div className="mb-8">
-                              <p className="font-size-4">Fall Application Deadline</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.FallSemesterAppDeadline}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Spring Application Deadline</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.SpringSemesterAppDeadline}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Summer Application Deadline</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.SummerSemesterAppDeadline}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">I4 Application Deadline</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.Intake4AppDeadline}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">I5 Application Deadline</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.Intake5AppDeadline}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">I6 Application Deadline</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.Intake6AppDeadline}
-                              </h5>
-                            </div>
-                            
-                          </div>
+                           
                       
-                          {/* <!-- Single Widgets End --> */}
-                          {/* <!-- Single Widgets Start --> */}
+                          </div>
                           
                           {/* <!-- Single Widgets End --> */}
-                        </div>
-                        {/* <!-- Middle Body End --> */}
-                        {/* <!-- Excerpt Start --> */}
-                        <div className="pr-xl-0 pr-xxl-22 pt-5">
-                          <h4 className="font-size-6 mb-7">About Institute</h4>
-                          <p className="font-size-4 mb-8">
-                            If you’re like most of my clients, you know creative
-                            content marketing and killer copywriting are
-                            fundamental to the success of your business.
-                          </p>
-                          <p className="font-size-4 mb-8">
-                            But with so much to do to keep your business
-                            growing, you don’t have time to learn how to write
-                            sales copy that actually sells, or create a content
-                            marketing strategy that resonates with your target
-                            audience.
-                          </p>
-                      
-                        </div>
-                        {/* <!-- Excerpt End --> */}
-                        {authUser!=null && (<input
-                            type="button"
-                            value="Apply Now"
-                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                            onClick={onSubmit}
-                       />)}
-                       {authUser==null && (<><input
-                            type="button"
-                            value="Sign-up"
-                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                            onClick={()=>router.push("/registration")}
-                       />
-                       <span style={{paddingRight:"10px"}}></span><input
-                            type="button"
-                            value="Login"
-                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                            onClick={()=>router.push("/login")}
-                       /></>)}
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="requirements">
-                        {/* <!-- Middle Body Start --> */}
-                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                     
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemester}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5}
+                              </p>
+                            </div>
+                    
+                            
+                          </div>
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                           <div className="mb-8">
-                              <p className="font-size-4">UG IELTS Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemester}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6}
+                              </p>
+                            </div>
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                          
+                        </div>
+                   
+                    
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Application Deadline
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.FallSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
+                                {item.Intake4AppDeadline}
+                              </p>
+                            </div>
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemesterAppDeadline}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5AppDeadline}
+                              </p>
+                            </div>
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6AppDeadline}
+                              </p>
+                            </div>
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Requirements
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">IELTS</h5>
+                              <p className="font-size-4 ">
                                 {item.UGIELTSReq}
-                              </h5>
+                              </p>
                             </div>
+                         
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
                             <div className="mb-8">
-                              <p className="font-size-4">UG TOEFL Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.UGTOEFLReq}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">UG Duolingo Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.UGDuolingoReq}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">UG PTE Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
+                              <h5 className="font-size-4 font-weight-semibold">PTE</h5>
+                              <p className="font-size-4 ">
                                 {item.UGPTEReq}
-                              </h5>
+                              </p>
                             </div>
+                         
+                           
+                          
+                    
+                            
                           </div>
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                           <div className="mb-8">
-                              <p className="font-size-4">PG IELTS Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.PGIELTSReq}
-                              </h5>
+                              <h5 className="font-size-4 font-weight-semibold">TOEFL</h5>
+                              <p className="font-size-4 ">
+                                {item.UGTOEFLReq}
+                              </p>
                             </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">PG TOEFL Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.PGTOEFLReq}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">PG Duolingo Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.PGDuolingoReq}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">PG PTE Requirement</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                {item.PGPTEReq}
-                              </h5>
-                            </div>
-                          </div>
-                    
-                        </div>
+                         
+                          
                       
-                  
-                        {/* <!-- Excerpt End --> */}
-                        {authUser!=null && (<input
-                            type="button"
-                            value="Apply Now"
-                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                            onClick={onSubmit}
-                       />)}
-                       {authUser==null && (<><input
-                            type="button"
-                            value="Sign-up"
-                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                            onClick={()=>router.push("/registration")}
-                       />
-                       <span style={{paddingRight:"10px"}}></span><input
-                            type="button"
-                            value="Login"
-                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
-                            onClick={()=>router.push("/login")}
-                       /></>)}
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="fees">
-                        {/* <!-- Middle Body Start --> */}
+                            
+                          </div>
+                      
+                   
+                        </div>
                         <div className="row">
                           {/* <!-- Single Widgets Start --> */}
-                         
-              
                           <div className="col-12 col-lg-4 col-md-4 col-xs-6">
                           <div className="mb-8">
-                              <p className="font-size-4">Annual Diploma Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.Diplomafee}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Annual Undergraduate Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.UGfee}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">Annual Post-Graduate Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.PGfee}
-                              </h5>
+                              <h5 className="font-size-4 font-weight-semibold">Duolingo</h5>
+                              <p className="font-size-4 ">
+                                {item.UGDuolingoReq}
+                              </p>
                             </div>
                          
-                          </div>
-                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
-                          <div className="mb-8">
-                              <p className="font-size-4">Diploma Application Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.UGAppfee}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">UG Application Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.UGAppfee}
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">PG Application Fee</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.PGAppfee}
-                              </h5>
-                            </div>
-                            
-                          </div>
-                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
-                          <div className="mb-8">
-                              <p className="font-size-4">Diploma Accomodation Cost</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.AccomodationCostUG}/Sems
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">UG Accomodation Cost</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.AccomodationCostUG}/Sems
-                              </h5>
-                            </div>
-                            <div className="mb-8">
-                              <p className="font-size-4">PG Accomodation Cost</p>
-                              <h5 className="font-size-4 font-weight-semibold">
-                                ${item.AccomodationCostPG}/Sems
-                              </h5>
-                            </div>
-                            
-                          </div>
-               
-                        </div>
-                  
-                        <div className="pr-xl-0 pr-xxl-22 pt-5">
-                   
+                           
                       
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                               
+                              </p>
+                            </div>
+                  
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                    <div className="mb-8">
+                      <h5 className="font-size-4 font-weight-semibold">HSC</h5>
+                      <p className="font-size-4 ">
+                      {item.HSCReqUG}
+                      </p>
+                    </div>
+                 
+                  </div>
                         </div>
-                        {/* <!-- Excerpt End --> */}
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Fees
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Annual fee</h5>
+                              <p className="font-size-4 ">
+                                ${item.UGfee}
+                              </p>
+                            </div>
+                         
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Application fee</h5>
+                              <p className="font-size-4 ">
+                                ${item.UGAppfee}
+                              </p>
+                            </div>
+                         
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                            
+                              </p>
+                            </div>
+                    
+                          </div>
+                     
+                        </div>
+                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Accomodation fee</h5>
+                              <p className="font-size-4 ">
+                              ${item.AccomodationCostUG}
+                              </p>
+                            </div>
+                         
+                          </div>
+                         
+                     
+                        </div>
+                        {authUser!=null && (<input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />)}
+                       {authUser==null && (<><input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmitNull}
+                       /></>)}
+                        </div>
+                 
+                      </Tab.Pane>
+                      ))}
+                        { List.map((item, index)=>(
+                      <Tab.Pane eventKey="postgrad">
+                        {/* <!-- Excerpt Start --> */}
+                        <div className="pr-xl-0 pr-xxl-14 p-5 px-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Intake 
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.FallSemester}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
+                                {item.Intake4}
+                              </p>
+                            </div>
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemester}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5}
+                              </p>
+                            </div>
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemester}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6}
+                              </p>
+                            </div>
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                          
+                        </div>
+                   
+                    
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Application Deadline
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.FallSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
+                                {item.Intake4AppDeadline}
+                              </p>
+                            </div>
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemesterAppDeadline}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5AppDeadline}
+                              </p>
+                            </div>
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6AppDeadline}
+                              </p>
+                            </div>
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Requirements
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">IELTS</h5>
+                              <p className="font-size-4 ">
+                                {item.PGIELTSReq}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">PTE</h5>
+                              <p className="font-size-4 ">
+                                {item.PGPTEReq}
+                              </p>
+                            </div>
+                         
+                           
+                          
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">TOEFL</h5>
+                              <p className="font-size-4 ">
+                                {item.PGTOEFLReq}
+                              </p>
+                            </div>
+                         
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Duolingo</h5>
+                              <p className="font-size-4 ">
+                                {item.PGDuolingoReq}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                               
+                              </p>
+                            </div>
+                  
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                    <div className="mb-8">
+                      <h5 className="font-size-4 font-weight-semibold">HSC</h5>
+                      <p className="font-size-4 ">
+                      {item.HSCReqPG}
+                      </p>
+                    </div>
+                 
+                   
+                  
+            
+                    
+                  </div>
+                        </div>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Fees
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Annual fee</h5>
+                              <p className="font-size-4 ">
+                                ${item.PGfee}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Application fee</h5>
+                              <p className="font-size-4 ">
+                                ${item.PGAppfee}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                            
+                              </p>
+                            </div>
+                    
+                          </div>
+                     
+                   
+                        </div>
+                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Accomodation fee</h5>
+                              <p className="font-size-4 ">
+                              ${item.AccomodationCostUG}
+                              </p>
+                            </div>
+                         
+                          </div>
+                         
+                     
+                        </div>
                         {authUser!=null && (<input
                             type="button"
                             value="Apply Now"
@@ -648,21 +768,602 @@ fetchMyAPI()
                             className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
                             onClick={()=>router.push("/login")}
                        /></>)}
+                        </div>
+                 
+                       
                       </Tab.Pane>
-                      <Tab.Pane eventKey="scholarship">
-                        {/* <!-- Middle Body Start --> */}
-                    
-                        {/* <!-- Middle Body End --> */}
+                      ))}
+                    { List.map((item, index)=>(
+                      <Tab.Pane eventKey="foundation">
                         {/* <!-- Excerpt Start --> */}
-                        <div className="pr-xl-0 pr-xxl-22 pt-5">
-                          <h4 className="font-size-6 mb-7">Scholarship Requirements</h4>
-                          <p className="font-size-4 mb-8">
-                           {item.ScholarshipReq}
-                          </p>
+                        <div className="pr-xl-0 pr-xxl-14 p-5 px-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Intake 
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.FallSemester}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
+                                {item.Intake4}
+                              </p>
+                            </div>
+                           
+                      
+                          </div>
+                      
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemester}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5}
+                              </p>
+                            </div>
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemester}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6}
+                              </p>
+                            </div>
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                          
+                        </div>
+                   
+                    
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Application Deadline
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.FallSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
+                                {item.Intake4AppDeadline}
+                              </p>
+                            </div>
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemesterAppDeadline}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5AppDeadline}
+                              </p>
+                            </div>
+                  
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6AppDeadline}
+                              </p>
+                            </div>
+                          
+                          </div>
+                      
+                   
+                        </div>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Requirements
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">IELTS</h5>
+                              <p className="font-size-4 ">
+                                {item.PGIELTSReq}
+                              </p>
+                            </div>
+                         
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">PTE</h5>
+                              <p className="font-size-4 ">
+                                {item.UGPTEReq}
+                              </p>
+                            </div>
+                         
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">TOEFL</h5>
+                              <p className="font-size-4 ">
+                                {item.UGTOEFLReq}
+                              </p>
+                            </div>
+                    
+                          </div>
+                      
+                   
+                        </div>
+                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Duolingo</h5>
+                              <p className="font-size-4 ">
+                                {item.UGDuolingoReq}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                               
+                              </p>
+                            </div>
+                  
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                    <div className="mb-8">
+                      <h5 className="font-size-4 font-weight-semibold">HSC</h5>
+                      <p className="font-size-4 ">
+                      {item.HSCReqUG}
+                      </p>
+                    </div>
+                 
+                  </div>
+                        </div>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Fees
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Annual fee</h5>
+                              <p className="font-size-4 ">
+                                ${item.UGfee}
+                              </p>
+                            </div>
+                
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                            
+                              </p>
+                            </div>
+                   
+                          </div>
+                   
+                        </div>
+                        {authUser!=null && (<input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />)}
+                       {authUser==null && (<><input
+                            type="button"
+                            value="Sign-up"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/registration")}
+                       />
+                       <span style={{paddingRight:"10px"}}></span><input
+                            type="button"
+                            value="Login"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/login")}
+                       /></>)}
+                        </div>
+              
+                      </Tab.Pane>
+                      ))}
+                      { List.map((item, index)=>(
+                      <Tab.Pane eventKey="highschool">
+                        {/* <!-- Excerpt Start --> */}
+                        <div className="pr-xl-0 pr-xxl-14 p-5 px-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Intake 
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.FallSemester}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
+                                {item.Intake4}
+                              </p>
+                            </div>
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemester}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5}
+                              </p>
+                            </div>
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemester}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6}
+                              </p>
+                            </div>
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                          
+                        </div>
+                   
+                    
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Application Deadline
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Fall Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.FallSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold ">Intake 4</h5>
+                              <p className="font-size-4">
+                                {item.Intake4AppDeadline}
+                              </p>
+                            </div>
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Spring Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SpringSemesterAppDeadline}
+                              </p>
+                            </div>
+                         
+                           
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 5</h5>
+                              <p className="font-size-4">
+                                {item.Intake5AppDeadline}
+                              </p>
+                            </div>
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Summer Semester</h5>
+                              <p className="font-size-4 ">
+                                {item.SummerSemesterAppDeadline}
+                              </p>
+                            </div>
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Intake 6</h5>
+                              <p className="font-size-4 ">
+                                {item.Intake6AppDeadline}
+                              </p>
+                            </div>
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Requirements
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">IELTS</h5>
+                              <p className="font-size-4 ">
+                                {item.UGIELTSReq}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">PTE</h5>
+                              <p className="font-size-4 ">
+                                {item.UGPTEReq}
+                              </p>
+                            </div>
+                         
+                           
+                          
+                    
+                            
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">TOEFL</h5>
+                              <p className="font-size-4 ">
+                                {item.UGTOEFLReq}
+                              </p>
+                            </div>
+                         
+                          
+                      
+                            
+                          </div>
+                      
+                   
+                        </div>
+                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Duolingo</h5>
+                              <p className="font-size-4 ">
+                                {item.UGDuolingoReq}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                               
+                              </p>
+                            </div>
+                  
+                          </div>
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                    <div className="mb-8">
+                      <h5 className="font-size-4 font-weight-semibold">HSC</h5>
+                      <p className="font-size-4 ">
+                      {item.HSCReqUG}
+                      </p>
+                    </div>
+                 
+                   
+                  
+            
+                    
+                  </div>
+                        </div>
+                        </div>
+                        <div className="border-top pr-xl-0 pr-xxl-14 p-5 pl-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                           Fees
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Annual fee</h5>
+                              <p className="font-size-4 ">
+                                ${item.UGfee}
+                              </p>
+                            </div>
+                         
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                    
+                            <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">ESL</h5>
+                              <p className="font-size-4 ">
+                            
+                              </p>
+                            </div>
+                         
+                    
+                            
+                          </div>
+                     
+                      
+                   
+                        </div>
+                        <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-4 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                              <h5 className="font-size-4 font-weight-semibold">Accomodation fee</h5>
+                              <p className="font-size-4 ">
+                                ${item.AccomodationCostUG}
+                              </p>
+                            </div>
+                         
+                          </div>
+                         
+                     
+                        </div>
+                        {authUser!=null && (<input
+                            type="button"
+                            value="Apply Now"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={onSubmit}
+                       />)}
+                       {authUser==null && (<><input
+                            type="button"
+                            value="Sign-up"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/registration")}
+                       />
+                       <span style={{paddingRight:"10px"}}></span><input
+                            type="button"
+                            value="Login"
+                            className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                            onClick={()=>router.push("/login")}
+                       /></>)}
+                        </div>
+                 
+                      </Tab.Pane>
+                      ))}
+               
+                      { List.map((item, index)=>(
+                      <Tab.Pane eventKey="scholarship">
+                        {/* <!-- Excerpt Start --> */}
+                        <div className="pr-xl-0 pr-xxl-14 p-5 px-xs-12 pt-7 pb-5">
+                          <h4 className="font-size-6 mb-7 mt-5 text-black-2 font-weight-semibold">
+                            Scholarship Requirements
+                          </h4>
+                          <div className="row">
+                          {/* <!-- Single Widgets Start --> */}
+                          <div className="col-12 col-lg-12 col-md-4 col-xs-6">
+                          <div className="mb-8">
+                            
+                              <p className="font-size-4 ">
+                                {item.ScholarshipReq}
+                              </p>
+                            </div>
+                      
+                           
+                      
+                          </div>
+                          
+                          {/* <!-- Single Widgets End --> */}
+                          {/* <!-- Single Widgets Start --> */}
+                   
                        
                       
+                   
                         </div>
-                        {/* <!-- Excerpt End --> */}
                         {authUser!=null && (<input
                             type="button"
                             value="Apply Now"
@@ -681,23 +1382,27 @@ fetchMyAPI()
                             className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
                             onClick={()=>router.push("/login")}
                        /></>)}
+                          
+                        </div>
+                   
+                 
+                 
                       </Tab.Pane>
+                      ))}
                     </Tab.Content>
                     {/* <!-- Tab Content End --> */}
                     {/* <!-- Tab Section End --> */}
-                  </Tab.Container>
-                </div>
+                  </div>
+                </Tab.Container>
               </div>
-              {/* <!-- Company Profile End --> */}
-              {/* <!-- Sidebar --> */}
-             <OtherUnis/>
-              {/* <!-- end Sidebar --> */}
+              {/* <!-- Middle Content --> */}
+              {/* <!-- Right Sidebar Start --> */}
+             {/* <OtherUniversities country={Country}/> */}
+              {/* <!-- Right Sidebar End --> */}
             </div>
-           
-            ))}
           </div>
         </div>
-      </PageWrapper>
+      </PageWrapper> 
     </>
   );
 };

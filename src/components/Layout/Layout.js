@@ -9,6 +9,7 @@ import Header2 from "../Header/HeaderProfile";
 import HeaderAgent from "../Header/HeaderProfileAgent";
 import HeaderStudent from "../Header/HeaderProfileStudent";
 import HeaderUni from "../Header/HeaderProfileUni";
+import HeaderTeamMember from "../Header/HeaderTeamMember";
 import Footer from "../Footer";
 
 
@@ -77,6 +78,7 @@ const [userType,setUserType] = useState("")
   
       const todoList = await res.json();
       const filtered = todoList.filter(function(val, i, a) {return val.email==authUser;});
+     
       setUserType(filtered[0].usertype)
       
     } catch (e) {
@@ -88,8 +90,8 @@ const [userType,setUserType] = useState("")
     setVisibleLoader(false);
     fetchMyAPI()
 
-  }, []);
-
+  }, authUser);
+  console.log(userType)
   // Navbar style based on scroll
   const eleRef = useRef();
 
@@ -310,8 +312,44 @@ else
             className="site-wrapper overflow-hidden bg-default-2"
             ref={eleRef}
           >
-            <HeaderAgent isDark={gContext.headerDark} />
+            <HeaderTeamMember isDark={gContext.headerDark} />
             <SidebarDashboardTeam />
+            {children}
+          </div>
+
+          <ModalVideo />
+          <ModalApplication />
+          <ModalSignIn />
+          <ModalSignUp />
+        </div>
+      </ThemeProvider>
+    );
+  }
+  if (pageContext.layout === "login") {
+    return (
+      <ThemeProvider
+        theme={
+          gContext.themeDark ? getTheme(modes.dark) : getTheme(modes.light)
+        }
+      >
+        <div data-theme-mode-panel-active data-theme="light">
+          <GlobalStyle />
+          <Helmet>
+            <title>Global Study Contacts</title>
+            <link rel="icon" type="image/png" href={imgFavicon} />
+          </Helmet>
+          <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
+            <div className="load-circle">
+              <span className="one"></span>
+            </div>
+          </Loader>
+          <div
+            className="site-wrapper overflow-hidden bg-default-2"
+            ref={eleRef}
+          >
+            <Header isDark={gContext.headerDark} />
+       
+       
             {children}
           </div>
 
@@ -338,7 +376,7 @@ else
           </Helmet>
           <Loader id="loading" className={visibleLoader ? "" : "inActive"} />
           <div className="site-wrapper overflow-hidden" ref={eleRef}>  
-          {authUser == null ?  <Header isDark={gContext.headerDark} /> : userType == "admin" ? <Header2 isDark={gContext.headerDark} /> : userType == "agent" ? <HeaderAgent isDark={gContext.headerDark}/> : userType == "student" ? <HeaderStudent/> : <Header/>} 
+          {authUser == null ?   <Header isDark={gContext.headerDark} /> : userType == "admin" ? <Header2 isDark={gContext.headerDark} /> : userType == "agent" ? <HeaderAgent isDark={gContext.headerDark}/> : userType == "student" ? <HeaderStudent/> : userType=="team-member" ? <HeaderTeamMember/> : <Header/>} 
            
             {children}
 

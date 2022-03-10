@@ -112,13 +112,33 @@ return;
               </div>
               <div className="row mb-11 align-items-center">
              
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Countries</h4>
-                    
-                  </div>
-                </div>
-              <div className="col-lg-3">
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Countries</h4>
+                 
+               </div>
+             </div>
+      
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Services</h4>
+                 
+               </div>
+             </div>
+   
+             <div  className="col-lg-4">
+               <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Students</h4>
+                 
+               </div>
+             </div>
+             
+       
+           </div>
+              <div className="row mb-11 align-items-center">
+             
+         
+              <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
                     <div className="h-px-48">
@@ -130,13 +150,9 @@ return;
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Services</h4>
-                    
-                  </div>
-                </div>
-                <div className="col-lg-3">
+             
+         
+                <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
                     <div className="h-px-48">
@@ -148,14 +164,9 @@ return;
                     </div>
                   </div>
                 </div>
-                <div  className="col-lg-1">
-                  <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Students</h4>
-                    
-                  </div>
-                </div>
+          
                 
-                <div className="col-lg-3">
+                <div className="col-lg-4">
                   
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
@@ -174,7 +185,7 @@ return;
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
+                      <tr className="th-sticky">
                         <th
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
@@ -182,81 +193,81 @@ return;
                           Name
                         </th>
                      
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Phone
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Email
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Country
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Agency Name
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Website
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Offices
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Subagents
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Year Founded
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Number of Staff
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Services Provided
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Recruitment Area
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Service Charge</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Students Sent Abroad</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Applications Count</th>

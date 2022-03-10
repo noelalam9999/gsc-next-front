@@ -29,25 +29,45 @@ const Accomodationfee = [
 const DashboardMain = () => {
  
   const [List, setList] = useState([]);
+  const [SearchList, setSearchList] = useState([]);
+  const [searchWord, setSearchWord] = useState("")
 
-  useEffect(() =>  {
-
-    async function fetchMyAPI() {
+  async function fetchMyAPI() {
     try {
       const res = await fetch('https://ci-gsc.com/uni/?format=json');
       console.log(res)
       const todoList = await res.json();
+      //let filtered = todoList.filter(function(val, i, a) {return val.name=="AGB Training";});
       setList(todoList)
+      console.log(filtered)
     } catch (e) {
       console.log(e);
   }
     }
+
+  useEffect(() =>  {
     
 fetchMyAPI()
     
   },[])
-console.log(List)
 
+
+
+async function onSearchSubmit(){
+  try {
+    const res = await fetch('https://ci-gsc.com/uni/?format=json');
+    console.log(res)
+    const todoList = await res.json();
+    const filtered = todoList.filter((val)=> {return val.name.toLowerCase().includes(searchWord.toLowerCase());});
+    console.log(filtered)
+    setList(filtered)
+  } catch (e) {
+    console.log(e);
+}
+  //fetchMyAPI()
+
+
+}
   const gContext = useContext(GlobalContext);
   return (
     <>
@@ -68,9 +88,30 @@ console.log(List)
               <div className="col-lg-10 mb-lg-0 mb-4">
                   <h3 className="font-size-6 mb-0">Partners</h3>
                 </div>
-            
+                {/* <div    className="col-lg-5 mb-1 ">
+                <div style={{ paddingTop:'18px'}} className="form-group">
+                           
+                           <input
+                             type="text"
+                             className="form-control h-px-48"
+                             name="name"
+                             placeholder="Search Partners"
+                             onChange={(event) => setSearchWord(event.target.value)}
+                              value={searchWord}
+                           />
+                             
+                        <input
+                      
+                              type="button"
+                              value="Save Changes"
+                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                              onClick={() => onSearchSubmit()}
+                         />
+                         </div>
+                            </div> */}
                 <div className="col-lg-2">
-                <div style={{marginLeft:'20px', paddingTop:'5px'}} className="h-px-48">
+     
+                <div style={{marginLeft:'20px', paddingTop:'0px'}} className="h-px-48">
                     <Link
                   
                   href="/dashboard-main-add-uni"
@@ -84,15 +125,35 @@ console.log(List)
                     </div>
                     </div>
               </div>
+              <div className="row mb-1 align-items-center">
+             
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Countries</h4>
+                 
+               </div>
+             </div>
+        
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Fee Range</h4>
+                 
+               </div>
+             </div>
+         
+             <div  className="col-lg-4">
+               <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Acc. Cost</h4>
+                 
+               </div>
+             </div>
+             
+     
+           </div>
               <div className="row mb-11 align-items-center">
              
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Countries</h4>
-                    
-                  </div>
-                </div>
-              <div className="col-lg-3">
+              
+              <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
                     <div className="h-px-48">
@@ -104,13 +165,8 @@ console.log(List)
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Fee Range</h4>
-                    
-                  </div>
-                </div>
-                <div className="col-lg-3">
+            
+                <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
                     <div className="h-px-48">
@@ -122,14 +178,9 @@ console.log(List)
                     </div>
                   </div>
                 </div>
-                <div  className="col-lg-1">
-                  <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Acc. Cost</h4>
-                    
-                  </div>
-                </div>
+           
                 
-                <div className="col-lg-3">
+                <div className="col-lg-4">
                   
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
@@ -145,41 +196,49 @@ console.log(List)
                 </div>
               </div>
               <div className="bg-white shadow-8 pt-7 rounded pb-8 px-11">
+         
+                    
                 <div className="table-responsive">
                   <table className="table table-striped">
-                    <thead>
-                      <tr>
+                    <thead >
+                      <tr className="th-sticky" >
                         <th
+                   className="th-sticky"
                           scope="col"
-                          className="pl-0  border-0 font-size-4 font-weight-normal"
+                          className="pl-0  border-0 font-size-4 font-weight-normal sticky-header"
                         >
                           Name
                         </th>
                         <th
+                     className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Sync
                         </th>
                         <th
+                   className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                          Workflow
                         </th>
                         <th
+                     className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Partner Type
                         </th>
                         <th
+                    className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Country
                         </th>
                         <th
+                     className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
@@ -187,16 +246,19 @@ console.log(List)
                         </th>
                         
                         <th
+                       className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Enrolled</th>
                         <th
+                className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >In Progress</th>
                         
 
                         <th
+
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         ></th>

@@ -7,7 +7,7 @@ import { useAuth } from '../../../AuthUserContext';
 
 const UniLogo = ({email}) => {
   const { authUser, loading,signOut } = useAuth();
-console.log(email)
+
 
   const [List, setList] = useState("");
   useEffect(() =>  {
@@ -26,7 +26,7 @@ console.log(email)
  fetchMyAPI()
 
   },email)
-console.log(authUser)
+
   return (
       <>
       

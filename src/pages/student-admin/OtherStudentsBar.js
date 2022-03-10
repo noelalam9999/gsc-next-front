@@ -54,7 +54,7 @@ const UniCard = (List) => {
       
 
 
-                    { uniList.map((item, index)=>(
+                    { uniList.slice(0,5).map((item, index)=>(
                     <li className="border-bottom">
                       <Link href="/#">
                         <a className="media align-items-center py-9 flex-wrap">

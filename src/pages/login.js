@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Firebase from '../../Firebase';
 import { useAuth } from '../../AuthUserContext';
-
+import PageWrapper from "../components/PageWrapper";
 import {Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
 
 export default function Login() {
@@ -34,7 +34,7 @@ function forgotPassword(){
     else{
 alert("please type in your email")
     }
-}
+}  
   async function fetchMyAPI2(param) {
       
     try {
@@ -125,6 +125,10 @@ alert("please type in your email")
   };
 
   return (
+    <>
+      <PageWrapper
+    
+      >
     <div style={{paddingTop:"100px"}}>
     <Container className="text-center" style={{ padding: '40px 0px'}}>
       <Row>
@@ -183,5 +187,7 @@ alert("please type in your email")
       </Row>
     </Container>
     </div>
+    </PageWrapper>
+    </>
   )
 }

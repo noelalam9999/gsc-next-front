@@ -159,75 +159,75 @@ console.log(List)
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
-                        <th
+                      <tr className="th-sticky">
+                        <th className="th-sticky"
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Name
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Added From
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                          Tags
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Rating
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Internal ID
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Phone
                         </th>
                         
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Passport Number</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Current City</th>
-                          <th
+                          <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Assignee</th>
-                          <th
+                          <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Followers</th>
-
-<th
+ 
+<th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Status</th>
-                          <th
+                          <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Applications</th>
-                         <th
+                         <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Last Updated</th>
 
-<th
+<th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Preffered Intake</th>

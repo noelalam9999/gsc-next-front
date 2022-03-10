@@ -166,85 +166,85 @@ const DashboardMain = () => {
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                    <tr>
-                        <th
+                    <tr className="th-sticky" >
+                        <th className="th-sticky" 
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Application ID
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Client Name
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                          Applied Intake Date
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Client Phone
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Client Assignee
-                        </th>
-                        <th
+                        </th> 
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Application Assignees
                         </th>
                         
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Product</th>
-                       <th
+                       <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Partner</th>
-                         <th
+                         <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Partner Branches</th>
-<th
+<th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Partner's Client ID'</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Workflow</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Application Start By</th>
 
-<th
+<th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
-                        >Application Start By Branch</th><th
+                        >Application Start By Branch</th><th style={{position:"sticky!important",top:"0"}}
                         scope="col"
                         className="border-0 font-size-4 font-weight-normal"
                       >Status</th>
-<th
+<th className="th-sticky"
                         scope="col"
                         className="border-0 font-size-4 font-weight-normal"
                       >Stage in Queue</th>
-                      <th
+                      <th className="th-sticky"
                         scope="col"
                         className="border-0 font-size-4 font-weight-normal"
                       >Created At</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         ></th>

@@ -98,57 +98,58 @@ console.log(List)
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
-                        <th
+                      <tr className="th-sticky" >
+                        <th className="th-sticky"
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Name
-                        </th>
-                        <th
+                        </th> 
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Type
                         </th>
-                        <th
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                          Structure
                         </th>
-                        <th
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Phone
                         </th>
-                        <th
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Country
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Associated Office
                         </th>
                         
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Clients Count</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Applications Count</th>
-                    <th
+                    <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Associations</th>
-                        <th
+                    <th className="th-sticky"
+                      
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Do you charge</th>

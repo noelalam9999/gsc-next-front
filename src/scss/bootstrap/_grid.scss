@@ -71,3 +71,8 @@
 @if $enable-grid-classes {
   @include make-grid-columns();
 }
+.th-sticky{
+  position:sticky!important;
+  top:0!important;
+  background-color:white!important
+}

@@ -10,14 +10,16 @@ import iconF2 from "../../assets/image/l1/png/internship.png";
 import iconF3 from "../../assets/image/l1/png/offer-letter.png";
 import iconF4 from "../../assets/image/l1/png/post-study-work-visa.png";
 import iconF5 from "../../assets/image/l1/png/work-while-studying.png";
-
+import Unilogo from "../../sections/uni/Unilogo";
+import { useRouter } from 'next/router';
+import { isTemplateMiddle } from "typescript";
 
 const defaultCountries = [
   { value: "uk", label: "United Kingdom" },
   { value: "usa", label: "United States of America" },
-  { value: "eur", label: "Europe" },
-  { value: "can", label: "Canada" },
-  { value: "aus", label: "Australia" },
+  { value: "europe", label: "Europe" },
+  { value: "canada", label: "Canada" },
+  { value: "australia", label: "Australia" },
 ];
 
 const SearchGrid = () => {
@@ -28,6 +30,9 @@ const SearchGrid = () => {
   let [filtered, setfiltered] = useState([]);
   const [userList, setUserList] = useState([]);
   const [count, setCount] = useState(8);
+  const [country,setCountry] =useState("");
+  const router = useRouter();
+  var [name,setName] =useState("");
   const [config,setConfig] = useState({
     Undergraduate: true,
     Diploma:true,
@@ -42,6 +47,17 @@ const SearchGrid = () => {
     
   })
 
+  const onCountryChange = selectedOption => {
+    setCountry(selectedOption);
+  };
+
+  const handleSubmit = () => {
+    if (name=="")
+    {
+     name="all"
+    }
+    router.push('/search/'+country.value + '/' + name );
+  }
 
   async function fetchMyAPI() {
     try {
@@ -76,7 +92,7 @@ const SearchGrid = () => {
       if(config.twotothree ==true){
       
         filtered_3 = filtered.filter(function(val, i, a) {return val.ranking<=3 && val.ranking>=2;})
-       }
+       } 
        if(config.onetotwo ==true){
      
         filtered_2 = filtered.filter(function(val, i, a) {return val.ranking<=2 && val.ranking>=1;})
@@ -90,12 +106,6 @@ const SearchGrid = () => {
 
      
       setList(uniqueNames)
-
-
-
-
-
-
  
     } catch (e) {
       console.log(e);
@@ -183,6 +193,8 @@ function Loadmore (){
                           type="text"
                           id="keyword"
                           placeholder="University of Regina"
+                          onChange={(event) => setName(event.target.value)}
+                          value={name}
                         />
                         <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
                           <i className="icon icon-zoom-2 text-primary font-weight-bold"></i>
@@ -194,6 +206,8 @@ function Loadmore (){
                           options={defaultCountries}
                           className="pl-8 h-100 arrow-3 font-size-4 d-flex align-items-center w-100"
                           border={false}
+                          onChange={onCountryChange}
+                          value={country}
                         />
 
                         <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
@@ -203,16 +217,20 @@ function Loadmore (){
                       {/* <!-- ./select-city ends --> */}
                     </div>
                     <div className="button-block">
-                      <button className="btn btn-primary line-height-reset h-100 btn-submit w-100 text-uppercase">
-                        Search
-                      </button>
+                    <input
+               
+                              type="button"
+                              value="Search"
+                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                              onClick={() => handleSubmit()}
+                         />
                     </div>
                   </div>
                 </form>
                 <div className="pt-12 ml-lg-0 ml-md-15">
                   <div className="d-flex align-items-center justify-content-between">
                     <h5 className="font-size-4 font-weight-normal text-default-color">
-                      <span className="heading-default-color">120{" "}</span>
+                      <span className="heading-default-color">{List.length}{" "}</span>
                       results for{" "}
                       <span className="heading-default-color">Institutes</span>
                     </h5>
@@ -242,9 +260,7 @@ function Loadmore (){
                            <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                              <div className="d-block mb-7">
                                <Link href="/#">
-                                 <a>
-                                   <img height="80px" src={imgF1} alt="" />
-                                 </a>
+                             <Unilogo email={item.email}/>
                                </Link>
                              </div>
                              <Link href="/#">
@@ -264,7 +280,7 @@ function Loadmore (){
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                                      <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                                     UK
+                                    {item.country}
                                    </a>
                                  </Link>
                                </li>
@@ -281,7 +297,7 @@ function Loadmore (){
                                   <Link href="/#">
                                     <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                                       <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                                      Average UG Fee: $14k-19k
+                                      Average UG Fee: {item.UGfee}
                                     </a>
                                   </Link>
                                 </li>
@@ -292,7 +308,7 @@ function Loadmore (){
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                                      <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                                     Average PG Fee: $14k-19k
+                                     Average PG Fee: {item.PGfee}
                                    </a>
                                  </Link>
                                </li>
@@ -304,12 +320,14 @@ function Loadmore (){
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                                      <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                                     Average Annual Diploma Fee: $14k-19k
+                                     Average Annual Diploma Fee: {item.Diplomafee}
                                    </a>
                                  </Link>
                                </li>
 
 }
+
+{item.Accomodation !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -318,6 +336,8 @@ function Loadmore (){
                                    </a>
                                  </Link>
                                </li>
+}
+{item.Internship !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -326,6 +346,8 @@ function Loadmore (){
                                    </a>
                                  </Link>
                                </li>
+                               }
+                               {item.OfferLetter !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -334,6 +356,8 @@ function Loadmore (){
                                    </a>
                                  </Link>
                                </li>
+}
+{item.OfferLetter !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -342,6 +366,8 @@ function Loadmore (){
                                    </a>
                                  </Link>
                                </li>
+                               }
+                                   {item.OfferLetter !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -350,7 +376,7 @@ function Loadmore (){
                                    </a>
                                  </Link>
                                </li>
-             
+}
                              </ul>
                              <p className="mb-7 font-size-4 text-gray">
                              </p>

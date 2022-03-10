@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Container, Dropdown } from "react-bootstrap";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import Link from "next/link";
-
+import Firebase from '../../../Firebase';
 import { useWindowSize } from "../../hooks/useWindowSize";
 import GlobalContext from "../../context/GlobalContext";
 import Offcanvas from "../Offcanvas";
@@ -310,11 +310,7 @@ console.log(authUser)
                         className="gr-menu-dropdown border-0 border-width-2 py-2 w-auto bg-default"
                         key="1"
                       >
-                        <Link href="/#">
-                          <a className="dropdown-item py-2 font-size-3 font-weight-semibold line-height-1p2 text-uppercase">
-                            Settings
-                          </a>
-                        </Link>
+                   
                         <Link href="/student/edit-profile">
                           <a className="dropdown-item py-2 font-size-3 font-weight-semibold line-height-1p2 text-uppercase">
                             Edit Profile
@@ -327,7 +323,7 @@ console.log(authUser)
                                             aria-expanded="false"
                                             aria-haspopup="true"
                                             href="/login"
-                                            onClick={()=>signOut}
+                                            onClick={()=>{Firebase.auth().signOut()}}
                                           >Logout</a>
                       
                       </Dropdown.Menu>
@@ -336,11 +332,7 @@ console.log(authUser)
                         className="dropdown-menu gr-menu-dropdown dropdown-right border-0 border-width-2 py-2 w-auto bg-default"
                         key="2"
                       >
-                        <Link href="/#">
-                          <a className="dropdown-item py-2 font-size-3 font-weight-semibold line-height-1p2 text-uppercase">
-                            Settings
-                          </a>
-                        </Link>
+                  
                         <Link href={'/student/edit-profile/'}>
                           <a className="dropdown-item py-2 font-size-3 font-weight-semibold line-height-1p2 text-uppercase">
                             Edit Profile
@@ -353,7 +345,7 @@ console.log(authUser)
                                             aria-expanded="false"
                                             aria-haspopup="true"
                                             href="/login"
-                                            onClick={()=>signOut}
+                                            onClick={()=>{Firebase.auth().signOut()}}
                                           >Logout</a>
                       </div>
                     )}

@@ -92,84 +92,93 @@ console.log(List)
               </div>
               <div className="row mb-11 align-items-center">
              
-                <div className="col-lg-1">
+                <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Desired Level</h4>
+                  <h4 className="font-size-4 align-items-center mb-0">Desired Level</h4>
                     
                   </div>
                 </div>
-              <div className="col-lg-3">
+             
+                <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  
-                    <div className="h-px-48">
-                      <Select
-                        options={DesiredLevel}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                        border={false}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Desired Country</h4>
+                  <h4 className="font-size-4 mb-0">Desired Country</h4>
                     
                   </div>
                 </div>
-                <div className="col-lg-3">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  
-                    <div className="h-px-48">
-                      <Select
-                        options={DesiredCountry}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                        border={false}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div  className="col-lg-1">
+           
+                <div  className="col-lg-4">
                   <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">IELTS</h4>
+                  <h4 className="font-size-4 mb-0">IELTS</h4>
                     
                   </div>
                 </div>
                 
-                <div className="col-lg-3">
-                  
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  
-                    <div className="h-px-48">
-               
-                      <Select
-                        options={IELTS}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-left w-100"
-                        border={false}
-                      />
-                    </div>
-                  </div>
-                </div>
+         
               </div>
+              <div className="row mb-11 align-items-center">
+       
+           <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               
+                 <div className="h-px-48">
+                   <Select
+                     options={DesiredLevel}
+                     className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
+                     border={false}
+                   />
+                 </div>
+               </div>
+             </div>
+         
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               
+                 <div className="h-px-48">
+                   <Select
+                     options={DesiredCountry}
+                     className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
+                     border={false}
+                   />
+                 </div>
+               </div>
+             </div>
+        
+             
+             <div className="col-lg-4">
+               
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               
+                 <div className="h-px-48">
+            
+                   <Select
+                     options={IELTS}
+                     className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-left w-100"
+                     border={false}
+                   />
+                 </div>
+               </div>
+             </div>
+           </div>
               
             
               <div className="bg-white shadow-8 pt-7 rounded pb-8 px-11">
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
-                        <th
+                      <tr className="th-sticky">
+                        <th className="th-sticky"
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Name
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Added By
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
@@ -177,57 +186,57 @@ console.log(List)
                         </th>
                    
                     
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Phone
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Email
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Date of Birth  
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Passport </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Country</th>
-                            <th
+                            <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Address</th>
-                           <th
+                           <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Previous Qualification</th>
-                           <th
+                           <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >IELTS Band</th>
-                         <th
+                         <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Desired Level</th>
-                         <th
+                         <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Study Destination</th>
-                         <th
+                         <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Intended Semester</th>
-                         <th
+                         <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Desired Subject</th>

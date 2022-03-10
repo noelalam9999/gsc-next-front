@@ -7,7 +7,8 @@ import 'firebase/firestore';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import "react-day-picker/lib/style.css";
 import { DatePickerStyled } from "../../components/DatePicker/DatePicker";
-
+import { withRouter } from 'next/router'
+import { Collapse } from "react-bootstrap";
 
 const Accomodation = [
   {name:"Accomodation", value: "yes", label: "Yes" },
@@ -57,6 +58,13 @@ class AddUni extends Component {
     this.handleIntake5SemesterAppDayClick = this.handleIntake5SemesterAppDayClick.bind(this);
     this.handleIntake6SemesterAppDayClick = this.handleIntake6SemesterAppDayClick.bind(this);
     this.state = {
+      ugInfo:false,
+      pgInfo:false,
+      highschoolInfo:false,
+      diplomaInfo:false,
+      foundationInfo:false,
+      fascilitiesInfo:false,
+      openItem:1,
       disable:false,
       image:"",
       viewCompleted: false,
@@ -134,8 +142,10 @@ refreshList = () => {
 };
 
 success = () => {
-  alert("We have received your registration information. You will get a confirmation email shortly");
-  
+  alert("University Add to GSC Directory. Redirecting to Uni List page");
+  setInterval(() => {
+    this.props.router.back()
+  }, 3000);
 }
 increaseIntake = () => {
   let count = this.state.intakeCount + 1
@@ -143,6 +153,72 @@ increaseIntake = () => {
 intakeCount : count
   })
   
+}
+
+changeUgInfo = () => {
+  if(this.state.ugInfo==true)
+  {this.setState({
+ugInfo : false
+  })}
+  if(this.state.ugInfo==false)
+  {this.setState({
+ugInfo : true
+  })}
+}
+
+changePgInfo = () => {
+  if(this.state.pgInfo==true)
+  {this.setState({
+pgInfo : false
+  })}
+  if(this.state.pgInfo==false)
+  {this.setState({
+pgInfo : true
+  })}
+}
+
+changehighschoolInfo = () => {
+  if(this.state.highschoolInfo==true)
+  {this.setState({
+highschoolInfo : false
+  })}
+  if(this.state.highschoolInfo==false)
+  {this.setState({
+highschoolInfo : true
+  })}
+}
+
+changediplomaInfo = () => {
+  if(this.state.diplomaInfo==true)
+  {this.setState({
+diplomaInfo : false
+  })}
+  if(this.state.diplomaInfo==false)
+  {this.setState({
+diplomaInfo : true
+  })}
+}
+
+changefoundationInfo = () => {
+  if(this.state.foundationInfo==true)
+  {this.setState({
+ugInfo : false
+  })}
+  if(this.state.foundationInfo==false)
+  {this.setState({
+ugInfo : true
+  })}
+}
+
+changefascilitiesInfo = () => {
+  if(this.state.fascilitiesInfo==true)
+  {this.setState({
+fascilitiesInfo : false
+  })}
+  if(this.state.fascilitiesInfo==false)
+  {this.setState({
+fascilitiesInfo : true
+  })}
 }
 
 handleSubmit = (item) => {
@@ -181,7 +257,12 @@ if(this.state.image){
 
 };
 
+// setOpenItem(e) {
 
+//   this.setState({
+//     openItem: e
+//   })
+// };
 
 handleImageChange = (e) => {
   this.setState({
@@ -375,43 +456,30 @@ render(){
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
+                          <div className="col-lg-6">
+                            <div className="form-group">
                               <label
-                                htmlFor="select3"
+                                htmlFor="namedash"
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
-                                HSC Requirement UG
+                                Ranking
                               </label>
                               <input
                                 type="text"
                                 className="form-control h-px-48"
-                                name="HSCReqUG"
-                                placeholder="3"
+                                name="ranking"
+                                placeholder="eg. 3.5"
+                               
                                 onChange={this.handleChange}
-                                value={this.state.activeItem.HSCReqUG}
+                                value={this.state.activeItem.ranking}
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                HSC Requirement PG
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="HSCReqPG"
-                                placeholder="3"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.HSCReqPG}
-                              />
-                            </div>
-                          </div>
+                      
+                        
                         </div>
+                        {this.state.ugInfo && (
+                                         <>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
                             <div className="form-group position-relative">
@@ -522,7 +590,24 @@ render(){
                               />
                             </div>
                           </div>
-                         
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                HSC Requirement UG
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="HSCReqUG"
+                                placeholder="3"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.HSCReqUG}
+                              />
+                            </div>
+                          </div>
                           </div>
                           <div className="row mb-8">
                         <div className="col-lg-6">
@@ -544,8 +629,43 @@ render(){
                            
                             </div>
                           </div>
-
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="address"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Accomodation Cost/Semester UG
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="AccomodationCostUG"
+                                placeholder="3400"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.AccomodationCostUG}
+                              />
+                            
+                            </div>
+                          </div>
                         </div>
+</>)}
+                       
+                       
+                        <div className="row mb-8">
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                          <input
+                        
+                              type="button"
+                              value="Add UG Info"
+                              className="btn btn-blue btn-h-30 text-white min-width-px-100 rounded-5 text-uppercase"
+                              onClick={() => this.changeUgInfo()}
+                         />
+                         </div>
+                            </div>
+
+                            {this.state.pgInfo && (
+                                         <>
                           <div className="row mb-8">
                           <div className="col-lg-6">
                             <div className="form-group position-relative">
@@ -680,6 +800,24 @@ render(){
                              
                             </div>
                           </div>
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                HSC Requirement PG
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="HSCReqPG"
+                                placeholder="3"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.HSCReqPG}
+                              />
+                            </div>
+                          </div>
                         </div>
                         <div className="row mb-8">
                         <div className="col-lg-6">
@@ -701,46 +839,6 @@ render(){
                              
                             </div>
                           </div>
-
-                        </div>
-                        <div className="row mb-8">
-                          <div className="col-lg-6 mb-xl-0 mb-7">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="select3"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Annual Diploma Fee
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="Diplomafee"
-                                placeholder="contact email of the institute"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.Diplomafee}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="form-group position-relative">
-                              <label
-                                htmlFor="address"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                               Accomodation Cost/Semester UG
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="AccomodationCostUG"
-                                placeholder="3400"
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.AccomodationCostUG}
-                              />
-                            
-                            </div>
-                          </div>
                           <div className="col-lg-6">
                             <div className="form-group position-relative">
                               <label
@@ -760,6 +858,43 @@ render(){
                             
                             </div>
                           </div>
+
+                        </div>
+
+                        </>)}
+
+                        <div className="row mb-8">
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                          <input
+                        
+                              type="button"
+                              value="Add PG Info"
+                              className="btn btn-blue btn-h-30 text-white min-width-px-100 rounded-5 text-uppercase"
+                              onClick={() => this.changePgInfo()}
+                         />
+                         </div>
+                            </div>
+                        <div className="row mb-8">
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select3"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Annual Diploma Fee
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="Diplomafee"
+                                placeholder="contact email of the institute"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.Diplomafee}
+                              />
+                            </div>
+                          </div>
+                       
+                        
                           <div className="col-lg-6 mb-xl-0 mb-7">
                             <div className="form-group position-relative">
                               <label
@@ -801,6 +936,7 @@ render(){
                           </div>
 
                         </div>
+                  
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
                             <div className="form-group position-relative">
@@ -1000,26 +1136,10 @@ render(){
                          />
                          </div>
                             </div>
+                            {this.state.fascilitiesInfo && (
+                                         <>
                           <div className="row mb-8">
-                          <div className="col-lg-6">
-                            <div className="form-group">
-                              <label
-                                htmlFor="namedash"
-                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
-                              >
-                                Ranking
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control h-px-48"
-                                name="ranking"
-                                placeholder="eg. 3.5"
-                               
-                                onChange={this.handleChange}
-                                value={this.state.activeItem.ranking}
-                              />
-                            </div>
-                          </div>
+                        
                           <div className="col-lg-6">
                             <div className="form-group">
                               <label
@@ -1111,6 +1231,20 @@ render(){
                             </div>
                           </div>
                         </div>
+                        </>
+                          )
+                          }
+                               <div className="row mb-8">
+                          <div className="col-lg-6 mb-xl-0 mb-7">
+                          <input
+                        
+                              type="button"
+                              value="Add Fascilities Info"
+                              className="btn btn-blue btn-h-30 text-white min-width-px-100 rounded-5 text-uppercase"
+                              onClick={() => this.changefascilitiesInfo()}
+                         />
+                         </div>
+                            </div>
                        
                         <input
                     
@@ -1132,7 +1266,7 @@ render(){
   );
       }
 };
-export default AddUni;
+export default withRouter(AddUni);
 
 
 export const getCountries = [

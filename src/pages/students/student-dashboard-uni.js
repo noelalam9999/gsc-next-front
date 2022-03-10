@@ -74,80 +74,84 @@ const DashboardMain = () => {
           <div className="container">
          
             <div className="mb-14">
-           
-              <div className="row mb-11 align-items-center">
-              <div className="col-lg-10 mb-lg-0 mb-4">
-                  <h3 className="font-size-6 mb-0">Institutes</h3>
-                </div>
-            
+            <div className="row mb-11 align-items-center">
              
-              </div>
-              <div className="row mb-11 align-items-center">
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Countries</h4>
+                 
+               </div>
+             </div>
+     
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Fee Range</h4>
+                 
+               </div>
+             </div>
+     
+             <div  className="col-lg-4">
+               <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
+               <h4 className="font-size-4 mb-0">Acc. Cost</h4>
+                 
+               </div>
+             </div>
              
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Countries</h4>
-                    
-                  </div>
-                </div>
-              <div className="col-lg-3">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  
-                    <div className="h-px-48">
-                      <Select
-                        options={getCountries}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                        border={false}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Fee Range</h4>
-                    
-                  </div>
-                </div>
-                <div className="col-lg-3">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  
-                    <div className="h-px-48">
-                      <Select
-                        options={feeRange}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
-                        border={false}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div  className="col-lg-1">
-                  <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Acc. Cost</h4>
-                    
-                  </div>
-                </div>
-                
-                <div className="col-lg-3">
-                  
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  
-                    <div className="h-px-48">
+          
+           </div>
+           <div className="row mb-11 align-items-center">
+          
+     
+           <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                
-                      <Select
-                        options={Accomodationfee}
-                        className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-left w-100"
-                        border={false}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+                 <div className="h-px-48">
+                   <Select
+                     options={getCountries}
+                     className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
+                     border={false}
+                   />
+                 </div>
+               </div>
+             </div>
+        
+             <div className="col-lg-4">
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               
+                 <div className="h-px-48">
+                   <Select
+                     options={feeRange}
+                     className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-center w-100"
+                     border={false}
+                   />
+                 </div>
+               </div>
+             </div>
+        
+             
+             <div className="col-lg-4">
+               
+               <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+               
+                 <div className="h-px-48">
+            
+                   <Select
+                     options={Accomodationfee}
+                     className="pl-0 h-100 arrow-3 arrow-3-black min-width-px-273  text-black-2 d-flex align-items-left w-100"
+                     border={false}
+                   />
+                 </div>
+               </div>
+             </div>
+           </div>
+   
+         
               <div className="bg-white shadow-8 pt-7 rounded pb-8 px-11">
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
-                        <th
+                      <tr className="th-sticky" >
+                        <th className="th-sticky"
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
@@ -156,7 +160,7 @@ const DashboardMain = () => {
                       
                        
                       
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >

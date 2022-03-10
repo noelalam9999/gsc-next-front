@@ -85,13 +85,33 @@ console.log(List)
               </div>
               <div className="row mb-11 align-items-center">
              
-                <div className="col-lg-1">
+                <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Countries</h4>
+                  <h4 className="font-size-4 mb-0">Countries</h4>
                     
                   </div>
                 </div>
-              <div className="col-lg-3">
+        
+                <div className="col-lg-4">
+                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
+                  <h4 className="font-size-4 mb-0">Fee Range</h4>
+                    
+                  </div>
+                </div>
+        
+                <div  className="col-lg-4">
+                  <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
+                  <h4 className="font-size-4 mb-0">Acc. Cost</h4>
+                    
+                  </div>
+                </div>
+                
+             
+              </div>
+              <div className="row mb-11 align-items-center">
+             
+        
+              <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
                     <div className="h-px-48">
@@ -103,13 +123,8 @@ console.log(List)
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-1">
-                  <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Fee Range</h4>
-                    
-                  </div>
-                </div>
-                <div className="col-lg-3">
+           
+                <div className="col-lg-4">
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
                     <div className="h-px-48">
@@ -121,14 +136,9 @@ console.log(List)
                     </div>
                   </div>
                 </div>
-                <div  className="col-lg-1">
-                  <div style={{marginLeft:"20px!important"}} className="d-flex flex-wrap align-items-right justify-content-lg-end">
-                  <h4 className="font-size-3 mb-0">Acc. Cost</h4>
-                    
-                  </div>
-                </div>
+           
                 
-                <div className="col-lg-3">
+                <div className="col-lg-4">
                   
                   <div className="d-flex flex-wrap align-items-center justify-content-lg-end">
                   
@@ -147,55 +157,55 @@ console.log(List)
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
-                      <tr>
-                        <th
+                      <tr className="th-sticky">
+                        <th className="th-sticky"
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Name
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Sync
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                          Workflow
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Partner Type
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Country
                         </th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Products
                         </th>
                         
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Enrolled</th>
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >In Progress</th>
                         
 
-                        <th
+                        <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         ></th>

@@ -39,11 +39,11 @@ const Unilogo = (email) => {
   return (
  <>
 
-                          { uniList.map((item, index)=>(
+                          { uniList.slice(0,1).map((item, index)=>(
                           <>
                               <div className="square-72 rounded-6">
                               
-                                  <img style={{height:"80px",width:"80px",borderRadius:"40px"}} src={'https://ci-gsc.com'+item.image} alt="" />
+                                  <img style={{height:"80px",width:"80px"}} src={'https://ci-gsc.com'+item.image} alt="" />
                               </div>
                   </>
                           ))}

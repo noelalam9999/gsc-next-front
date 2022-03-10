@@ -139,9 +139,12 @@ success = () => {
   }
   if(this.state.image2){
     let form_data = new FormData();
-    form_data.append('image', this.state.image2, this.state.image2.name);
+    let file_name = this.state.activeItem.name.concat("_profile_picture")
+    file_name = file_name.replace(/ /g, "_")
+ 
+    form_data.append('image', this.state.image2,this.state.image2.name);
     form_data.append('email', this.state.activeItem.email);
-
+    console.log(form_data)
     let url = 'https://ci-gsc.com/profilepicture/';
     axios.post(url, form_data, {
       headers: {
@@ -165,6 +168,9 @@ fail_image = () => {
 handleImageChange = (e) => {
   this.setState({
     image: e.target.files[0]
+  })
+  this.setState({
+    disable:true
   })
 };
 
