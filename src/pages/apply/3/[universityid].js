@@ -29,7 +29,21 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const [Desiredleveldata,setDesiredlevel] = useState("")
   const { authUser } = useAuth();
-  const [newImage,setNewImage] = useState([])
+  const [profilePic,setprofilePic] = useState([])
+  const [passportPic,setpassportPic] = useState([])
+  const [sscCert,setsscCert] = useState([])
+  const [hscCert,sethscCert] = useState([])
+  const [bachelorCert,setbachelorCert] = useState([])
+  const [sscTranscript,setsscTranscript] = useState([])
+  const [hscTranscript,sethscTranscript] = useState([])
+  const [bachelorTranscript,setbachelorTranscript] = useState([])
+  const [bachelorMarkSheet,setbachelorMarksheet] = useState([])
+  const [lor1,setLor1] = useState([])
+  const [lor2,setLor2] = useState([])
+  const [lor3,setLor3] = useState([])
+  const [sop,setSop] = useState([])
+  const [cv,setCV] = useState([])
+  const [bankSolvency,setBankSolvency] = useState([])
 
   async function fetchMyAPI() {
 
@@ -55,11 +69,65 @@ useEffect(() =>  {
    },authUser)
    
 
-  const onDesiredLevelChange = selectedOption => {
-    setDesiredlevel(selectedOption);
-  };
 
-const handleImageChange = (e) => {
+
+const handleProfilePicChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handlePassportPicChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleSSCCertChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleHSCCertChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleBachelorCertChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleSSCTranscriptChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleHSCTranscriptChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleBachelorTranscriptChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleBachelorMarksheetChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleLor1Change = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleLor2Change = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleLor3Change = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleSopChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleCVChange = (e) => {
+  setNewImage(e.target.files[0])
+}; 
+
+const handleBankSolvencyChange = (e) => {
   setNewImage(e.target.files[0])
 }; 
   const success = () => {
