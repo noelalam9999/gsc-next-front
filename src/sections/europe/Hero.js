@@ -1,28 +1,43 @@
-import React from "react";
+import React,{useState} from "react";
 
 import { Select } from "../../components/Core";
 import imgP from "../../assets/image/l1/png/hero-europe.png";
 import imgH from "../../assets/image/patterns/hero-pattern.png";
-
-const desiredLevel = [
-  { value: "diploma", label: "Diploma" },
-  { value: "undergraduate", label: "Undergraduate" },
-  { value: "postgraduate", label: "Post-Graduate" },
- 
+import { useRouter } from 'next/router';
+const defaultCountries = [
+  { value: "uk", label: "UK" },
+  { value: "usa", label: "USA" },
+  { value: "canada", label: "Canada" },
+  { value: "australia", label: "Australia" },
+  { value: "europe", label: "Europe" },
 ];
 
+
 const Hero = () => {
+  const router = useRouter();
+  const [programName, setProgramName] = useState("");
+  const [studyDestination, setStudyDestination] = useState("");
+  const [error, setError] = useState(null);
+  const onSubmit = event => {
+    
+    //check if passwords match. If they do, create user in Firebase
+    // and redirect to your logged in page.
+    
+        router.push(`/search/europe`);
+        
+  };
+
   return (
     <>
       {/* <!-- Hero Area --> */}
       <div className=" pt-26 pt-md-32 pt-lg-33 pt-xl-35 position-relative z-index-1 ">
         {/* <!-- .Hero pattern --> */}
         {/* <div className="pos-abs-tr w-50 z-index-n2"> */}
-        <div  className="flip-europe pos-abs-tr  z-index-n2">
+        <div  className="pos-abs-tr  z-index-n2">
           <img src={imgP} alt="" className="" />
         </div>
         {/* <!-- ./Hero pattern --> */}
-        <div  className="container">
+        <div className="container">
           <div  className="row position-relative align-items-center">
             <div
               className="col-xxl-6 col-xl-7 col-lg-8 col-md-12 pt-lg-13 pb-lg-33 pb-xl-34 pb-md-33 pb-10"
@@ -30,12 +45,12 @@ const Hero = () => {
               data-aos-duration="1000"
               data-aos-delay="500"
             >
-              <h1 className="make-white font-size-11 mb-12 pr-md-30 pr-lg-0">
-                Find the best Instituition in Europe
+              <h1 className="font-size-11 mb-12 pr-md-30 pr-lg-0">
+                Find the best Instituition in UK
               </h1>
               <div className="">
                 {/* <!-- .search-form --> */}
-                <form action="/" className="search-form shadow-6">
+                <form action="/search/europe/all" className="search-form shadow-6">
                   <div className="filter-search-form-1 bg-white rounded-sm shadow-4">
                     <div className="filter-inputs">
                       <div className="form-group position-relative">
@@ -52,7 +67,7 @@ const Hero = () => {
                       {/* <!-- .select-city starts --> */}
                       <div className="form-group position-relative">
                         <Select
-                          options={desiredLevel}
+                          options={defaultCountries}
                           className="pl-8 h-100 arrow-3 font-size-4 d-flex align-items-center w-100"
                           border={false}
                         />
@@ -65,7 +80,7 @@ const Hero = () => {
                     </div>
                     {/* <!-- .Hero Button --> */}
                     <div className="button-block">
-                      <button className="btn btn-primary line-height-reset h-100 btn-submit w-100 text-uppercase">
+                      <button onClick={()=>router.push(`/search/europe/all`)} className="btn btn-primary line-height-reset h-100 btn-submit w-100 text-uppercase">
                         Search
                       </button>
                     </div>
@@ -73,7 +88,7 @@ const Hero = () => {
                   </div>
                 </form>
                 {/* <!-- ./search-form --> */}
-              
+             
               </div>
             </div>
             {/* <!-- Hero Right Image --> */}
@@ -95,5 +110,4 @@ const Hero = () => {
     </>
   );
 };
-
 export default Hero;

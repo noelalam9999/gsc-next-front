@@ -19,7 +19,7 @@ const SidebarDashboardStudent = () => {
             </Link>
           </div>
           <div className="my-15 px-11">
-            <Link href="/students/student-dashboard-uni">
+            <Link href="/search/1">
               <a className="btn btn-primary btn-xl w-100 text-uppercase">
                 <span className="mr-5 d-inline-block">+</span>Apply to a Uni
               </a>

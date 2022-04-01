@@ -13,6 +13,7 @@
   }
   &.show {
     transform: translateX(0%);
+    overflow-y: scroll;
   }
 }
 .dashboard-layout-sidebar {

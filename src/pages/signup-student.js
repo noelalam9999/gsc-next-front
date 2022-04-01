@@ -30,25 +30,36 @@ const SignUp = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
   const [record, setRecord] = useState({ email: '',usertype:'student' });
-  const [student_record, setSetRecord] = useState({ email: '',name:"",mobile:"",Desiredlevel:"",StudyDestination:"",
- 
-  country:"",
-  gender:"",
-  birth_date:"",
-  birth_month:"",
-  birth_year:"",
-  address1:"",
-  address2:"",
-  prev_qualification:"Alevel",
-  IELTSBand:"3.2",
-  TOEFL:"",
-  Duolingo:"",
-  PTE:"",
-  
-  
-  IntendedSemester:"spring",
-  DesiredSubject:"Science",
-  added_by:""
+  const [student_record, setSetRecord] = useState({ 
+    email: '',
+    name:"",
+    mobile:"",
+    Desiredlevel:"",
+    StudyDestination:"",
+    country:"",
+    gender:"",
+    birth_date:"",
+    birth_month:"",
+    birth_year:"",
+    address1:"",
+    address2:"",
+    prev_qualification:"Alevel",
+    IELTSBand:"",
+    TOEFL:"",
+    Duolingo:"",
+    PTE:"",
+    HSCGPA:"",
+    UGCGPA:"",
+    IntendedSemester:"spring",
+    DesiredSubject:"Science",
+    work_experience:"",
+    prev_institution:"",
+    parents_name:"",
+    parents_contact_number:"",
+    parents_email:"",
+    parents_profession:"",
+    extracurricular:"",
+    added_by:""
 });
   const { createUserWithEmailAndPassword } = useAuth();
   const [Desiredleveldata,setDesiredlevel] = useState("")
@@ -69,7 +80,8 @@ const SignUp = () => {
     setError(null)
     //check if passwords match. If they do, create user in Firebase
     // and redirect to your logged in page.
-    if(passwordOne === passwordTwo)
+    if(name!="" & StudyDestination!="" & Desiredlevel!="" & email!="" & mobile!="" ){
+    if(passwordOne === passwordTwo){
       createUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         record.email = email;
@@ -97,8 +109,13 @@ const SignUp = () => {
         // An error occurred. Set error message to be displayed to user
         setError(error.message)  
       });
+    }
     else
       setError("Password do not match")
+  }
+  else{
+    alert("Please fill up all the fields")
+  }
     event.preventDefault();
   };
 

@@ -151,7 +151,115 @@
 .mobile{
   display:none
 }
+.padding-desktop{
+  padding-left: 300px;
+  padding-right: 300px;
+}
+
+.whatsapp_float {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 100px;
+  right: 27px;
+  background-color: #ffffff;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  visibility: hidden;
+  &.show {
+    visibility: visible;
+
+    opacity: 1;
+  }
+}
+
+.whatsapp-icon {
+  margin-top: 12px;
+  color:green
+}
+
+/* for mobile */
+@media screen and (max-width: 767px) {
+  .whatsapp-icon {
+      margin-top: 12px;
+  }
+
+  .whatsapp_float {
+      width: 50px;
+      height: 50px;
+      bottom: 100px;
+      right: 27px;
+      font-size: 30px;
+      visibility: hidden;
+      &.show {
+        visibility: visible;
+    
+        opacity: 1;
+      }
+  }
+}
+
+.contact_float {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 170px;
+  right: 27px;
+  background-color: #ffffff;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  visibility: hidden;
+  &.show {
+    visibility: visible;
+
+    opacity: 1;
+  }
+}
+
+.contact-icon {
+  margin-top: 5px;
+  margin-right:4px;
+  height:25px;
+  color:green
+}
+
+/* for mobile */
+@media screen and (max-width: 767px) {
+  .contact-icon {
+      margin-top: 5px;
+      margin-right:4px;
+      height:25px;
+  }
+
+  .contact_float {
+      width: 50px;
+      height: 50px;
+      bottom: 170px;
+      right: 27px;
+      font-size: 30px;
+      visibility: hidden;
+      &.show {
+        visibility: visible;
+    
+        opacity: 1;
+      }
+  }
+}
+
+
 @media only screen and (max-width: 600px) {
+  .padding-desktop{
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+  }
   .mobile-text{
     text-align: right!important;
   }

@@ -82,77 +82,78 @@ console.log(List)
                   <table className="table table-striped">
                   <thead>
                   <tr className="th-sticky" >
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="pl-0  border-0 font-size-4 font-weight-normal"
+                          className="th-sticky pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Application ID
                         </th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Institute</th>
-                        <th className="th-sticky"
+                               <th 
+                        scope="col"
+                        className="th-sticky border-0 font-size-4 font-weight-normal"
+                      >Status</th>
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >
                          Applied Intake Date
                         </th>
                       
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >
                           Client Assignee
                         </th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >
                           Application Assignees
                         </th>
                         
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Product</th>
                      
-                         <th className="th-sticky"
+                         <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Partner Branches</th>
-<th className="th-sticky"
+<th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Partner's Client ID'</th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Workflow</th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Application Start By</th>
 
-<th className="th-sticky"
+<th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Application Start By Branch</th>
-                        <th className="th-sticky"
+                 
+                      <th 
                         scope="col"
-                        className="border-0 font-size-4 font-weight-normal"
-                      >Status</th>
-                      <th className="th-sticky"
-                        scope="col"
-                        className="border-0 font-size-4 font-weight-normal"
+                        className="th-sticky border-0 font-size-4 font-weight-normal"
                       >Stage in Queue</th>
-                      <th className="th-sticky"
+                      <th 
                         scope="col"
-                        className="border-0 font-size-4 font-weight-normal"
+                        className="th-sticky border-0 font-size-4 font-weight-normal"
                       >Created At</th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         ></th>
                       
                       </tr>
@@ -180,10 +181,16 @@ console.log(List)
                         </td>
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status}
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
                            
                           <AppliedIntakeDate client={item.client_name}/>
                           </h3>
                         </td>
+
                       
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
@@ -229,11 +236,7 @@ console.log(List)
                             {item.application_start_by_branch}
                           </h3>
                         </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.status}
-                          </h3>
-                        </td>
+                      
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
                             {item.status_in_queue}

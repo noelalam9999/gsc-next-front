@@ -189,25 +189,34 @@ class AddStudent extends Component {
       image2:"",
       image3:"",
       activeItem: {
-        email:"",
+        email: '',
         name:"",
         mobile:"",
+        Desiredlevel:"",
+        StudyDestination:"",
         country:"",
-        gender:"female",
-        birth_date:"2",
-        birth_month:"feb",
-        birth_year:"1991",
+        gender:"",
+        birth_date:"",
+        birth_month:"",
+        birth_year:"",
         address1:"",
         address2:"",
         prev_qualification:"Alevel",
-        IELTSBand:"3.2",
+        IELTSBand:"",
         TOEFL:"",
         Duolingo:"",
         PTE:"",
-        Desiredlevel:"Alevel",
-        StudyDestination:"USA",
+        HSCGPA:"",
+        UGCGPA:"",
         IntendedSemester:"spring",
         DesiredSubject:"Science",
+        work_experience:"",
+        prev_institution:"",
+        parents_name:"",
+        parents_contact_number:"",
+        parents_email:"",
+        parents_profession:"",
+        extracurricular:"",
         added_by:""
       },
       todoList: []
@@ -701,7 +710,42 @@ Client Registration Form
                               />
                             </div>
                           </div>
-
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Grade 12 Score GPA
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="HSCGPA"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.HSCGPA}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Undergraduate Score
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="UGCGPA"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.UGCGPA}
+                              />
+                            </div>
+                          </div>
                         </div>
                         <div className="row mb-8">
                           <div className="col-lg-6 mb-xl-0 mb-7">
@@ -766,6 +810,150 @@ Client Registration Form
                                 className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
                               >
                               Desired Subject * 
+                              </label>
+                              <Select
+                                options={Subject}
+                                className="form-control pl-0 arrow-3 w-100 font-size-4 d-flex align-items-center w-100 "
+                                border={false}
+                                onChange={this.handleChangeSelect}
+                                value={this.state.activeItem.DesiredSubject.value}
+                              />
+                              <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Work Experience
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="work_experience"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.work_experience}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Extra-curricular
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="extracurricular"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.extracurricular}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Previous Institution
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="prev_institution"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.prev_institution}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Parents Name
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="parents_name"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.parents_name}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Parents Contact-Number
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="parents_contact_number"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.parents_contact_number}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Parents Email
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="parents_email"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.parents_email}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Parents Profession
+                              </label>
+                              <input
+                            
+                                className="form-control h-px-48"
+                                name="parents_profession"
+                                placeholder="100"
+                                onChange={this.handleChange}
+                                value={this.state.activeItem.parents_profession}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group position-relative">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                              Added By * 
                               </label>
                               <Select
                                 options={Subject}

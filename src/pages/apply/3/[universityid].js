@@ -26,6 +26,8 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const router = useRouter();
+  const [docCount,setDocCount] = useState(0)
+  
   const [error, setError] = useState(null);
   const [Desiredleveldata,setDesiredlevel] = useState("")
   const { authUser } = useAuth();
@@ -67,68 +69,84 @@ useEffect(() =>  {
   fetchMyAPI()
  
    },authUser)
-   
+ 
+  
 
-
+console.log(Desiredleveldata)
 
 const handleProfilePicChange = (e) => {
-  setNewImage(e.target.files[0])
+  setprofilePic(e.target.files[0])
+   
+
 }; 
 
 const handlePassportPicChange = (e) => {
-  setNewImage(e.target.files[0])
+  setpassportPic(e.target.files[0])
+   
 }; 
 
 const handleSSCCertChange = (e) => {
-  setNewImage(e.target.files[0])
+  setsscCert(e.target.files[0])
+   
 }; 
 
 const handleHSCCertChange = (e) => {
-  setNewImage(e.target.files[0])
+  sethscCert(e.target.files[0])
+   
 }; 
 
 const handleBachelorCertChange = (e) => {
-  setNewImage(e.target.files[0])
+  setbachelorCert(e.target.files[0])
+   
 }; 
 
 const handleSSCTranscriptChange = (e) => {
-  setNewImage(e.target.files[0])
+  setsscTranscript(e.target.files[0])
+   
 }; 
 
 const handleHSCTranscriptChange = (e) => {
-  setNewImage(e.target.files[0])
+  sethscTranscript(e.target.files[0])
+   
 }; 
 
 const handleBachelorTranscriptChange = (e) => {
-  setNewImage(e.target.files[0])
+  setbachelorTranscript(e.target.files[0])
+   
 }; 
 
 const handleBachelorMarksheetChange = (e) => {
-  setNewImage(e.target.files[0])
+  setbachelorMarksheet(e.target.files[0])
+   
 }; 
 
 const handleLor1Change = (e) => {
-  setNewImage(e.target.files[0])
+  setLor1(e.target.files[0])
+   
 }; 
 
 const handleLor2Change = (e) => {
-  setNewImage(e.target.files[0])
+  setLor2(e.target.files[0])
+   
 }; 
 
 const handleLor3Change = (e) => {
-  setNewImage(e.target.files[0])
+  setLor3(e.target.files[0])
+   
 }; 
 
 const handleSopChange = (e) => {
-  setNewImage(e.target.files[0])
+  setSop(e.target.files[0])
+   
 }; 
 
 const handleCVChange = (e) => {
-  setNewImage(e.target.files[0])
+  setCV(e.target.files[0])
+   
 }; 
 
 const handleBankSolvencyChange = (e) => {
-  setNewImage(e.target.files[0])
+  setBankSolvency(e.target.files[0])
 }; 
   const success = () => {
     alert("Account Created");
@@ -136,202 +154,579 @@ const handleBankSolvencyChange = (e) => {
   
   const onSubmit = event => {
     setError(null)
-    //check if passwords match. If they do, create user in Firebase
-    // and redirect to your logged in page.
+if(docCount>0){
+  alert("uploading your documents. Please Wait.")
+}
+    if(profilePic.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', profilePic, profilePic.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/profilepicture/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+         
+     })
+     .catch(err => console.log(err))
+    }
+
+
+     if(passportPic.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', passportPic, passportPic.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/passportpicture/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+
+
+     if(sscCert.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image',sscCert, sscCert.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/ssccert/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+   
+     
+     if(hscCert.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', hscCert, hscCert.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/hsccert/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+
+
+     if(bachelorCert.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', bachelorCert, bachelorCert.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/bachelorcert/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+    
+     
+     if(sscTranscript.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', sscTranscript, sscTranscript.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/ssctranscript/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+    
+     
+     if(hscTranscript.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', hscTranscript, hscTranscript.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/hsctranscript/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+    
+     
+     if(bachelorTranscript.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', bachelorTranscript, bachelorTranscript.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/bachelortranscript/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+    
+     
+     if(bachelorMarkSheet.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', bachelorMarkSheet, bachelorMarkSheet.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/bachelormarksheet/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+    
+     
+     if(lor1.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', lor1, lor1.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/lor1/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+
+     if(lor2.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', lor2, lor2.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/lor2/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+    
+     
+     if(lor3.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', lor3, lor3.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/lor3/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+
+     if(sop.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', sop, sop.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/sop/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+
+     if(cv.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', cv, cv.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/cv/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+
+     if(bankSolvency.length!=0){ 
+      let form_data = new FormData();
+     form_data.append('image', bankSolvency, bankSolvency.name);
+     form_data.append('email', email);
+ 
+     let url = 'https://ci-gsc.com/banksolvency/';
+     axios.post(url, form_data, {
+       headers: {
+         'content-type': 'multipart/form-data'
+       }
+     })
+     .then(res => {
+        
+     })
+     .catch(err => console.log(err))}
+alert("All Documents Uploaded")
+router.push('/students/student-dashboard');
+    
     event.preventDefault();
   
   };
 
   return (
-      <div style={{paddingTop:"100px"}}>
-    <Container className="text-center custom-container">
-    <Row>
+    <>
+    <>
+    <div
+    className=" mt-24 mt-lg-31"
+    value=""
+  >
+    <div className="container">
+   
+      <div className="mb-15 mb-lg-23">
+        <div className="row">
+          <div className="col-xxxl-9 px-lg-13 px-6">
+          <h3 style={{marginTop:'100px',marginBottom:"100px"}}>Almost done!<br/>We will be requiring the following documents to complete your application </h3>
+            <div className="contact-form bg-white shadow-8 rounded-4 pl-sm-10 pl-4 pr-sm-11 pr-4 pt-15 pb-13">
+              
       
-        <Col>
-          <h3 style={{marginTop:'100px',marginBottom:"100px"}}>Almost done!<br/>We will be requiring the following documents to complete your application for<br/>University Name's Desire Level</h3>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Form 
-            className="custom-form padding-top"
-            onSubmit={onSubmit}>
-        
-            <FormGroup row>
-            <Label for="signUpEmail" sm={6}>Passport Size Photo</Label>
-         
-            <Col sm={6}>
-            <input 
-            type="file"
-            id="image"
-            accept="image/png, image/jpeg"  
-            onChange={handleImageChange} required/>
-            </Col>     
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Scanned copy of Passport</Label>
-              <Col sm={6}>
-              <input 
+              <form action="/">
+                <fieldset>
+                  <div className="row mb-xl-1 mb-9">
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                         Passport Size Photo
+                        </label>
+                        <input 
+                          type="file"
+                          id="image"
+                          accept="image/png, image/jpeg"  
+                          onChange={handleProfilePicChange}
+                          />
+                      </div>
+                    </div>
+                  
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <label
+                          htmlFor="select2"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                         Scanned copy of Passport
+                        </label>
+                        <input 
                 type="file"
                 id="image"
                 accept="image/png, image/jpeg"  
-                onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>SSC Completetion Certificate</Label>
-              <Col sm={6}>
-              <input 
+                onChange={handlePassportPicChange} />
+                      </div>
+                    </div>
+
+                 
+                  </div>
+                  <div className="row mb-xl-1 mb-9">
+              
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                         SSC Completetion Certificate
+                        </label>
+                        <input 
                               type="file"
                               id="image"
                               accept="image/png, image/jpeg"  
-                              onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-            <Label for="signUpEmail" sm={6}>HSC Completion Certificate</Label>
-         
-            <Col sm={6}>
-            <input 
+                              onChange={handleSSCCertChange}/>
+                      </div>
+                    </div>
+                 
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <span><label
+                          htmlFor="select2"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                   HSC Completion Certificate
+                        
+                        </label></span>
+                       
+                        <input 
                               type="file"
                               id="image"
                               accept="image/png, image/jpeg"  
-                              onChange={handleImageChange} required/>
-                   </Col>     
-            </FormGroup>
-            <FormGroup row>
-            <Label for="signUpEmail" sm={6}>Bachelor Completion Certificate</Label>
-         
-            <Col sm={6}>
-            <input 
+                              onChange={handleHSCCertChange}/>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div className="row mb-xl-1 mb-9">
+                  {Desiredleveldata =="postgrad" &&
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                          
+                        >
+                          
+                          Bachelor Completion Certificate
+                        </label>
+                        
+                        <input 
                               type="file"
                               id="image"
                               accept="image/png, image/jpeg"  
-                              onChange={handleImageChange} required/>
-                   </Col>     
-            </FormGroup>
-          
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>SSC Transcript</Label>
-              <Col sm={6}>
-              <input 
+                              onChange={handleBachelorCertChange} />
+                      </div>
+                    </div>}
+             
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                          SSC Transcript
+                        </label>
+                        <input 
                 type="file"
                 id="image"
                 accept="image/png, image/jpeg"  
-                onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>HSC Transcript</Label>
-              <Col sm={6}>
-              <input 
+                onChange={handleSSCTranscriptChange} />
+                      </div>
+                    </div>
+                      
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                         HSC Transcript
+                        </label>
+                        <input 
                   type="file"
                   id="image"
                   accept="image/png, image/jpeg"  
-                  onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Bachelor Transcript</Label>
-              <Col sm={6}>
-              <input 
+                  onChange={handleHSCTranscriptChange} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mb-xl-1 mb-9">
+                  {Desiredleveldata =="postgrad" &&
+                  <div className="col-lg-6">
+                    <div className="form-group">
+                        <label
+                          htmlFor="select2"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                          Bachelor Transcript
+                        </label>
+                        <input 
                 type="file"
                 id="image"
                 accept="image/png, image/jpeg"  
-                onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Bachelor Consolidated Marksheet</Label>
-              <Col sm={6}>
-              <input 
+                onChange={handleBachelorTranscriptChange} />
+                      </div>
+                    </div>}
+
+                    {Desiredleveldata =="postgrad" &&
+                    <div className="col-lg-6">
+                    <div className="form-group">
+                        <label
+                          htmlFor="select2"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                          Bachelor Consolidated Marksheet
+                        </label>
+                        <input 
                     type="file"
                     id="image"
                     accept="image/png, image/jpeg"  
-                    onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Letter of Recommendation 1</Label>
-              <Col sm={6}>
-              <input 
+                    onChange={handleBachelorMarksheetChange} />
+                      </div>
+                    </div>}
+                    
+
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <label
+                          htmlFor="select2"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                          Letter of Recommendation 
+                        </label>
+                        <input 
                   type="file"
                   id="image"
                   accept="image/png, image/jpeg"  
-                  onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Letter of Recommendation 2</Label>
-              <Col sm={6}>
-              <input 
+                  onChange={handleLor1Change} />
+                      </div>
+                    </div>
+
+                  </div>
+                  <div className="row mb-xl-1 mb-9">
+                  {Desiredleveldata =="postgrad" &&
+                    
+                    <div className="col-lg-6">
+                    <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                        Letter of Recommendation 2
+                        </label>
+                        <input 
                     type="file"
                     id="image"
                     accept="image/png, image/jpeg"  
-                    onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Letter of Recommendation 3</Label>
-              <Col sm={6}>
-              <input 
+                    onChange={handleLor2Change}/>
+                      </div>
+                    </div>
+                    }
+                      {Desiredleveldata =="postgrad" &&
+                         <div className="col-lg-6">
+                    <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                        Letter of Recommendation 3
+                        </label>
+                        <input 
                       type="file"
                       id="image"
                       accept="image/png, image/jpeg"  
-                      onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Statement of Purpose</Label>
-              <Col sm={6}>
-              <input 
+                      onChange={handleLor3Change} />
+                      </div>
+                    </div>
+}
+                  </div>
+                  <div className="row mb-xl-1 mb-9">
+             
+                    <div className="col-lg-6">
+                    <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                        Statement of Purpose
+                        </label>
+                        <input 
                       type="file"
                       id="image"
                       accept="image/png, image/jpeg"  
-                      onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Curriculum Vitae</Label>
-              <Col sm={6}>
-              <input 
+                      onChange={handleSopChange} />
+                      </div>
+                    </div>
+                    
+                         <div className="col-lg-6">
+                    <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                        Curriculum Vitae
+                        </label>
+                        <input 
                     type="file"
                     id="image"
                     accept="image/png, image/jpeg"  
-                    onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="signUpPassword" sm={6}>Bank Solvency Statement</Label>
-              <Col sm={6}>
-              <input 
-                      type="file"
-                      id="image"
-                      accept="image/png, image/jpeg"  
-                      onChange={handleImageChange} required/>
-              </Col>
-            </FormGroup>
+                    onChange={handleCVChange} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mb-xl-1 mb-9">
          
-          
-            <FormGroup row>
-             <Col>
-               <Button>Submit</Button>
-               <span style={{paddingRight:"10px"}}></span>
-               <Button>Skip</Button>
-             </Col>
-           
-             { error && <Alert color="danger">{error}</Alert>}
-           </FormGroup>
-           <FormGroup row>
-            <Col>
-              Already have an account? <Link href="/login">Sign In</Link>
-            </Col>
-          </FormGroup>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+                    <div className="col-lg-6">
+                    <div className="form-group">
+                        <label
+                          htmlFor="namedash"
+                          className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                        >
+                        Bank Solvency Statement
+                        </label>
+                        <input 
+                      type="file"
+                      id="image"
+                      accept="image/png, image/jpeg"  
+                      onChange={handleBankSolvencyChange}/>
+                      </div>
+                    </div>
+                    
+
+                  </div>
+                 
+               
+                  
+                 
+                 <span> <input
+                        disabled ={false}
+                        type="button"
+                        value="Next"
+                        className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                        onClick={() => onSubmit()}
+                   /></span><span style={{paddingLeft:"10px"}}>
+                  </span>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+    
+    </>
+     
+    </>
   )
 }
 

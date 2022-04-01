@@ -34,8 +34,8 @@ const DashboardMain = () => {
       let res = await fetch('https://ci-gsc.com/application/?format=json');
 
       let todoList = await res.json();
-
-      setList(todoList)
+      let filtered = await todoList.filter(function(val, i, a) {return val.status=="application started"||val.status=="applied"||val.status=="approved"})
+      setList(filtered)
     } catch (e) {
       console.log(e);
   }
@@ -55,6 +55,17 @@ fetchMyAPI()
   const StartApply =  (item) =>  {
 
     item.status = "application started"
+   
+     axios
+    .put(`https://ci-gsc.com/application/${item.id}/`, item)
+    .then((res) => refreshList(1),alert("status changed to applied"))
+    .catch((err) => console.log(err));
+  
+  return;
+  }
+  const Archive =  (item) =>  {
+
+    item.status = "archived"
    
      axios
     .put(`https://ci-gsc.com/application/${item.id}/`, item)
@@ -136,13 +147,13 @@ console.log(List)
                   <table className="table table-striped">
                     <thead>
                       <tr className="th-sticky">
-                        <th className="th-sticky"
+                        <th    className="th-sticky"
                           scope="col"
                           className="pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Application ID
                         </th>
-                        <th className="th-sticky"
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
@@ -154,13 +165,13 @@ console.log(List)
                         >
                          Applied Intake Date
                         </th>
-                        <th className="th-sticky"
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
                           Client Phone
                         </th>
-                        <th className="th-sticky"
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >
@@ -173,11 +184,11 @@ console.log(List)
                           Application Assignees
                         </th>
                         
-                        <th className="th-sticky"
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Product</th>
-                       <th className="th-sticky"
+                       <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Partner</th>
@@ -185,23 +196,23 @@ console.log(List)
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Partner Branches</th>
-<th className="th-sticky"
+<th
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Partner's Client ID'</th>
-                        <th className="th-sticky"
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Workflow</th>
-                        <th className="th-sticky"
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         >Application Start By</th>
 
-<th className="th-sticky"
+<th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
-                        >Application Start By Branch</th><th className="th-sticky"
+                        >Application Start By Branch</th><th    style={{position:"sticky!important",top:"0"}}
                         scope="col"
                         className="border-0 font-size-4 font-weight-normal"
                       >Status</th>
@@ -209,11 +220,11 @@ console.log(List)
                         scope="col"
                         className="border-0 font-size-4 font-weight-normal"
                       >Stage in Queue</th>
-                      <th className="th-sticky"
+                      <th  className="th-sticky"
                         scope="col"
                         className="border-0 font-size-4 font-weight-normal"
                       >Created At</th>
-                        <th className="th-sticky"
+                        <th  className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
                         ></th>
@@ -443,6 +454,21 @@ console.log(List)
                               }}
                             >
                               Re-apply
+                            </a>
+                          </div>
+                        </td>)}
+                        {item.status =="rejected" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                Archive(item);
+                              }}
+                            >
+                              Archive
                             </a>
                           </div>
                         </td>)}

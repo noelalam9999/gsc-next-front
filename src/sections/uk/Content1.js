@@ -110,7 +110,7 @@ const Content = () => {
                 <p className="text-gray font-size-5 mb-10 mb-lg-16">
                   To Learn more
                 </p>
-                <Link href="/#">
+                <Link href="/contact">
                   <a className="btn btn-green btn-h-60 text-white w-180 rounded-5 text-uppercase">
                     Contact Us
                   </a>

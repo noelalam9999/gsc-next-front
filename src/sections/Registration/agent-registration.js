@@ -117,7 +117,7 @@ refreshList = () => {
     .get("https://ci-gsc.com/agents")
     .then((res) => this.success())
     .catch((err) => console.log(err));
-};
+}; v
 
 handleChange = (e) => {
   console.log(e)

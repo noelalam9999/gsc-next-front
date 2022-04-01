@@ -10,67 +10,163 @@ import iconF2 from "../../assets/image/l1/png/internship.png";
 import iconF3 from "../../assets/image/l1/png/offer-letter.png";
 import iconF4 from "../../assets/image/l1/png/post-study-work-visa.png";
 import iconF5 from "../../assets/image/l1/png/work-while-studying.png";
-
+import Unilogo from "../../sections/uni/Unilogo";
+import { useRouter } from 'next/router';
+import { isTemplateMiddle } from "typescript";
 
 const defaultCountries = [
   { value: "uk", label: "United Kingdom" },
   { value: "usa", label: "United States of America" },
-  { value: "eur", label: "Europe" },
-  { value: "can", label: "Canada" },
-  { value: "aus", label: "Australia" },
+  { value: "europe", label: "Europe" },
+  { value: "canada", label: "Canada" },
+  { value: "australia", label: "Australia" },
 ];
 
 const SearchGrid = () => {
+  
   const [userType, setUserType] = useState("");
  const { authUser, loading,signOut } = useAuth();
- 
- const [count, setCount] = useState(8);
-
- const [config,setConfig] = useState({
-   undergrad:'',
-   diploma:'',
-   masters:'',
-   phd:'',
-   
- })
-
- function handleCallback(child){
-setConfig(child)
- }
- 
- console.log(count)
- function Loadmore (){
-
-setCount(count+8)
-
- }
   const [List, setList] = useState([]);
+  let [filtered, setfiltered] = useState([]);
   const [userList, setUserList] = useState([]);
-  useEffect(() =>  {
+  const [count, setCount] = useState(8);
+  const [country,setCountry] =useState("");
+  const router = useRouter();
+  var [name,setName] =useState("");
+  const [config,setConfig] = useState({
+    Undergraduate: true,
+    Diploma:true,
+    Masters:true,
+    PhD:true,
+    threetofour:true,
+    twotothree:true,
+    onetotwo:true,
+    zerotoone:true,
+    feelower:'',
+    feehigher:''
+    
+  })
 
-    async function fetchMyAPI() {
+  const onCountryChange = selectedOption => {
+    setCountry(selectedOption);
+  };
+
+  const handleSubmit = () => {
+    if (name=="")
+    {
+     name="all"
+    }
+    router.push('/search/'+country.value + '/' + name );
+  }
+
+  async function fetchMyAPI() {
     try {
 
       const res = await fetch('https://ci-gsc.com/uni/?format=json');
-      const filtered = todoList.filter(function(val, i, a) {return val.country=="Australia";});
-      const todoList = await res.json();
-      setList(todoList)
- 
-  
-
-
       
+      const todoList = await res.json();
+      
+
+      let filtered = []
+      let filtered_1 = []
+      let filtered_2 = []
+      let filtered_3 = []
+      let filtered_4 = []
+      let filtered_ranking = []
+
+      if(config.Undergraduate == true){
+          filtered = filtered.concat(todoList.filter(function(val, i, a) {return val.UGfee!=null;}))
+      }
+    
+      if(config.Diploma ==true){
+      filtered = filtered.concat(todoList.filter(function(val, i, a) {return val.Diplomafee!=null;}))
+      }
+      
+      if(config.PhD ==true){
+      filtered = filtered.concat(todoList.filter(function(val, i, a) {return val.PGfee!=null;}))
+      }
+      if(config.threetofour ==true){
+    
+       filtered_4 = filtered.filter(function(val, i, a) {return val.ranking<=4 && val.ranking>=3;})
+      }
+      if(config.twotothree ==true){
+      
+        filtered_3 = filtered.filter(function(val, i, a) {return val.ranking<=3 && val.ranking>=2;})
+       } 
+       if(config.onetotwo ==true){
+     
+        filtered_2 = filtered.filter(function(val, i, a) {return val.ranking<=2 && val.ranking>=1;})
+       }
+       if(config.zerotoone ==true){
+   
+        filtered_1 = filtered.filter(function(val, i, a) {return val.ranking<=1 && val.ranking>-1;})
+       }
+       filtered_ranking = filtered_ranking.concat(filtered_1,filtered_2,filtered_3,filtered_4)
+      const uniqueNames = filtered_ranking.filter((val,id,array) => array.indexOf(val) == id);
+
+     
+      setList(uniqueNames)
+ 
     } catch (e) {
       console.log(e);
   }
     }
-    
 
+
+  useEffect(() =>  {
 
  fetchMyAPI()
 
+  },[config])
 
-  },[])
+
+
+ const FeeRange = (e) => {
+   console.log(e[0])
+  setConfig( {
+    ...config,
+    "feelower": e[0],
+    "feehigher":e[1]
+  })
+
+
+  }
+
+
+  const handleDegreeCallback = (e) => {
+   if (e=="3-4" || e=="2-3" || e=="1-2" || e=="1>" ){
+    e = (e=="3-4") ? "threetofour" : (e=="2-3") ? "twotothree" : (e=="1-2") ? "onetotwo" : (e=="1>") ? "zerotoone" : "threetofour"
+
+   }
+  console.log(e)
+   if(config[e]==true){
+    setConfig( {
+      ...config,
+      [e]: false,
+    })
+
+   }
+   else{
+    setConfig( {
+      ...config,
+      [e]: true,
+    })
+
+   }
+  }
+
+
+  console.log(config)
+
+function Loadmore (){
+
+ setCount(count+8)
+ 
+  }
+
+
+
+
 
 
 
@@ -81,7 +177,7 @@ setCount(count+8)
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-4 col-xs-8">
-                <Sidebar parentCallback = {handleCallback}/>
+                <Sidebar parentCallback = {handleDegreeCallback} FeeRange = {FeeRange} />
               </div>
               <div className="col-12 col-md-8 col-xs-12 ">
                 {/* <!-- form --> */}
@@ -97,6 +193,8 @@ setCount(count+8)
                           type="text"
                           id="keyword"
                           placeholder="University of Regina"
+                          onChange={(event) => setName(event.target.value)}
+                          value={name}
                         />
                         <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
                           <i className="icon icon-zoom-2 text-primary font-weight-bold"></i>
@@ -108,6 +206,8 @@ setCount(count+8)
                           options={defaultCountries}
                           className="pl-8 h-100 arrow-3 font-size-4 d-flex align-items-center w-100"
                           border={false}
+                          onChange={onCountryChange}
+                          value={country}
                         />
 
                         <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6">
@@ -117,16 +217,20 @@ setCount(count+8)
                       {/* <!-- ./select-city ends --> */}
                     </div>
                     <div className="button-block">
-                      <button className="btn btn-primary line-height-reset h-100 btn-submit w-100 text-uppercase">
-                        Search
-                      </button>
+                    <input
+               
+                              type="button"
+                              value="Search"
+                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                              onClick={() => handleSubmit()}
+                         />
                     </div>
                   </div>
                 </form>
                 <div className="pt-12 ml-lg-0 ml-md-15">
                   <div className="d-flex align-items-center justify-content-between">
                     <h5 className="font-size-4 font-weight-normal text-default-color">
-                      <span className="heading-default-color">120{" "}</span>
+                      <span className="heading-default-color">{List.length}{" "}</span>
                       results for{" "}
                       <span className="heading-default-color">Institutes</span>
                     </h5>
@@ -156,9 +260,7 @@ setCount(count+8)
                            <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                              <div className="d-block mb-7">
                                <Link href="/#">
-                                 <a>
-                                   <img height="80px" src={imgF1} alt="" />
-                                 </a>
+                             <Unilogo email={item.email}/>
                                </Link>
                              </div>
                              <Link href="/#">
@@ -178,7 +280,7 @@ setCount(count+8)
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                                      <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
-                                     UK
+                                    {item.country}
                                    </a>
                                  </Link>
                                </li>
@@ -186,18 +288,46 @@ setCount(count+8)
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                                      <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
-                                     Ranking : 3.9/5
+                                     Ranking : {item.ranking}
                                    </a>
                                  </Link>
                                </li>
+                               {item.UGfee !=null && 
+                                  <li>
+                                  <Link href="/#">
+                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                                      <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
+                                      Average UG Fee: {item.UGfee}
+                                    </a>
+                                  </Link>
+                                </li>
+                               
+                               }
+                            {item.PGfee !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                                      <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
-                                     Average Annual Fee: $14k-19k
+                                     Average PG Fee: {item.PGfee}
                                    </a>
                                  </Link>
                                </li>
+
+}
+
+{item.Diplomafee !=null && 
+                               <li>
+                                 <Link href="/#">
+                                   <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
+                                     <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
+                                     Average Annual Diploma Fee: {item.Diplomafee}
+                                   </a>
+                                 </Link>
+                               </li>
+
+}
+
+{item.Accomodation !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -206,6 +336,8 @@ setCount(count+8)
                                    </a>
                                  </Link>
                                </li>
+}
+{item.Internship !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -214,6 +346,8 @@ setCount(count+8)
                                    </a>
                                  </Link>
                                </li>
+                               }
+                               {item.OfferLetter !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -222,6 +356,8 @@ setCount(count+8)
                                    </a>
                                  </Link>
                                </li>
+}
+{item.OfferLetter !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -230,6 +366,8 @@ setCount(count+8)
                                    </a>
                                  </Link>
                                </li>
+                               }
+                                   {item.OfferLetter !=null && 
                                <li>
                                  <Link href="/#">
                                    <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
@@ -238,12 +376,12 @@ setCount(count+8)
                                    </a>
                                  </Link>
                                </li>
-             
+}
                              </ul>
                              <p className="mb-7 font-size-4 text-gray">
                              </p>
                              <div className="card-btn-group">
-                               <Link href="/signup">
+                               <Link href={'/university/'+item.id}>
                                  <a className="btn btn-green text-uppercase btn-medium rounded-3">
                                    Apply Now
                                  </a>
@@ -270,8 +408,8 @@ setCount(count+8)
                    
                     </div>
                   </div>
-                  <div  className="text-center pt-5 pt-lg-13">
-               <button style={{border:"none",background:"none"}} onClick={Loadmore} >
+                  <div className="text-center pt-5 pt-lg-13">
+                  <button style={{border:"none",background:"none"}} onClick={Loadmore} >
                       <a className="text-green font-weight-bold text-uppercase font-size-3 d-flex align-items-center justify-content-center">
                         Load More{" "}
                         <i className="fas fa-sort-down ml-3 mt-n2 font-size-4"></i>

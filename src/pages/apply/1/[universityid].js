@@ -49,6 +49,13 @@ const SignUp = () => {
   
   IntendedSemester:"spring",
   DesiredSubject:"Science",
+  work_experience:"",
+  prev_institution:"",
+  parents_name:"",
+  parents_contact_number:"",
+  parents_email:"",
+  parents_profession:"",
+  extracurricular:"",
   added_by:""
 });
   const { createUserWithEmailAndPassword } = useAuth();
@@ -195,7 +202,7 @@ const SignUp = () => {
            </FormGroup>
            <FormGroup row>
             <Col>
-              Already have an account? <Link href="/login">Sign In</Link>
+              Already have an account? <Link href={"/apply/login/"+uniId}>Sign In</Link>
             </Col>
           </FormGroup>
           </Form>

@@ -34,8 +34,8 @@ const DashboardMain = () => {
       let res = await fetch('https://ci-gsc.com/application/?format=json');
 
       let todoList = await res.json();
-
-      setList(todoList)
+      let filtered = await todoList.filter(function(val, i, a) {return val.status=="application started"||val.status=="applied"||val.status=="approved"})
+      setList(filtered)
     } catch (e) {
       console.log(e);
   }
@@ -55,6 +55,17 @@ fetchMyAPI()
   const StartApply =  (item) =>  {
 
     item.status = "application started"
+   
+     axios
+    .put(`https://ci-gsc.com/application/${item.id}/`, item)
+    .then((res) => refreshList(1),alert("status changed to applied"))
+    .catch((err) => console.log(err));
+  
+  return;
+  }
+  const Archive =  (item) =>  {
+
+    item.status = "archived"
    
      axios
     .put(`https://ci-gsc.com/application/${item.id}/`, item)
@@ -443,6 +454,21 @@ console.log(List)
                               }}
                             >
                               Re-apply
+                            </a>
+                          </div>
+                        </td>)}
+                        {item.status =="rejected" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                            <a
+                            
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                Archive(item);
+                              }}
+                            >
+                              Archive
                             </a>
                           </div>
                         </td>)}

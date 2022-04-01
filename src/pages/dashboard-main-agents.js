@@ -8,7 +8,8 @@ import GlobalContext from "../context/GlobalContext";
 import imgP1 from "../assets/image/table-one-profile-image-1.png";
 import axios from 'axios';
 import ProfilePicture from "../sections/agents/ProfilePicture";
-
+import moment from 'moment'
+import Moment from 'react-moment';
 const Services = [
   { value: "Ticketing", label: "Ticketing" },
   { value: "Visa", label: "Visa" },
@@ -35,7 +36,8 @@ const DashboardMain = () => {
       const res = await fetch('https://ci-gsc.com/agents/?format=json');
       console.log(res)
       const todoList = await res.json();
-      setList(todoList)
+      let filtered = await todoList.filter(function(val, i, a) {return val.active_status=="active";})
+      setList(filtered)
     } catch (e) {
       console.log(e);
   }
@@ -272,17 +274,26 @@ return;
                         <th className="th-sticky"
                           scope="col"
                           className="border-0 font-size-4 font-weight-normal"
+                        >Created At</th>
+                      <th className="th-sticky"
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
                         >Applications Count</th>
-                    
-                       
-                        
+                           <th className="th-sticky"
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        ></th>
+                           <th className="th-sticky"
+                          scope="col"
+                          className="border-0 font-size-4 font-weight-normal"
+                        ></th> 
                      
                         
                       </tr>
                     </thead>
                     <tbody>
                      
-                      { List.map((item, index)=>(
+                      { List.reverse().map((item, index)=>(
                         <tr className="border border-color-2">
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
                           <Link href={`/agent/`+item.id}>
@@ -373,6 +384,24 @@ return;
                         </td>
                         <td className="table-y-middle py-7 min-width-px-110 pr-0">
                           <div className="">
+                            <Link href="/contact">
+                              <a className="font-size-3 font-weight-bold text-black-2 text-uppercase">
+                              <Moment format="YYYY/MM/DD">{item.created_at}</Moment>
+                              </a>
+                            </Link>
+                          </div>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-110 pr-0">
+                          <div className="">
+                            <Link href="/contact">
+                              <a className="font-size-3 font-weight-bold text-black-2 text-uppercase">
+                               
+                              </a>
+                            </Link>
+                          </div>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-110 pr-0">
+                          <div className="">
                             <Link href={"/agent/edit/"+item.id}>
                               <a className="font-size-3 font-weight-bold text-green text-uppercase">
                                 Edit
@@ -413,7 +442,21 @@ return;
                           <div className="">
                             <a
                               href="/#"
-                              className="font-size-3 font-weight-bold text-black-2 text-uppercase"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                Approve(item);
+                              }}
+                            >
+                             Make Active
+                            </a>
+                          </div>
+                        </td>)}
+                        {item.active_status =="" && (<td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <div className="">
+                            <a
+                              href="/#"
+                              className="font-size-3 font-weight-bold text-green-2 text-uppercase"
                               onClick={(e) => {
                                 e.preventDefault();
                                 Approve(item);

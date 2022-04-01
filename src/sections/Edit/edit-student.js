@@ -180,28 +180,61 @@ const EditStudent =(props) => {
   const [StudyDestinationdata,setStudyDestination] = useState("")
   const [IntendedSemesterdata,setIntendedSemester] = useState("")
   const [DesiredSubjectdata,setDesiredSubject] = useState("")
+  const [HSCGPA, setHSCGPA] = useState("");
+  const [UGCGPA, setUGCGPA] = useState("");
+
+  const [TOEFL, setTOEFL] =  useState("");
+  const [PTE, setPTE] =  useState("");
+  const [EnglishTestdata, setEnglishTest] =  useState("");
+  const [Duolingo, setDuolingo] =  useState("");
+  const [work_experience, setwork_experience] = useState("");
+  const [prev_institution, setprev_institution] = useState("");
+  const [parents_name, setparents_name] = useState("");
+  const [parents_contact_number, setparents_contact_number] = useState("");
+  const [parents_email, setparents_email] = useState("");
+  const [parents_profession, setparents_profession] = useState("");
+  const [extracurricular, setextracurricular] = useState("");
+
   const [added_by,setadded_by] = useState("")
-  const [record,setRecord] = useState( {  
-    email:"",
-    name:"",
-    mobile:"",
-    country:"",
-    gender:"female",
-    birth_date:"2",
-    birth_month:"feb",
-    birth_year:"1991",
-    address1:"",
-    address2:"",
-    prev_qualification:"",
-    IELTSBand:"",
-    Desiredlevel:"",
-    StudyDestination:"",
-    IntendedSemester:"",
-    DesiredSubject:"",
-    added_by:""
+
+  const [student_record,setRecord] = useState( {  
+    id:'', 
+  email: '',
+  name:"",
+  mobile:"",
+  Desiredlevel:"",
+  StudyDestination:"",
+  country:"",
+  gender:"",
+  birth_date:"",
+  birth_month:"",
+  birth_year:"",
+  address1:"",
+  address2:"",
+  prev_qualification:"Alevel",
+  IELTSBand:"",
+  TOEFL:"",
+  Duolingo:"",
+  PTE:"",
+  HSCGPA:"",
+  UGCGPA:"",
+  IntendedSemester:"spring",
+  DesiredSubject:"Science",
+
+  work_experience:"",
+  prev_institution:"",
+  parents_name:"",
+  parents_contact_number:"",
+  parents_email:"",
+  parents_profession:"",
+  extracurricular:"",
+
+  added_by:""
   })
   const router = useRouter()
+
   async function fetchMyAPI() {
+
     try {
 
 const res = await fetch('https://ci-gsc.com/students/?format=json');
@@ -209,29 +242,43 @@ const res = await fetch('https://ci-gsc.com/students/?format=json');
 const todoList = await res.json();
 let filtered = await todoList.filter(function(val, i, a) {return val.id==props.studentId;})
 
-setId(filtered[0].id)
-setName(filtered[0].name)
-setEmail(filtered[0].email)
-setMobile(filtered[0].mobile)
-setCountry(filtered[0].country)
-setGender(filtered[0].gender)
-setBirthDate(filtered[0].birth_date)
-setBirthMonth(filtered[0].birth_month)
-setBirthYear(filtered[0].birth_year)
-setAddress1(filtered[0].address1)
-setAddress2(filtered[0].address2)
-setprev_qualification_data(filtered[0].prev_qualification)
-setIELTSBand(filtered[0].IELTSBand)
-setDesiredlevel(filtered[0].Desiredlevel)
-setStudyDestination(filtered[0].StudyDestination)
-setIntendedSemester(filtered[0].IntendedSemester)
-setDesiredSubject(filtered[0].DesiredSubject)
-setadded_by(filtered[0].added_by)
+setId(filtered[0].id )
+setName(filtered[0].name== null ? "" :filtered[0].name)
+setEmail(filtered[0].email== null ? "" :filtered[0].email)
+setMobile(filtered[0].mobile== null ? "" :filtered[0].mobile)
+setCountry(filtered[0].country== null ? "" :filtered[0].country)
+setGender(filtered[0].gender== null ? "" :filtered[0].gender)
+setBirthDate(filtered[0].birth_date== null ? "" :filtered[0].birth_date)
+setBirthMonth(filtered[0].birth_month== null ? "" :filtered[0].birth_month)
+setBirthYear(filtered[0].birth_year== null ? "" :filtered[0].birth_year)
+setAddress1(filtered[0].address1== null ? "" :filtered[0].address1)
+setAddress2(filtered[0].address2== null ? "" :filtered[0].address2)
+setprev_qualification_data(filtered[0].prev_qualification== null ? "" :filtered[0].prev_qualification)
+setIELTSBand(filtered[0].IELTSBand== null ? "" :filtered[0].IELTSBand)
+setDesiredlevel(filtered[0].Desiredlevel== null ? "" :filtered[0].Desiredlevel)
+setStudyDestination(filtered[0].StudyDestination== null ? "" :filtered[0].StudyDestination)
+setIntendedSemester(filtered[0].IntendedSemester== null ? "" :filtered[0].IntendedSemester)
+setDesiredSubject(filtered[0].DesiredSubject== null ? "" :filtered[0].DesiredSubject)
+setadded_by(filtered[0].added_by== null ? "" :filtered[0].added_by)
+setHSCGPA(filtered[0].HSCGPA== null ? "" :filtered[0].HSCGPA)
+setUGCGPA(filtered[0].UGCGPA== null ? "" :filtered[0].UGCGPA)
+setTOEFL(filtered[0].TOEFL== null ? "" : filtered[0].TOEFL)
+setPTE(filtered[0].PTE == null ? "" : filtered[0].PTE)
+setDuolingo(filtered[0].Duolingo == null ? "" : filtered[0].Duolingo)
 
+setwork_experience(filtered[0].work_experience == null ? "" : filtered[0].work_experience)
+setprev_institution(filtered[0].prev_institution == null ? "" : filtered[0].prev_institution)
+setparents_name(filtered[0].parents_name == null ? "" : filtered[0].parents_name)
+setparents_contact_number(filtered[0].parents_contact_number == null ? "" : filtered[0].parents_contact_number)
+setparents_email(filtered[0].parents_email == null ? "" : filtered[0].parents_email)
+setparents_profession(filtered[0].parents_profession == null ? "" : filtered[0].parents_profession)
+setextracurricular(filtered[0].extracurricular == null ? "" : filtered[0].extracurricular)
 
+console.log(filtered)
 } catch (e) {
 console.log(e);
 }
+
 }
 
 
@@ -247,7 +294,6 @@ useEffect(() =>  {
  const success = () => {
     alert("Student has been updated");
     
-     
        if(newImage.length!=0){ 
          let form_data = new FormData();
         form_data.append('image', newImage, newImage.name);
@@ -286,10 +332,6 @@ useEffect(() =>  {
        }
      
       
-      
-    
-      
-    
         if(newImage3.length!=0){
         let form_data = new FormData();
         form_data.append('image', newImage3, newImage3.name);
@@ -305,6 +347,10 @@ useEffect(() =>  {
           alert("Profile Picture Uploaded");
         })
         .catch(err => console.log(err))}
+
+
+      
+
       }
     
   
@@ -348,24 +394,38 @@ useEffect(() =>  {
 const handleSubmit = (item) => { 
   setDisable(false)
 
-  item.id = id,
-  item.email=email,
-  item.name=name,
-  item.mobile=mobile,
-  item.country=typeof country =="object" ? country.value : country,
-  item.gender= typeof genderdata  == "object" ? genderdata.value : genderdata,
-  item.birth_date=typeof birth_date_data == "object" ? birth_date_data.value : birth_date_data,
-  item.birth_month=typeof birth_month_data == "object" ? birth_month_data.value : birth_month_data,
-  item.birth_year=typeof birth_year_data == "object" ? birth_year_data.value : birth_year_data,
-  item.address1=address1,
-  item.address2=address2,
-  item.prev_qualification=typeof prev_qualification_data == "object" ? prev_qualification_data.value : prev_qualification_data,
-  item.IELTSBand=typeof IELTSBanddata == "object" ? IELTSBanddata.value : IELTSBanddata,
-  item.Desiredlevel=typeof Desiredleveldata == "object" ? DesiredSubjectdata.value : DesiredSubjectdata,
-  item.StudyDestination=typeof StudyDestinationdata == "object" ? StudyDestinationdata.value : StudyDestinationdata,
-  item.IntendedSemester=typeof IntendedSemesterdata == "object" ? IntendedSemesterdata.value : IntendedSemesterdata,
-  item.DesiredSubject=typeof DesiredSubjectdata == "object" ? DesiredSubjectdata.value : DesiredSubjectdata 
- item.added_by = added_by
+  student_record.id = id,
+  student_record.email=email,
+  student_record.name=name,
+  student_record.mobile=mobile,
+  student_record.country=typeof country =="object" ? country.value : country,
+  student_record.gender= typeof genderdata  == "object" ? genderdata.value : genderdata,
+  student_record.birth_date=birth_date_data == null ? "" : birth_date_data,
+  student_record.birth_month=birth_month_data == null ? "" : birth_month_data,
+  student_record.birth_year=birth_year_data== null ? "" : birth_year_data,
+  student_record.address1=address1 == null ? "" : address1,
+  student_record.address2=address2 == null ? "" : address2,
+  student_record.prev_qualification=prev_qualification_data== null ? "" : prev_qualification_data,
+  student_record.IELTSBand=IELTSBand == null ? "" : IELTSBand,
+  student_record.TOEFL=TOEFL == null ? "" : TOEFL,
+  student_record.Duolingo=Duolingo == null ? "" : Duolingo,
+  student_record.PTE=PTE == null ? "" : PTE,
+  student_record.UGCGPA=UGCGPA == null ? "" : UGCGPA,
+  student_record.HSCGPA=HSCGPA == null ? "" : HSCGPA, 
+  student_record.Desiredlevel=typeof Desiredleveldata == "object" ? Desiredleveldata.value : Desiredleveldata,
+  student_record.StudyDestination=typeof StudyDestinationdata == "object" ? StudyDestinationdata.value : StudyDestinationdata,
+  student_record.IntendedSemester=typeof IntendedSemesterdata == "object" ? IntendedSemesterdata.value : IntendedSemesterdata,
+  student_record.DesiredSubject= typeof DesiredSubjectdata == "object" ? DesiredSubjectdata.value : DesiredSubjectdata,
+  
+  student_record.work_experience=work_experience == null ? "" : work_experience,
+  student_record.prev_institution=prev_institution == null ? "" : prev_institution,
+  student_record.parents_name=parents_name == null ? "" : parents_name,
+  student_record.parents_contact_number=parents_contact_number == null ? "" : parents_contact_number,
+  student_record.parents_email=parents_email == null ? "" : parents_email,
+  student_record.parents_profession=parents_profession == null ? "" : parents_profession,
+  student_record.extracurricular=extracurricular == null ? "" : extracurricular,
+  
+  student_record.added_by = added_by == null ? "" : added_by
 
   if (item.id) {
     console.log(item)
@@ -376,11 +436,6 @@ const handleSubmit = (item) => {
     return;
   }
 
-
-
- 
-
-      
 };
 
 const handleImageChange = (e) => {
@@ -765,6 +820,132 @@ function RouterPush(){
                               <span className="h-100 w-px-50 pos-abs-tl d-flex align-items-center justify-content-center font-size-6"></span>
                             </div>
                           </div>
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Work Experience
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="work_experience"
+                                placeholder="Your City"
+                                onChange={(event) => setwork_experience(event.target.value)}
+                                value={work_experience}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Previous Institution
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="prev_institution"
+                                placeholder="Your City"
+                                onChange={(event) => setprev_institution(event.target.value)}
+                                value={prev_institution}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Parents Name
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="parents_name"
+                                placeholder="Your City"
+                                onChange={(event) => setparents_name(event.target.value)}
+                                value={parents_name}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                               Parents Contact Number
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="parents_contact_number"
+                                placeholder="Your City"
+                                onChange={(event) => setparents_contact_number(event.target.value)}
+                                value={parents_contact_number}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Parents Email
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="parents_email"
+                                placeholder="Your City"
+                                onChange={(event) => setparents_email(event.target.value)}
+                                value={parents_email}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Parents Profession
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="parents_profession"
+                                placeholder="Your City"
+                                onChange={(event) => setparents_profession(event.target.value)}
+                                value={parents_profession}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                          <div className="form-group">
+                              <label
+                                htmlFor="namedash"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Extra-curricular
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control h-px-48"
+                                name="extracurricular"
+                                placeholder="Your City"
+                                onChange={(event) => setextracurricular(event.target.value)}
+                                value={extracurricular}
+                              />
+                            </div>
+                          </div>
                         </div>
                       
                        
@@ -778,7 +959,7 @@ function RouterPush(){
                           <input
                               disabled ={false}
                               type="button"
-                              value="Go to Home"
+                              value="Go back Home"
                               className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
                               onClick={() => RouterPush()}
                          /></span>

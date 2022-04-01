@@ -6,13 +6,70 @@ import imgM from "../../assets/image/l1/png/message.png";
 import { useRouter } from 'next/router';
 import { IoIosArrowRoundUp } from "react-icons/io";
 import { animateScroll } from "react-scroll";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+import Head from "next/head";
+//import { MessengerChat } from 'react-messenger-chat-plugin';
+export function init() {
+  var chatbox = document.getElementById("fb-customer-chat");
+  chatbox.setAttribute("page_id", "101319619177236"); // TODO: move to args
+  chatbox.setAttribute("attribution", "biz_inbox");
 
+  window.fbAsyncInit = function () {
+    FB.init({
+      xfbml: true,
+      version: "v11.0",
+    });
+  };
+
+  (function (d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, "script", "facebook-jssdk");
+}
+
+/**
+ *
+ */
+export function cleanup() {
+  (function (d, id) {
+    var target = d.getElementById(id);
+    if (target) {
+      target.parentNode.removeChild(target);
+    }
+  })(document, "facebook-jssdk");
+
+  delete window.FB;
+}
+
+export function Facebook1() {
+  useEffect(() => {
+    console.log("Facebook1");
+    init();
+
+    return () => {
+      cleanup();
+    };
+  }, []);
+
+  return (
+    <div>
+      <div id="fb-root"></div>
+
+      <div id="fb-customer-chat" className="fb-customerchat"></div>
+    </div>
+  );
+}
 const Footer = () => {
   const gContext = useContext(GlobalContext);
   const router = useRouter();
   const [scroll, setScroll] = useState(0);
   const [top, setTop] = useState(0);
-
+  const [email,setEmail] =useState("");
   
   useEffect(() => {
     setTop(100);
@@ -30,8 +87,73 @@ const Footer = () => {
   };
   return (
     <>
+      <Head>
+      <link
+            href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+            rel="stylesheet"
+          ></link>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></link>
+       </Head>
       <footer className="footer bg-ebony-clay dark-mode-texts">
         <div className="container">
+        <div className="pt-11 pt-lg-20 pb-13 pb-lg-20 border-bottom border-width-1 border-default-color-2">
+            <div className="row justify-content-center ">
+              <div
+                className="col-xl-3 col-lg-12"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+              >
+                {/* <!-- cta-content start --> */}
+                <div className="pb-xl-0 pb-9 text-xl-left text-center">
+                  <h2 className="text-white font-size-8 mb-4">
+                    Subscribe to our Newsletter
+                  </h2>
+                  <p className="text-hit-gray font-size-5 mb-0">
+                   
+                  </p>
+                </div>
+                {/* <!-- cta-content end --> */}
+              </div>
+              <div
+                className="col-xl-6 col-lg-12"
+                data-aos="fade-left"
+                data-aos-duration="1000"
+              >
+            
+                {/* <!-- cta-btns start --> */}
+        
+                <div className="btns d-flex justify-content-xl-end justify-content-center align-items-xl-center flex-wrap h-100  mx-n4">
+                <input
+                            
+                            className="form-control mx-4 h-px-60"
+                            name="name"
+                            placeholder="Your Full Name"
+                            onChange={(event) => setEmail(event.target.value)}
+                            value={email}
+                          />
+                            </div>
+                            </div>
+                            <div
+                className="col-xl-2 col-lg-12"
+                data-aos="fade-left"
+                data-aos-duration="1000"
+              >
+                            <div className="btns d-flex justify-content-xl-end justify-content-center align-items-xl-center flex-wrap h-100  mx-n4">
+                  <a
+                    className="btn btn-green btn-h-48 btn-xl mx-4 text-uppercase"
+                    href="/registration"
+                    onClick={(e) => {
+                      router.push('/registration');
+                    }}
+                  >
+                    Register
+                  </a>
+                </div>
+
+                {/* <!-- cta-btns end --> */}
+              </div>
+            </div>
+          </div>
           {/* <!-- Cta section --> */}
           <div className="pt-11 pt-lg-20 pb-13 pb-lg-20 border-bottom border-width-1 border-default-color-2">
             <div className="row justify-content-center ">
@@ -342,6 +464,36 @@ Mob:+41 079 471 95 92.
       >
         <IoIosArrowRoundUp />
       </button>
+      {/* <MessengerChat
+    pageId='101319619177236'
+    language='en_US'
+    themeColor={'#F2F3G2'}
+    height={24}
+    loggedInGreeting='Hello logged in user!'
+    loggedOutGreeting='Hello stranger!'
+    autoExpand={true}
+    debugMode={false}
+    onMessengerShow={() => {console.log('onMessengerShow')}}
+    onMessengerHide={() => {console.log('onMessengerHide')}}
+    onMessengerDialogShow={() => {console.log('onMessengerDialogShow')}}
+    onMessengerDialogHide={() => {console.log('onMessengerDialogHide')}}
+    /> */}
+   <a
+        href="https://wa.me/+8801990225993"
+        className={`whatsapp_float ${scroll > top ? "show" : ""}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+      <img src={"https://res.cloudinary.com/dl2tsdbcf/image/upload/v1647364489/whatsapp_gvu6uz.png"} alt="Whatsapp"/>
+      </a>
+      <a
+        href="/contact"
+        className={`contact_float ${scroll > top ? "show" : ""}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+      <img className="contact-icon" src={"https://res.cloudinary.com/dl2tsdbcf/image/upload/v1648022986/contact_w5ckvn.png"} alt="Whatsapp"/>
+      </a>
       </footer>
     </>
   );

@@ -154,65 +154,66 @@ const DashboardMain = () => {
                   <table className="table table-striped">
                     <thead>
                     <tr className="th-sticky" >
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="pl-0  border-0 font-size-4 font-weight-normal"
+                          className=" th-sticky pl-0  border-0 font-size-4 font-weight-normal"
                         >
                           Application ID
                         </th>
                   
-                        <th className="th-sticky"
+                        <th
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >
                          Applied Intake Date
                         </th>
                       
                     
                         
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Product</th>
-                       <th className="th-sticky"
+                       <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Partner</th>
-                         <th className="th-sticky"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
+                        >Institute</th>
+                        <th 
+                        scope="col"
+                        className="th-sticky border-0 font-size-4 font-weight-normal"
+                      >Status</th>
+                         <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Partner Branches</th>
-<th className="th-sticky"
+<th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Partner's Client ID'</th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Workflow</th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         >Application Start By</th>
 
-<th className="th-sticky"
+<th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
-                        >Application Start By Branch</th><th className="th-sticky"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
+                        >Application Start By Branch</th>
+<th 
                         scope="col"
-                        className="border-0 font-size-4 font-weight-normal"
-                      >Status</th>
-<th className="th-sticky"
-                        scope="col"
-                        className="border-0 font-size-4 font-weight-normal"
+                        className="th-sticky border-0 font-size-4 font-weight-normal"
                       >Stage in Queue</th>
-                      <th className="th-sticky"
+                      <th 
                         scope="col"
-                        className="border-0 font-size-4 font-weight-normal"
+                        className="th-sticky border-0 font-size-4 font-weight-normal"
                       >Created At</th>
-                        <th className="th-sticky"
+                        <th 
                           scope="col"
-                          className="border-0 font-size-4 font-weight-normal"
+                          className="th-sticky border-0 font-size-4 font-weight-normal"
                         ></th>
                       
                       </tr>
@@ -223,14 +224,14 @@ const DashboardMain = () => {
                         <tr className="border border-color-2">
                           
                         <th scope="row" className="pl-6 border-0 py-7 pr-0">
-                          <Link href="/candidate-profile">
+                 
                             <a className="media min-width-px-235 align-items-center">
                          
                               <h4 className="font-size-4 mb-0 font-weight-semibold text-black-2">
                                 {item.id}
                               </h4>
                             </a>
-                          </Link>
+                          
                         </th>
                   
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
@@ -251,6 +252,11 @@ const DashboardMain = () => {
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
                             
                            <Partner uni={item.partner}/>
+                          </h3>
+                        </td>
+                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
+                            {item.status}
                           </h3>
                         </td>
                         
@@ -280,11 +286,7 @@ const DashboardMain = () => {
                             {item.application_start_by_branch}
                           </h3>
                         </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
-                          <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
-                            {item.status}
-                          </h3>
-                        </td>
+                    
                         <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <h3 className="font-size-4 font-weight-normal text-black-2 mb-0">
                             {item.status_in_queue}
@@ -295,7 +297,7 @@ const DashboardMain = () => {
                             {item.created_at}
                           </h3>
                         </td>
-                        <td className="table-y-middle py-7 min-width-px-170 pr-0">
+                        {/* <td className="table-y-middle py-7 min-width-px-170 pr-0">
                           <div className="">
                             <a
                               href="/#"
@@ -308,7 +310,7 @@ const DashboardMain = () => {
                               View Application
                             </a>
                           </div>
-                        </td>
+                        </td> */}
                    
                       </tr>
                       

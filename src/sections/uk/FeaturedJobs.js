@@ -30,7 +30,7 @@ const FeaturedJobs = () => {
             {/* <!-- Section Button --> */}
             <div className="col-12 col-xl-6 col-lg-6">
               <div className="text-center text-lg-right">
-                <Link href="/#">
+                <Link href="/search/all">
                   <a className="btn btn-outline-white text-uppercase">
                     Explore All
                   </a>
@@ -49,19 +49,19 @@ const FeaturedJobs = () => {
               {/* <!-- Start Feature One --> */}
               <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                 <div className="d-block mb-7">
-                  <Link href="/#">
+                  <Link href="/university/78">
                     <a>
                       <img height="125px" src={imgF2} alt="" />
                     </a>
                   </Link>
                 </div>
-                <Link href="/#">
+                <Link href="/university/78">
                   <a className="font-size-3 d-block mb-0 text-gray">
                   Ulster University
                   </a>
                 </Link>
                 <h2 className="mt-n4">
-                  <Link href="/#">
+                  <Link href="/university/78">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
                       Accounting
                     </a>
@@ -69,7 +69,7 @@ const FeaturedJobs = () => {
                 </h2>
                 <ul className="list-unstyled mb-1 card-tag-list">
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
                         UK
@@ -77,7 +77,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
                         3.9/5
@@ -85,7 +85,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
                         80K-90K
@@ -93,7 +93,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
                       {" "} Accomodation
@@ -101,7 +101,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
                         Internship Opportunity
@@ -109,7 +109,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
                       Offer Letter
@@ -117,7 +117,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
                         Post-Study Work Visa
@@ -125,7 +125,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/78">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
                         Work White Studying
@@ -135,12 +135,12 @@ const FeaturedJobs = () => {
                 </ul>
                
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/apply/1/67">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/university/78">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -158,17 +158,17 @@ const FeaturedJobs = () => {
               {/* <!-- Start Feature One --> */}
               <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                 <div className="d-block mb-7">
-                  <Link href="/#">
+                  <Link href="/university/79">
                     <a>
                       <img height="125px" src={imgF1} alt="" />
                     </a>
                   </Link>
                 </div>
-                <Link href="/#">
+                <Link href="/university/79">
                   <a className="font-size-3 d-block mb-0 text-gray">Cardiff and Vale</a>
                 </Link>
                 <h2 className="mt-n4">
-                  <Link href="/#">
+                  <Link href="/university/79">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
                      Aviation Management
                     </a>
@@ -176,7 +176,7 @@ const FeaturedJobs = () => {
                 </h2>
                 <ul className="list-unstyled mb-1 card-tag-list">
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
                         UK
@@ -184,7 +184,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
                         4/5
@@ -192,7 +192,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
                         80K-90K
@@ -200,7 +200,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
                       {" "} Accomodation
@@ -208,7 +208,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
                         Internship Opportunity
@@ -216,7 +216,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
                       Offer Letter
@@ -224,7 +224,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
                         Post-Study Work Visa
@@ -232,7 +232,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/79">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
                         Work White Studying
@@ -242,12 +242,12 @@ const FeaturedJobs = () => {
                 </ul>
                
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/apply/1/79">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/university/79">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -265,17 +265,17 @@ const FeaturedJobs = () => {
               {/* <!-- Start Feature One --> */}
               <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                 <div className="d-block mb-7">
-                  <Link href="/#">
+                  <Link href="/university/77">
                     <a>
                       <img height="125px" src={imgF3} alt="" />
                     </a>
                   </Link>
                 </div>
-                <Link href="/#">
+                <Link href="/university/77">
                   <a className="font-size-3 d-block mb-0 text-gray">University of Winchester</a>
                 </Link>
                 <h2 className="mt-n4">
-                  <Link href="/#">
+                  <Link href="/university/77">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
                       Finance
                     </a>
@@ -283,7 +283,7 @@ const FeaturedJobs = () => {
                 </h2>
                 <ul className="list-unstyled mb-1 card-tag-list">
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
                         UK
@@ -291,7 +291,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
                         4.2/5
@@ -299,7 +299,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
                         80K-90K
@@ -307,7 +307,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
                       {" "} Accomodation
@@ -315,7 +315,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
                         Internship Opportunity
@@ -323,7 +323,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
                       Offer Letter
@@ -331,7 +331,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
                         Post-Study Work Visa
@@ -339,7 +339,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/77">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
                         Work White Studying
@@ -349,12 +349,12 @@ const FeaturedJobs = () => {
                 </ul>
             
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/apply/1/67">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/university/77">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -372,17 +372,17 @@ const FeaturedJobs = () => {
               {/* <!-- Start Feature One --> */}
               <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                 <div className="d-block mb-7">
-                  <Link href="/#">
+                  <Link href="/university/76">
                     <a>
                       <img height="125px" src={imgF4} alt="" />
                     </a>
                   </Link>
                 </div>
-                <Link href="/#">
+                <Link href="/university/76">
                   <a className="font-size-3 d-block mb-0 text-gray">University of Creative Arts</a>
                 </Link>
                 <h2 className="mt-n4">
-                  <Link href="/#">
+                  <Link href="/university/76">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
                       International Business{" "}
                     </a>
@@ -390,7 +390,7 @@ const FeaturedJobs = () => {
                 </h2>
                 <ul className="list-unstyled mb-1 card-tag-list">
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
                         UK
@@ -398,7 +398,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
                         3/5
@@ -406,7 +406,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
                         80K-90K
@@ -414,7 +414,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
                       {" "} Accomodation
@@ -422,7 +422,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
                         Internship Opportunity
@@ -430,7 +430,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
                       Offer Letter
@@ -438,7 +438,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
                         Post-Study Work Visa
@@ -446,7 +446,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/76">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
                         Work White Studying
@@ -456,12 +456,12 @@ const FeaturedJobs = () => {
                 </ul>
                
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/apply/1/76">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/university/76">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -479,17 +479,17 @@ const FeaturedJobs = () => {
               {/* <!-- Start Feature One --> */}
               <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                 <div className="d-block mb-7">
-                  <Link href="/#">
+                  <Link href="/university/83">
                     <a>
                       <img height="125px" src={imgF5} alt="" />
                     </a>
                   </Link>
                 </div>
-                <Link href="/#">
+                <Link href="/university/83">
                   <a className="font-size-3 d-block mb-0 text-gray">Uxbridge College</a>
                 </Link>
                 <h2 className="mt-n4">
-                  <Link href="/#">
+                  <Link href="/university/83">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
                       Computer Science{" "}
                     </a>
@@ -497,7 +497,7 @@ const FeaturedJobs = () => {
                 </h2>
                 <ul className="list-unstyled mb-1 card-tag-list">
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
                         UK
@@ -505,7 +505,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
                         3.5/5
@@ -513,7 +513,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
                         80K-90K
@@ -521,7 +521,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
                       {" "} Accomodation
@@ -529,7 +529,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
                         Internship Opportunity
@@ -537,7 +537,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
                       Offer Letter
@@ -545,7 +545,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
                         Post-Study Work Visa
@@ -553,7 +553,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/83">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
                         Work White Studying
@@ -563,12 +563,12 @@ const FeaturedJobs = () => {
                 </ul>
             
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/apply/1/83">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/university/83">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it
@@ -586,17 +586,17 @@ const FeaturedJobs = () => {
               {/* <!-- Start Feature One --> */}
               <div className="bg-white px-8 pt-9 pb-7 rounded-4 mb-9 feature-cardOne-adjustments">
                 <div className="d-block mb-7">
-                  <Link href="/#">
+                  <Link href="/university/67">
                     <a>
                       <img height="125px" src={imgF6} alt="" />
                     </a>
                   </Link>
                 </div>
-                <Link href="/#">
+                <Link href="/university/67">
                   <a className="font-size-3 d-block mb-0 text-gray">University of Hertfordshire</a>
                 </Link>
                 <h2 className="mt-n4">
-                  <Link href="/#">
+                  <Link href="/university/67">
                     <a className="font-size-7 text-black-2 font-weight-bold mb-4">
                       Political Science
                     </a>
@@ -604,7 +604,7 @@ const FeaturedJobs = () => {
                 </h2>
                 <ul className="list-unstyled mb-1 card-tag-list">
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-denim font-size-3 rounded-3">
                         <i className="icon icon-pin-3 mr-2 font-weight-bold"></i>{" "}
                        UK
@@ -612,7 +612,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-orange font-size-3 rounded-3">
                         <i className="fa fa-briefcase mr-2 font-weight-bold"></i>{" "}
                        3.4/5
@@ -620,7 +620,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                         <i className="fa fa-dollar-sign mr-2 font-weight-bold"></i>{" "}
                         80K-90K
@@ -628,7 +628,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF1} alt="" />
                       {" "} Accomodation
@@ -636,7 +636,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF2} alt="" />
                         Internship Opportunity
@@ -644,7 +644,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF3} alt="" />
                       Offer Letter
@@ -652,7 +652,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF4} alt="" />
                         Post-Study Work Visa
@@ -660,7 +660,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/#">
+                    <Link href="/university/67">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
                         Work White Studying
@@ -670,12 +670,12 @@ const FeaturedJobs = () => {
                 </ul>
                 
                 <div className="card-btn-group">
-                  <Link href="/#">
+                  <Link href="/apply/1/67">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
                   </Link>
-                  <Link href="/#">
+                  <Link href="/university/67">
                     <a className="btn btn-outline-mercury text-black-2 text-uppercase btn-medium rounded-3">
                       <i className="icon icon-bookmark-2 font-weight-bold mr-4 font-size-4"></i>{" "}
                       Save it

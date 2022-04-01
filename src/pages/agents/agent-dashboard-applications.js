@@ -26,6 +26,7 @@ const DashboardMain = () => {
   const { authUser, loading,signOut } = useAuth();
   const [List, setList] = useState([]);
   const [UniList,setUniList] = useState([])
+  const [isActive,setIsActive] = useState(false)
 console.log("UniList")
   console.log(UniList)
   useEffect(() =>  {
@@ -52,9 +53,24 @@ console.log("UniList")
       console.log(e);
   }
     }
+    async function fetchMyAPI2() {
+      try {
+  console.log(authUser)
+  const res = await fetch('https://ci-gsc.com/agents/?format=json');
+  
+  const todoList = await res.json();
+  let filtered = await todoList.filter(function(val, i, a) {return val.email==authUser;})
+  console.log(filtered[0].active_status)
+  if(filtered[0].active_status=="active"){
+  setIsActive(true)
+  }
+  } catch (e) {
+  console.log(e);
+  }
+  }
     
 fetchMyAPI()
-    
+fetchMyAPI2() 
   },authUser)
 
 
@@ -69,9 +85,24 @@ fetchMyAPI()
           reveal: false,
         }}
       >
-        <div className="dashboard-main-container mt-25 mt-lg-31">
+        <div className="dashboard-main-container mt-25 mt-lg-25">
           <div className="container">
-          
+          { isActive==false &&
+          <>
+              <div className="row mb-3">
+                    <div className="col-xxl-12 col-xl-12 col-lg-12 col-sm-12">
+                      <a
+                        href="/#"
+                        className="media bg-red rounded-4 pl-8 pt-2 pb-2 pr-7 hover-shadow-1 mb-3 shadow-8"
+                      >
+                          <p className="font-size-4 font-weight-normal text-white mb-0">
+                          Approval Pending from admin. Please fill up your profile details if you have not already.  
+                          </p>
+                      </a>
+                    </div>
+                </div>
+          </>
+          }
             <div className="mb-14">
               <div className="row mb-11 align-items-center">
                 <div className="col-lg-6 mb-lg-0 mb-4">

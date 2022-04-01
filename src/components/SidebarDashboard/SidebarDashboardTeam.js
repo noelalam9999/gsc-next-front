@@ -75,7 +75,27 @@ fetchMyAPI()
             <li className="">
               <Link href="/team-member/team-applications">
                 <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
-                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903931/resume_h1xatk.png" alt="" />Applications{" "}
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903931/resume_h1xatk.png" alt="" />Active Applications{" "}
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                    14
+                  </span> */}
+                </a>
+              </Link>
+            </li>
+            <li className="">
+              <Link href="/team-member/team-applications-pending">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903931/resume_h1xatk.png" alt="" />Pending Applications{" "}
+                  {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
+                    14
+                  </span> */}
+                </a>
+              </Link>
+            </li>
+            <li className="">
+              <Link href="/team-member/team-applications-archived">
+                <a className="px-10 py-1 my-1 font-size-5 font-weight-semibold flex-y-center">
+                <img class="mr-7" style={{marginRight:"3px"}} height="25px" src="https://res.cloudinary.com/dl2tsdbcf/image/upload/v1640903931/resume_h1xatk.png" alt="" />Archived Applications{" "}
                   {/* <span className="ml-auto px-1 h-1 bg-dodger text-white font-size-3 rounded-5 max-height-px-18 flex-all-center">
                     14
                   </span> */}

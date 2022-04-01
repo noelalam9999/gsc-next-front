@@ -5,7 +5,7 @@ import { Select } from "../components/Core";
 import 'firebase/firestore';
 import { useAuth } from '../../AuthUserContext';
 
-import AgentRegistration from "../sections/Registration/agent-registration";
+import AgentRegistration from "../sections/Registration/agent-registration2";
 const StudentRegistration = () => {
 
   const { authUser } = useAuth();

@@ -74,11 +74,11 @@ const Sidebar = ({parentCallback,FeeRange,setRanking}) => {
           <li className="mb-2">
             <Check parentCallback = {parentCallback}>Diploma</Check>
           </li>
-          <li className="mb-2">
+          {/* <li className="mb-2">
             <Check parentCallback = {parentCallback}>Masters</Check>
-          </li>
+          </li> */}
           <li className="mb-2">
-            <Check parentCallback = {parentCallback}>PhD</Check>
+            <Check parentCallback = {parentCallback}>Post-graduate</Check>
           </li>
            
         </ul>

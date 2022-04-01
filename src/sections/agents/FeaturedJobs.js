@@ -344,7 +344,7 @@ const FeaturedJobs = () => {
           </div>
           <div className="row">
             <div className="col-12 text-center pt-md-11 ">
-              <Link href="/#">
+              <Link href="/signup-agent">
                 <a className="text-green font-weight-bold text-uppercase font-size-3">
                   Join GSC to see more Institutes{" "}
                   <i className="fas fa-arrow-right ml-3"></i>

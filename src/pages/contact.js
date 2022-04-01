@@ -1,7 +1,38 @@
-import React from "react";
+import React,{ Component,useEffect, useState }  from "react";
 import PageWrapper from "../components/PageWrapper";
-
+import axios from 'axios';
 const Contact = () => {
+  const [email,setEmail] = useState("")
+  const [name,setName] = useState("")
+  const [message,setMessage] = useState("")
+
+  const [record,setRecord] = useState( {  
+    email:"",
+    name:"",
+    message:"",
+   
+  })
+
+  const handleSubmit = (item) => { 
+  
+   if(email!=null & name!=null & message!=null){ 
+    item.recipient=email,
+    item.name=name,
+    item.message=message
+ 
+   
+  
+    axios
+    .post(`https://ci-gsc.com/contact-form/ `, item)
+    .then((res) => alert("we have received your mail"))
+    .catch((err) => alert("server error please try again later"));
+    ;
+      
+   }
+   else{
+     alert("please fill up all the fields")
+   }
+  };
   return (
     <>
       <PageWrapper>
@@ -30,13 +61,14 @@ const Contact = () => {
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Jhon Doe"
+                          placeholder="Your Name"
                           id="name"
                           name="name"
+                          onChange={(event) => setName(event.target.value)}
                           required
                         />
                       </div>
-                      <div className="col-lg-6 mb-7">
+                      <div className="col-lg-12 mb-7">
                         <label
                           htmlFor="email"
                           className="font-size-4 font-weight-semibold text-black-2 mb-5 line-height-reset"
@@ -49,10 +81,11 @@ const Contact = () => {
                           placeholder="example@gmail.com"
                           id="email"
                           name="email"
+                          onChange={(event) => setEmail(event.target.value)}
                           required
                         />
                       </div>
-                      <div className="col-lg-6 mb-7">
+                      {/* <div className="col-lg-6 mb-7">
                         <label
                           htmlFor="subject"
                           className="font-size-4 font-weight-semibold text-black-2 mb-5 line-height-reset"
@@ -62,12 +95,12 @@ const Contact = () => {
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Special contract"
+                          placeholder="Immigration Details"
                           id="subject"
                           name="subject"
                           required
                         />
-                      </div>
+                      </div> */}
                       <div className="col-lg-12 mb-7">
                         <label
                           htmlFor="message"
@@ -80,16 +113,18 @@ const Contact = () => {
                           placeholder="Type your message"
                           className="form-control h-px-144"
                           name="message"
+                          onChange={(event) => setMessage(event.target.value)}
                           required
                         ></textarea>
                       </div>
                       <div className="col-lg-12 pt-4">
-                        <button
-                          type="submit"
-                          className="btn btn-primary text-uppercase w-100 h-px-48"
-                        >
-                          Send Now
-                        </button>
+                      <input
+                           
+                              type="button"
+                              value="Send"
+                              className="btn btn-green btn-h-60 text-white min-wvalueth-px-210 rounded-5 text-uppercase"
+                              onClick={() => handleSubmit(record)}
+                         />
                       </div>
                     </div>
                   </form>
@@ -100,21 +135,25 @@ const Contact = () => {
                         <i className="fas fa-map-marker-alt mt-2"></i>
                       </div>
                       <p className="font-size-4 mb-0">
-                        Grayic <br />
-                        Jens Baggesen, 8200 Aarhus
+                   
+                       House no.-54/A(3rd Floor),
+                       Road-132, 
+                        <br/>Gulshan-1, 
+                       Dhaka-1212
+
                       </p>
                     </div>
                     <div className="media mb-2">
                       <div className="mr-6">
                         <i className="fas fa-phone-alt mt-2"></i>
                       </div>
-                      <p className="font-size-4 mb-0">+999 546 646</p>
+                      <p className="font-size-4 mb-0">+880 1715-482363</p>
                     </div>
                     <div className="media mb-2">
                       <div className="mr-6">
                         <i className="fas fa-envelope mt-2"></i>
                       </div>
-                      <p className="font-size-4 mb-0">support@uxtheme.net</p>
+                      <p className="font-size-4 mb-0">info@ci-gsc.com</p>
                     </div>
                   </div>
                 </div>

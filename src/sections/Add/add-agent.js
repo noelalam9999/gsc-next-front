@@ -83,6 +83,7 @@ class AddAgent extends Component {
         name:"",
         role:"",
         agency_name:"",
+        address2:"",
         country:"",
         mobile:"",
         website:"",
@@ -97,7 +98,8 @@ class AddAgent extends Component {
         recruitment_area:"",
         facebooklink:"",
         charge:"no",
-        added_by:""
+        added_by:"gsc",
+        active_status:"active"
       },
       todoList: []
       };
@@ -376,6 +378,24 @@ render(){
                             placeholder="The Address of their Office"
                             onChange={this.handleChange}
                             value={this.state.activeItem.offices}
+                          />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label
+                                htmlFor="select2"
+                                className="d-block text-black-2 font-size-4 font-weight-semibold mb-4"
+                              >
+                                Office Address Line 2 
+                              </label>
+                              <input
+                            
+                            className="form-control h-px-48"
+                            name="address2"
+                            placeholder="The Address of their Office"
+                            onChange={this.handleChange}
+                            value={this.state.activeItem.address2}
                           />
                             </div>
                           </div>

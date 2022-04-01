@@ -34,7 +34,7 @@ const FeaturedJobs = () => {
             {/* <!-- Section Button --> */}
             <div className="col-12 col-xl-6 col-lg-6">
               <div className="text-center text-lg-right">
-                <Link href="/search">
+                <Link href="/search/all">
                   <a className="btn btn-outline-white text-uppercase">
                     Explore All
                   </a>
@@ -141,7 +141,7 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/university/58">
+                  <Link href="/apply/1/58">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
@@ -252,7 +252,7 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/university/59">
+                  <Link href="/apply/1/59">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
@@ -361,7 +361,7 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/university/60">
+                  <Link href="/apply/1/60">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
@@ -470,7 +470,7 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/university/61">
+                  <Link href="/apply/1/61">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>
@@ -567,7 +567,7 @@ const FeaturedJobs = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/university/63">
+                    <Link href="/apply/1/63">
                       <a className="bg-regent-opacity-15 text-eastern font-size-3 rounded-3">
                       <img style={{marginRight:"3px"}} height="20px" src={iconF5} alt="" />
                         Work While Studying
@@ -688,7 +688,7 @@ const FeaturedJobs = () => {
                 <p className="mb-7 font-size-4 text-gray">
                 </p>
                 <div className="card-btn-group">
-                  <Link href="/university/63">
+                  <Link href="/apply/1/63">
                     <a className="btn btn-green text-uppercase btn-medium rounded-3">
                       Apply Now
                     </a>

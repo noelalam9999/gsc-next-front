@@ -152,9 +152,9 @@ const Content = () => {
                 </p>
                 {/* <!-- content-2 section title end --> */}
                 {/* <!-- content-2 btn start --> */}
-                <Link href="/#">
+                <Link href="/contact">
                   <a className="btn btn-white btn-h-60 text-black-2 w-180 rounded-5 text-uppercase mx-auto mx-lg-0">
-                    Apply Now
+                    Contact Us
                   </a>
                 </Link>
                 {/* <!-- content-2 btn end --> */}

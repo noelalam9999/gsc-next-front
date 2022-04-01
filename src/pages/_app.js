@@ -18,12 +18,17 @@ import "../assets/fonts/fontawesome-5/css/all.css";
 
 import "../scss/bootstrap.scss";
 import "../scss/main.scss";
+import Head from "next/head";
 import { AuthUserProvider } from '../../AuthUserContext';
 
 const MyApp = ({ Component, pageProps, router }) => {
   if (router.pathname.match(/404/)) {
     return (
       <GlobalProvider>
+          <Head>
+         
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></link>
+        </Head>
         <Layout pageContext={{ layout: "bare" }}>
       
           <Component {...pageProps} />
@@ -38,6 +43,10 @@ const MyApp = ({ Component, pageProps, router }) => {
 
       <GlobalProvider>
            <AuthUserProvider>
+           <Head>
+         
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></link>
+       </Head>
         <Layout pageContext={{ layout: "dashboard" }}>
      
           <Component {...pageProps} />
@@ -150,8 +159,12 @@ const MyApp = ({ Component, pageProps, router }) => {
     
     <GlobalProvider>
           <AuthUserProvider>
+        
       <Layout pageContext={{}}>
-     
+      <Head>
+         
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></link>
+       </Head>
         <Component {...pageProps} />
         
       </Layout>

@@ -27,9 +27,9 @@ const Content = () => {
                 </p>
                 {/* <!-- content-2 section title end --> */}
                 {/* <!-- content-2 btn start --> */}
-                <Link href="/signup">
+                <Link href="/contact">
                   <a className="text-green font-weight-bold text-uppercase font-size-3">
-                    Apply Now <i className="fas fa-arrow-right ml-3"></i>
+                    contact Us <i className="fas fa-arrow-right ml-3"></i>
                   </a>
                 </Link>
                 {/* <!-- content-2 btn end --> */}
